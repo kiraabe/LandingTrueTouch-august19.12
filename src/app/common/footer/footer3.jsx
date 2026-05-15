@@ -6,7 +6,7 @@ import { publicUrlFor } from "../../../globals/constants";
 function Footer3() {
     return (
         <>
-            <footer className="footer-light ftr-light-with-bg site-bg-cover" style={{ backgroundImage: `url(${publicUrlFor("images/ftr-bg.jpg")})` }}>
+            <footer className="footer-light ftr-light-with-bg site-bg-cover" style={{ backgroundImage: `url(${publicUrlFor("images/ftr-bg.jpg")})` background size:"cover" }}>
                 <div className="container">
                     {/* FOOTER BLOCKES START */}
                     <div className="footer-top">
