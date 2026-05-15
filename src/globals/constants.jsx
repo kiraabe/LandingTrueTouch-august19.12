@@ -1,4 +1,10 @@
-const baseUrl = import.meta.env.BASE_URL || '/'
+let baseUrl = import.meta.env.BASE_URL || '/'
+if (!baseUrl.startsWith('/')) {
+  baseUrl = '/'
+}
+if (baseUrl.endsWith('/')) {
+  baseUrl = baseUrl.slice(0, -1)
+}
 export const default_skin = "6"
 
 export const popupType = {
@@ -12,7 +18,8 @@ export const formType = {
 }
 
 export function publicUrlFor(path) {
-    return baseUrl + "/assets/" + path;
+    const url = baseUrl + "/assets/" + path;
+    return url.startsWith('/') ? url : '/' + url;
 }
 
 export function loadScript(src, fromPublic) {
