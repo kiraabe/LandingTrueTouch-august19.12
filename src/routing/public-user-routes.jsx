@@ -1,22 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import { publicUser } from "../globals/route-names";
-import Home1Page from "../app/pannels/public-user/components/home/index";
-import Home2Page from "../app/pannels/public-user/components/home/index2";
-import Home3Page from "../app/pannels/public-user/components/home/index3";
-import Home4Page from "../app/pannels/public-user/components/home/index4";
-import Home5Page from "../app/pannels/public-user/components/home/index5";
-import Home6Page from "../app/pannels/public-user/components/home/index6";
-import Home7Page from "../app/pannels/public-user/components/home/index7";
-import Home8Page from "../app/pannels/public-user/components/home/index8";
-import Home9Page from "../app/pannels/public-user/components/home/index9";
-import Home10Page from "../app/pannels/public-user/components/home/index10";
-import Home11Page from "../app/pannels/public-user/components/home/index11";
-import Home12Page from "../app/pannels/public-user/components/home/index12";
-import Home13Page from "../app/pannels/public-user/components/home/index13";
-import Home14Page from "../app/pannels/public-user/components/home/index14";
-import Home15Page from "../app/pannels/public-user/components/home/index15";
-import Home16Page from "../app/pannels/public-user/components/home/index16";
-import Home17Page from "../app/pannels/public-user/components/home/index17";
 import Home18Page from "../app/pannels/public-user/components/home/index18";
 
 import JobsGridPage from "../app/pannels/public-user/components/jobs/jobs-grid";
@@ -57,23 +40,6 @@ function PublicUserRoutes() {
     return (
         <Routes>
             <Route path={publicUser.INITIAL} element={<Home18Page />} />
-            <Route path={publicUser.HOME1} element={<Home1Page />} />
-            <Route path={publicUser.HOME2} element={<Home2Page />} />
-            <Route path={publicUser.HOME3} element={<Home3Page />} />
-            <Route path={publicUser.HOME4} element={<Home4Page />} />
-            <Route path={publicUser.HOME5} element={<Home5Page />} />
-            <Route path={publicUser.HOME6} element={<Home6Page />} />
-            <Route path={publicUser.HOME7} element={<Home7Page />} />
-            <Route path={publicUser.HOME8} element={<Home8Page />} />
-            <Route path={publicUser.HOME9} element={<Home9Page />} />
-            <Route path={publicUser.HOME10} element={<Home10Page />} />
-            <Route path={publicUser.HOME11} element={<Home11Page />} />
-            <Route path={publicUser.HOME12} element={<Home12Page />} />
-            <Route path={publicUser.HOME13} element={<Home13Page />} />
-            <Route path={publicUser.HOME14} element={<Home14Page />} />
-            <Route path={publicUser.HOME15} element={<Home15Page />} />
-            <Route path={publicUser.HOME16} element={<Home16Page />} />
-            <Route path={publicUser.HOME17} element={<Home17Page />} />
             <Route path={publicUser.HOME18} element={<Home18Page />} />
             <Route path={publicUser.jobs.GRID} element={<JobsGridPage />} />
             <Route path={publicUser.jobs.GRID_MAP} element={<JobsGridMapPage />} />
