@@ -56,7 +56,7 @@ import BlogDetailPage from "../app/pannels/public-user/components/blogs/blog-det
 function PublicUserRoutes() {
     return (
         <Routes>
-            <Route path={publicUser.INITIAL} element={<Home1Page />} />
+            <Route path={publicUser.INITIAL} element={<Home18Page />} />
             <Route path={publicUser.HOME1} element={<Home1Page />} />
             <Route path={publicUser.HOME2} element={<Home2Page />} />
             <Route path={publicUser.HOME3} element={<Home3Page />} />
