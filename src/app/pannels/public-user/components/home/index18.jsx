@@ -1,5 +1,4 @@
 import JobZImage from "../../../../common/jobz-img";
-import WhatsAppWidget from "../../../../common/whatsapp-widget";
 import { loadScript, publicUrlFor, updateSkinStyle } from "../../../../../globals/constants";
 import { publicUser } from "../../../../../globals/route-names";
 import { NavLink } from "react-router-dom";
@@ -799,8 +798,6 @@ function Home18Page() {
         </div>
       </div>
       {/* CONTACT US SECTION END */}
-
-      <WhatsAppWidget />
     </>
   )
 }
