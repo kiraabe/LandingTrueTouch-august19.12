@@ -45,18 +45,7 @@ function Footer4() {
                             </div>
                             <div className="col-lg-9 col-md-12">
                                 <div className="row">
-                                    <div className="col-lg-3 col-md-6 col-sm-6">
-                                        <div className="widget widget_services ftr-list-center">
-                                            <h3 className="widget-title">For Candidate</h3>
-                                            <ul>
-                                                <li><NavLink to={publicUser.pages.LOGIN}>User Dashboard</NavLink></li>
-                                                <li><NavLink to={publicUser.candidate.GRID}>Candidates</NavLink></li>
-                                                <li><NavLink to={publicUser.blog.LIST}>Blog List</NavLink></li>
-                                                <li><NavLink to={publicUser.blog.DETAIL}>Blog single</NavLink></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-3 col-md-6 col-sm-6">
+                                    <div className="col-lg-4 col-md-6 col-sm-6">
                                         <div className="widget widget_services ftr-list-center">
                                             <h3 className="widget-title">For Employers</h3>
                                             <ul>
@@ -67,7 +56,7 @@ function Footer4() {
                                             </ul>
                                         </div>
                                     </div>
-                                    <div className="col-lg-3 col-md-6 col-sm-6">
+                                    <div className="col-lg-4 col-md-6 col-sm-6">
                                         <div className="widget widget_services ftr-list-center">
                                             <h3 className="widget-title">Helpful Resources</h3>
                                             <ul>
@@ -78,7 +67,7 @@ function Footer4() {
                                             </ul>
                                         </div>
                                     </div>
-                                    <div className="col-lg-3 col-md-6 col-sm-6">
+                                    <div className="col-lg-4 col-md-6 col-sm-6">
                                         <div className="widget widget_services ftr-list-center">
                                             <h3 className="widget-title">Quick Links</h3>
                                             <ul>
