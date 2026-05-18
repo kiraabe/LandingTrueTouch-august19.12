@@ -136,7 +136,7 @@ function Home18Page() {
                   <div className="twm-media">
                     <JobZImage src="images/featured-cities/city1.jpg" alt="" />
                     <div className="twm-city-info">
-                      <div className="twm-city-jobs">125 Jobs</div>
+                      <div className="twm-city-jobs">Jobs</div>
                       <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Saudi Arabia</NavLink></h4>
                     </div>
                   </div>
@@ -149,7 +149,7 @@ function Home18Page() {
                       <div className="twm-media">
                         <JobZImage src="images/featured-cities/city2.jpg" alt="" />
                         <div className="twm-city-info">
-                          <div className="twm-city-jobs">190 Jobs</div>
+                          <div className="twm-city-jobs">Jobs</div>
                           <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Qatar</NavLink></h4>
                         </div>
                       </div>
@@ -160,7 +160,7 @@ function Home18Page() {
                       <div className="twm-media">
                         <JobZImage src="images/featured-cities/city3.jpg" alt="" />
                         <div className="twm-city-info">
-                          <div className="twm-city-jobs">220 Jobs</div>
+                          <div className="twm-city-jobs">Jobs</div>
                           <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Jordan</NavLink></h4>
                         </div>
                       </div>
