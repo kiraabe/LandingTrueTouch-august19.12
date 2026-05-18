@@ -59,105 +59,11 @@ function Header1({ _config }) {
                             {/* MAIN Vav */}
                             <div className="nav-animation header-nav navbar-collapse collapse d-flex justify-content-center">
                                 <ul className=" nav navbar-nav">
-                                    <li className="has-mega-menu"><a href="#">Home</a>
-                                        <ul className="mega-menu">
-                                            <li>
-                                                <ul>
-                                                    <li><NavLink to={publicUser.HOME1}>Home-1</NavLink></li>
-                                                    <li><NavLink to={publicUser.HOME2}>Home-2</NavLink></li>
-                                                    <li><NavLink to={publicUser.HOME3}>Home-3</NavLink></li>
-                                                    <li><NavLink to={publicUser.HOME4}>Home-4</NavLink></li>
-                                                    <li><NavLink to={publicUser.HOME5}>Home-5</NavLink></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <ul>
-                                                    <li><NavLink to={publicUser.HOME6}>Home-6</NavLink></li>
-                                                    <li><NavLink to={publicUser.HOME7}>Home-7</NavLink></li>
-                                                    <li><NavLink to={publicUser.HOME8}>Home-8</NavLink></li>
-                                                    <li><NavLink to={publicUser.HOME9}>Home-9</NavLink></li>
-                                                    <li><NavLink to={publicUser.HOME10}>Home-10</NavLink></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <ul>
-                                                    <li><NavLink to={publicUser.HOME11}>Home-11</NavLink></li>
-                                                    <li><NavLink to={publicUser.HOME12}>Home-12</NavLink></li>
-                                                    <li><NavLink to={publicUser.HOME13}>Home-13</NavLink></li>
-                                                    <li><NavLink to={publicUser.HOME14}>Home-14</NavLink></li>
-                                                    <li><NavLink to={publicUser.HOME15}>Home-15</NavLink></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <ul>
-                                                    <li><NavLink to={publicUser.HOME16}>Home-16</NavLink></li>
-                                                    <li><NavLink to={publicUser.HOME17}>Home-17</NavLink></li>
-                                                    <li><NavLink to={publicUser.HOME18}>Home-18</NavLink></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className="has-child"><a href="#">Jobs</a>
-                                        <ul className="sub-menu">
-                                            <li><NavLink to={publicUser.jobs.GRID}>Jobs Grid</NavLink></li>
-                                            <li><NavLink to={publicUser.jobs.GRID_MAP}>Jobs Grid with Map</NavLink></li>
-                                            <li><NavLink to={publicUser.jobs.LIST}>Jobs List</NavLink></li>
-                                            <li className="has-child"><a href="#">Job Detail</a>
-                                                <ul className="sub-menu">
-                                                    <li><NavLink to={publicUser.jobs.DETAIL1}>Detail 1</NavLink>
-                                                    </li><li><NavLink to={publicUser.jobs.DETAIL2}>Detail 2 </NavLink>
-                                                    </li></ul>
-                                            </li>
-                                            <li><NavLink to={publicUser.jobs.APPLY}>Apply Jobs</NavLink></li>
-                                        </ul>
-                                    </li>
-                                    <li className="has-child"><a href="#">Employers</a>
-                                        <ul className="sub-menu">
-                                            <li><NavLink to={publicUser.employer.GRID}>Employers Grid</NavLink></li>
-                                            <li><NavLink to={publicUser.employer.LIST}>Employers List</NavLink></li>
-                                            <li className="has-child"><a href="#">Employers Detail</a>
-                                                <ul className="sub-menu">
-                                                    <li><NavLink to={publicUser.employer.DETAIL1}>Detail 1</NavLink>
-                                                    </li><li><NavLink to={publicUser.employer.DETAIL2}>Detail 2</NavLink>
-                                                    </li></ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className="has-child"><a href="#">Pages</a>
-                                        <ul className="sub-menu">
-                                            <li><NavLink to={publicUser.pages.ABOUT}>About Us</NavLink></li>
-                                            <li><NavLink to={publicUser.pages.PRICING}>Pricing</NavLink></li>
-                                            <li><NavLink to={publicUser.pages.ERROR404}>Error-404</NavLink></li>
-                                            <li><NavLink to={publicUser.pages.FAQ}>FAQ's</NavLink></li>
-                                            <li><NavLink to={publicUser.pages.CONTACT}>Contact Us</NavLink></li>
-                                            <li><NavLink to={publicUser.pages.MAINTENANCE}>Under Maintenance</NavLink></li>
-                                            <li><NavLink to={publicUser.pages.COMING}>Coming soon</NavLink></li>
-                                            <li><NavLink to={publicUser.pages.LOGIN}>Login</NavLink></li>
-                                            <li><NavLink to={publicUser.pages.AFTER_LOGIN}>After Login</NavLink></li>
-                                            <li><NavLink to={publicUser.pages.ICONS}>Icons</NavLink></li>
-                                        </ul>
-                                    </li>
-                                    <li className="has-child"><a href="#">Candidates</a>
-                                        <ul className="sub-menu">
-                                            <li><NavLink to={publicUser.candidate.GRID}>Candidates Grid</NavLink></li>
-                                            <li><NavLink to={publicUser.candidate.LIST}>Candidates List</NavLink></li>
-                                            <li className="has-child"><a href="#">Candidate Detail</a>
-                                                <ul className="sub-menu">
-                                                    <li><NavLink to={publicUser.candidate.DETAIL1}>Detail 1</NavLink>
-                                                    </li><li><NavLink to={publicUser.candidate.DETAIL2}>Detail 2</NavLink>
-                                                    </li></ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className="has-child"><a href="#">Blog</a>
-                                        <ul className="sub-menu">
-                                            <li><NavLink to={publicUser.blog.GRID1}>Blog</NavLink></li>
-                                            <li><NavLink to={publicUser.blog.GRID2}>Blog Grid</NavLink></li>
-                                            <li><NavLink to={publicUser.blog.GRID3}>Blog Grid-2</NavLink></li>
-                                            <li><NavLink to={publicUser.blog.LIST}>Blog List</NavLink></li>
-                                            <li><NavLink to={publicUser.blog.DETAIL}>Blog Detail</NavLink></li>
-                                        </ul>
-                                    </li>
+                                    <li><NavLink to={publicUser.HOME18}>Home</NavLink></li>
+                                    <li><NavLink to={publicUser.pages.ABOUT}>About Us</NavLink></li>
+                                    <li><NavLink to={publicUser.candidate.LIST}>Candidates</NavLink></li>
+                                    <li><NavLink to={publicUser.jobs.LIST}>Vacancies</NavLink></li>
+                                    <li><NavLink to={publicUser.pages.CONTACT}>Contact Us</NavLink></li>
                                 </ul>
                             </div>
                             {/* Header Right Section*/}
