@@ -129,8 +129,8 @@ function Header1({ _config }) {
                                 <div className="extra-cell">
                                     <div className="header-nav-btn-section">
                                         <div className="twm-nav-btn-left">
-                                            <a className="twm-nav-sign-up" data-bs-toggle="modal" href="#sign_up_popup" role="button">
-                                                <i className="feather-log-in" /> Sign Up
+                                            <a className="twm-nav-sign-up" href="#">
+                                                <i className="feather-log-in" /> Get a Quote
                                             </a>
                                         </div>
                                     </div>
