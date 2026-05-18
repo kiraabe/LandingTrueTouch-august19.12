@@ -14,6 +14,7 @@ function Home18Page() {
   const [jobs, setJobs] = useState([]);
   const [candidates, setCandidates] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isOffline, setIsOffline] = useState(false);
 
   useEffect(() => {
     updateSkinStyle("10", false, false);
@@ -29,10 +30,17 @@ function Home18Page() {
         api.getCandidates({ limit: 8 })
       ]);
 
-      if (jobsResponse.success) setJobs(jobsResponse.data);
-      if (candidatesResponse.success) setCandidates(candidatesResponse.data);
+      if (jobsResponse.success) {
+        setJobs(jobsResponse.data);
+        if (jobsResponse.isOffline) setIsOffline(true);
+      }
+      if (candidatesResponse.success) {
+        setCandidates(candidatesResponse.data);
+        if (candidatesResponse.isOffline) setIsOffline(true);
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
+      setIsOffline(true);
     } finally {
       setLoading(false);
     }
@@ -68,6 +76,18 @@ function Home18Page() {
 
   return (
     <>
+      {isOffline && (
+        <div style={{
+          backgroundColor: '#fff3cd',
+          color: '#856404',
+          padding: '12px 20px',
+          borderBottom: '1px solid #ffc107',
+          fontSize: '14px',
+          textAlign: 'center'
+        }}>
+          <strong>⚠️ Demo Mode:</strong> Backend server not running. Showing sample data. To connect to real database, start the Node.js backend with <code style={{ backgroundColor: '#fff8e1', padding: '2px 6px', borderRadius: '3px' }}>npm run dev</code>
+        </div>
+      )}
       <div className="twm-home18-banner-section">
         <div className="row" style={{ backgroundImage: `url(${publicUrlFor("images/home-18/banner/dot-map.png")})` }}>
           {/*Left Section*/}
