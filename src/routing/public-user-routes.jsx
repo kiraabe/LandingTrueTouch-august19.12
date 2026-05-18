@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { publicUser } from "../globals/route-names";
-import Home18Page from "../app/pannels/public-user/components/home/index18";
+import Home18Page from "../app/pannels/public-user/components/home/Home18";
 
 function PublicUserRoutes() {
     return (
