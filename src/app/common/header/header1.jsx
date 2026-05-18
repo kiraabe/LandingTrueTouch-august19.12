@@ -1,15 +1,46 @@
 import JobZImage from "../jobz-img";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { publicUser } from "../../../globals/route-names";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Header1({ _config }) {
 
     const [menuActive, setMenuActive] = useState(false);
+    const [activeSection, setActiveSection] = useState("home");
+    const location = useLocation();
 
     function handleNavigationClick() {
         setMenuActive(!menuActive);
     }
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const sections = ["get-jobs", "candidates", "our-blogs"];
+            let currentSection = "home";
+
+            for (const sectionId of sections) {
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top <= 150) {
+                        currentSection = sectionId;
+                    }
+                }
+            }
+
+            setActiveSection(currentSection);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    const isNavLinkActive = (sectionId) => {
+        if (sectionId === "home") {
+            return location.hash === "" || location.hash === "#";
+        }
+        return activeSection === sectionId;
+    };
 
     return (
         <>
@@ -59,11 +90,33 @@ function Header1({ _config }) {
                             {/* MAIN Vav */}
                             <div className="nav-animation header-nav navbar-collapse collapse d-flex justify-content-center">
                                 <ul className=" nav navbar-nav">
-                                    <li><NavLink to={publicUser.HOME18}>Home</NavLink></li>
-                                    <li><NavLink to={publicUser.HOME18 + "#get-jobs"}>About Us</NavLink></li>
-                                    <li><NavLink to={publicUser.HOME18 + "#candidates"}>Candidates</NavLink></li>
-                                    <li><NavLink to={publicUser.HOME18 + "#our-blogs"}>Vacancies</NavLink></li>
-                                    <li><NavLink to={publicUser.HOME18 + "#our-blogs"}>Contact Us</NavLink></li>
+                                    <li className={isNavLinkActive("home") ? "nav-link-active" : ""}>
+                                        <NavLink to={publicUser.HOME18}>Home</NavLink>
+                                    </li>
+                                    <li className={isNavLinkActive("get-jobs") ? "nav-link-active" : ""}>
+                                        <a href="#get-jobs" onClick={(e) => {
+                                            e.preventDefault();
+                                            document.getElementById("get-jobs")?.scrollIntoView({ behavior: "smooth" });
+                                        }}>About Us</a>
+                                    </li>
+                                    <li className={isNavLinkActive("candidates") ? "nav-link-active" : ""}>
+                                        <a href="#candidates" onClick={(e) => {
+                                            e.preventDefault();
+                                            document.getElementById("candidates")?.scrollIntoView({ behavior: "smooth" });
+                                        }}>Candidates</a>
+                                    </li>
+                                    <li className={isNavLinkActive("our-blogs") ? "nav-link-active" : ""}>
+                                        <a href="#our-blogs" onClick={(e) => {
+                                            e.preventDefault();
+                                            document.getElementById("our-blogs")?.scrollIntoView({ behavior: "smooth" });
+                                        }}>Vacancies</a>
+                                    </li>
+                                    <li className={isNavLinkActive("our-blogs") ? "nav-link-active" : ""}>
+                                        <a href="#our-blogs" onClick={(e) => {
+                                            e.preventDefault();
+                                            document.getElementById("our-blogs")?.scrollIntoView({ behavior: "smooth" });
+                                        }}>Contact Us</a>
+                                    </li>
                                 </ul>
                             </div>
                             {/* Header Right Section*/}
