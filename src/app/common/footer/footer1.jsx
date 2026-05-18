@@ -34,7 +34,7 @@ function Footer1() {
                             <div className="col-lg-3 col-md-12">
                                 <div className="widget widget_about">
                                     <div className="logo-footer clearfix">
-                                        <NavLink to={publicUser.HOME1}><JobZImage id="skin_footer_dark_logo" src="images/logo-light.png" alt="" /></NavLink>
+                                        <NavLink to={publicUser.HOME1}><JobZImage id="skin_footer_dark_logo" src="images/truetouch-logo.webp" alt="TrueTouch Logo" /></NavLink>
                                     </div>
                                     <p>Many desktop publishing packages and web page editors now.</p>
                                     <ul className="ftr-list">

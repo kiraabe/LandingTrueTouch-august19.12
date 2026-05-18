@@ -20,26 +20,7 @@ function Header2({ _config }) {
                             <div className="logo-header">
                                 <div className="logo-header-inner logo-header-one">
                                     <NavLink to={publicUser.HOME1}>
-                                        {
-                                            _config.withBlackLogo
-                                                ?
-                                                <JobZImage src="images/logo-12.png" alt="" />
-                                                :
-                                                (
-                                                    _config.withWhiteLogo
-                                                        ?
-                                                        <JobZImage src="images/logo-white.png" alt="" />
-                                                        :
-                                                        (
-                                                            _config.withLightLogo ?
-                                                                <>
-                                                                    <JobZImage id="skin_header_logo_light" src="images/logo-light-3.png" alt="" className="default-scroll-show" />
-                                                                    <JobZImage id="skin_header_logo" src="images/logo-dark.png" alt="" className="on-scroll-show" />
-                                                                </> :
-                                                                <JobZImage id="skin_header_logo" src="images/logo-dark.png" alt="" />
-                                                        )
-                                                )
-                                        }
+                                        <JobZImage src="images/truetouch-logo.webp" alt="TrueTouch Logo" />
                                     </NavLink>
                                 </div>
                             </div>
