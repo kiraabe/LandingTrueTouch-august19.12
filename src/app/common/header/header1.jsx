@@ -15,7 +15,7 @@ function Header1({ _config }) {
 
     useEffect(() => {
         const handleScroll = () => {
-            const sections = ["get-jobs", "candidates", "our-blogs"];
+            const sections = ["get-jobs", "candidates", "our-blogs", "contact-us"];
             let currentSection = "home";
 
             for (const sectionId of sections) {
@@ -111,10 +111,10 @@ function Header1({ _config }) {
                                             document.getElementById("our-blogs")?.scrollIntoView({ behavior: "smooth" });
                                         }}>Vacancies</a>
                                     </li>
-                                    <li className={isNavLinkActive("our-blogs") ? "nav-link-active" : ""}>
-                                        <a href="#our-blogs" onClick={(e) => {
+                                    <li className={isNavLinkActive("contact-us") ? "nav-link-active" : ""}>
+                                        <a href="#contact-us" onClick={(e) => {
                                             e.preventDefault();
-                                            document.getElementById("our-blogs")?.scrollIntoView({ behavior: "smooth" });
+                                            document.getElementById("contact-us")?.scrollIntoView({ behavior: "smooth" });
                                         }}>Contact Us</a>
                                     </li>
                                 </ul>

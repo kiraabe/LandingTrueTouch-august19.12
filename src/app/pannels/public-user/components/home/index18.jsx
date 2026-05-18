@@ -719,7 +719,7 @@ function Home18Page() {
       {/* OUR BLOG END */}
 
       {/* CONTACT US SECTION START */}
-      <div className="section-full twm-contact-one">
+      <div id="contact-us" className="section-full twm-contact-one">
         <div className="section-content">
           <div className="container">
             {/* CONTACT FORM*/}
