@@ -60,10 +60,10 @@ function Header1({ _config }) {
                             <div className="nav-animation header-nav navbar-collapse collapse d-flex justify-content-center">
                                 <ul className=" nav navbar-nav">
                                     <li><NavLink to={publicUser.HOME18}>Home</NavLink></li>
-                                    <li><NavLink to={publicUser.pages.ABOUT}>About Us</NavLink></li>
-                                    <li><NavLink to={publicUser.candidate.LIST}>Candidates</NavLink></li>
-                                    <li><NavLink to={publicUser.jobs.LIST}>Vacancies</NavLink></li>
-                                    <li><NavLink to={publicUser.pages.CONTACT}>Contact Us</NavLink></li>
+                                    <li><NavLink to={publicUser.HOME18 + "#get-jobs"}>About Us</NavLink></li>
+                                    <li><NavLink to={publicUser.HOME18 + "#candidates"}>Candidates</NavLink></li>
+                                    <li><NavLink to={publicUser.HOME18 + "#our-blogs"}>Vacancies</NavLink></li>
+                                    <li><NavLink to={publicUser.HOME18 + "#our-blogs"}>Contact Us</NavLink></li>
                                 </ul>
                             </div>
                             {/* Header Right Section*/}

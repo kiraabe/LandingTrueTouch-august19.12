@@ -175,7 +175,7 @@ function Home18Page() {
       {/* FEATURED SECTION END */}
 
       {/* GET JOBS SECTION START */}
-      <div className="section-full site-bg-white h-page6-getjobs-wrap">
+      <div id="get-jobs" className="section-full site-bg-white h-page6-getjobs-wrap">
         <div className="h-page6-client-slider-outer">
           <div className="container">
             <div className="h-page6-client-slider">
@@ -305,7 +305,7 @@ function Home18Page() {
       {/* GET JOBS SECTION SECTION END */}
 
       {/* CANDIDATES START */}
-      <div className="section-full p-t120 p-b90 site-bg-white twm-candidate-h-page7-wrap pos-relative ">
+      <div id="candidates" className="section-full p-t120 p-b90 site-bg-white twm-candidate-h-page7-wrap pos-relative ">
         <div className="container">
           {/* title="" START*/}
           <div className="section-head center wt-small-separator-outer">
@@ -609,7 +609,7 @@ function Home18Page() {
       {/* CANDIDATES END */}
 
       {/* OUR BLOG START */}
-      <div className="section-full p-t120 p-b90 site-bg-gray">
+      <div id="our-blogs" className="section-full p-t120 p-b90 site-bg-gray">
         <div className="container">
           {/* title="" START*/}
           <div className="section-head center wt-small-separator-outer">
