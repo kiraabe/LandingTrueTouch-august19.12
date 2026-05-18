@@ -133,11 +133,6 @@ function Header1({ _config }) {
                                                 <i className="feather-log-in" /> Sign Up
                                             </a>
                                         </div>
-                                        <div className="twm-nav-btn-right">
-                                            <a className="twm-nav-post-a-job" data-bs-toggle="modal" href="#sign_up_popup2" role="button">
-                                                <i className="feather-log-in" /> Sign In
-                                            </a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
