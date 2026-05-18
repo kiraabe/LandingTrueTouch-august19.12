@@ -54,20 +54,13 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Create new candidate
-router.post('/', async (req, res) => {
-  try {
-    const { name, profession, location, rate, image_url } = req.body;
-    
-    const result = await db.query(
-      'INSERT INTO candidates (name, profession, location, rate, image_url, created_at) VALUES ($1, $2, $3, $4, $5, NOW()) RETURNING *',
-      [name, profession, location, rate, image_url]
-    );
-
-    res.status(201).json({ success: true, data: result.rows[0] });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
-  }
+// POST disabled - Database is read-only
+router.post('/', (req, res) => {
+  res.status(403).json({
+    success: false,
+    error: 'Database is read-only. Cannot create candidates.',
+    message: 'Use the admin panel to create candidates'
+  });
 });
 
 module.exports = router;

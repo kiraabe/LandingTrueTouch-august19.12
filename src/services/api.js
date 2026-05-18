@@ -165,24 +165,12 @@ const api = {
     }
   },
 
-  createJob: async (jobData) => {
-    try {
-      const response = await fetch(`${API_URL}/jobs`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(jobData),
-        signal: AbortSignal.timeout(5000),
-      });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      return response.json();
-    } catch (error) {
-      console.warn('Could not create job:', error.message);
-      return {
-        success: false,
-        error: 'Backend unavailable. Set up Node.js backend to persist data.',
-        isOffline: true
-      };
-    }
+  createJob: async () => {
+    return {
+      success: false,
+      error: 'Database is read-only. Cannot create jobs.',
+      message: 'Contact administrator to add jobs'
+    };
   },
 
   // Candidates endpoints
@@ -220,24 +208,12 @@ const api = {
     }
   },
 
-  createCandidate: async (candidateData) => {
-    try {
-      const response = await fetch(`${API_URL}/candidates`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(candidateData),
-        signal: AbortSignal.timeout(5000),
-      });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      return response.json();
-    } catch (error) {
-      console.warn('Could not create candidate:', error.message);
-      return {
-        success: false,
-        error: 'Backend unavailable. Set up Node.js backend to persist data.',
-        isOffline: true
-      };
-    }
+  createCandidate: async () => {
+    return {
+      success: false,
+      error: 'Database is read-only. Cannot create candidates.',
+      message: 'Contact administrator to add candidates'
+    };
   },
 
   // Health check

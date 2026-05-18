@@ -60,20 +60,13 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Create new job (admin/employer only)
-router.post('/', async (req, res) => {
-  try {
-    const { title, description, category, location, salary, company_id } = req.body;
-    
-    const result = await db.query(
-      'INSERT INTO jobs (title, description, category, location, salary, company_id, created_at) VALUES ($1, $2, $3, $4, $5, $6, NOW()) RETURNING *',
-      [title, description, category, location, salary, company_id]
-    );
-
-    res.status(201).json({ success: true, data: result.rows[0] });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
-  }
+// POST disabled - Database is read-only
+router.post('/', (req, res) => {
+  res.status(403).json({
+    success: false,
+    error: 'Database is read-only. Cannot create jobs.',
+    message: 'Use the admin panel to create jobs'
+  });
 });
 
 module.exports = router;
