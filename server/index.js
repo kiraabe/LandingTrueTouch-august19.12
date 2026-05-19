@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import apiRoutes from './routes/index.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import { requestLogger } from './middleware/requestLogger.js';
+import { createProxyMiddleware } from 'http-proxy-middleware';
 
 dotenv.config();
 
@@ -20,6 +21,16 @@ app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 if (NODE_ENV === 'development') {
   app.use(requestLogger);
+  app.use('/', createProxyMiddleware({
+    target: 'http://localhost:5173',
+    changeOrigin: true,
+    ws: true,
+    bypass: (req) => {
+      if (req.path.startsWith('/api')) return false;
+      if (req.path.startsWith('/uploads')) return false;
+      if (req.path.startsWith('/assets')) return false;
+    }
+  }));
 }
 
 app.use('/api', apiRoutes);
