@@ -39,10 +39,13 @@ export const getCandidateById = async (req, res, next) => {
 export const getFeaturedCandidates = async (req, res, next) => {
   try {
     const limit = Math.min(parseInt(req.query.limit) || 10, 50);
+    console.log(`[getFeaturedCandidates] Fetching ${limit} featured candidates...`);
     const candidates = await candidatesQueries.getFeaturedCandidates(limit);
+    console.log(`[getFeaturedCandidates] Found ${candidates.length} candidates`);
 
     res.json(buildSuccessResponse(candidates));
   } catch (error) {
+    console.error(`[getFeaturedCandidates] Error:`, error.message);
     next(error);
   }
 };
