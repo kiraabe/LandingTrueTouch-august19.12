@@ -1,6 +1,7 @@
 import RootLayout from "./layouts/root-layout";
 import Loader from "./app/common/loader";
 import ScrollToTop from "./globals/scroll-to-top";
+import ErrorBoundary from "./components/ErrorBoundary";
 import { useState } from "react";
 
 function App() {
@@ -12,11 +13,11 @@ function App() {
   }, 500);
 
   return (
-    <>
+    <ErrorBoundary>
       {isLoading && <Loader />}
       <ScrollToTop />
       <RootLayout />
-    </>
+    </ErrorBoundary>
   )
 }
 

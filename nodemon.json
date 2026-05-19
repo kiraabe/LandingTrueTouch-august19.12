@@ -1,0 +1,8 @@
+{
+  "watch": ["server"],
+  "ext": "js",
+  "ignore": ["node_modules", "dist", "build"],
+  "exec": "node",
+  "args": "server/index.js",
+  "delay": 500
+}

@@ -5,11 +5,17 @@ import path from 'path'
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 3000,
+    port: 5173,
     open: false,
     fs: {
       allow: [path.resolve(__dirname, '.'), path.resolve(__dirname, 'public')]
-    }
+    },
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
+    },
   },
   css: {
     lightningcss: {
@@ -17,7 +23,7 @@ export default defineConfig({
     }
   },
   build: {
-    outDir: 'build',
+    outDir: 'dist',
     sourcemap: false,
   },
 })
