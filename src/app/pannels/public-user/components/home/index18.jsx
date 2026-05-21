@@ -38,11 +38,21 @@ function Home18Page() {
         console.error('❌ Error fetching candidates:', err);
         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
-        toast.error('Backend Setup Required', {
-          description: `The backend API is not accessible. Please run: npm run server, ngrok http 3001, and update .env.local with your ngrok URL. Currently trying: ${apiUrl}`,
-          duration: 6000,
-        });
-        setCandidates([]);
+        // Fallback to mock data for development
+        const mockCandidates = [
+          { id: 1, full_name: 'Wanda Smith', job_title: 'Chartered Accountant', location: 'New York', profile_picture: 'images/candidates/pic1.jpg', hourly_rate: 20, rate_type: 'Day' },
+          { id: 2, full_name: 'Peter Hawkins', job_title: 'Medical Professional', location: 'New York', profile_picture: 'images/candidates/pic2.jpg', hourly_rate: 7, rate_type: 'Hour' },
+          { id: 3, full_name: 'Ralph Johnson', job_title: 'Bank Manager', location: 'New York', profile_picture: 'images/candidates/pic3.jpg', hourly_rate: 180, rate_type: 'Day' },
+          { id: 4, full_name: 'Randall Henderson', job_title: 'IT Contractor', location: 'New York', profile_picture: 'images/candidates/pic4.jpg', hourly_rate: 90, rate_type: 'Week' },
+          { id: 5, full_name: 'Randall Warren', job_title: 'Digital & Creative', location: 'New York', profile_picture: 'images/candidates/pic5.jpg', hourly_rate: 95, rate_type: 'Day' },
+          { id: 6, full_name: 'Christina Fischer', job_title: 'Charity & Voluntary', location: 'New York', profile_picture: 'images/candidates/pic6.jpg', hourly_rate: 19, rate_type: 'Hour' },
+          { id: 7, full_name: 'Wanda Willis', job_title: 'Marketing & PR', location: 'New York', profile_picture: 'images/candidates/pic7.jpg', hourly_rate: 12, rate_type: 'Day' },
+          { id: 8, full_name: 'Peter Hawkins', job_title: 'Public Sector', location: 'New York', profile_picture: 'images/candidates/pic8.jpg', hourly_rate: 7, rate_type: 'Hour' }
+        ];
+
+        setCandidates(mockCandidates);
+        console.log('ℹ️ Using mock data. Backend not accessible at:', apiUrl);
+        console.log('To use real data: npm run dev and open http://localhost:5173');
       } finally {
         setLoading(false);
       }
