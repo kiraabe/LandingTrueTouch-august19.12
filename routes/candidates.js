@@ -76,6 +76,8 @@ router.get('/candidates/:id', async (req, res) => {
     }
 
     const candidate = result.rows[0];
+    console.log('📊 Full candidate row from DB:', JSON.stringify(candidate, null, 2));
+
     const response = {
       id: candidate.candidate_id,
       name: candidate.name,
