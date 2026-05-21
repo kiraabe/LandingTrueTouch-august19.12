@@ -1,9 +1,10 @@
 import JobZImage from "../../../../common/jobz-img";
 import { loadScript, publicUrlFor, updateSkinStyle } from "../../../../../globals/constants";
 import { publicUser } from "../../../../../globals/route-names";
+import { showErrorToast } from "../../../../../globals/error-handler";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Toaster, toast } from "sonner";
+import { Toaster } from "sonner";
 
 function Home18Page() {
   const [candidates, setCandidates] = useState([]);
@@ -35,6 +36,7 @@ function Home18Page() {
         setCandidates(data);
       } catch (err) {
         console.error('❌ Error fetching candidates:', err);
+        showErrorToast(err, 'Failed to load featured candidates. Please try again later.');
 
         // Fallback to mock data for development
         const mockCandidates = [
@@ -49,7 +51,6 @@ function Home18Page() {
         ];
 
         setCandidates(mockCandidates);
-        console.log('ℹ️ Using mock data. API not accessible. Check backend is running.');
       } finally {
         setLoading(false);
       }

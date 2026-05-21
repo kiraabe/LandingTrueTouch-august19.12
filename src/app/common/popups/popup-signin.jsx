@@ -2,6 +2,7 @@ import processLogin from "../../form-processing/login";
 import { formType } from "../../../globals/constants";
 import { useNavigate } from "react-router-dom";
 import { canRoute, candidate, empRoute, employer } from "../../../globals/route-names";
+import { showErrorToast } from "../../../globals/error-handler";
 import { useState } from "react";
 
 function SignInPopup() {
@@ -32,8 +33,7 @@ function SignInPopup() {
                 if (valid) {
                     moveToCandidate();
                 } else {
-                    // show error
-                    console.log('error');
+                    showErrorToast(null, 'Invalid username or password');
                 }
             }
         );
@@ -50,8 +50,7 @@ function SignInPopup() {
                 if (valid) {
                     moveToEmployer();
                 } else {
-                    // show error
-                    console.log('error');
+                    showErrorToast(null, 'Invalid username or password');
                 }
             }
         );
