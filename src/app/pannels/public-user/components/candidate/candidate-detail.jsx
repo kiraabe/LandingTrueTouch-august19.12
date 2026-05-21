@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Toaster } from "sonner";
-import { showErrorToast } from "../../../../globals/error-handler";
+import { showErrorToast } from "../../../../../globals/error-handler";
 import JobZImage from "../../../../common/jobz-img";
 import './candidate-detail.css';
 
