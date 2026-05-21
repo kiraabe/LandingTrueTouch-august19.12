@@ -398,7 +398,7 @@ function Home18Page() {
                             <div className="twm-fot-content">
                               <div className="twm-left-info">
                                 <p className="twm-candidate-address"><i className="feather-map-pin" />{candidate.location || "New York"}</p>
-                                <div className="twm-jobs-vacancies">${candidate.hourly_rate || candidate.daily_rate || 0}<span>/ {candidate.rate_type || "Day"}</span></div>
+                                <div className="twm-jobs-vacancies">{candidate.hourly_rate}</div>
                               </div>
                             </div>
                           </div>
