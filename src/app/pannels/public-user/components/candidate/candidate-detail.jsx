@@ -14,7 +14,7 @@ const CandidateDetail = () => {
     const fetchCandidateDetail = async () => {
       try {
         setLoading(true);
-        
+
         // Mock candidate data - replace with actual API call
         const mockCandidates = {
           1: {
@@ -30,7 +30,6 @@ const CandidateDetail = () => {
             experience: 'Senior Chartered Accountant at Fortune 500 Company',
             education: 'Bachelor of Commerce (Honors), University of New York',
             portfolio: ['Tax Optimization Strategy 2023', 'Financial Planning Guide', 'Audit Report Template'],
-            rate: '20/Day',
             about: 'With over 8 years of experience in the accounting industry, I have developed a strong expertise in financial planning, analysis, and tax optimization. I am committed to delivering high-quality financial solutions.'
           },
           2: {
@@ -62,10 +61,86 @@ const CandidateDetail = () => {
             education: 'MBA in Finance, Yale University',
             portfolio: ['Bank Operations Manual', 'Financial Strategy Document'],
             about: 'Strategic banking professional with proven track record in managing large teams and operations.'
+          },
+          4: {
+            id: 4,
+            full_name: 'Randall Henderson',
+            job_title: 'IT Contractor',
+            location: 'New York',
+            profile_picture: 'images/candidates/pic4.jpg',
+            hourly_rate: 90,
+            rate_type: 'Week',
+            bio: 'Skilled IT Contractor with 6+ years in software development and infrastructure.',
+            skills: ['Software Development', 'Cloud Computing', 'DevOps', 'Database Management', 'System Architecture'],
+            experience: 'Senior IT Contractor at Tech Enterprises',
+            education: 'Bachelor of Science in Computer Science, MIT',
+            portfolio: ['Cloud Migration Project', 'DevOps Pipeline Setup', 'Database Optimization'],
+            about: 'Results-driven IT professional specializing in cloud infrastructure and development solutions.'
+          },
+          5: {
+            id: 5,
+            full_name: 'Randall Warren',
+            job_title: 'Digital & Creative',
+            location: 'New York',
+            profile_picture: 'images/candidates/pic5.jpg',
+            hourly_rate: 95,
+            rate_type: 'Day',
+            bio: 'Creative professional with 7+ years in digital design and branding.',
+            skills: ['UI/UX Design', 'Branding', 'Web Design', 'Motion Graphics', 'Digital Marketing'],
+            experience: 'Senior Digital Designer at Creative Studios',
+            education: 'Diploma in Digital Design, Design Institute',
+            portfolio: ['Brand Identity Project', 'Website Redesign', 'Marketing Campaign'],
+            about: 'Passionate designer creating compelling digital experiences and strong brand identities.'
+          },
+          6: {
+            id: 6,
+            full_name: 'Christina Fischer',
+            job_title: 'Charity & Voluntary',
+            location: 'New York',
+            profile_picture: 'images/candidates/pic6.jpg',
+            hourly_rate: 19,
+            rate_type: 'Hour',
+            bio: 'Dedicated professional with 5+ years in charity and voluntary work.',
+            skills: ['Community Outreach', 'Project Management', 'Fundraising', 'Event Planning', 'Volunteer Coordination'],
+            experience: 'Project Manager at International Charity Organization',
+            education: 'Master of Social Work, Columbia University',
+            portfolio: ['Community Initiative Program', 'Fundraising Campaign', 'Volunteer Training Guide'],
+            about: 'Committed to making a positive impact through charity and community service initiatives.'
+          },
+          7: {
+            id: 7,
+            full_name: 'Wanda Willis',
+            job_title: 'Marketing & PR',
+            location: 'New York',
+            profile_picture: 'images/candidates/pic7.jpg',
+            hourly_rate: 12,
+            rate_type: 'Day',
+            bio: 'Marketing specialist with 6+ years in PR and communications.',
+            skills: ['Content Marketing', 'Public Relations', 'Social Media', 'Brand Strategy', 'Campaign Management'],
+            experience: 'Senior Marketing Manager at Global Media Corp',
+            education: 'Bachelor of Business Administration, University of New York',
+            portfolio: ['PR Campaign Launch', 'Content Strategy Plan', 'Social Media Strategy'],
+            about: 'Strategic marketing professional dedicated to building strong brand presence and engagement.'
+          },
+          8: {
+            id: 8,
+            full_name: 'Peter Hawkins',
+            job_title: 'Public Sector',
+            location: 'New York',
+            profile_picture: 'images/candidates/pic8.jpg',
+            hourly_rate: 7,
+            rate_type: 'Hour',
+            bio: 'Government professional with 8+ years in public administration.',
+            skills: ['Policy Analysis', 'Public Administration', 'Compliance', 'Grant Management', 'Stakeholder Engagement'],
+            experience: 'Senior Officer at Government Agency',
+            education: 'Master of Public Administration, Harvard Kennedy School',
+            portfolio: ['Policy White Paper', 'Grant Application Guide', 'Compliance Framework'],
+            about: 'Dedicated public servant focused on effective governance and community welfare.'
           }
         };
 
-        const selectedCandidate = mockCandidates[id] || null;
+        const candidateId = parseInt(id, 10);
+        const selectedCandidate = mockCandidates[candidateId] || null;
 
         if (!selectedCandidate) {
           throw new Error('Candidate not found');
