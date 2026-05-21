@@ -16,7 +16,7 @@ const mockCandidates = [
 
 router.get('/candidates/featured', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM candidates WHERE featured = true LIMIT 8');
+    const result = await pool.query('SELECT * FROM candidates LIMIT 8');
     res.json(result.rows);
   } catch (error) {
     console.error('Database query error:', error);
