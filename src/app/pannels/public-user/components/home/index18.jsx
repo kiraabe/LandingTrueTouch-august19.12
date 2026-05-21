@@ -18,13 +18,15 @@ function Home18Page() {
     const fetchCandidates = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://localhost:3001/api/candidates/featured');
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+        const response = await fetch(`${apiUrl}/api/candidates/featured`);
         if (!response.ok) throw new Error('Failed to fetch candidates');
         const data = await response.json();
         setCandidates(data);
       } catch (err) {
         console.error('Error fetching candidates:', err);
         setError(err.message);
+        setCandidates([]);
       } finally {
         setLoading(false);
       }
