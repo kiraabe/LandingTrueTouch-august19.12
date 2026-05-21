@@ -390,7 +390,7 @@ function Home18Page() {
                               </div>
                               <div className="twm-mid-content">
                                 <div className="twm-candidates-tag"><span>Featured</span></div>
-                                <NavLink to={publicUser.candidate.DETAIL1} className="twm-job-title">
+                                <NavLink to={`/can-detail/${candidate.id}`} className="twm-job-title">
                                   <h4>{candidate.full_name}</h4>
                                 </NavLink>
                                 <p>{candidate.profession}</p>
@@ -402,7 +402,7 @@ function Home18Page() {
                                 <div className="twm-jobs-vacancies">{candidate.hourly_rate}</div>
                               </div>
                               <div className="twm-action-buttons" style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
-                                <NavLink to={publicUser.candidate.DETAIL1} className="site-button" style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px' }}>View Profile</NavLink>
+                                <NavLink to={`/can-detail/${candidate.id}`} className="site-button" style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px' }}>View Profile</NavLink>
                                 <a href={`https://wa.me/?text=Hi, I'm interested in contacting ${candidate.full_name}`} target="_blank" rel="noopener noreferrer" className="site-button" style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px', backgroundColor: '#25D366' }}>WhatsApp</a>
                               </div>
                             </div>
