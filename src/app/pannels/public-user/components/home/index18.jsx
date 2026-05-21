@@ -9,6 +9,9 @@ import { Toaster } from "sonner";
 function Home18Page() {
   const [candidates, setCandidates] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedCandidate, setSelectedCandidate] = useState(null);
+  const [candidateDetails, setCandidateDetails] = useState(null);
+  const [detailsLoading, setDetailsLoading] = useState(false);
 
   useEffect(() => {
     updateSkinStyle("10", false, false)
@@ -44,6 +47,34 @@ function Home18Page() {
 
     fetchCandidates();
   }, [])
+
+  const openCandidateModal = async (candidate) => {
+    setSelectedCandidate(candidate);
+    setDetailsLoading(true);
+    try {
+      const response = await fetch(`/api/candidates/${candidate.id}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch candidate details`);
+      }
+
+      const data = await response.json();
+      setCandidateDetails(data);
+    } catch (err) {
+      console.error('Error fetching candidate details:', err);
+      showErrorToast(err, 'Failed to load candidate details.');
+    } finally {
+      setDetailsLoading(false);
+    }
+  };
+
+  const closeCandidateModal = () => {
+    setSelectedCandidate(null);
+    setCandidateDetails(null);
+  };
 
   return (
     <>
@@ -376,9 +407,9 @@ function Home18Page() {
                               </div>
                               <div className="twm-mid-content">
                                 <div className="twm-candidates-tag"><span>Featured</span></div>
-                                <NavLink to={`/can-detail/${candidate.id}`} className="twm-job-title">
+                                <button onClick={() => openCandidateModal(candidate)} className="twm-job-title" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
                                   <h4>{candidate.full_name}</h4>
-                                </NavLink>
+                                </button>
                                 <p>{candidate.profession}</p>
                               </div>
                             </div>
@@ -388,7 +419,7 @@ function Home18Page() {
                                 <div className="twm-jobs-vacancies">{candidate.hourly_rate}</div>
                               </div>
                               <div className="twm-action-buttons" style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
-                                <NavLink to={`/can-detail/${candidate.id}`} className="site-button" style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px' }}>View Profile</NavLink>
+                                <button onClick={() => openCandidateModal(candidate)} className="site-button" style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px', cursor: 'pointer' }}>View Profile</button>
                                 <a href={`https://wa.me/?text=Hi, I'm interested in contacting ${candidate.full_name}`} target="_blank" rel="noopener noreferrer" className="site-button" style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px', backgroundColor: '#25D366' }}>WhatsApp</a>
                               </div>
                             </div>
@@ -688,6 +719,88 @@ function Home18Page() {
         </div>
       </div>
       {/* CONTACT US SECTION END */}
+
+      {/* CANDIDATE MODAL */}
+      {selectedCandidate && (
+        <div className="candidate-modal-overlay" onClick={closeCandidateModal} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
+          <div className="candidate-modal" onClick={(e) => e.stopPropagation()} style={{ backgroundColor: 'white', borderRadius: '8px', padding: '30px', maxWidth: '600px', width: '90%', maxHeight: '90vh', overflowY: 'auto', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '20px' }}>
+              <h2 style={{ margin: 0 }}>{selectedCandidate.full_name}</h2>
+              <button onClick={closeCandidateModal} style={{ background: 'none', border: 'none', fontSize: '24px', cursor: 'pointer', padding: 0 }}>×</button>
+            </div>
+
+            {detailsLoading ? (
+              <div style={{ textAlign: 'center', padding: '20px' }}>Loading candidate details...</div>
+            ) : candidateDetails ? (
+              <>
+                <div style={{ marginBottom: '20px' }}>
+                  <p><strong>Job Title:</strong> {candidateDetails.job_title}</p>
+                  <p><strong>Location:</strong> {candidateDetails.location}</p>
+                  <p><strong>Rate:</strong> ${candidateDetails.hourly_rate}</p>
+                </div>
+
+                {candidateDetails.bio && (
+                  <div style={{ marginBottom: '20px' }}>
+                    <h3 style={{ marginTop: 0 }}>About</h3>
+                    <p>{candidateDetails.bio}</p>
+                  </div>
+                )}
+
+                {candidateDetails.skills && candidateDetails.skills.length > 0 && (
+                  <div style={{ marginBottom: '20px' }}>
+                    <h3 style={{ marginTop: 0 }}>Skills</h3>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                      {Array.isArray(candidateDetails.skills) ? (
+                        candidateDetails.skills.map((skill, index) => (
+                          <span key={index} style={{ backgroundColor: '#f0f0f0', padding: '6px 12px', borderRadius: '20px', fontSize: '14px' }}>{skill}</span>
+                        ))
+                      ) : (
+                        <span style={{ backgroundColor: '#f0f0f0', padding: '6px 12px', borderRadius: '20px', fontSize: '14px' }}>{candidateDetails.skills}</span>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {candidateDetails.experience && (
+                  <div style={{ marginBottom: '20px' }}>
+                    <h3 style={{ marginTop: 0 }}>Experience</h3>
+                    <p>{candidateDetails.experience}</p>
+                  </div>
+                )}
+
+                {candidateDetails.education && (
+                  <div style={{ marginBottom: '20px' }}>
+                    <h3 style={{ marginTop: 0 }}>Education</h3>
+                    <p>{candidateDetails.education}</p>
+                  </div>
+                )}
+
+                {candidateDetails.portfolio && candidateDetails.portfolio.length > 0 && (
+                  <div style={{ marginBottom: '20px' }}>
+                    <h3 style={{ marginTop: 0 }}>Portfolio</h3>
+                    <ul>
+                      {Array.isArray(candidateDetails.portfolio) ? (
+                        candidateDetails.portfolio.map((item, index) => (
+                          <li key={index}>{item}</li>
+                        ))
+                      ) : (
+                        <li>{candidateDetails.portfolio}</li>
+                      )}
+                    </ul>
+                  </div>
+                )}
+
+                <div style={{ display: 'flex', gap: '10px', marginTop: '30px' }}>
+                  <button onClick={closeCandidateModal} style={{ flex: 1, padding: '10px', backgroundColor: '#f0f0f0', border: '1px solid #ddd', borderRadius: '4px', cursor: 'pointer' }}>Close</button>
+                  <a href={`https://wa.me/?text=Hi ${selectedCandidate.full_name}, I'm interested in your services`} target="_blank" rel="noopener noreferrer" style={{ flex: 1, padding: '10px', backgroundColor: '#25D366', color: 'white', borderRadius: '4px', textAlign: 'center', textDecoration: 'none', cursor: 'pointer' }}>WhatsApp</a>
+                </div>
+              </>
+            ) : (
+              <div style={{ color: 'red' }}>Failed to load candidate details</div>
+            )}
+          </div>
+        </div>
+      )}
     </>
   )
 }
