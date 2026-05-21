@@ -31,8 +31,8 @@ const CandidateDetail = () => {
 
         if (!response.ok) {
           const errorData = await response.json().catch(() => ({}));
-          console.error('API Error:', errorData);
-          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+          console.error('API Error details:', JSON.stringify(errorData, null, 2));
+          throw new Error(`HTTP ${response.status}: ${errorData.error || response.statusText}`);
         }
 
         const data = await response.json();

@@ -3,6 +3,16 @@ const pool = require('../db');
 
 const router = express.Router();
 
+router.get('/candidates/list-all', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT id, name FROM candidates ORDER BY id LIMIT 50');
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Database query error:', error.message);
+    res.status(500).json({ error: 'Failed to fetch candidates list' });
+  }
+});
+
 router.get('/candidates/featured', async (req, res) => {
   try {
     const result = await pool.query(
