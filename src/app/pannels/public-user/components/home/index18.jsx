@@ -52,20 +52,30 @@ function Home18Page() {
     setSelectedCandidate(candidate);
     setDetailsLoading(true);
     try {
-      const response = await fetch(`/api/candidates/${candidate.id}`, {
+      const url = `/api/candidates/${candidate.id}`;
+      console.log('Fetching candidate details from:', url);
+
+      const response = await fetch(url, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
       });
 
+      console.log('Response status:', response.status);
+      const contentType = response.headers.get('content-type');
+      console.log('Content-Type:', contentType);
+
       if (!response.ok) {
-        throw new Error(`Failed to fetch candidate details`);
+        const text = await response.text();
+        console.error('Error response:', text.substring(0, 200));
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
 
       const data = await response.json();
+      console.log('Candidate details received:', data);
       setCandidateDetails(data);
     } catch (err) {
       console.error('Error fetching candidate details:', err);
-      showErrorToast(err, 'Failed to load candidate details.');
+      showErrorToast(err, 'Failed to load candidate details. Please check the console.');
     } finally {
       setDetailsLoading(false);
     }
