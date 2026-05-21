@@ -19,5 +19,15 @@ export default defineConfig({
   build: {
     outDir: 'build',
     sourcemap: false,
+    rollupOptions: {
+      output: {
+        entryFileNames: '[name].js',
+        chunkFileNames: 'chunks/[name].js',
+        assetFileNames: 'assets/[name].[ext]'
+      }
+    }
   },
+  define: {
+    'import.meta.env.VITE_API_URL': JSON.stringify(process.env.VITE_API_URL || 'http://localhost:3000'),
+  }
 })
