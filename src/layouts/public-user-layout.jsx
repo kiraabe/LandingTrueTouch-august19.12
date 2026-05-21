@@ -6,6 +6,7 @@ import InnerPageBanner from "../app/common/inner-page-banner";
 import { showBanner, setBanner } from "../globals/banner-data";
 import { showHeader, showFooter, setFooterType, setHeaderType, showFloatingMenus } from "../globals/layout-config";
 import FloatingMenus from "../app/common/floating/floatingMenu";
+import WhatsAppWidget from "../app/common/whatsapp-widget";
 
 function PublicUserLayout() {
     const currentpath = useLocation().pathname;
@@ -40,6 +41,9 @@ function PublicUserLayout() {
 
                 {/* BUTTON TOP START */}
                 <button className="scroltop"><span className="fa fa-angle-up  relative" id="btn-vibrate" /></button>
+
+                {/* WHATSAPP WIDGET */}
+                <WhatsAppWidget />
 
                 <SignUpPopup />
                 <SignInPopup />
