@@ -3,11 +3,11 @@ import { loadScript, publicUrlFor, updateSkinStyle } from "../../../../../global
 import { publicUser } from "../../../../../globals/route-names";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Toaster, toast } from "sonner";
 
 function Home18Page() {
   const [candidates, setCandidates] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     updateSkinStyle("10", false, false)
@@ -34,34 +34,14 @@ function Home18Page() {
         const data = await response.json();
         console.log('✅ Candidates loaded:', data.length);
         setCandidates(data);
-        setError(null);
       } catch (err) {
         console.error('❌ Error fetching candidates:', err);
         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
-        // Provide helpful setup instructions
-        setError(`
-Backend Setup Required
-
-The featured candidates section needs a running backend API.
-
-QUICK START (copy & paste these commands):
-
-Terminal 1:
-  npm run server
-
-Terminal 2:
-  ngrok http 3001
-
-Terminal 3:
-  npm run test-api
-
-Then update .env.local with your ngrok URL:
-  VITE_API_URL=https://[your-ngrok-url]
-
-See TROUBLESHOOT.md for detailed help.
-Currently trying: ${apiUrl}
-        `);
+        toast.error('Backend Setup Required', {
+          description: `The backend API is not accessible. Please run: npm run server, ngrok http 3001, and update .env.local with your ngrok URL. Currently trying: ${apiUrl}`,
+          duration: 6000,
+        });
         setCandidates([]);
       } finally {
         setLoading(false);
@@ -73,6 +53,7 @@ Currently trying: ${apiUrl}
 
   return (
     <>
+      <Toaster position="top-right" richColors />
       <div className="twm-home18-banner-section">
         <div className="row" style={{ backgroundImage: `url(${publicUrlFor("images/home-18/banner/dot-map.png")})` }}>
           {/*Left Section*/}
@@ -386,25 +367,7 @@ Currently trying: ${apiUrl}
                   </div>
                 </div>
               )}
-              {error && (
-                <div className="row d-flex justify-content-center m-b30">
-                  <div className="col-12">
-                    <div style={{
-                      backgroundColor: '#fff3cd',
-                      border: '1px solid #ffc107',
-                      borderRadius: '4px',
-                      padding: '20px',
-                      whiteSpace: 'pre-wrap',
-                      fontFamily: 'monospace',
-                      fontSize: '13px',
-                      lineHeight: '1.6'
-                    }}>
-                      {error}
-                    </div>
-                  </div>
-                </div>
-              )}
-              {!loading && !error && (
+              {!loading && (
                 <>
                   <div className="row d-flex justify-content-center m-b30">
                     {candidates.length > 0 ? (
