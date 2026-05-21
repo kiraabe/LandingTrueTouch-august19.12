@@ -5,6 +5,7 @@ import { showErrorToast } from "../../../../../globals/error-handler";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
+import "./cv-modal.css";
 
 function Home18Page() {
   const [candidates, setCandidates] = useState([]);
@@ -730,83 +731,152 @@ function Home18Page() {
       </div>
       {/* CONTACT US SECTION END */}
 
-      {/* CANDIDATE MODAL */}
+      {/* CANDIDATE CV MODAL */}
       {selectedCandidate && (
-        <div className="candidate-modal-overlay" onClick={closeCandidateModal} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
-          <div className="candidate-modal" onClick={(e) => e.stopPropagation()} style={{ backgroundColor: 'white', borderRadius: '8px', padding: '30px', maxWidth: '600px', width: '90%', maxHeight: '90vh', overflowY: 'auto', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '20px' }}>
-              <h2 style={{ margin: 0 }}>{selectedCandidate.full_name}</h2>
-              <button onClick={closeCandidateModal} style={{ background: 'none', border: 'none', fontSize: '24px', cursor: 'pointer', padding: 0 }}>×</button>
+        <div className="cv-modal-overlay" onClick={closeCandidateModal}>
+          <div className="cv-modal" onClick={(e) => e.stopPropagation()}>
+            {/* Modal Header */}
+            <div className="cv-modal-header">
+              <h2 className="cv-modal-title">Professional CV</h2>
+              <button onClick={closeCandidateModal} className="cv-close-btn">×</button>
             </div>
 
             {detailsLoading ? (
-              <div style={{ textAlign: 'center', padding: '20px' }}>Loading candidate details...</div>
+              <div className="cv-loading-state">
+                <p>Loading candidate profile...</p>
+              </div>
             ) : candidateDetails ? (
-              <>
-                <div style={{ marginBottom: '20px' }}>
-                  <p><strong>Job Title:</strong> {candidateDetails.job_title}</p>
-                  <p><strong>Location:</strong> {candidateDetails.location}</p>
-                  <p><strong>Rate:</strong> ${candidateDetails.hourly_rate}</p>
+              <div className="cv-modal-content">
+                {/* CV Header Section */}
+                <div className="cv-header-section">
+                  <div className="cv-photo-container">
+                    <JobZImage src={candidateDetails.profile_picture || selectedCandidate.profile_picture || "images/candidates/pic1.jpg"} alt={candidateDetails.name} className="cv-profile-photo" />
+                  </div>
+                  <div className="cv-header-info">
+                    <h1 className="cv-candidate-name">{candidateDetails.name}</h1>
+                    <p className="cv-job-title">{candidateDetails.occupation}</p>
+                    <div className="cv-contact-info">
+                      <div className="cv-contact-item">
+                        <i className="fas fa-phone"></i>
+                        <span>{candidateDetails.phone_number || "N/A"}</span>
+                      </div>
+                      <div className="cv-contact-item">
+                        <i className="fas fa-map-marker-alt"></i>
+                        <span>{candidateDetails.city}, {candidateDetails.nationality}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                {candidateDetails.bio && (
-                  <div style={{ marginBottom: '20px' }}>
-                    <h3 style={{ marginTop: 0 }}>About</h3>
-                    <p>{candidateDetails.bio}</p>
+                {/* Personal Information Section */}
+                <div className="cv-section">
+                  <h3 className="cv-section-title">Personal Information</h3>
+                  <div className="cv-info-grid">
+                    <div className="cv-info-item">
+                      <span className="cv-info-label">Date of Birth</span>
+                      <span className="cv-info-value">{candidateDetails.date_of_birth || "N/A"}</span>
+                    </div>
+                    <div className="cv-info-item">
+                      <span className="cv-info-label">Gender</span>
+                      <span className="cv-info-value">{candidateDetails.gender || "N/A"}</span>
+                    </div>
+                    <div className="cv-info-item">
+                      <span className="cv-info-label">Nationality</span>
+                      <span className="cv-info-value">{candidateDetails.nationality || "N/A"}</span>
+                    </div>
+                    <div className="cv-info-item">
+                      <span className="cv-info-label">Religion</span>
+                      <span className="cv-info-value">{candidateDetails.religion || "N/A"}</span>
+                    </div>
+                    <div className="cv-info-item">
+                      <span className="cv-info-label">Marital Status</span>
+                      <span className="cv-info-value">{candidateDetails.marital_status || "N/A"}</span>
+                    </div>
+                    <div className="cv-info-item">
+                      <span className="cv-info-label">Current Location</span>
+                      <span className="cv-info-value">{candidateDetails.current_location || "N/A"}</span>
+                    </div>
                   </div>
-                )}
+                </div>
 
-                {candidateDetails.skills && candidateDetails.skills.length > 0 && (
-                  <div style={{ marginBottom: '20px' }}>
-                    <h3 style={{ marginTop: 0 }}>Skills</h3>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                      {Array.isArray(candidateDetails.skills) ? (
-                        candidateDetails.skills.map((skill, index) => (
-                          <span key={index} style={{ backgroundColor: '#f0f0f0', padding: '6px 12px', borderRadius: '20px', fontSize: '14px' }}>{skill}</span>
+                {/* Professional Summary */}
+                <div className="cv-section">
+                  <h3 className="cv-section-title">Professional Summary</h3>
+                  <p className="cv-summary-text">
+                    {candidateDetails.bio || `Experienced ${candidateDetails.occupation} professional with strong skills in ${candidateDetails.skill_level} level work. Seeking new opportunities to contribute expertise and grow professionally.`}
+                  </p>
+                </div>
+
+                {/* Professional Details Section */}
+                <div className="cv-section">
+                  <h3 className="cv-section-title">Professional Details</h3>
+                  <div className="cv-info-grid">
+                    <div className="cv-info-item">
+                      <span className="cv-info-label">Job Category</span>
+                      <span className="cv-info-value">{candidateDetails.job_category || "N/A"}</span>
+                    </div>
+                    <div className="cv-info-item">
+                      <span className="cv-info-label">Skill Level</span>
+                      <span className="cv-info-value">{candidateDetails.skill_level || "N/A"}</span>
+                    </div>
+                    <div className="cv-info-item">
+                      <span className="cv-info-label">Education Level</span>
+                      <span className="cv-info-value">{candidateDetails.education_level || "N/A"}</span>
+                    </div>
+                    <div className="cv-info-item">
+                      <span className="cv-info-label">Medical Status</span>
+                      <span className="cv-info-value">{candidateDetails.medical_status || "Not Specified"}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Skills Section */}
+                {candidateDetails.language_skills && (
+                  <div className="cv-section">
+                    <h3 className="cv-section-title">Language Skills</h3>
+                    <div className="cv-skills-list">
+                      {Array.isArray(candidateDetails.language_skills) ? (
+                        candidateDetails.language_skills.map((lang, index) => (
+                          <span key={index} className="cv-skill-tag">{lang}</span>
                         ))
                       ) : (
-                        <span style={{ backgroundColor: '#f0f0f0', padding: '6px 12px', borderRadius: '20px', fontSize: '14px' }}>{candidateDetails.skills}</span>
+                        <span className="cv-skill-tag">{candidateDetails.language_skills}</span>
                       )}
                     </div>
                   </div>
                 )}
 
-                {candidateDetails.experience && (
-                  <div style={{ marginBottom: '20px' }}>
-                    <h3 style={{ marginTop: 0 }}>Experience</h3>
-                    <p>{candidateDetails.experience}</p>
+                {/* Resume Link */}
+                {candidateDetails.resume_url && (
+                  <div className="cv-section">
+                    <h3 className="cv-section-title">Resume</h3>
+                    <a href={candidateDetails.resume_url} target="_blank" rel="noopener noreferrer" className="cv-resume-link">
+                      <i className="fas fa-file-pdf"></i> Download Full Resume
+                    </a>
                   </div>
                 )}
 
-                {candidateDetails.education && (
-                  <div style={{ marginBottom: '20px' }}>
-                    <h3 style={{ marginTop: 0 }}>Education</h3>
-                    <p>{candidateDetails.education}</p>
+                {/* Passport Information */}
+                {candidateDetails.passport_number && (
+                  <div className="cv-section">
+                    <h3 className="cv-section-title">Travel Documents</h3>
+                    <div className="cv-info-item">
+                      <span className="cv-info-label">Passport Number</span>
+                      <span className="cv-info-value">{candidateDetails.passport_number}</span>
+                    </div>
                   </div>
                 )}
 
-                {candidateDetails.portfolio && candidateDetails.portfolio.length > 0 && (
-                  <div style={{ marginBottom: '20px' }}>
-                    <h3 style={{ marginTop: 0 }}>Portfolio</h3>
-                    <ul>
-                      {Array.isArray(candidateDetails.portfolio) ? (
-                        candidateDetails.portfolio.map((item, index) => (
-                          <li key={index}>{item}</li>
-                        ))
-                      ) : (
-                        <li>{candidateDetails.portfolio}</li>
-                      )}
-                    </ul>
-                  </div>
-                )}
-
-                <div style={{ display: 'flex', gap: '10px', marginTop: '30px' }}>
-                  <button onClick={closeCandidateModal} style={{ flex: 1, padding: '10px', backgroundColor: '#f0f0f0', border: '1px solid #ddd', borderRadius: '4px', cursor: 'pointer' }}>Close</button>
-                  <a href={`https://wa.me/?text=Hi ${selectedCandidate.full_name}, I'm interested in your services`} target="_blank" rel="noopener noreferrer" style={{ flex: 1, padding: '10px', backgroundColor: '#25D366', color: 'white', borderRadius: '4px', textAlign: 'center', textDecoration: 'none', cursor: 'pointer' }}>WhatsApp</a>
+                {/* Action Buttons */}
+                <div className="cv-modal-actions">
+                  <button onClick={closeCandidateModal} className="cv-action-btn cv-close-action">Close</button>
+                  <a href={`https://wa.me/?text=Hi ${candidateDetails.name}, I'm interested in your profile`} target="_blank" rel="noopener noreferrer" className="cv-action-btn cv-whatsapp-action">
+                    <i className="fab fa-whatsapp"></i> WhatsApp
+                  </a>
                 </div>
-              </>
+              </div>
             ) : (
-              <div style={{ color: 'red' }}>Failed to load candidate details</div>
+              <div className="cv-error-state">Failed to load candidate profile</div>
             )}
           </div>
         </div>
