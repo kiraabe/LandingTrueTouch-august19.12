@@ -3,13 +3,37 @@ const pool = require('../db');
 
 const router = express.Router();
 
+router.get('/candidates/debug', async (req, res) => {
+  try {
+    console.log('Debug endpoint hit');
+    const tableExists = await pool.query(
+      "SELECT table_name FROM information_schema.tables WHERE table_name = 'candidates'"
+    );
+
+    if (tableExists.rows.length === 0) {
+      return res.status(500).json({ error: 'Candidates table does not exist' });
+    }
+
+    const allCandidates = await pool.query('SELECT id, name FROM candidates ORDER BY id');
+    res.json({
+      table_exists: true,
+      total_candidates: allCandidates.rows.length,
+      candidate_ids: allCandidates.rows.map(c => c.id),
+      sample: allCandidates.rows.slice(0, 5)
+    });
+  } catch (error) {
+    console.error('Debug error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 router.get('/candidates/list-all', async (req, res) => {
   try {
     const result = await pool.query('SELECT id, name FROM candidates ORDER BY id LIMIT 50');
     res.json(result.rows);
   } catch (error) {
     console.error('Database query error:', error.message);
-    res.status(500).json({ error: 'Failed to fetch candidates list' });
+    res.status(500).json({ error: 'Failed to fetch candidates list', details: error.message });
   }
 });
 
@@ -29,18 +53,22 @@ router.get('/candidates/featured', async (req, res) => {
 router.get('/candidates/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(`Fetching candidate with ID: ${id}`);
+    console.log(`📌 Fetching candidate with ID: ${id}`);
+
+    if (!id || isNaN(parseInt(id, 10))) {
+      return res.status(400).json({ error: 'Invalid candidate ID' });
+    }
 
     const result = await pool.query(
       'SELECT * FROM candidates WHERE id = $1',
-      [id]
+      [parseInt(id, 10)]
     );
 
-    console.log(`Query result for candidate ${id}:`, result.rows.length, 'rows');
+    console.log(`✓ Query result for candidate ${id}:`, result.rows.length, 'rows');
 
     if (result.rows.length === 0) {
-      console.log(`Candidate ${id} not found`);
-      return res.status(404).json({ error: 'Candidate not found' });
+      console.log(`✗ Candidate ${id} not found in database`);
+      return res.status(404).json({ error: `Candidate not found with ID: ${id}` });
     }
 
     const candidate = result.rows[0];
@@ -56,12 +84,13 @@ router.get('/candidates/:id', async (req, res) => {
       experience: candidate.experience,
       education: candidate.education,
       portfolio: candidate.portfolio,
-      about: candidate.bio
+      about: candidate.bio || candidate.about
     };
 
+    console.log(`✓ Returning candidate:`, response.full_name);
     res.json(response);
   } catch (error) {
-    console.error('Database query error:', error.message);
+    console.error('✗ Database query error:', error);
     res.status(500).json({ error: 'Failed to fetch candidate', details: error.message });
   }
 });
