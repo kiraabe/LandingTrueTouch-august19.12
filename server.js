@@ -19,8 +19,11 @@ try {
   console.error('Error loading candidates router:', error);
 }
 
-// In development, proxy frontend requests to Vite
-if (process.env.NODE_ENV !== 'production') {
+const PORT = process.env.PORT || 3001;
+const isDev = process.env.NODE_ENV !== 'production';
+
+if (isDev) {
+  // Development: proxy frontend requests to Vite
   const httpProxy = require('http-proxy');
   const proxy = httpProxy.createProxyServer({
     target: 'http://localhost:3000',
@@ -53,10 +56,9 @@ if (process.env.NODE_ENV !== 'production') {
     });
   });
 
-  const PORT = process.env.PORT || 5000;
   server.listen(PORT, () => {
     console.log(`\n✓ Server running on http://localhost:${PORT}`);
-    console.log(`✓ Frontend proxied to: http://localhost:3000`);
+    console.log(`✓ Frontend: http://localhost:${PORT}`);
     console.log(`✓ API: http://localhost:${PORT}/api/candidates/featured`);
     console.log(`✓ Health: http://localhost:${PORT}/health\n`);
   });
@@ -70,7 +72,6 @@ if (process.env.NODE_ENV !== 'production') {
   });
 } else {
   // Production mode
-  const PORT = process.env.PORT || 5000;
   const server = app.listen(PORT, () => {
     console.log(`\n✓ Server running on http://localhost:${PORT}\n`);
   });
