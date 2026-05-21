@@ -15,6 +15,10 @@ const CandidateDetail = () => {
       try {
         setLoading(true);
 
+        if (!id) {
+          throw new Error('Candidate ID is required');
+        }
+
         // Mock candidate data - replace with actual API call
         const mockCandidates = {
           1: {
@@ -140,10 +144,13 @@ const CandidateDetail = () => {
         };
 
         const candidateId = parseInt(id, 10);
+        console.log('Looking for candidate ID:', candidateId, 'Type:', typeof candidateId);
+        console.log('Available candidate IDs:', Object.keys(mockCandidates));
+
         const selectedCandidate = mockCandidates[candidateId] || null;
 
         if (!selectedCandidate) {
-          throw new Error('Candidate not found');
+          throw new Error(`Candidate not found for ID: ${candidateId}`);
         }
 
         setCandidate(selectedCandidate);
