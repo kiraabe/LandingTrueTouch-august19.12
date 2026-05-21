@@ -392,7 +392,7 @@ function Home18Page() {
                                 <NavLink to={publicUser.candidate.DETAIL1} className="twm-job-title">
                                   <h4>{candidate.full_name}</h4>
                                 </NavLink>
-                                <p>{candidate.job_title}</p>
+                                <p>{candidate.profession}</p>
                               </div>
                             </div>
                             <div className="twm-fot-content">
