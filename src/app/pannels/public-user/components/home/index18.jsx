@@ -400,6 +400,10 @@ function Home18Page() {
                                 <p className="twm-candidate-address"><i className="feather-map-pin" />{candidate.location || "New York"}</p>
                                 <div className="twm-jobs-vacancies">{candidate.hourly_rate}</div>
                               </div>
+                              <div className="twm-action-buttons" style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
+                                <NavLink to={publicUser.candidate.DETAIL1} className="site-button" style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px' }}>View Profile</NavLink>
+                                <a href={`https://wa.me/?text=Hi, I'm interested in contacting ${candidate.full_name}`} target="_blank" rel="noopener noreferrer" className="site-button" style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px', backgroundColor: '#25D366' }}>WhatsApp</a>
+                              </div>
                             </div>
                           </div>
                         </div>
