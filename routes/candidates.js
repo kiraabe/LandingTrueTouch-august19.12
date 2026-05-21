@@ -6,21 +6,12 @@ const router = express.Router();
 router.get('/candidates/featured', async (req, res) => {
   try {
     const result = await pool.query(
-      'SELECT id, name AS full_name, job_category AS profession, current_location AS location, profile_picture, religion AS hourly_rate, status AS featured FROM candidates LIMIT 8'
+      'SELECT id, name AS full_name, job_category AS profession, current_location AS location, profile_picture, religion AS hourly_rate, status AS featured FROM candidates WHERE profile_picture IS NOT NULL LIMIT 8'
     );
-    const candidates = result.rows.map((candidate, index) => {
-      let imageUrl = 'images/candidates/pic1.jpg';
-      if (candidate.profile_picture) {
-        // If it's a relative path (starts with /), make it absolute
-        if (candidate.profile_picture.startsWith('/')) {
-          imageUrl = `http://localhost:5000${candidate.profile_picture}`;
-        } else {
-          imageUrl = candidate.profile_picture;
-        }
-      } else {
-        // Use placeholder based on index if no image
-        const picNum = (index % 8) + 1;
-        imageUrl = `images/candidates/pic${picNum}.jpg`;
+    const candidates = result.rows.map(candidate => {
+      let imageUrl = candidate.profile_picture;
+      if (candidate.profile_picture.startsWith('/')) {
+        imageUrl = `http://localhost:5000${candidate.profile_picture}`;
       }
       return {
         ...candidate,
