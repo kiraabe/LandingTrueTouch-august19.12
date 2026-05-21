@@ -45,6 +45,7 @@ router.get('/candidates/featured', async (req, res) => {
       'SELECT id, name AS full_name, job_category AS profession, current_location AS location, profile_picture, religion AS hourly_rate, status AS featured FROM candidates WHERE profile_picture IS NOT NULL LIMIT 8'
     );
     console.log('✓ Fetched featured candidates, count:', result.rows.length);
+    console.log('✓ Sample IDs:', result.rows.map(r => r.id).slice(0, 2));
     res.json(result.rows);
   } catch (error) {
     console.error('✗ Database query error:', error.message);
@@ -58,13 +59,13 @@ router.get('/candidates/:id', async (req, res) => {
     const { id } = req.params;
     console.log(`📌 Fetching candidate with ID: ${id}`);
 
-    if (!id || isNaN(parseInt(id, 10))) {
+    if (!id) {
       return res.status(400).json({ error: 'Invalid candidate ID' });
     }
 
     const result = await pool.query(
       'SELECT * FROM candidates WHERE id = $1',
-      [parseInt(id, 10)]
+      [id]
     );
 
     console.log(`✓ Query result for candidate ${id}:`, result.rows.length, 'rows');
