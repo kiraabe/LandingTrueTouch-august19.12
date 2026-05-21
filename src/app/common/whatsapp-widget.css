@@ -33,9 +33,10 @@
   transform: scale(1);
 }
 
-.whatsapp-widget svg {
-  width: 28px;
-  height: 28px;
+.whatsapp-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 @media (max-width: 768px) {
@@ -46,8 +47,4 @@
     height: 55px;
   }
 
-  .whatsapp-widget svg {
-    width: 26px;
-    height: 26px;
-  }
 }
