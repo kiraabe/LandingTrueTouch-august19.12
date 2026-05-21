@@ -2,14 +2,36 @@ import JobZImage from "../../../../common/jobz-img";
 import { loadScript, publicUrlFor, updateSkinStyle } from "../../../../../globals/constants";
 import { publicUser } from "../../../../../globals/route-names";
 import { NavLink } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function Home18Page() {
+  const [candidates, setCandidates] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     updateSkinStyle("10", false, false)
     loadScript("js/custom.js")
-  })
+  }, [])
+
+  useEffect(() => {
+    const fetchCandidates = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('http://localhost:3001/api/candidates/featured');
+        if (!response.ok) throw new Error('Failed to fetch candidates');
+        const data = await response.json();
+        setCandidates(data);
+      } catch (err) {
+        console.error('Error fetching candidates:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCandidates();
+  }, [])
 
   return (
     <>
@@ -319,203 +341,61 @@ function Home18Page() {
         <div className="container-fluid">
           <div className="section-content">
             <div className="twm-candidate-h-page7">
-              <div className="row d-flex justify-content-center m-b30">
-                <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                  <div className="twm-candidates-grid-h-page7 m-b30">
-                    <div className="twm-top-section-content">
-                      <div className="twm-media">
-                        <div className="twm-media-pic">
-                          <JobZImage src="images/candidates/pic1.jpg" alt="#" />
-                        </div>
-                      </div>
-                      <div className="twm-mid-content">
-                        <div className="twm-candidates-tag"><span>Featured</span></div>
-                        <NavLink to={publicUser.candidate.DETAIL1} className="twm-job-title">
-                          <h4>Wanda Smith</h4>
-                        </NavLink>
-                        <p>Charted Accountant</p>
-                      </div>
-                    </div>
-                    <div className="twm-fot-content">
-                      <div className="twm-left-info">
-                        <p className="twm-candidate-address"><i className="feather-map-pin" />New York</p>
-                        <div className="twm-jobs-vacancies">$20<span>/ Day</span></div>
-                      </div>
-                    </div>
+              {loading && (
+                <div className="row d-flex justify-content-center m-b30">
+                  <div className="col-12 text-center">
+                    <p>Loading candidates...</p>
                   </div>
                 </div>
-                <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                  <div className="twm-candidates-grid-h-page7 m-b30">
-                    <div className="twm-top-section-content">
-                      <div className="twm-media">
-                        <div className="twm-media-pic">
-                          <JobZImage src="images/candidates/pic2.jpg" alt="#" />
-                        </div>
-                      </div>
-                      <div className="twm-mid-content">
-                        <div className="twm-candidates-tag"><span>Featured</span></div>
-                        <NavLink to={publicUser.candidate.DETAIL1} className="twm-job-title">
-                          <h4>Peter Hawkins</h4>
-                        </NavLink>
-                        <p>Medical Professed</p>
-                      </div>
-                    </div>
-                    <div className="twm-fot-content">
-                      <div className="twm-left-info">
-                        <p className="twm-candidate-address"><i className="feather-map-pin" />New York</p>
-                        <div className="twm-jobs-vacancies">$7<span>/ Hour</span></div>
-                      </div>
-                    </div>
+              )}
+              {error && (
+                <div className="row d-flex justify-content-center m-b30">
+                  <div className="col-12 text-center">
+                    <p className="text-danger">Error: {error}</p>
                   </div>
                 </div>
-                <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                  <div className="twm-candidates-grid-h-page7 m-b30">
-                    <div className="twm-top-section-content">
-                      <div className="twm-media">
-                        <div className="twm-media-pic">
-                          <JobZImage src="images/candidates/pic3.jpg" alt="#" />
+              )}
+              {!loading && !error && (
+                <>
+                  <div className="row d-flex justify-content-center m-b30">
+                    {candidates.length > 0 ? (
+                      candidates.map((candidate) => (
+                        <div key={candidate.id} className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                          <div className="twm-candidates-grid-h-page7 m-b30">
+                            <div className="twm-top-section-content">
+                              <div className="twm-media">
+                                <div className="twm-media-pic">
+                                  <JobZImage src={candidate.profile_picture || "images/candidates/pic1.jpg"} alt={candidate.full_name} />
+                                </div>
+                              </div>
+                              <div className="twm-mid-content">
+                                <div className="twm-candidates-tag"><span>Featured</span></div>
+                                <NavLink to={publicUser.candidate.DETAIL1} className="twm-job-title">
+                                  <h4>{candidate.full_name}</h4>
+                                </NavLink>
+                                <p>{candidate.job_title}</p>
+                              </div>
+                            </div>
+                            <div className="twm-fot-content">
+                              <div className="twm-left-info">
+                                <p className="twm-candidate-address"><i className="feather-map-pin" />{candidate.location || "New York"}</p>
+                                <div className="twm-jobs-vacancies">${candidate.hourly_rate || candidate.daily_rate || 0}<span>/ {candidate.rate_type || "Day"}</span></div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
+                      ))
+                    ) : (
+                      <div className="col-12 text-center">
+                        <p>No featured candidates available</p>
                       </div>
-                      <div className="twm-mid-content">
-                        <div className="twm-candidates-tag"><span>Featured</span></div>
-                        <NavLink to={publicUser.candidate.DETAIL1} className="twm-job-title">
-                          <h4>Ralph Johnson</h4>
-                        </NavLink>
-                        <p>Bank Manger</p>
-                      </div>
-                    </div>
-                    <div className="twm-fot-content">
-                      <div className="twm-left-info">
-                        <p className="twm-candidate-address"><i className="feather-map-pin" />New York</p>
-                        <div className="twm-jobs-vacancies">$180<span>/ Day</span></div>
-                      </div>
-                    </div>
+                    )}
                   </div>
-                </div>
-                <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                  <div className="twm-candidates-grid-h-page7 m-b30">
-                    <div className="twm-top-section-content">
-                      <div className="twm-media">
-                        <div className="twm-media-pic">
-                          <JobZImage src="images/candidates/pic4.jpg" alt="#" />
-                        </div>
-                      </div>
-                      <div className="twm-mid-content">
-                        <div className="twm-candidates-tag"><span>Featured</span></div>
-                        <NavLink to={publicUser.candidate.DETAIL1} className="twm-job-title">
-                          <h4>Randall Henderson </h4>
-                        </NavLink>
-                        <p>IT Contractor</p>
-                      </div>
-                    </div>
-                    <div className="twm-fot-content">
-                      <div className="twm-left-info">
-                        <p className="twm-candidate-address"><i className="feather-map-pin" />New York</p>
-                        <div className="twm-jobs-vacancies">$90<span>/ Week</span></div>
-                      </div>
-                    </div>
+                  <div className="text-center m-b30">
+                    <NavLink to={publicUser.candidate.LIST} className=" site-button">All  Candidates</NavLink>
                   </div>
-                </div>
-                <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                  <div className="twm-candidates-grid-h-page7 m-b30">
-                    <div className="twm-top-section-content">
-                      <div className="twm-media">
-                        <div className="twm-media-pic">
-                          <JobZImage src="images/candidates/pic5.jpg" alt="#" />
-                        </div>
-                      </div>
-                      <div className="twm-mid-content">
-                        <div className="twm-candidates-tag"><span>Featured</span></div>
-                        <NavLink to={publicUser.candidate.DETAIL1} className="twm-job-title">
-                          <h4>Randall Warren</h4>
-                        </NavLink>
-                        <p>Digital &amp; Creative</p>
-                      </div>
-                    </div>
-                    <div className="twm-fot-content">
-                      <div className="twm-left-info">
-                        <p className="twm-candidate-address"><i className="feather-map-pin" />New York</p>
-                        <div className="twm-jobs-vacancies">$95<span>/ Day</span></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                  <div className="twm-candidates-grid-h-page7 m-b30">
-                    <div className="twm-top-section-content">
-                      <div className="twm-media">
-                        <div className="twm-media-pic">
-                          <JobZImage src="images/candidates/pic6.jpg" alt="#" />
-                        </div>
-                      </div>
-                      <div className="twm-mid-content">
-                        <div className="twm-candidates-tag"><span>Featured</span></div>
-                        <NavLink to={publicUser.candidate.DETAIL1} className="twm-job-title">
-                          <h4>Christina Fischer </h4>
-                        </NavLink>
-                        <p>Charity &amp; Voluntary</p>
-                      </div>
-                    </div>
-                    <div className="twm-fot-content">
-                      <div className="twm-left-info">
-                        <p className="twm-candidate-address"><i className="feather-map-pin" />New York</p>
-                        <div className="twm-jobs-vacancies">$19<span>/ Hour</span></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                  <div className="twm-candidates-grid-h-page7 m-b30">
-                    <div className="twm-top-section-content">
-                      <div className="twm-media">
-                        <div className="twm-media-pic">
-                          <JobZImage src="images/candidates/pic7.jpg" alt="#" />
-                        </div>
-                      </div>
-                      <div className="twm-mid-content">
-                        <div className="twm-candidates-tag"><span>Featured</span></div>
-                        <NavLink to={publicUser.candidate.DETAIL1} className="twm-job-title">
-                          <h4>Wanda Willis </h4>
-                        </NavLink>
-                        <p>Marketing &amp; PR</p>
-                      </div>
-                    </div>
-                    <div className="twm-fot-content">
-                      <div className="twm-left-info">
-                        <p className="twm-candidate-address"><i className="feather-map-pin" />New York</p>
-                        <div className="twm-jobs-vacancies">$12<span>/ Day</span></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                  <div className="twm-candidates-grid-h-page7 m-b30">
-                    <div className="twm-top-section-content">
-                      <div className="twm-media">
-                        <div className="twm-media-pic">
-                          <JobZImage src="images/candidates/pic8.jpg" alt="#" />
-                        </div>
-                      </div>
-                      <div className="twm-mid-content">
-                        <div className="twm-candidates-tag"><span>Featured</span></div>
-                        <NavLink to={publicUser.candidate.DETAIL1} className="twm-job-title">
-                          <h4>Peter Hawkins</h4>
-                        </NavLink>
-                        <p>Public Sector</p>
-                      </div>
-                    </div>
-                    <div className="twm-fot-content">
-                      <div className="twm-left-info">
-                        <p className="twm-candidate-address"><i className="feather-map-pin" />New York</p>
-                        <div className="twm-jobs-vacancies">$7<span>/ Hour</span></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="text-center m-b30">
-                <NavLink to={publicUser.candidate.LIST} className=" site-button">All  Candidates</NavLink>
-              </div>
+                </>
+              )}
             </div>
           </div>
         </div>
