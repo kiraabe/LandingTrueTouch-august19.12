@@ -30,9 +30,17 @@ const CandidateDetail = () => {
         console.log('Response status:', response.status);
 
         if (!response.ok) {
-          const errorData = await response.json().catch(() => ({}));
+          let errorData = {};
+          const contentType = response.headers.get('content-type');
+          if (contentType && contentType.includes('application/json')) {
+            errorData = await response.json().catch(() => ({}));
+          } else {
+            const text = await response.text();
+            console.error('Non-JSON response:', text);
+          }
           console.error('API Error details:', JSON.stringify(errorData, null, 2));
-          throw new Error(`HTTP ${response.status}: ${errorData.error || response.statusText}`);
+          const errorMsg = errorData.error || `No candidate found with ID: ${id}`;
+          throw new Error(`HTTP ${response.status}: ${errorMsg}`);
         }
 
         const data = await response.json();
