@@ -15,12 +15,12 @@ router.get('/candidates/debug', async (req, res) => {
       return res.status(500).json({ error: 'Candidates table does not exist' });
     }
 
-    const allCandidates = await pool.query('SELECT id, name FROM candidates ORDER BY id');
+    const allCandidates = await pool.query('SELECT candidate_id, id, name FROM candidates ORDER BY id');
     console.log(`✓ Found ${allCandidates.rows.length} candidates`);
     res.json({
       table_exists: true,
       total_candidates: allCandidates.rows.length,
-      candidate_ids: allCandidates.rows.map(c => c.id),
+      candidate_uuids: allCandidates.rows.map(c => c.candidate_id),
       sample: allCandidates.rows.slice(0, 5)
     });
   } catch (error) {
@@ -31,7 +31,7 @@ router.get('/candidates/debug', async (req, res) => {
 
 router.get('/candidates/list-all', async (req, res) => {
   try {
-    const result = await pool.query('SELECT id, name FROM candidates ORDER BY id LIMIT 50');
+    const result = await pool.query('SELECT candidate_id, id, name FROM candidates ORDER BY id LIMIT 50');
     res.json(result.rows);
   } catch (error) {
     console.error('✗ Database query error:', error.message);
@@ -42,10 +42,10 @@ router.get('/candidates/list-all', async (req, res) => {
 router.get('/candidates/featured', async (req, res) => {
   try {
     const result = await pool.query(
-      'SELECT id, name AS full_name, job_category AS profession, current_location AS location, profile_picture, religion AS hourly_rate, status AS featured FROM candidates WHERE profile_picture IS NOT NULL LIMIT 8'
+      'SELECT candidate_id AS id, id as numeric_id, name AS full_name, job_category AS profession, current_location AS location, profile_picture, religion AS hourly_rate, status AS featured FROM candidates WHERE profile_picture IS NOT NULL LIMIT 8'
     );
     console.log('✓ Fetched featured candidates, count:', result.rows.length);
-    console.log('✓ Sample IDs:', result.rows.map(r => r.id).slice(0, 2));
+    console.log('✓ Sample UUIDs:', result.rows.map(r => r.id).slice(0, 2));
     res.json(result.rows);
   } catch (error) {
     console.error('✗ Database query error:', error.message);
@@ -57,14 +57,14 @@ router.get('/candidates/featured', async (req, res) => {
 router.get('/candidates/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(`📌 Fetching candidate with ID: ${id}`);
+    console.log(`📌 Fetching candidate with ID (UUID): ${id}`);
 
     if (!id) {
       return res.status(400).json({ error: 'Invalid candidate ID' });
     }
 
     const result = await pool.query(
-      'SELECT * FROM candidates WHERE id = $1',
+      'SELECT * FROM candidates WHERE candidate_id = $1',
       [id]
     );
 
@@ -77,18 +77,18 @@ router.get('/candidates/:id', async (req, res) => {
 
     const candidate = result.rows[0];
     const response = {
-      id: candidate.id,
-      full_name: candidate.name || candidate.full_name,
-      job_title: candidate.job_category || candidate.job_title,
-      location: candidate.current_location || candidate.location,
+      id: candidate.candidate_id,
+      full_name: candidate.name,
+      job_title: candidate.job_category,
+      location: candidate.current_location,
       profile_picture: candidate.profile_picture,
-      hourly_rate: candidate.religion || candidate.hourly_rate,
-      bio: candidate.bio,
-      skills: candidate.skills,
-      experience: candidate.experience,
-      education: candidate.education,
-      portfolio: candidate.portfolio,
-      about: candidate.bio || candidate.about
+      hourly_rate: candidate.religion,
+      bio: candidate.occupation || candidate.bio,
+      skills: candidate.language_skills,
+      experience: candidate.occupation,
+      education: candidate.education_level,
+      portfolio: candidate.resume_url,
+      about: candidate.occupation || candidate.bio
     };
 
     console.log(`✓ Returning candidate:`, response.full_name);
