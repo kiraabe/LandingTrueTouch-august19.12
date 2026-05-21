@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const http = require('http');
+const { exec } = require('child_process');
 require('dotenv').config();
 
 const app = express();
@@ -19,8 +20,21 @@ try {
   console.error('Error loading candidates router:', error);
 }
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 const isDev = process.env.NODE_ENV !== 'production';
+
+// Start Vite in background if in development
+if (isDev && !process.env.VITE_STARTED) {
+  process.env.VITE_STARTED = 'true';
+  console.log('Starting Vite dev server on port 3000...');
+  exec('npm run start', (error, stdout, stderr) => {
+    if (error && !error.killed) {
+      console.error('Vite error:', error);
+    }
+  });
+  // Give Vite a moment to start
+  setTimeout(() => {}, 1500);
+}
 
 if (isDev) {
   // Development: proxy frontend requests to Vite
