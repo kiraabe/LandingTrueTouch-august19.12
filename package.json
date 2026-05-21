@@ -31,7 +31,8 @@
     "preview": "vite preview",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "node server.js"
+    "server": "node server.js",
+    "test-api": "node test-api.js"
   },
   "eslintConfig": {
     "extends": [

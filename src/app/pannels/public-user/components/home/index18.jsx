@@ -19,13 +19,25 @@ function Home18Page() {
       try {
         setLoading(true);
         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
-        const response = await fetch(`${apiUrl}/api/candidates/featured`);
-        if (!response.ok) throw new Error('Failed to fetch candidates');
+        const fetchUrl = `${apiUrl}/api/candidates/featured`;
+        console.log('Fetching from:', fetchUrl);
+
+        const response = await fetch(fetchUrl, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+
         const data = await response.json();
         setCandidates(data);
+        setError(null);
       } catch (err) {
         console.error('Error fetching candidates:', err);
-        setError(err.message);
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+        setError(`Cannot connect to ${apiUrl}. Make sure the backend is running and the API URL is correct in .env.local`);
         setCandidates([]);
       } finally {
         setLoading(false);
