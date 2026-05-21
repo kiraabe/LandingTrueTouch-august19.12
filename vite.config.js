@@ -7,7 +7,17 @@ export default defineConfig({
   server: {
     port: 3000,
     open: false,
-    middlewareMode: true,
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:3001',
+        changeOrigin: true,
+        rewrite: (path) => path
+      },
+      '/health': {
+        target: 'http://127.0.0.1:3001',
+        changeOrigin: true
+      }
+    },
     fs: {
       allow: [path.resolve(__dirname, '.'), path.resolve(__dirname, 'public')]
     }
