@@ -78,17 +78,35 @@ router.get('/candidates/:id', async (req, res) => {
     const candidate = result.rows[0];
     const response = {
       id: candidate.candidate_id,
+      name: candidate.name,
       full_name: candidate.name,
+      passport_number: candidate.passport_number,
+      phone_number: candidate.phone_number,
+      profile_picture: candidate.profile_picture,
+      gender: candidate.gender,
+      date_of_birth: candidate.date_of_birth,
+      nationality: candidate.nationality,
+      religion: candidate.religion,
+      marital_status: candidate.marital_status,
+      occupation: candidate.occupation,
+      job_category: candidate.job_category,
+      skill_level: candidate.skill_level,
+      education_level: candidate.education_level,
+      language_skills: candidate.language_skills,
+      city: candidate.city,
+      current_location: candidate.current_location,
+      resume_url: candidate.resume_url,
+      medical_status: candidate.medical_status,
+      status: candidate.status,
       job_title: candidate.job_category,
       location: candidate.current_location,
-      profile_picture: candidate.profile_picture,
-      hourly_rate: candidate.religion,
-      bio: candidate.occupation || candidate.bio,
+      hourly_rate: candidate.hourly_rate,
+      bio: candidate.occupation,
       skills: candidate.language_skills,
       experience: candidate.occupation,
       education: candidate.education_level,
       portfolio: candidate.resume_url,
-      about: candidate.occupation || candidate.bio
+      about: candidate.occupation
     };
 
     console.log(`✓ Returning candidate:`, response.full_name);
