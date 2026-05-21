@@ -53,7 +53,7 @@ if (process.env.NODE_ENV !== 'production') {
     });
   });
 
-  const PORT = process.env.PORT || 3001;
+  const PORT = process.env.PORT || 5000;
   server.listen(PORT, () => {
     console.log(`\n✓ Server running on http://localhost:${PORT}`);
     console.log(`✓ Frontend proxied to: http://localhost:3000`);
@@ -70,7 +70,7 @@ if (process.env.NODE_ENV !== 'production') {
   });
 } else {
   // Production mode
-  const PORT = process.env.PORT || 3001;
+  const PORT = process.env.PORT || 5000;
   const server = app.listen(PORT, () => {
     console.log(`\n✓ Server running on http://localhost:${PORT}\n`);
   });
