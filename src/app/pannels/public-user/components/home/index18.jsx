@@ -18,8 +18,7 @@ function Home18Page() {
     const fetchCandidates = async () => {
       try {
         setLoading(true);
-        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
-        const fetchUrl = `${apiUrl}/api/candidates/featured`;
+        const fetchUrl = '/api/candidates/featured';
         console.log('📡 Fetching from:', fetchUrl);
 
         const response = await fetch(fetchUrl, {
@@ -36,7 +35,6 @@ function Home18Page() {
         setCandidates(data);
       } catch (err) {
         console.error('❌ Error fetching candidates:', err);
-        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
         // Fallback to mock data for development
         const mockCandidates = [
@@ -51,8 +49,7 @@ function Home18Page() {
         ];
 
         setCandidates(mockCandidates);
-        console.log('ℹ️ Using mock data. Backend not accessible at:', apiUrl);
-        console.log('To use real data: npm run dev and open http://localhost:5173');
+        console.log('ℹ️ Using mock data. API not accessible. Check backend is running.');
       } finally {
         setLoading(false);
       }

@@ -35,7 +35,8 @@
     "eject": "react-scripts eject",
     "server": "node server.js",
     "test-api": "node test-api.js",
-    "dev": "concurrently \"npm run server\" \"npm run start\""
+    "dev": "concurrently \"npm run server\" \"npm run start\"",
+    "prod": "npm run build && npm run server"
   },
   "eslintConfig": {
     "extends": [
