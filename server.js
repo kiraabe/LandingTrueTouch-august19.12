@@ -7,6 +7,9 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 
+// Serve static files for uploads
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 // API routes
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', message: 'Backend is running' });
