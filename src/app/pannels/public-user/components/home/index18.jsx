@@ -72,7 +72,11 @@ function Home18Page() {
       }
 
       const data = await response.json();
-      console.log('Candidate details received:', data);
+      console.log('✅ Candidate details received:', data);
+      console.log('✅ Name:', data.name);
+      console.log('✅ Occupation:', data.occupation);
+      console.log('✅ Phone:', data.phone_number);
+      console.log('✅ Date of Birth:', data.date_of_birth);
       setCandidateDetails(data);
     } catch (err) {
       console.error('Error fetching candidate details:', err);
@@ -769,66 +773,92 @@ function Home18Page() {
                 </div>
 
                 {/* Personal Information Section */}
-                <div className="cv-section">
-                  <h3 className="cv-section-title">Personal Information</h3>
-                  <div className="cv-info-grid">
-                    <div className="cv-info-item">
-                      <span className="cv-info-label">Date of Birth</span>
-                      <span className="cv-info-value">{candidateDetails.date_of_birth || "N/A"}</span>
-                    </div>
-                    <div className="cv-info-item">
-                      <span className="cv-info-label">Gender</span>
-                      <span className="cv-info-value">{candidateDetails.gender || "N/A"}</span>
-                    </div>
-                    <div className="cv-info-item">
-                      <span className="cv-info-label">Nationality</span>
-                      <span className="cv-info-value">{candidateDetails.nationality || "N/A"}</span>
-                    </div>
-                    <div className="cv-info-item">
-                      <span className="cv-info-label">Religion</span>
-                      <span className="cv-info-value">{candidateDetails.religion || "N/A"}</span>
-                    </div>
-                    <div className="cv-info-item">
-                      <span className="cv-info-label">Marital Status</span>
-                      <span className="cv-info-value">{candidateDetails.marital_status || "N/A"}</span>
-                    </div>
-                    <div className="cv-info-item">
-                      <span className="cv-info-label">Current Location</span>
-                      <span className="cv-info-value">{candidateDetails.current_location || "N/A"}</span>
+                {(candidateDetails.date_of_birth || candidateDetails.gender || candidateDetails.nationality || candidateDetails.religion || candidateDetails.marital_status || candidateDetails.current_location) && (
+                  <div className="cv-section">
+                    <h3 className="cv-section-title">Personal Information</h3>
+                    <div className="cv-info-grid">
+                      {candidateDetails.date_of_birth && (
+                        <div className="cv-info-item">
+                          <span className="cv-info-label">Date of Birth</span>
+                          <span className="cv-info-value">{candidateDetails.date_of_birth}</span>
+                        </div>
+                      )}
+                      {candidateDetails.gender && (
+                        <div className="cv-info-item">
+                          <span className="cv-info-label">Gender</span>
+                          <span className="cv-info-value">{candidateDetails.gender}</span>
+                        </div>
+                      )}
+                      {candidateDetails.nationality && (
+                        <div className="cv-info-item">
+                          <span className="cv-info-label">Nationality</span>
+                          <span className="cv-info-value">{candidateDetails.nationality}</span>
+                        </div>
+                      )}
+                      {candidateDetails.religion && (
+                        <div className="cv-info-item">
+                          <span className="cv-info-label">Religion</span>
+                          <span className="cv-info-value">{candidateDetails.religion}</span>
+                        </div>
+                      )}
+                      {candidateDetails.marital_status && (
+                        <div className="cv-info-item">
+                          <span className="cv-info-label">Marital Status</span>
+                          <span className="cv-info-value">{candidateDetails.marital_status}</span>
+                        </div>
+                      )}
+                      {candidateDetails.current_location && (
+                        <div className="cv-info-item">
+                          <span className="cv-info-label">Current Location</span>
+                          <span className="cv-info-value">{candidateDetails.current_location}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
-                </div>
+                )}
 
                 {/* Professional Summary */}
-                <div className="cv-section">
-                  <h3 className="cv-section-title">Professional Summary</h3>
-                  <p className="cv-summary-text">
-                    {candidateDetails.bio || `Experienced ${candidateDetails.occupation} professional with strong skills in ${candidateDetails.skill_level} level work. Seeking new opportunities to contribute expertise and grow professionally.`}
-                  </p>
-                </div>
+                {(candidateDetails.bio || candidateDetails.occupation) && (
+                  <div className="cv-section">
+                    <h3 className="cv-section-title">Professional Summary</h3>
+                    <p className="cv-summary-text">
+                      {candidateDetails.bio || `Experienced ${candidateDetails.occupation || 'professional'} with expertise in various areas. Seeking new opportunities to contribute and grow professionally.`}
+                    </p>
+                  </div>
+                )}
 
                 {/* Professional Details Section */}
-                <div className="cv-section">
-                  <h3 className="cv-section-title">Professional Details</h3>
-                  <div className="cv-info-grid">
-                    <div className="cv-info-item">
-                      <span className="cv-info-label">Job Category</span>
-                      <span className="cv-info-value">{candidateDetails.job_category || "N/A"}</span>
-                    </div>
-                    <div className="cv-info-item">
-                      <span className="cv-info-label">Skill Level</span>
-                      <span className="cv-info-value">{candidateDetails.skill_level || "N/A"}</span>
-                    </div>
-                    <div className="cv-info-item">
-                      <span className="cv-info-label">Education Level</span>
-                      <span className="cv-info-value">{candidateDetails.education_level || "N/A"}</span>
-                    </div>
-                    <div className="cv-info-item">
-                      <span className="cv-info-label">Medical Status</span>
-                      <span className="cv-info-value">{candidateDetails.medical_status || "Not Specified"}</span>
+                {(candidateDetails.job_category || candidateDetails.skill_level || candidateDetails.education_level || candidateDetails.medical_status) && (
+                  <div className="cv-section">
+                    <h3 className="cv-section-title">Professional Details</h3>
+                    <div className="cv-info-grid">
+                      {candidateDetails.job_category && (
+                        <div className="cv-info-item">
+                          <span className="cv-info-label">Job Category</span>
+                          <span className="cv-info-value">{candidateDetails.job_category}</span>
+                        </div>
+                      )}
+                      {candidateDetails.skill_level && (
+                        <div className="cv-info-item">
+                          <span className="cv-info-label">Skill Level</span>
+                          <span className="cv-info-value">{candidateDetails.skill_level}</span>
+                        </div>
+                      )}
+                      {candidateDetails.education_level && (
+                        <div className="cv-info-item">
+                          <span className="cv-info-label">Education Level</span>
+                          <span className="cv-info-value">{candidateDetails.education_level}</span>
+                        </div>
+                      )}
+                      {candidateDetails.medical_status && (
+                        <div className="cv-info-item">
+                          <span className="cv-info-label">Medical Status</span>
+                          <span className="cv-info-value">{candidateDetails.medical_status}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
-                </div>
+                )}
 
                 {/* Skills Section */}
                 {candidateDetails.language_skills && (
