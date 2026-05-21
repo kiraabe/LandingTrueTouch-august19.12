@@ -19,7 +19,7 @@ try {
   console.error('Error loading candidates router:', error);
 }
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 const isDev = process.env.NODE_ENV !== 'production';
 
 if (isDev) {
