@@ -20,7 +20,7 @@ function Home18Page() {
         setLoading(true);
         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
         const fetchUrl = `${apiUrl}/api/candidates/featured`;
-        console.log('Fetching from:', fetchUrl);
+        console.log('📡 Fetching from:', fetchUrl);
 
         const response = await fetch(fetchUrl, {
           method: 'GET',
@@ -32,12 +32,36 @@ function Home18Page() {
         }
 
         const data = await response.json();
+        console.log('✅ Candidates loaded:', data.length);
         setCandidates(data);
         setError(null);
       } catch (err) {
-        console.error('Error fetching candidates:', err);
+        console.error('❌ Error fetching candidates:', err);
         const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
-        setError(`Cannot connect to ${apiUrl}. Make sure the backend is running and the API URL is correct in .env.local`);
+
+        // Provide helpful setup instructions
+        setError(`
+Backend Setup Required
+
+The featured candidates section needs a running backend API.
+
+QUICK START (copy & paste these commands):
+
+Terminal 1:
+  npm run server
+
+Terminal 2:
+  ngrok http 3001
+
+Terminal 3:
+  npm run test-api
+
+Then update .env.local with your ngrok URL:
+  VITE_API_URL=https://[your-ngrok-url]
+
+See TROUBLESHOOT.md for detailed help.
+Currently trying: ${apiUrl}
+        `);
         setCandidates([]);
       } finally {
         setLoading(false);
@@ -364,8 +388,19 @@ function Home18Page() {
               )}
               {error && (
                 <div className="row d-flex justify-content-center m-b30">
-                  <div className="col-12 text-center">
-                    <p className="text-danger">Error: {error}</p>
+                  <div className="col-12">
+                    <div style={{
+                      backgroundColor: '#fff3cd',
+                      border: '1px solid #ffc107',
+                      borderRadius: '4px',
+                      padding: '20px',
+                      whiteSpace: 'pre-wrap',
+                      fontFamily: 'monospace',
+                      fontSize: '13px',
+                      lineHeight: '1.6'
+                    }}>
+                      {error}
+                    </div>
                   </div>
                 </div>
               )}
