@@ -19,17 +19,24 @@ const CandidateDetail = () => {
     const fetchCandidateDetail = async () => {
       try {
         setLoading(true);
+        const url = `/api/candidates/${id}`;
+        console.log('Fetching candidate from:', url);
 
-        const response = await fetch(`/api/candidates/${id}`, {
+        const response = await fetch(url, {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
         });
 
+        console.log('Response status:', response.status);
+
         if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          console.error('API Error:', errorData);
           throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
 
         const data = await response.json();
+        console.log('Candidate data received:', data);
         setCandidate(data);
       } catch (err) {
         console.error('Error fetching candidate:', err);
