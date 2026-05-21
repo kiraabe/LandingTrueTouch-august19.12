@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const { createProxyMiddleware } = require('http-proxy-middleware');
 require('dotenv').config();
 
 const app = express();
@@ -15,25 +14,13 @@ app.get('/health', (req, res) => {
 const candidatesRouter = require('./routes/candidates');
 app.use('/api', candidatesRouter);
 
-// Development: proxy to Vite dev server
-if (process.env.NODE_ENV !== 'production') {
-  app.use('/', createProxyMiddleware({
-    target: 'http://localhost:3000',
-    changeOrigin: true,
-    ws: true
-  }));
-} else {
-  // Production: serve static files from the build folder
-  const buildPath = path.join(__dirname, 'build');
+// Serve static files from build folder if it exists (production)
+const buildPath = path.join(__dirname, 'build');
+const fs = require('fs');
+if (fs.existsSync(buildPath)) {
   app.use(express.static(buildPath));
-
-  // Serve React app for all other routes (SPA fallback)
   app.get('*', (req, res) => {
-    res.sendFile(path.join(buildPath, 'index.html'), (err) => {
-      if (err) {
-        res.status(500).send('Error loading application');
-      }
-    });
+    res.sendFile(path.join(buildPath, 'index.html'));
   });
 }
 
