@@ -11,13 +11,14 @@ const CandidateDetail = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!id) {
+      setLoading(false);
+      return;
+    }
+
     const fetchCandidateDetail = async () => {
       try {
         setLoading(true);
-
-        if (!id) {
-          throw new Error('Candidate ID is required');
-        }
 
         // Mock candidate data - replace with actual API call
         const mockCandidates = {
@@ -144,9 +145,6 @@ const CandidateDetail = () => {
         };
 
         const candidateId = parseInt(id, 10);
-        console.log('Looking for candidate ID:', candidateId, 'Type:', typeof candidateId);
-        console.log('Available candidate IDs:', Object.keys(mockCandidates));
-
         const selectedCandidate = mockCandidates[candidateId] || null;
 
         if (!selectedCandidate) {
