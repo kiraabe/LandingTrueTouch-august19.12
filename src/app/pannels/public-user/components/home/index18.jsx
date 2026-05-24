@@ -2,6 +2,7 @@ import JobZImage from "../../../../common/jobz-img";
 import { loadScript, publicUrlFor, updateSkinStyle } from "../../../../../globals/constants";
 import { publicUser } from "../../../../../globals/route-names";
 import { showErrorToast } from "../../../../../globals/error-handler";
+import { getCandidateProfilePictureUrl, getCandidateCvUrl } from "../../../../../globals/file-url";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
@@ -417,7 +418,7 @@ function Home18Page() {
                             <div className="twm-top-section-content">
                               <div className="twm-media">
                                 <div className="twm-media-pic">
-                                  <JobZImage src={candidate.profile_picture || "images/candidates/pic1.jpg"} alt={candidate.full_name} />
+                                  <JobZImage src={getCandidateProfilePictureUrl(candidate.profile_picture) || "images/candidates/pic1.jpg"} alt={candidate.full_name} />
                                 </div>
                               </div>
                               <div className="twm-mid-content">
@@ -754,7 +755,7 @@ function Home18Page() {
                 {/* CV Header Section */}
                 <div className="cv-header-section">
                   <div className="cv-photo-container">
-                    <JobZImage src={candidateDetails.profile_picture || selectedCandidate.profile_picture || "images/candidates/pic1.jpg"} alt={candidateDetails.name} className="cv-profile-photo" />
+                    <JobZImage src={getCandidateProfilePictureUrl(candidateDetails.profile_picture) || getCandidateProfilePictureUrl(selectedCandidate.profile_picture) || "images/candidates/pic1.jpg"} alt={candidateDetails.name} className="cv-profile-photo" />
                   </div>
                   <div className="cv-header-info">
                     <h1 className="cv-candidate-name">{candidateDetails.name}</h1>
@@ -847,6 +848,16 @@ function Home18Page() {
                         <span className="cv-skill-tag">{candidateDetails.language_skills}</span>
                       )}
                     </div>
+                  </div>
+                )}
+
+                {/* CV Download Link */}
+                {candidateDetails.cv && (
+                  <div className="cv-section">
+                    <h3 className="cv-section-title">Curriculum Vitae</h3>
+                    <a href={getCandidateCvUrl(candidateDetails.cv)} target="_blank" rel="noopener noreferrer" className="cv-resume-link" download>
+                      <i className="fas fa-file-pdf"></i> Download CV
+                    </a>
                   </div>
                 )}
 

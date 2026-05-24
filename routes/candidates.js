@@ -42,7 +42,7 @@ router.get('/candidates/list-all', async (req, res) => {
 router.get('/candidates/featured', async (req, res) => {
   try {
     const result = await pool.query(
-      'SELECT candidate_id AS id, id as numeric_id, name AS full_name, job_category AS profession, current_location AS location, profile_picture, religion AS hourly_rate, status AS featured FROM candidates WHERE profile_picture IS NOT NULL LIMIT 8'
+      'SELECT candidate_id AS id, id as numeric_id, name AS full_name, job_category AS profession, current_location AS location, profile_picture, cv, religion AS hourly_rate, status AS featured FROM candidates WHERE profile_picture IS NOT NULL LIMIT 8'
     );
     console.log('✓ Fetched featured candidates, count:', result.rows.length);
     console.log('✓ Sample UUIDs:', result.rows.map(r => r.id).slice(0, 2));
@@ -85,6 +85,7 @@ router.get('/candidates/:id', async (req, res) => {
       passport_number: candidate.passport_number,
       phone_number: candidate.phone_number,
       profile_picture: candidate.profile_picture,
+      cv: candidate.cv,
       gender: candidate.gender,
       date_of_birth: candidate.date_of_birth,
       nationality: candidate.nationality,

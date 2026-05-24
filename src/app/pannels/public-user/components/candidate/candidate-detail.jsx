@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Toaster } from "sonner";
 import { showErrorToast } from "../../../../../globals/error-handler";
+import { getCandidateProfilePictureUrl, getCandidateCvUrl } from "../../../../../globals/file-url";
 import JobZImage from "../../../../common/jobz-img";
 import './candidate-detail.css';
 
@@ -84,7 +85,7 @@ const CandidateDetail = () => {
           <div className="candidate-cover" style={{ backgroundImage: "url('images/candidates/cover-bg.jpg')" }}>
             <div className="candidate-profile-section">
               <div className="candidate-avatar">
-                <JobZImage src={candidate.profile_picture} alt={candidate.full_name} />
+                <JobZImage src={getCandidateProfilePictureUrl(candidate.profile_picture) || "images/candidates/default.jpg"} alt={candidate.full_name} />
               </div>
               <div className="candidate-info-header">
                 <h1 className="candidate-name">{candidate.full_name}</h1>
@@ -135,6 +136,16 @@ const CandidateDetail = () => {
                   <h4>{candidate.education}</h4>
                 </div>
               </div>
+
+              {/* CV Download Section */}
+              {candidate.cv && (
+                <div className="detail-section">
+                  <h2>Curriculum Vitae</h2>
+                  <a href={getCandidateCvUrl(candidate.cv)} target="_blank" rel="noopener noreferrer" download className="cv-download-link">
+                    <i className="feather-download" /> Download CV
+                  </a>
+                </div>
+              )}
 
               {/* Portfolio Section */}
               {candidate.portfolio && candidate.portfolio.length > 0 && (
