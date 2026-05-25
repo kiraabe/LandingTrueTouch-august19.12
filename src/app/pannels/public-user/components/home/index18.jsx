@@ -510,7 +510,7 @@ function Home18Page() {
                                 </div>
                               </div>
                               <div className="twm-mid-content">
-                                <div className="twm-candidates-tag"><span>{candidate.status}</span></div>
+                                <div className="twm-candidates-tag"><span>{candidate.status || 'Featured'}</span></div>
                                 <button onClick={() => openCandidateModal(candidate)} className="twm-job-title" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
                                   <h4>{candidate.full_name}</h4>
                                 </button>
