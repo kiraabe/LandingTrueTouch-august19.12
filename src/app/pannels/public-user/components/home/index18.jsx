@@ -417,67 +417,71 @@ function Home18Page() {
       {/* GET JOBS SECTION SECTION END */}
 
       {}
-      <div className="section-full p-t120 p-b90 site-bg-light-purple">
+
+      {/* Portfolio SECTION START */}
+      <div className="section-full p-t120 p-b90 site-bg-white twm-featured-city-carousal-area">
         <div className="container">
           {/* title="" START*/}
-          <div className="section-head center wt-small-separator-outer">
-            <div className="wt-small-separator site-text-primary">
-              <div>Our Portfolio</div>
+          <div className="wt-separator-two-part ">
+            <div className="row wt-separator-two-part-row">
+              <div className="col-xl-5 col-lg-5 col-md-12 wt-separator-two-part-left">
+                {/* title="" START*/}
+                <div className="section-head left wt-small-separator-outer">
+                  <div className="wt-small-separator site-text-primary">
+                    <div>Jobs by location</div>
+                  </div>
+                  <h2 className="wt-title">Find your favourite jobs and get.</h2>
+                </div>
+                {/* title="" END*/}
+              </div>
+              <div className="col-xl-7 col-lg-7 col-md-12 wt-separator-two-part-right text-right">
+                <NavLink to={publicUser.jobs.LIST} className=" site-button">View All Locations</NavLink>
+              </div>
             </div>
-            <h2 className="wt-title">Latest Portfolios</h2>
           </div>
           {/* title="" END*/}
-          <div className="section-content">
-            <div className="twm-blog-post-3-outer-wrap">
-              <div className="row d-flex justify-content-center">
-                <div className="col-lg-4 col-md-6 col-sm-12">
-                  {/*Block one*/}
-                  <div className="blog-post twm-blog-post-3-outer">
-                    <div className="wt-post-media">
-                      <ImageLightbox src={publicUrlFor("images/gallery/1.jpg")} alt="Portfolio image 1">
-                        <JobZImage src="images/gallery/1.jpg" alt="Portfolio image 1" />
-                      </ImageLightbox>
-                    </div>
-                    <div className="wt-post-info">
-                      <div className="wt-post-meta ">
-                      </div>
-                    </div>
-                  </div>
+        </div>
+        <div className="twm-featured-city-carousal-wrap">
+          <div className="owl-carousel twm-featured-city-carousal">
+            <div className="item">
+              {/*1*/}
+              <div className="twm-featured-city2">
+                <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/gallery/1.jpg")})` }}>
                 </div>
-                <div className="col-lg-4 col-md-6 col-sm-12">
-                  {/*Block two*/}
-                  <div className="blog-post twm-blog-post-3-outer">
-                    <div className="wt-post-media">
-                      <ImageLightbox src={publicUrlFor("images/gallery/2.jpg")} alt="Portfolio image 2">
-                        <JobZImage src="images/gallery/2.jpg" alt="Portfolio image 2" />
-                      </ImageLightbox>
-                    </div>
-                    <div className="wt-post-info">
-                      <div className="wt-post-meta ">
-                      </div>
-                    </div>
-                  </div>
+              </div>
+            </div>
+            <div className="item">
+              {/*2*/}
+              <div className="twm-featured-city2">
+                <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/gallery/2.jpg")})` }}>
                 </div>
-                <div className="col-lg-4 col-md-6 col-sm-12">
-                  {/*Block three*/}
-                  <div className="blog-post twm-blog-post-3-outer">
-                    <div className="wt-post-media">
-                      <ImageLightbox src={publicUrlFor("images/gallery/3.jpg")} alt="Portfolio image 3">
-                        <JobZImage src="images/gallery/3.jpg" alt="Portfolio image 3" />
-                      </ImageLightbox>
-                    </div>
-                    <div className="wt-post-info">
-                      <div className="wt-post-meta ">
-                      </div>
-                    </div>
-                  </div>
+              </div>
+            </div>
+            <div className="item">
+              {/*3*/}
+              <div className="twm-featured-city2">
+                <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/gallery/3.jpg")})` }}>
+                </div>
+              </div>
+            </div>
+            <div className="item">
+              {/*4*/}
+              <div className="twm-featured-city2">
+                <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/gallery/4.jpg")})` }}>
+                </div>
+              </div>
+            </div>
+            <div className="item">
+              {/*5*/}
+              <div className="twm-featured-city2">
+                <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/gallery/5.jpg")})` }}>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      {/* OUR Portfolio END */}
+      {/* FEATURED SECTION END */}
 
 
 
