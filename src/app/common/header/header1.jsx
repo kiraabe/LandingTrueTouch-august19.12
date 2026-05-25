@@ -72,7 +72,10 @@ function Header1({ _config }) {
                             <div className="nav-animation header-nav navbar-collapse collapse d-flex justify-content-center">
                                 <ul className=" nav navbar-nav">
                                     <li className={isNavLinkActive("home") ? "nav-link-active" : ""}>
-                                        <NavLink to={publicUser.HOME18}>Home</NavLink>
+                                        <a href="#home" onClick={(e) => {
+                                            e.preventDefault();
+                                            document.getElementById("home")?.scrollIntoView({ behavior: "smooth" });
+                                        }}>Home</a>
                                     </li>
                                     <li className={isNavLinkActive("get-jobs") ? "nav-link-active" : ""}>
                                         <a href="#get-jobs" onClick={(e) => {
