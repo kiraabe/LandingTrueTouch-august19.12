@@ -45,7 +45,7 @@ function Header1({ _config }) {
     return (
         <>
             <header className={"site-header " + _config.style + " mobile-sider-drawer-menu " + (menuActive ? "active" : "") }>
-                <div className="sticky-header main-bar-wraper navbar-expand-lg">
+                <div className="main-bar-wraper navbar-expand-lg">
                     <div className="main-bar">
                         <div className="container-fluid clearfix">
                             <div className="logo-header">
