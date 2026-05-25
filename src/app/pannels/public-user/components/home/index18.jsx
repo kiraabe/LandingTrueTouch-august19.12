@@ -441,7 +441,7 @@ function Home18Page() {
                 <div className="col-lg-4 col-md-6 col-sm-12">
                   {/*Block one*/}
                   <div className="blog-post twm-blog-post-3-outer">
-                    <div className="wt-post-media portfolio-image-wrapper" onClick={() => openFullscreenImage("images/gallery/1.jpg")}>
+                    <div className="wt-post-media portfolio-image-wrapper" onClick={() => openFullscreenImage("/assets/images/gallery/1.jpg")}>
                       <JobZImage src="images/gallery/1.jpg" alt="" />
                     </div>
                     <div className="wt-post-info">
@@ -453,7 +453,7 @@ function Home18Page() {
                 <div className="col-lg-4 col-md-6 col-sm-12">
                   {/*Block two*/}
                   <div className="blog-post twm-blog-post-3-outer">
-                    <div className="wt-post-media portfolio-image-wrapper" onClick={() => openFullscreenImage("images/gallery/2.jpg")}>
+                    <div className="wt-post-media portfolio-image-wrapper" onClick={() => openFullscreenImage("/assets/images/gallery/2.jpg")}>
                       <JobZImage src="images/gallery/2.jpg" alt="" />
                     </div>
                     <div className="wt-post-info">
@@ -465,7 +465,7 @@ function Home18Page() {
                 <div className="col-lg-4 col-md-6 col-sm-12">
                   {/*Block three*/}
                   <div className="blog-post twm-blog-post-3-outer">
-                    <div className="wt-post-media portfolio-image-wrapper" onClick={() => openFullscreenImage("images/gallery/3.jpg")}>
+                    <div className="wt-post-media portfolio-image-wrapper" onClick={() => openFullscreenImage("/assets/images/gallery/3.jpg")}>
                       <JobZImage src="images/gallery/3.jpg" alt="" />
                     </div>
                     <div className="wt-post-info">
