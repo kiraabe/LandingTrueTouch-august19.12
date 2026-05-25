@@ -1,57 +1,45 @@
 import JobZImage from "../jobz-img";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { publicUser } from "../../../globals/route-names";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function Header1({ _config }) {
 
     const [menuActive, setMenuActive] = useState(false);
-    const [activeSection, setActiveSection] = useState("home");
-    const location = useLocation();
 
     function handleNavigationClick() {
         setMenuActive(!menuActive);
     }
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const sections = ["get-jobs", "candidates", "our-blogs", "contact-us"];
-            let currentSection = "home";
-
-            for (const sectionId of sections) {
-                const element = document.getElementById(sectionId);
-                if (element) {
-                    const rect = element.getBoundingClientRect();
-                    if (rect.top <= 150) {
-                        currentSection = sectionId;
-                    }
-                }
-            }
-
-            setActiveSection(currentSection);
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-
-    const isNavLinkActive = (sectionId) => {
-        if (sectionId === "home") {
-            return location.hash === "" || location.hash === "#";
-        }
-        return activeSection === sectionId;
-    };
-
     return (
         <>
             <header className={"site-header " + _config.style + " mobile-sider-drawer-menu " + (menuActive ? "active" : "") }>
-                <div className="main-bar-wraper navbar-expand-lg">
+                <div className="sticky-header main-bar-wraper navbar-expand-lg">
                     <div className="main-bar">
                         <div className="container-fluid clearfix">
                             <div className="logo-header">
                                 <div className="logo-header-inner logo-header-one">
                                     <NavLink to={publicUser.HOME1}>
-                                        <JobZImage src="images/truetouch-logo.webp" alt="TrueTouch Logo" />
+                                        {
+                                            _config.withBlackLogo
+                                                ?
+                                                <JobZImage src="images/logo-12.png" alt="" />
+                                                :
+                                                (
+                                                    _config.withWhiteLogo
+                                                        ?
+                                                        <JobZImage src="images/logo-white.png" alt="" />
+                                                        :
+                                                        (
+                                                            _config.withLightLogo ?
+                                                                <>
+                                                                    <JobZImage id="skin_header_logo_light" src="images/logo-light-3.png" alt="" className="default-scroll-show" />
+                                                                    <JobZImage id="skin_header_logo" src="images/logo-dark.png" alt="" className="on-scroll-show" />
+                                                                </> :
+                                                                <JobZImage id="skin_header_logo" src="images/logo-dark.png" alt="" />
+                                                        )
+                                                )
+                                        }
                                     </NavLink>
                                 </div>
                             </div>
@@ -71,32 +59,104 @@ function Header1({ _config }) {
                             {/* MAIN Vav */}
                             <div className="nav-animation header-nav navbar-collapse collapse d-flex justify-content-center">
                                 <ul className=" nav navbar-nav">
-                                    <li className={isNavLinkActive("home") ? "nav-link-active" : ""}>
-                                        <NavLink to={publicUser.HOME18}>Home</NavLink>
+                                    <li className="has-mega-menu"><a href="#">Home</a>
+                                        <ul className="mega-menu">
+                                            <li>
+                                                <ul>
+                                                    <li><NavLink to={publicUser.HOME1}>Home-1</NavLink></li>
+                                                    <li><NavLink to={publicUser.HOME2}>Home-2</NavLink></li>
+                                                    <li><NavLink to={publicUser.HOME3}>Home-3</NavLink></li>
+                                                    <li><NavLink to={publicUser.HOME4}>Home-4</NavLink></li>
+                                                    <li><NavLink to={publicUser.HOME5}>Home-5</NavLink></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ul>
+                                                    <li><NavLink to={publicUser.HOME6}>Home-6</NavLink></li>
+                                                    <li><NavLink to={publicUser.HOME7}>Home-7</NavLink></li>
+                                                    <li><NavLink to={publicUser.HOME8}>Home-8</NavLink></li>
+                                                    <li><NavLink to={publicUser.HOME9}>Home-9</NavLink></li>
+                                                    <li><NavLink to={publicUser.HOME10}>Home-10</NavLink></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ul>
+                                                    <li><NavLink to={publicUser.HOME11}>Home-11</NavLink></li>
+                                                    <li><NavLink to={publicUser.HOME12}>Home-12</NavLink></li>
+                                                    <li><NavLink to={publicUser.HOME13}>Home-13</NavLink></li>
+                                                    <li><NavLink to={publicUser.HOME14}>Home-14</NavLink></li>
+                                                    <li><NavLink to={publicUser.HOME15}>Home-15</NavLink></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ul>
+                                                    <li><NavLink to={publicUser.HOME16}>Home-16</NavLink></li>
+                                                    <li><NavLink to={publicUser.HOME17}>Home-17</NavLink></li>
+                                                    <li><NavLink to={publicUser.HOME18}>Home-18</NavLink></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li className={isNavLinkActive("get-jobs") ? "nav-link-active" : ""}>
-                                        <a href="#get-jobs" onClick={(e) => {
-                                            e.preventDefault();
-                                            document.getElementById("get-jobs")?.scrollIntoView({ behavior: "smooth" });
-                                        }}>About Us</a>
+                                    <li className="has-child"><a href="#">Jobs</a>
+                                        <ul className="sub-menu">
+                                            <li><NavLink to={publicUser.jobs.GRID}>Jobs Grid</NavLink></li>
+                                            <li><NavLink to={publicUser.jobs.GRID_MAP}>Jobs Grid with Map</NavLink></li>
+                                            <li><NavLink to={publicUser.jobs.LIST}>Jobs List</NavLink></li>
+                                            <li className="has-child"><a href="#">Job Detail</a>
+                                                <ul className="sub-menu">
+                                                    <li><NavLink to={publicUser.jobs.DETAIL1}>Detail 1</NavLink>
+                                                    </li><li><NavLink to={publicUser.jobs.DETAIL2}>Detail 2 </NavLink>
+                                                    </li></ul>
+                                            </li>
+                                            <li><NavLink to={publicUser.jobs.APPLY}>Apply Jobs</NavLink></li>
+                                        </ul>
                                     </li>
-                                    <li className={isNavLinkActive("candidates") ? "nav-link-active" : ""}>
-                                        <a href="#candidates" onClick={(e) => {
-                                            e.preventDefault();
-                                            document.getElementById("candidates")?.scrollIntoView({ behavior: "smooth" });
-                                        }}>Candidates</a>
+                                    <li className="has-child"><a href="#">Employers</a>
+                                        <ul className="sub-menu">
+                                            <li><NavLink to={publicUser.employer.GRID}>Employers Grid</NavLink></li>
+                                            <li><NavLink to={publicUser.employer.LIST}>Employers List</NavLink></li>
+                                            <li className="has-child"><a href="#">Employers Detail</a>
+                                                <ul className="sub-menu">
+                                                    <li><NavLink to={publicUser.employer.DETAIL1}>Detail 1</NavLink>
+                                                    </li><li><NavLink to={publicUser.employer.DETAIL2}>Detail 2</NavLink>
+                                                    </li></ul>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li className={isNavLinkActive("our-blogs") ? "nav-link-active" : ""}>
-                                        <a href="#our-blogs" onClick={(e) => {
-                                            e.preventDefault();
-                                            document.getElementById("our-blogs")?.scrollIntoView({ behavior: "smooth" });
-                                        }}>Vacancies</a>
+                                    <li className="has-child"><a href="#">Pages</a>
+                                        <ul className="sub-menu">
+                                            <li><NavLink to={publicUser.pages.ABOUT}>About Us</NavLink></li>
+                                            <li><NavLink to={publicUser.pages.PRICING}>Pricing</NavLink></li>
+                                            <li><NavLink to={publicUser.pages.ERROR404}>Error-404</NavLink></li>
+                                            <li><NavLink to={publicUser.pages.FAQ}>FAQ's</NavLink></li>
+                                            <li><NavLink to={publicUser.pages.CONTACT}>Contact Us</NavLink></li>
+                                            <li><NavLink to={publicUser.pages.MAINTENANCE}>Under Maintenance</NavLink></li>
+                                            <li><NavLink to={publicUser.pages.COMING}>Coming soon</NavLink></li>
+                                            <li><NavLink to={publicUser.pages.LOGIN}>Login</NavLink></li>
+                                            <li><NavLink to={publicUser.pages.AFTER_LOGIN}>After Login</NavLink></li>
+                                            <li><NavLink to={publicUser.pages.ICONS}>Icons</NavLink></li>
+                                        </ul>
                                     </li>
-                                    <li className={isNavLinkActive("contact-us") ? "nav-link-active" : ""}>
-                                        <a href="#contact-us" onClick={(e) => {
-                                            e.preventDefault();
-                                            document.getElementById("contact-us")?.scrollIntoView({ behavior: "smooth" });
-                                        }}>Contact Us</a>
+                                    <li className="has-child"><a href="#">Candidates</a>
+                                        <ul className="sub-menu">
+                                            <li><NavLink to={publicUser.candidate.GRID}>Candidates Grid</NavLink></li>
+                                            <li><NavLink to={publicUser.candidate.LIST}>Candidates List</NavLink></li>
+                                            <li className="has-child"><a href="#">Candidate Detail</a>
+                                                <ul className="sub-menu">
+                                                    <li><NavLink to={publicUser.candidate.DETAIL1}>Detail 1</NavLink>
+                                                    </li><li><NavLink to={publicUser.candidate.DETAIL2}>Detail 2</NavLink>
+                                                    </li></ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li className="has-child"><a href="#">Blog</a>
+                                        <ul className="sub-menu">
+                                            <li><NavLink to={publicUser.blog.GRID1}>Blog</NavLink></li>
+                                            <li><NavLink to={publicUser.blog.GRID2}>Blog Grid</NavLink></li>
+                                            <li><NavLink to={publicUser.blog.GRID3}>Blog Grid-2</NavLink></li>
+                                            <li><NavLink to={publicUser.blog.LIST}>Blog List</NavLink></li>
+                                            <li><NavLink to={publicUser.blog.DETAIL}>Blog Detail</NavLink></li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </div>
@@ -110,8 +170,13 @@ function Header1({ _config }) {
                                 <div className="extra-cell">
                                     <div className="header-nav-btn-section">
                                         <div className="twm-nav-btn-left">
-                                            <a className="twm-nav-sign-up" href="#">
-                                                <i className="feather-log-in" /> Get a Quote
+                                            <a className="twm-nav-sign-up" data-bs-toggle="modal" href="#sign_up_popup" role="button">
+                                                <i className="feather-log-in" /> Sign Up
+                                            </a>
+                                        </div>
+                                        <div className="twm-nav-btn-right">
+                                            <a className="twm-nav-post-a-job" data-bs-toggle="modal" href="#sign_up_popup2" role="button">
+                                                <i className="feather-log-in" /> Sign In
                                             </a>
                                         </div>
                                     </div>
