@@ -67,7 +67,7 @@ function Footer3() {
                     <div className="footer-bottom">
                         <div className="footer-bottom-info">
                             <div className="footer-copy-right">
-                                <span className="copyrights-text">Copyright © 2023 by thewebmax All Rights Reserved.</span>
+                                <span className="copyrights-text">Copyright © {new Date().getFullYear()} Powered by EKD Tech. All Rights Reserved.</span>
                             </div>
                             <ul className="social-icons">
                                 <li><a href="https://www.facebook.com/" className="fab fa-facebook-f" /></li>
