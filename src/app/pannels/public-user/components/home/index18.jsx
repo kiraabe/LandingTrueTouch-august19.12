@@ -619,6 +619,9 @@ function Home18Page() {
                               <NavLink to={publicUser.blog.DETAIL}>{blog.title}</NavLink>
                             </h4>
                           </div>
+                          <div className="wt-post-text">
+                            <p>{blog.description}</p>
+                          </div>
                           <div className="wt-post-readmore">
                             <NavLink to={publicUser.blog.DETAIL} className="site-button-link site-text-primary">Read More</NavLink>
                           </div>
