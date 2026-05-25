@@ -181,7 +181,7 @@ const CandidateDetail = () => {
                   <button className="contact-btn hire-btn">
                     <i className="feather-mail" /> Send Message
                   </button>
-                  <a href={`https://wa.me/?text=Hi ${candidate.full_name}, I'm interested in your services`} target="_blank" rel="noopener noreferrer" className="contact-btn whatsapp-btn">
+                  <a href={`https://wa.me/251911208322?text=Hi ${candidate.full_name}, I'm interested in your services`} target="_blank" rel="noopener noreferrer" className="contact-btn whatsapp-btn">
                     <i className="feather-message-circle" /> WhatsApp
                   </a>
                 </div>

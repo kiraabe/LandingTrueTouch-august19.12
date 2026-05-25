@@ -992,7 +992,7 @@ function Home18Page() {
                 {/* Action Buttons */}
                 <div className="cv-modal-actions">
                   <button onClick={closeCandidateModal} className="cv-action-btn cv-close-action">Close</button>
-                  <a href={`https://wa.me/?text=Hi ${candidateDetails.name}, I'm interested in your profile`} target="_blank" rel="noopener noreferrer" className="cv-action-btn cv-whatsapp-action">
+                  <a href={`https://wa.me/251911208322?text=Hi ${candidateDetails.name}, I'm interested in your profile`} target="_blank" rel="noopener noreferrer" className="cv-action-btn cv-whatsapp-action">
                     <i className="fab fa-whatsapp"></i> WhatsApp
                   </a>
                 </div>
