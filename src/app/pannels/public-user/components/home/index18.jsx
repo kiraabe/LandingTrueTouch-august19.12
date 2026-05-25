@@ -16,7 +16,6 @@ function Home18Page() {
   const [detailsLoading, setDetailsLoading] = useState(false);
   const [blogs, setBlogs] = useState([]);
   const [blogsLoading, setBlogsLoading] = useState(true);
-  const [fullscreenImage, setFullscreenImage] = useState(null);
 
   useEffect(() => {
     updateSkinStyle("10", false, false)
@@ -120,14 +119,6 @@ function Home18Page() {
   const closeCandidateModal = () => {
     setSelectedCandidate(null);
     setCandidateDetails(null);
-  };
-
-  const openFullscreenImage = (imageSrc) => {
-    setFullscreenImage(imageSrc);
-  };
-
-  const closeFullscreenImage = () => {
-    setFullscreenImage(null);
   };
 
   return (
@@ -441,8 +432,8 @@ function Home18Page() {
                 <div className="col-lg-4 col-md-6 col-sm-12">
                   {/*Block one*/}
                   <div className="blog-post twm-blog-post-3-outer">
-                    <div className="wt-post-media portfolio-image-wrapper" onClick={() => openFullscreenImage("/assets/images/gallery/1.jpg")}>
-                      <JobZImage src="images/gallery/1.jpg" alt="" />
+                    <div className="wt-post-media">
+                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="images/gallery/1.jpg" alt="" /></NavLink>
                     </div>
                     <div className="wt-post-info">
                       <div className="wt-post-meta ">
@@ -453,8 +444,8 @@ function Home18Page() {
                 <div className="col-lg-4 col-md-6 col-sm-12">
                   {/*Block two*/}
                   <div className="blog-post twm-blog-post-3-outer">
-                    <div className="wt-post-media portfolio-image-wrapper" onClick={() => openFullscreenImage("/assets/images/gallery/2.jpg")}>
-                      <JobZImage src="images/gallery/2.jpg" alt="" />
+                    <div className="wt-post-media">
+                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="images/gallery/2.jpg" alt="" /></NavLink>
                     </div>
                     <div className="wt-post-info">
                       <div className="wt-post-meta ">
@@ -465,8 +456,8 @@ function Home18Page() {
                 <div className="col-lg-4 col-md-6 col-sm-12">
                   {/*Block three*/}
                   <div className="blog-post twm-blog-post-3-outer">
-                    <div className="wt-post-media portfolio-image-wrapper" onClick={() => openFullscreenImage("/assets/images/gallery/3.jpg")}>
-                      <JobZImage src="images/gallery/3.jpg" alt="" />
+                    <div className="wt-post-media">
+                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="images/gallery/3.jpg" alt="" /></NavLink>
                     </div>
                     <div className="wt-post-info">
                       <div className="wt-post-meta ">
@@ -515,11 +506,11 @@ function Home18Page() {
                             <div className="twm-top-section-content">
                               <div className="twm-media">
                                 <div className="twm-media-pic">
-                                  <JobZImage src={getCandidateProfilePictureUrl(candidate.profile_picture) || "/assets/images/candidates/pic1.jpg"} alt={candidate.full_name} />
+                                  <JobZImage src={getCandidateProfilePictureUrl(candidate.profile_picture) || "images/candidates/pic1.jpg"} alt={candidate.full_name} />
                                 </div>
                               </div>
                               <div className="twm-mid-content">
-                                <div className="twm-candidates-tag"><span>{candidate.status || 'Featured'}</span></div>
+                                <div className="twm-candidates-tag"><span>{candidate.status</span></div>
                                 <button onClick={() => openCandidateModal(candidate)} className="twm-job-title" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
                                   <h4>{candidate.full_name}</h4>
                                 </button>
@@ -528,7 +519,7 @@ function Home18Page() {
                             </div>
                             <div className="twm-fot-content">
                               <div className="twm-left-info">
-                                <p className="twm-candidate-address"><i className="feather-map-pin" />{candidate.location || "New York"}</p>
+                                <p className="twm-candidate-address"><i className="feather-map-pin" />{candidate.current_location}</p>
                                 <div className="twm-jobs-vacancies">{candidate.hourly_rate}</div>
                               </div>
                               <div className="twm-action-buttons" style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
@@ -764,20 +755,20 @@ function Home18Page() {
                       <div className="contact-info-section">
                         <div className="c-info-column">
                           <div className="c-info-icon"><i className="fas fa-map-marker-alt" /></div>
-                          <h3 className="twm-title">Our Location</h3>
-                          <p>Addis Ababa, Ethiopia</p>
-                          <p><small>Commercial Registration Number</small></p>
-                          <p><small>MT/AA/14/673/2513971/2011</small></p>
+                          <h3 className="twm-title">In the bay area?</h3>
+                          <p>1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
                         </div>
                         <div className="c-info-column">
                           <div className="c-info-icon custome-size"><i className="fas fa-mobile-alt" /></div>
                           <h3 className="twm-title">Feel free to contact us</h3>
-                          <p><a href="tel:+251911208322">+251 91 120 8322</a></p>
+                          <p><a href="tel:+216-761-8331">+2 900 234 4241</a></p>
+                          <p><a href="tel:+216-761-8331">+2 900 234 3219</a></p>
                         </div>
                         <div className="c-info-column">
                           <div className="c-info-icon"><i className="fas fa-envelope" /></div>
-                          <h3 className="twm-title">Email</h3>
-                          <p><a href="mailto:truetouchaddis@gmail.com">truetouchaddis@gmail.com</a></p>
+                          <h3 className="twm-title">Support</h3>
+                          <p>infohelp@gmail.com</p>
+                          <p>support12@gmail.com</p>
                         </div>
                       </div>
                     </div>
@@ -789,16 +780,6 @@ function Home18Page() {
         </div>
       </div>
       {/* CONTACT US SECTION END */}
-
-      {/* PORTFOLIO FULLSCREEN MODAL */}
-      {fullscreenImage && (
-        <div className="portfolio-fullscreen-overlay" onClick={closeFullscreenImage}>
-          <div className="portfolio-fullscreen-container" onClick={(e) => e.stopPropagation()}>
-            <button className="portfolio-close-btn" onClick={closeFullscreenImage}>×</button>
-            <img src={fullscreenImage} alt="Portfolio fullscreen" className="portfolio-fullscreen-image" />
-          </div>
-        </div>
-      )}
 
       {/* CANDIDATE CV MODAL */}
       {selectedCandidate && (
@@ -819,7 +800,7 @@ function Home18Page() {
                 {/* CV Header Section */}
                 <div className="cv-header-section">
                   <div className="cv-photo-container">
-                    <JobZImage src={getCandidateProfilePictureUrl(candidateDetails.profile_picture) || getCandidateProfilePictureUrl(selectedCandidate.profile_picture) || "/assets/images/candidates/pic1.jpg"} alt={candidateDetails.name} className="cv-profile-photo" />
+                    <JobZImage src={getCandidateProfilePictureUrl(candidateDetails.profile_picture) || getCandidateProfilePictureUrl(selectedCandidate.profile_picture) || "images/candidates/pic1.jpg"} alt={candidateDetails.name} className="cv-profile-photo" />
                   </div>
                   <div className="cv-header-info">
                     <h1 className="cv-candidate-name">{candidateDetails.name}</h1>
