@@ -515,7 +515,7 @@ function Home18Page() {
                             <div className="twm-top-section-content">
                               <div className="twm-media">
                                 <div className="twm-media-pic">
-                                  <JobZImage src={getCandidateProfilePictureUrl(candidate.profile_picture) || "images/candidates/pic1.jpg"} alt={candidate.full_name} />
+                                  <JobZImage src={getCandidateProfilePictureUrl(candidate.profile_picture) || "/assets/images/candidates/pic1.jpg"} alt={candidate.full_name} />
                                 </div>
                               </div>
                               <div className="twm-mid-content">
@@ -819,7 +819,7 @@ function Home18Page() {
                 {/* CV Header Section */}
                 <div className="cv-header-section">
                   <div className="cv-photo-container">
-                    <JobZImage src={getCandidateProfilePictureUrl(candidateDetails.profile_picture) || getCandidateProfilePictureUrl(selectedCandidate.profile_picture) || "images/candidates/pic1.jpg"} alt={candidateDetails.name} className="cv-profile-photo" />
+                    <JobZImage src={getCandidateProfilePictureUrl(candidateDetails.profile_picture) || getCandidateProfilePictureUrl(selectedCandidate.profile_picture) || "/assets/images/candidates/pic1.jpg"} alt={candidateDetails.name} className="cv-profile-photo" />
                   </div>
                   <div className="cv-header-info">
                     <h1 className="cv-candidate-name">{candidateDetails.name}</h1>
