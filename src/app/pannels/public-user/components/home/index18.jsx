@@ -415,6 +415,79 @@ function Home18Page() {
       </div>
       {/* GET JOBS SECTION SECTION END */}
 
+      {}
+      <div className="section-full p-t120 p-b90 site-bg-light-purple">
+        <div className="container">
+          {/* title="" START*/}
+          <div className="section-head center wt-small-separator-outer">
+            <div className="wt-small-separator site-text-primary">
+              <div>Our Portfolio</div>
+            </div>
+          </div>
+          {/* title="" END*/}
+          <div className="section-content">
+            <div className="twm-blog-post-3-outer-wrap">
+              <div className="row d-flex justify-content-center">
+                <div className="col-lg-4 col-md-6 col-sm-12">
+                  {/*Block one*/}
+                  <div className="blog-post twm-blog-post-3-outer">
+                    <div className="wt-post-media">
+                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="images/blog/latest/bg10.jpg" alt="" /></NavLink>
+                    </div>
+                    <div className="wt-post-info">
+                      <div className="wt-post-meta ">
+                      </div>
+                      <div className="wt-post-title ">
+                        <h4 className="post-title">
+                          <NavLink to={publicUser.blog.DETAIL}>How to convince recruiters.</NavLink>
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-4 col-md-6 col-sm-12">
+                  {/*Block two*/}
+                  <div className="blog-post twm-blog-post-3-outer">
+                    <div className="wt-post-media">
+                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="images/blog/latest/bg11.jpg" alt="" /></NavLink>
+                    </div>
+                    <div className="wt-post-info">
+                      <div className="wt-post-meta ">
+                      </div>
+                      <div className="wt-post-title ">
+                        <h4 className="post-title">
+                          <NavLink to={publicUser.blog.DETAIL}>5 things to know about the March.</NavLink>
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-4 col-md-6 col-sm-12">
+                  {/*Block three*/}
+                  <div className="blog-post twm-blog-post-3-outer">
+                    <div className="wt-post-media">
+                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="images/blog/latest/bg12.jpg" alt="" /></NavLink>
+                    </div>
+                    <div className="wt-post-info">
+                      <div className="wt-post-meta ">
+                      </div>
+                      <div className="wt-post-title ">
+                        <h4 className="post-title">
+                          <NavLink to={publicUser.blog.DETAIL}>Job Board is the most important</NavLink>
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* OUR Portfolio END */}
+
+
+
       {/* CANDIDATES START */}
       <div id="candidates" className="section-full p-t120 p-b90 site-bg-white twm-candidate-h-page7-wrap pos-relative ">
         <div className="container">
