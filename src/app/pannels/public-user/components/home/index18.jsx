@@ -126,7 +126,7 @@ function Home18Page() {
   return (
     <>
       <Toaster position="top-right" richColors />
-      <div className="twm-home18-banner-section">
+      <div id="home" className="twm-home18-banner-section">
         <div className="row" style={{ backgroundImage: `url(${publicUrlFor("images/home-18/banner/dot-map.png")})` }}>
           {/*Left Section*/}
           <div className="col-xl-6 col-lg-6 col-md-12">
@@ -420,7 +420,7 @@ function Home18Page() {
       {}
 
       {/* Portfolio SECTION START */}
-      <div className="section-full p-t120 p-b90 site-bg-white twm-featured-city-carousal-area">
+      <div id="portfolio" className="section-full p-t120 p-b90 site-bg-white twm-featured-city-carousal-area">
         <div className="container">
           {/* title="" START*/}
           <div className="wt-separator-two-part ">

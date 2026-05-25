@@ -50,9 +50,9 @@ function Footer1() {
                                         <div className="widget widget_services ftr-list-center">
                                             <h3 className="widget-title">For Employers</h3>
                                             <ul>
-                                                <li><NavLink to={publicUser.HOME18}>Home</NavLink></li>
-                                                <li><NavLink to={publicUser.pages.ABOUT}>About Us</NavLink></li>
-                                                <li><NavLink to={publicUser.pages.CONTACT}>Contact Us</NavLink></li>
+                                                <li><a href="#home">Home</a></li>
+                                                <li><a href="#get-jobs">About Us</a></li>
+                                                <li><a href="#contact-us">Contact Us</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -60,9 +60,9 @@ function Footer1() {
                                         <div className="widget widget_services ftr-list-center">
                                             <h3 className="widget-title">Helpful Resources</h3>
                                             <ul>
-                                                <li><NavLink to={publicUser.HOME18}>Portfolio</NavLink></li>
-                                                <li><NavLink to={publicUser.candidate.LIST}>Candidates</NavLink></li>
-                                                <li><NavLink to={publicUser.jobs.LIST}>Vacancies</NavLink></li>
+                                                <li><a href="#portfolio">Portfolio</a></li>
+                                                <li><a href="#candidates">Candidates</a></li>
+                                                <li><a href="#our-blogs">Vacancies</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -70,10 +70,10 @@ function Footer1() {
                                         <div className="widget widget_services ftr-list-center">
                                             <h3 className="widget-title">Quick Links</h3>
                                             <ul>
-                                                <li><NavLink to={publicUser.HOME18}>Home</NavLink></li>
-                                                <li><NavLink to={publicUser.pages.ABOUT}>About Us</NavLink></li>
-                                                <li><NavLink to={publicUser.candidate.LIST}>Candidates</NavLink></li>
-                                                <li><NavLink to={publicUser.pages.CONTACT}>Contact Us</NavLink></li>
+                                                <li><a href="#home">Home</a></li>
+                                                <li><a href="#get-jobs">About Us</a></li>
+                                                <li><a href="#candidates">Candidates</a></li>
+                                                <li><a href="#contact-us">Contact Us</a></li>
                                             </ul>
                                         </div>
                                     </div>
