@@ -435,7 +435,7 @@ function Home18Page() {
                 {/* title="" END*/}
               </div>
               <div className="col-xl-7 col-lg-7 col-md-12 wt-separator-two-part-right text-right">
-                <NavLink to={publicUser.jobs.LIST} className=" site-button">View All Locations</NavLink>
+                <NavLink to={publicUser.jobs.LIST} className=" site-button">View All Portfolios</NavLink>
               </div>
             </div>
           </div>
