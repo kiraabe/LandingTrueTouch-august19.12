@@ -768,14 +768,17 @@ function Home18Page() {
                         <div className="c-info-column">
                           <div className="c-info-icon custome-size"><i className="fas fa-mobile-alt" /></div>
                           <h3 className="twm-title">Feel free to contact us</h3>
-                          <p><a href="tel:+216-761-8331">+2 900 234 4241</a></p>
-                          <p><a href="tel:+216-761-8331">+2 900 234 3219</a></p>
+                          <p><a href="tel:+251911208322">+251 91 120 8322</a></p>
                         </div>
                         <div className="c-info-column">
                           <div className="c-info-icon"><i className="fas fa-envelope" /></div>
                           <h3 className="twm-title">Support</h3>
-                          <p>infohelp@gmail.com</p>
-                          <p>support12@gmail.com</p>
+                          <p><a href="mailto:truetouchaddis@gmail.com">truetouchaddis@gmail.com</a></p>
+                        </div>
+                        <div className="c-info-column">
+                          <div className="c-info-icon"><i className="fas fa-file-alt" /></div>
+                          <h3 className="twm-title">Commercial Registration</h3>
+                          <p>MT/AA/14/673/2513971/2011</p>
                         </div>
                       </div>
                     </div>
