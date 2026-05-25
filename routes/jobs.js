@@ -3,6 +3,18 @@ const pool = require('../db');
 
 const router = express.Router();
 
+// Debug endpoint to check jobs table structure
+router.get('/jobs/debug', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT column_name FROM information_schema.columns WHERE table_name = $1', ['jobs']);
+    console.log('Jobs table columns:', result.rows);
+    res.json({ columns: result.rows });
+  } catch (error) {
+    console.error('✗ Error:', error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 router.get('/jobs/latest', async (req, res) => {
   try {
     // Check if jobs table exists
