@@ -437,11 +437,6 @@ function Home18Page() {
                     <div className="wt-post-info">
                       <div className="wt-post-meta ">
                       </div>
-                      <div className="wt-post-title ">
-                        <h4 className="post-title">
-                          <NavLink to={publicUser.blog.DETAIL}>How to convince recruiters.</NavLink>
-                        </h4>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -454,11 +449,6 @@ function Home18Page() {
                     <div className="wt-post-info">
                       <div className="wt-post-meta ">
                       </div>
-                      <div className="wt-post-title ">
-                        <h4 className="post-title">
-                          <NavLink to={publicUser.blog.DETAIL}>5 things to know about the March.</NavLink>
-                        </h4>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -470,11 +460,6 @@ function Home18Page() {
                     </div>
                     <div className="wt-post-info">
                       <div className="wt-post-meta ">
-                      </div>
-                      <div className="wt-post-title ">
-                        <h4 className="post-title">
-                          <NavLink to={publicUser.blog.DETAIL}>Job Board is the most important</NavLink>
-                        </h4>
                       </div>
                     </div>
                   </div>
