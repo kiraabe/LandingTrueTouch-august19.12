@@ -510,7 +510,7 @@ function Home18Page() {
                                 </div>
                               </div>
                               <div className="twm-mid-content">
-                                <div className="twm-candidates-tag"><span>{candidate.status || 'Featured'}</span></div>
+                                <div className="twm-candidates-tag"><span>{candidate.status}</span></div>
                                 <button onClick={() => openCandidateModal(candidate)} className="twm-job-title" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
                                   <h4>{candidate.full_name}</h4>
                                 </button>
@@ -519,7 +519,7 @@ function Home18Page() {
                             </div>
                             <div className="twm-fot-content">
                               <div className="twm-left-info">
-                                <p className="twm-candidate-address"><i className="feather-map-pin" />{candidate.location || "New York"}</p>
+                                <p className="twm-candidate-address"><i className="feather-map-pin" />{candidate.current_location}</p>
                                 <div className="twm-jobs-vacancies">{candidate.hourly_rate}</div>
                               </div>
                               <div className="twm-action-buttons" style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
