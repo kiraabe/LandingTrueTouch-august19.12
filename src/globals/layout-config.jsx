@@ -8,25 +8,8 @@ import { publicUser } from "./route-names"
 
 export function showFloatingMenus(currentpath) {
     switch (currentpath) {
-        case publicUser.HOME1:
-        case publicUser.HOME2:
-        case publicUser.HOME3:
-        case publicUser.HOME4:
-        case publicUser.HOME5:
-        case publicUser.HOME6:
-        case publicUser.HOME7:
-        case publicUser.HOME8:
-        case publicUser.HOME9:
-        case publicUser.HOME10:
-        case publicUser.HOME11:
-        case publicUser.HOME12:
-        case publicUser.HOME13:
-        case publicUser.HOME14:
-        case publicUser.HOME15:
-        case publicUser.HOME16:
-        case publicUser.HOME17:
         case publicUser.HOME18:
-            return true;
+            return false;
         default:
             return false;
     }
