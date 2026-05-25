@@ -27,16 +27,28 @@ router.get('/jobs/latest', async (req, res) => {
       return res.json([]);
     }
 
+    // Get all columns from jobs table
+    const columnsResult = await pool.query(
+      "SELECT column_name FROM information_schema.columns WHERE table_name = 'jobs' ORDER BY ordinal_position"
+    );
+    const columns = columnsResult.rows.map(row => row.column_name);
+    console.log('✓ Jobs table columns:', columns);
+
+    // Fetch all data from jobs table (we'll transform it on the backend)
     const limit = req.query.limit || 3;
     const result = await pool.query(
-      'SELECT id, title, author, created_at, image_url FROM jobs ORDER BY created_at DESC LIMIT $1',
+      'SELECT * FROM jobs ORDER BY created_at DESC LIMIT $1',
       [limit]
     );
     console.log('✓ Fetched latest jobs, count:', result.rows.length);
+    if (result.rows.length > 0) {
+      console.log('✓ Sample job keys:', Object.keys(result.rows[0]));
+      console.log('✓ Sample job data:', result.rows[0]);
+    }
     res.json(result.rows);
   } catch (error) {
     console.error('✗ Database query error:', error.message);
-    res.status(500).json({ error: 'Failed to fetch jobs' });
+    res.status(500).json({ error: 'Failed to fetch jobs', details: error.message });
   }
 });
 
