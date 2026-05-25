@@ -462,16 +462,6 @@ function Home18Page() {
                                             <p>95% Completed</p>
                                         </div>
                                     </div>
-                                    <div className="twm-profile-card bounce2">
-                                        <div className="twm-profile-pic"><JobZImage src="images/home-7/img-bx/pic3.jpg" alt="#" /></div>
-                                        <div className="twm-profile-info">
-                                            <h4 className="twm-profile-name">
-                                                Devid Smith
-                                            </h4>
-                                            <div className="twm-profile-position">UI/UX Designer</div>
-                                            <a className="site-button-link underline">Hire Me!</a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
