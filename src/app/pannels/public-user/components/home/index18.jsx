@@ -519,7 +519,7 @@ function Home18Page() {
                             </div>
                             <div className="twm-fot-content">
                               <div className="twm-left-info">
-                                <p className="twm-candidate-address"><i className="feather-map-pin" />{candidate.current_location}</p>
+                                <p className="twm-candidate-address"><i className="feather-map-pin" />{candidate.location || "New York"}</p>
                                 <div className="twm-jobs-vacancies">{candidate.hourly_rate}</div>
                               </div>
                               <div className="twm-action-buttons" style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
