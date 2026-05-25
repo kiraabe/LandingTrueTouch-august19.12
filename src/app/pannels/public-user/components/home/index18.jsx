@@ -827,11 +827,6 @@ function Home18Page() {
                           <h3 className="twm-title">Support</h3>
                           <p><a href="mailto:truetouchaddis@gmail.com">truetouchaddis@gmail.com</a></p>
                         </div>
-                        <div className="c-info-column">
-                          <div className="c-info-icon"><i className="fas fa-file-alt" /></div>
-                          <h3 className="twm-title">Commercial Registration</h3>
-                          <p>MT/AA/14/673/2513971/2011</p>
-                        </div>
                       </div>
                     </div>
                   </div>
