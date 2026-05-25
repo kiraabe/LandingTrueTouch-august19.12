@@ -2,17 +2,11 @@ import JobZImage from "../../../../common/jobz-img";
 import { loadScript, publicUrlFor, updateSkinStyle } from "../../../../../globals/constants";
 import { publicUser } from "../../../../../globals/route-names";
 import { showErrorToast } from "../../../../../globals/error-handler";
-import { getCandidateProfilePictureUrl, getCandidateCvUrl } from "../../../../../globals/file-url";
+import { getCandidateProfilePictureUrl, getCandidateCvUrl, getJobImageUrl } from "../../../../../globals/file-url";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
 import "./cv-modal.css";
-
-const getJobImageUrl = (imagePath) => {
-  if (!imagePath) return '';
-  const fileServerUrl = import.meta.env.VITE_FILE_SERVER_URL;
-  return `${fileServerUrl}/uploads/${imagePath}`;
-};
 
 function Home18Page() {
   const [candidates, setCandidates] = useState([]);
