@@ -56,7 +56,7 @@ function Home18Page() {
     const fetchBlogs = async () => {
       try {
         setBlogsLoading(true);
-        const response = await fetch('/api/blogs/latest?limit=3', {
+        const response = await fetch('/api/jobs?limit=3', {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
         });
@@ -598,14 +598,14 @@ function Home18Page() {
                       <div className="blog-post twm-blog-post-1-outer">
                         <div className="wt-post-media">
                           <NavLink to={publicUser.blog.DETAIL}>
-                            <JobZImage src={blog.image_url} alt={blog.title} />
+                            <JobZImage src={blog['wt-post-media']} alt={blog.title} />
                           </NavLink>
                         </div>
                         <div className="wt-post-info">
                           <div className="wt-post-meta">
                             <ul>
                               <li className="post-date">
-                                {new Date(blog.created_at).toLocaleDateString('en-US', {
+                                {new Date(blog['created_at']).toLocaleDateString('en-US', {
                                   year: 'numeric',
                                   month: 'long',
                                   day: '2-digit'
