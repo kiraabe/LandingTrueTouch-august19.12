@@ -8,6 +8,12 @@ import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
 import "./cv-modal.css";
 
+const getJobImageUrl = (imagePath) => {
+  if (!imagePath) return '';
+  const fileServerUrl = import.meta.env.VITE_FILE_SERVER_URL;
+  return `${fileServerUrl}/uploads/${imagePath}`;
+};
+
 function Home18Page() {
   const [candidates, setCandidates] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -598,7 +604,7 @@ function Home18Page() {
                       <div className="blog-post twm-blog-post-1-outer">
                         <div className="wt-post-media">
                           <NavLink to={publicUser.blog.DETAIL}>
-                            <JobZImage src={blog.image_url} alt={blog.title} />
+                            <JobZImage src={getJobImageUrl(blog.image_url)} alt={blog.title} />
                           </NavLink>
                         </div>
                         <div className="wt-post-info">
