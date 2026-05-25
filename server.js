@@ -29,6 +29,13 @@ try {
   console.error('Error loading blogs router:', error);
 }
 
+try {
+  const jobsRouter = require('./routes/jobs');
+  app.use('/api', jobsRouter);
+} catch (error) {
+  console.error('Error loading jobs router:', error);
+}
+
 const PORT = process.env.PORT || 5000;
 const isDev = process.env.NODE_ENV !== 'production';
 
