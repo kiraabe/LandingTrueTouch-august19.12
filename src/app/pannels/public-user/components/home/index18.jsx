@@ -430,7 +430,7 @@ function Home18Page() {
                   <div className="wt-small-separator site-text-primary">
                     <div>Our Portfolio</div>
                   </div>
-                  <h2 className="wt-title">Find your favourite jobs and get.</h2>
+                  <h2 className="wt-title">Our Portfolio Projects.</h2>
                 </div>
                 {/* title="" END*/}
               </div>
