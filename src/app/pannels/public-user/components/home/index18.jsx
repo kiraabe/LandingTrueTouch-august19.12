@@ -287,135 +287,130 @@ function Home18Page() {
       </div>
       {/* FEATURED SECTION END */}
 
+
       {/* GET JOBS SECTION START */}
-      <div id="get-jobs" className="section-full site-bg-white h-page6-getjobs-wrap">
-        <div className="h-page6-client-slider-outer">
-          <div className="container">
-            <div className="h-page6-client-slider">
-              <div className="row">
-                <div className="col-xl-4 col-lg-12">
-                  <div className="h-page-6-client-slide-title">
-                    Trusted by more than <span className="site-text-primary">+100 companies</span>
-                  </div>
-                </div>
-                <div className="col-xl-8 col-lg-12">
-                  <div className="owl-carousel home-client-carousel6 owl-btn-vertical-center">
-                    <div className="item">
-                      <div className="ow-client-logo">
-                        <div className="client-logo client-logo-media">
-                          <NavLink to={publicUser.employer.LIST}><JobZImage src="images/client-logo2/w1.png" alt="" /></NavLink></div>
-                      </div>
-                    </div>
-                    <div className="item">
-                      <div className="ow-client-logo">
-                        <div className="client-logo client-logo-media">
-                          <NavLink to={publicUser.employer.LIST}><JobZImage src="images/client-logo2/w2.png" alt="" /></NavLink></div>
-                      </div>
-                    </div>
-                    <div className="item">
-                      <div className="ow-client-logo">
-                        <div className="client-logo client-logo-media">
-                          <NavLink to={publicUser.employer.LIST}><JobZImage src="images/client-logo2/w3.png" alt="" /></NavLink></div>
-                      </div>
-                    </div>
-                    <div className="item">
-                      <div className="ow-client-logo">
-                        <div className="client-logo client-logo-media">
-                          <NavLink to={publicUser.employer.LIST}><JobZImage src="images/client-logo2/w4.png" alt="" /></NavLink></div>
-                      </div>
-                    </div>
-                    <div className="item">
-                      <div className="ow-client-logo">
-                        <div className="client-logo client-logo-media">
-                          <NavLink to={publicUser.employer.LIST}><JobZImage src="images/client-logo2/w5.png" alt="" /></NavLink></div>
-                      </div>
-                    </div>
-                    <div className="item">
-                      <div className="ow-client-logo">
-                        <div className="client-logo client-logo-media">
-                          <NavLink to={publicUser.employer.LIST}><JobZImage src="images/client-logo2/w6.png" alt="" /></NavLink></div>
-                      </div>
-                    </div>
-                    <div className="item">
-                      <div className="ow-client-logo">
-                        <div className="client-logo client-logo-media">
-                          <NavLink to={publicUser.employer.LIST}><JobZImage src="images/client-logo2/w1.png" alt="" /></NavLink></div>
-                      </div>
-                    </div>
-                    <div className="item">
-                      <div className="ow-client-logo">
-                        <div className="client-logo client-logo-media">
-                          <NavLink to={publicUser.employer.LIST}><JobZImage src="images/client-logo2/w2.png" alt="" /></NavLink></div>
-                      </div>
-                    </div>
-                    <div className="item">
-                      <div className="ow-client-logo">
-                        <div className="client-logo client-logo-media">
-                          <NavLink to={publicUser.employer.LIST}><JobZImage src="images/client-logo2/w3.png" alt="" /></NavLink></div>
-                      </div>
-                    </div>
-                    <div className="item">
-                      <div className="ow-client-logo">
-                        <div className="client-logo client-logo-media">
-                          <NavLink to={publicUser.employer.LIST}><JobZImage src="images/client-logo2/w5.png" alt="" /></NavLink></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+<div id="get-jobs" className="section-full site-bg-white h-page6-getjobs-wrap">
+  <div className="h-page6-client-slider-outer">
+    <div className="container">
+      <div className="h-page6-client-slider">
+        <div className="row">
+          <div className="col-xl-4 col-lg-12">
+            <div className="h-page-6-client-slide-title">
+              Trusted by more than <span className="site-text-primary">+50 Employers</span>
             </div>
           </div>
-        </div>
-        <div className="container">
-          <div className="h-page-6-getjobs-wrap">
-            <div className="row">
-              <div className="col-lg-7 col-md-12">
-                <div className="h-page-6-getjobs-left">
-                  <div className="twm-media">
-                    <JobZImage src="images/home-6/get-job-pic.png" alt="#" />
-                    <div className="twm-media-bg-circle" />
-                    <div className="twm-media-bg-circle2" />
-                    <div className="twm-media-bg-circle3">
-                      <div className="rotate-center">
-                        <span className="ring1" />
-                        <span className="ring2" />
-                        <span className="ring3" />
-                      </div>
-                    </div>
-                  </div>
+          <div className="col-xl-8 col-lg-12">
+            <div className="owl-carousel home-client-carousel6 owl-btn-vertical-center">
+              <div className="item">
+                <div className="ow-client-logo">
+                  <div className="client-logo client-logo-media">
+                    <NavLink to={publicUser.employer.LIST}><JobZImage src="images/client-logo2/w1.png" alt="" /></NavLink></div>
                 </div>
               </div>
-              <div className="col-lg-5 col-md-12">
-                <div className="h-page-6-getjobs-right">
-                  {/* title="" START*/}
-                  <div className="section-head left wt-small-separator-outer">
-                    <div className="wt-small-separator site-text-primary">
-                      <div>Get Jobs</div>
-                    </div>
-                    <h2 className="wt-title">Get World <span className="site-text-primary">1500+</span>
-                      Talented People in
-                      one place
-                    </h2>
-                    <p>You need to create an account to find the best and preferred job. lorem
-                      Ipsum is simply dummy text of the printing and typesetting industry
-                      the standard dummy text ever took.
-                    </p>
-                    <p>Find the best and preferred job. lorem
-                      Ipsum is simply dummy text of the printing and typesetting industry
-                      the standard dummy text ever since the  when an printer took.
-                    </p>
-                  </div>
-                  {/* title="" END*/}
-                  <div className="twm-read-more">
-                    <NavLink to={publicUser.pages.ABOUT} className="site-button">About More</NavLink>
-                  </div>
+              <div className="item">
+                <div className="ow-client-logo">
+                  <div className="client-logo client-logo-media">
+                    <NavLink to={publicUser.employer.LIST}><JobZImage src="images/client-logo2/w2.png" alt="" /></NavLink></div>
+                </div>
+              </div>
+              <div className="item">
+                <div className="ow-client-logo">
+                  <div className="client-logo client-logo-media">
+                    <NavLink to={publicUser.employer.LIST}><JobZImage src="images/client-logo2/w3.png" alt="" /></NavLink></div>
+                </div>
+              </div>
+              <div className="item">
+                <div className="ow-client-logo">
+                  <div className="client-logo client-logo-media">
+                    <NavLink to={publicUser.employer.LIST}><JobZImage src="images/client-logo2/w4.png" alt="" /></NavLink></div>
+                </div>
+              </div>
+              <div className="item">
+                <div className="ow-client-logo">
+                  <div className="client-logo client-logo-media">
+                    <NavLink to={publicUser.employer.LIST}><JobZImage src="images/client-logo2/w5.png" alt="" /></NavLink></div>
+                </div>
+              </div>
+              <div className="item">
+                <div className="ow-client-logo">
+                  <div className="client-logo client-logo-media">
+                    <NavLink to={publicUser.employer.LIST}><JobZImage src="images/client-logo2/w6.png" alt="" /></NavLink></div>
+                </div>
+              </div>
+              <div className="item">
+                <div className="ow-client-logo">
+                  <div className="client-logo client-logo-media">
+                    <NavLink to={publicUser.employer.LIST}><JobZImage src="images/client-logo2/w1.png" alt="" /></NavLink></div>
+                </div>
+              </div>
+              <div className="item">
+                <div className="ow-client-logo">
+                  <div className="client-logo client-logo-media">
+                    <NavLink to={publicUser.employer.LIST}><JobZImage src="images/client-logo2/w2.png" alt="" /></NavLink></div>
+                </div>
+              </div>
+              <div className="item">
+                <div className="ow-client-logo">
+                  <div className="client-logo client-logo-media">
+                    <NavLink to={publicUser.employer.LIST}><JobZImage src="images/client-logo2/w3.png" alt="" /></NavLink></div>
+                </div>
+              </div>
+              <div className="item">
+                <div className="ow-client-logo">
+                  <div className="client-logo client-logo-media">
+                    <NavLink to={publicUser.employer.LIST}><JobZImage src="images/client-logo2/w5.png" alt="" /></NavLink></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      {/* GET JOBS SECTION SECTION END */}
+    </div>
+  </div>
+  <div className="container">
+    <div className="h-page-6-getjobs-wrap">
+      <div className="row">
+        <div className="col-lg-7 col-md-12">
+          <div className="h-page-6-getjobs-left">
+            <div className="twm-media">
+              <JobZImage src="images/home-6/get-job-pic.png" alt="#" />
+              <div className="twm-media-bg-circle" />
+              <div className="twm-media-bg-circle2" />
+              <div className="twm-media-bg-circle3">
+                <div className="rotate-center">
+                  <span className="ring1" />
+                  <span className="ring2" />
+                  <span className="ring3" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="col-lg-5 col-md-12">
+          <div className="h-page-6-getjobs-right">
+            {/* title="" START*/}
+            <div className="section-head left wt-small-separator-outer">
+              <div className="wt-small-separator site-text-primary">
+                <div>About Us</div>
+              </div>
+              <h2 className="wt-title">Your Trusted Partner for <span className="site-text-primary">Foreign Employment</span> Opportunities
+              </h2>
+              <p>True Touch Foreign Employment Recruitment Agency is dedicated to connecting skilled workers with top employers across the Middle East and beyond. We handle everything from job matching to visa processing so you can focus on your future.
+              </p>
+              <p>With years of experience in international recruitment, we have successfully placed thousands of candidates in rewarding careers abroad. Our team is committed to transparency, integrity, and your long-term success.
+              </p>
+            </div>
+            {/* title="" END*/}
+            <div className="twm-read-more">
+              <NavLink to={publicUser.pages.ABOUT} className="site-button">Learn More</NavLink>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{/* GET JOBS SECTION END */}
 
 
 
