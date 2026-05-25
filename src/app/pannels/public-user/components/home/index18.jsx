@@ -1,5 +1,6 @@
 import JobZImage from "../../../../common/jobz-img";
 import ImageLightbox from "../../../../common/image-lightbox";
+import GalleryLightbox from "../../../../common/gallery-lightbox";
 import { loadScript, publicUrlFor, updateSkinStyle } from "../../../../../globals/constants";
 import { publicUser } from "../../../../../globals/route-names";
 import { showErrorToast } from "../../../../../globals/error-handler";
@@ -441,45 +442,92 @@ function Home18Page() {
           </div>
           {/* title="" END*/}
         </div>
-        <div className="twm-featured-city-carousal-wrap">
-          <div className="owl-carousel twm-featured-city-carousal">
-            <div className="item">
-              {/*1*/}
-              <div className="twm-featured-city2">
-                <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/gallery/1.jpg")})` }}>
+        <GalleryLightbox
+          images={[
+            publicUrlFor("images/gallery/1.jpg"),
+            publicUrlFor("images/gallery/2.jpg"),
+            publicUrlFor("images/gallery/3.jpg"),
+            publicUrlFor("images/gallery/4.jpg"),
+            publicUrlFor("images/gallery/5.jpg")
+          ]}
+        >
+          {(openLightbox) => (
+            <div className="twm-featured-city-carousal-wrap">
+              <div className="owl-carousel twm-featured-city-carousal">
+                <div className="item" onClick={() => openLightbox(0)}>
+                  {/*1*/}
+                  <div className="twm-featured-city2 portfolio-card-wrapper">
+                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/gallery/1.jpg")})` }}>
+                    </div>
+                    <div className="portfolio-card-overlay">
+                      <div className="portfolio-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="item" onClick={() => openLightbox(1)}>
+                  {/*2*/}
+                  <div className="twm-featured-city2 portfolio-card-wrapper">
+                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/gallery/2.jpg")})` }}>
+                    </div>
+                    <div className="portfolio-card-overlay">
+                      <div className="portfolio-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="item" onClick={() => openLightbox(2)}>
+                  {/*3*/}
+                  <div className="twm-featured-city2 portfolio-card-wrapper">
+                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/gallery/3.jpg")})` }}>
+                    </div>
+                    <div className="portfolio-card-overlay">
+                      <div className="portfolio-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="item" onClick={() => openLightbox(3)}>
+                  {/*4*/}
+                  <div className="twm-featured-city2 portfolio-card-wrapper">
+                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/gallery/4.jpg")})` }}>
+                    </div>
+                    <div className="portfolio-card-overlay">
+                      <div className="portfolio-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="item" onClick={() => openLightbox(4)}>
+                  {/*5*/}
+                  <div className="twm-featured-city2 portfolio-card-wrapper">
+                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/gallery/5.jpg")})` }}>
+                    </div>
+                    <div className="portfolio-card-overlay">
+                      <div className="portfolio-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="item">
-              {/*2*/}
-              <div className="twm-featured-city2">
-                <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/gallery/2.jpg")})` }}>
-                </div>
-              </div>
-            </div>
-            <div className="item">
-              {/*3*/}
-              <div className="twm-featured-city2">
-                <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/gallery/3.jpg")})` }}>
-                </div>
-              </div>
-            </div>
-            <div className="item">
-              {/*4*/}
-              <div className="twm-featured-city2">
-                <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/gallery/4.jpg")})` }}>
-                </div>
-              </div>
-            </div>
-            <div className="item">
-              {/*5*/}
-              <div className="twm-featured-city2">
-                <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/gallery/5.jpg")})` }}>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          )}
+        </GalleryLightbox>
       </div>
       {/* FEATURED SECTION END */}
 

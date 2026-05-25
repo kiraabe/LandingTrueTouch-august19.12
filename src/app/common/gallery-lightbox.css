@@ -1,0 +1,366 @@
+.gallery-lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 40, 0.95) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeInOverlay 0.3s ease-in-out;
+  backdrop-filter: blur(8px);
+}
+
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.gallery-lightbox-container {
+  position: relative;
+  width: 90%;
+  height: 90vh;
+  max-width: 1400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-image-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-image-wrapper.zoomed {
+  overflow: auto;
+}
+
+.gallery-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  animation: zoomInImage 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery-image-wrapper.zoomed .gallery-image {
+  transform: scale(1.5);
+  cursor: zoom-out;
+}
+
+@keyframes zoomInImage {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Navigation Buttons */
+.gallery-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  padding: 0;
+  backdrop-filter: blur(4px);
+}
+
+.gallery-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-50%) scale(1.15);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-nav-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.gallery-nav-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2;
+}
+
+.gallery-prev {
+  left: 20px;
+}
+
+.gallery-next {
+  right: 20px;
+}
+
+/* Close Button */
+.gallery-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10002;
+  transition: all 0.3s ease;
+  padding: 0;
+  backdrop-filter: blur(4px);
+}
+
+.gallery-close:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-close:active {
+  transform: scale(0.95) rotate(90deg);
+}
+
+.gallery-close svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Zoom Button */
+.gallery-zoom-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+  transition: all 0.3s ease;
+  padding: 0;
+  backdrop-filter: blur(4px);
+}
+
+.gallery-zoom-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-zoom-btn:active {
+  transform: scale(0.95);
+}
+
+.gallery-zoom-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Image Counter */
+.gallery-counter {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+  display: flex;
+  gap: 6px;
+  z-index: 10001;
+}
+
+.gallery-counter span {
+  display: inline-block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .gallery-lightbox-container {
+    width: 95%;
+    height: 85vh;
+  }
+
+  .gallery-nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .gallery-nav-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .gallery-prev {
+    left: 10px;
+  }
+
+  .gallery-next {
+    right: 10px;
+  }
+
+  .gallery-close {
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .gallery-zoom-btn {
+    width: 40px;
+    height: 40px;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .gallery-counter {
+    bottom: 10px;
+    left: 10px;
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .gallery-image-wrapper.zoomed .gallery-image {
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-lightbox-container {
+    width: 98%;
+    height: 80vh;
+  }
+
+  .gallery-nav-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .gallery-nav-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .gallery-prev {
+    left: 5px;
+  }
+
+  .gallery-next {
+    right: 5px;
+  }
+
+  .gallery-close {
+    width: 36px;
+    height: 36px;
+    top: 5px;
+    right: 5px;
+  }
+
+  .gallery-zoom-btn {
+    width: 36px;
+    height: 36px;
+    bottom: 5px;
+    right: 5px;
+  }
+
+  .gallery-counter {
+    bottom: 5px;
+    left: 5px;
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+}
+
+/* Portfolio Card Hover Effects */
+.portfolio-card-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.portfolio-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.portfolio-card-wrapper:hover .portfolio-card-overlay {
+  opacity: 1;
+}
+
+.portfolio-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  backdrop-filter: blur(4px);
+}
+
+.portfolio-card-wrapper:hover .portfolio-icon {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2;
+}
