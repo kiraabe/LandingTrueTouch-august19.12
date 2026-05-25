@@ -417,6 +417,69 @@ function Home18Page() {
       </div>
       {/* GET JOBS SECTION SECTION END */}
 
+
+                  {/* HOW TO GET YOUR JOB SECTION START */}
+            <div className="section-full p-t120 p-b90 site-bg-light twm-how-t-get-wrap7">
+                <div className="container">
+                    <div className="twm-how-t-get-section">
+                        <div className="row">
+                            <div className="col-xl-5 col-lg-5 col-md-12">
+                                <div className="twm-how-t-get-section-left">
+                                    <div className="section-head left wt-small-separator-outer">
+                                        <div className="wt-small-separator site-text-primary">
+                                            <div>How to get your job</div>
+                                        </div>
+                                        <h2 className="wt-title">Build Your Personal Account Profile</h2>
+                                        <p>Create an account for job information that you wanted, get notification
+                                            everyday and you can easily apply directly to the company you want
+                                            create and account now for free.</p>
+                                    </div>
+                                    <div className="twm-how-t-get-bottom">
+                                        <NavLink to={publicUser.pages.ABOUT} className="site-button">Edit Profile</NavLink>
+                                        <div className="twm-left-icon-bx">
+                                            <div className="twm-left-icon-media site-bg-primary">
+                                                <i className="flaticon-bell site-text-white" />
+                                            </div>
+                                            <div className="twm-left-icon-content">
+                                                <h4 className="icon-title">New Interview</h4>
+                                                <p>You has new interview today</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-xl-7 col-lg-7 col-md-12">
+                                <div className="twm-how-t-get-section-right">
+                                    <div className="twm-media">
+                                        <JobZImage src="images/gallery/7.jpeg" alt="#" />
+                                    </div>
+                                    <div className="twm-left-img-bx bounce">
+                                        <div className="twm-left-img-media">
+                                            <JobZImage src="images/home-7/img-bx/pic1.jpg" alt="#" />
+                                        </div>
+                                        <div className="twm-left-img-content">
+                                            <h4 className="icon-title">Complete your profile</h4>
+                                            <p>95% Completed</p>
+                                        </div>
+                                    </div>
+                                    <div className="twm-profile-card bounce2">
+                                        <div className="twm-profile-pic"><JobZImage src="images/home-7/img-bx/pic3.jpg" alt="#" /></div>
+                                        <div className="twm-profile-info">
+                                            <h4 className="twm-profile-name">
+                                                Devid Smith
+                                            </h4>
+                                            <div className="twm-profile-position">UI/UX Designer</div>
+                                            <a className="site-button-link underline">Hire Me!</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* HOW TO GET YOUR JOB SECTION END */}
+
       {}
 
       {/* Portfolio SECTION START */}
