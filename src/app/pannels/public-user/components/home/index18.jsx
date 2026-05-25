@@ -423,7 +423,7 @@ function Home18Page() {
             <div className="wt-small-separator site-text-primary">
               <div>Our Portfolio</div>
             </div>
-            <h2 className="wt-title">Latest Article</h2>
+            <h2 className="wt-title">Latest Portfolios</h2>
           </div>
           {/* title="" END*/}
           <div className="section-content">
