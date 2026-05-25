@@ -428,7 +428,7 @@ function Home18Page() {
                 {/* title="" START*/}
                 <div className="section-head left wt-small-separator-outer">
                   <div className="wt-small-separator site-text-primary">
-                    <div>Jobs by location</div>
+                    <div>Our Portfolio</div>
                   </div>
                   <h2 className="wt-title">Find your favourite jobs and get.</h2>
                 </div>
