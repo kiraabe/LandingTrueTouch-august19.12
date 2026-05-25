@@ -16,6 +16,7 @@ function Home18Page() {
   const [detailsLoading, setDetailsLoading] = useState(false);
   const [blogs, setBlogs] = useState([]);
   const [blogsLoading, setBlogsLoading] = useState(true);
+  const [fullscreenImage, setFullscreenImage] = useState(null);
 
   useEffect(() => {
     updateSkinStyle("10", false, false)
@@ -119,6 +120,14 @@ function Home18Page() {
   const closeCandidateModal = () => {
     setSelectedCandidate(null);
     setCandidateDetails(null);
+  };
+
+  const openFullscreenImage = (imageSrc) => {
+    setFullscreenImage(imageSrc);
+  };
+
+  const closeFullscreenImage = () => {
+    setFullscreenImage(null);
   };
 
   return (
@@ -432,8 +441,8 @@ function Home18Page() {
                 <div className="col-lg-4 col-md-6 col-sm-12">
                   {/*Block one*/}
                   <div className="blog-post twm-blog-post-3-outer">
-                    <div className="wt-post-media">
-                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="images/gallery/1.jpg" alt="" /></NavLink>
+                    <div className="wt-post-media portfolio-image-wrapper" onClick={() => openFullscreenImage("images/gallery/1.jpg")}>
+                      <JobZImage src="images/gallery/1.jpg" alt="" />
                     </div>
                     <div className="wt-post-info">
                       <div className="wt-post-meta ">
@@ -444,8 +453,8 @@ function Home18Page() {
                 <div className="col-lg-4 col-md-6 col-sm-12">
                   {/*Block two*/}
                   <div className="blog-post twm-blog-post-3-outer">
-                    <div className="wt-post-media">
-                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="images/gallery/2.jpg" alt="" /></NavLink>
+                    <div className="wt-post-media portfolio-image-wrapper" onClick={() => openFullscreenImage("images/gallery/2.jpg")}>
+                      <JobZImage src="images/gallery/2.jpg" alt="" />
                     </div>
                     <div className="wt-post-info">
                       <div className="wt-post-meta ">
@@ -456,8 +465,8 @@ function Home18Page() {
                 <div className="col-lg-4 col-md-6 col-sm-12">
                   {/*Block three*/}
                   <div className="blog-post twm-blog-post-3-outer">
-                    <div className="wt-post-media">
-                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="images/gallery/3.jpg" alt="" /></NavLink>
+                    <div className="wt-post-media portfolio-image-wrapper" onClick={() => openFullscreenImage("images/gallery/3.jpg")}>
+                      <JobZImage src="images/gallery/3.jpg" alt="" />
                     </div>
                     <div className="wt-post-info">
                       <div className="wt-post-meta ">
@@ -780,6 +789,16 @@ function Home18Page() {
         </div>
       </div>
       {/* CONTACT US SECTION END */}
+
+      {/* PORTFOLIO FULLSCREEN MODAL */}
+      {fullscreenImage && (
+        <div className="portfolio-fullscreen-overlay" onClick={closeFullscreenImage}>
+          <div className="portfolio-fullscreen-container" onClick={(e) => e.stopPropagation()}>
+            <button className="portfolio-close-btn" onClick={closeFullscreenImage}>×</button>
+            <img src={fullscreenImage} alt="Portfolio fullscreen" className="portfolio-fullscreen-image" />
+          </div>
+        </div>
+      )}
 
       {/* CANDIDATE CV MODAL */}
       {selectedCandidate && (
