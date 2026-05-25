@@ -1,4 +1,5 @@
 import JobZImage from "../../../../common/jobz-img";
+import ImageLightbox from "../../../../common/image-lightbox";
 import { loadScript, publicUrlFor, updateSkinStyle } from "../../../../../globals/constants";
 import { publicUser } from "../../../../../globals/route-names";
 import { showErrorToast } from "../../../../../globals/error-handler";
@@ -433,7 +434,9 @@ function Home18Page() {
                   {/*Block one*/}
                   <div className="blog-post twm-blog-post-3-outer">
                     <div className="wt-post-media">
-                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="images/gallery/1.jpg" alt="" /></NavLink>
+                      <ImageLightbox src={publicUrlFor("images/gallery/1.jpg")} alt="Portfolio image 1">
+                        <JobZImage src="images/gallery/1.jpg" alt="Portfolio image 1" />
+                      </ImageLightbox>
                     </div>
                     <div className="wt-post-info">
                       <div className="wt-post-meta ">
@@ -445,7 +448,9 @@ function Home18Page() {
                   {/*Block two*/}
                   <div className="blog-post twm-blog-post-3-outer">
                     <div className="wt-post-media">
-                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="images/gallery/2.jpg" alt="" /></NavLink>
+                      <ImageLightbox src={publicUrlFor("images/gallery/2.jpg")} alt="Portfolio image 2">
+                        <JobZImage src="images/gallery/2.jpg" alt="Portfolio image 2" />
+                      </ImageLightbox>
                     </div>
                     <div className="wt-post-info">
                       <div className="wt-post-meta ">
@@ -457,7 +462,9 @@ function Home18Page() {
                   {/*Block three*/}
                   <div className="blog-post twm-blog-post-3-outer">
                     <div className="wt-post-media">
-                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="images/gallery/3.jpg" alt="" /></NavLink>
+                      <ImageLightbox src={publicUrlFor("images/gallery/3.jpg")} alt="Portfolio image 3">
+                        <JobZImage src="images/gallery/3.jpg" alt="Portfolio image 3" />
+                      </ImageLightbox>
                     </div>
                     <div className="wt-post-info">
                       <div className="wt-post-meta ">
