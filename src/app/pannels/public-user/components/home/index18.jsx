@@ -453,15 +453,6 @@ function Home18Page() {
                                     <div className="twm-media">
                                         <JobZImage src="images/gallery/7.jpeg" alt="#" />
                                     </div>
-                                    <div className="twm-left-img-bx bounce">
-                                        <div className="twm-left-img-media">
-                                            <JobZImage src="images/home-7/img-bx/pic1.jpg" alt="#" />
-                                        </div>
-                                        <div className="twm-left-img-content">
-                                            <h4 className="icon-title">Complete your profile</h4>
-                                            <p>95% Completed</p>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
