@@ -851,7 +851,7 @@ function Home18Page() {
                 {candidateDetails.resume_url && (
                   <div className="cv-section">
                     <h3 className="cv-section-title">Resume</h3>
-                    <a href={candidateDetails.resume_url} target="_blank" rel="noopener noreferrer" className="cv-resume-link">
+                    <a href={getCandidateCvUrl(candidateDetails.resume_url)} target="_blank" rel="noopener noreferrer" className="cv-resume-link" download>
                       <i className="fas fa-file-pdf"></i> Download Full Resume
                     </a>
                   </div>
