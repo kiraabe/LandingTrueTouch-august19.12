@@ -250,7 +250,7 @@ function Home18Page() {
                     <JobZImage src="images/featured-cities/city1.jpg" alt="" />
                     <div className="twm-city-info">
                       <div className="twm-city-jobs">Jobs</div>
-                      <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Saudi Arabia</NavLink></h4>
+                      <h4 className="twm-title">Saudi Arabia</h4>
                     </div>
                   </div>
                 </div>
@@ -263,7 +263,7 @@ function Home18Page() {
                         <JobZImage src="images/featured-cities/city2.jpg" alt="" />
                         <div className="twm-city-info">
                           <div className="twm-city-jobs">Jobs</div>
-                          <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Qatar</NavLink></h4>
+                          <h4 className="twm-title">Qatar</h4>
                         </div>
                       </div>
                     </div>
@@ -274,7 +274,7 @@ function Home18Page() {
                         <JobZImage src="images/featured-cities/city3.jpg" alt="" />
                         <div className="twm-city-info">
                           <div className="twm-city-jobs">Jobs</div>
-                          <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Jordan</NavLink></h4>
+                          <h4 className="twm-title">Jordan</h4>
                         </div>
                       </div>
                     </div>
@@ -429,7 +429,7 @@ function Home18Page() {
                             <p>True Touch Foreign Employment Recruitment Agency helps you find the right job abroad with full support from documentation to placement. We guide you every step of the way.</p>
                         </div>
                         <div className="twm-how-t-get-bottom">
-                            <NavLink to={publicUser.pages.ABOUT} className="site-button">Get Started</NavLink>
+                            <NavLink to={publicUser.pages.Home18Page} className="site-button">Get Started</NavLink>
                             <div className="twm-left-icon-bx">
                                 <div className="twm-left-icon-media site-bg-primary">
                                     <i className="flaticon-bell site-text-white" />
@@ -474,7 +474,7 @@ function Home18Page() {
                 {/* title="" END*/}
               </div>
               <div className="col-xl-7 col-lg-7 col-md-12 wt-separator-two-part-right text-right">
-                <NavLink to={publicUser.jobs.LIST} className=" site-button">View All Portfolios</NavLink>
+                <NavLink to={public.Home18Page} className=" site-button">View All Portfolios</NavLink>
               </div>
             </div>
           </div>
