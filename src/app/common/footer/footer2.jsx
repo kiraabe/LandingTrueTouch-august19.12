@@ -49,10 +49,9 @@ function Footer2() {
                                         <div className="widget widget_services ftr-list-center">
                                             <h3 className="widget-title">For Employers</h3>
                                             <ul>
-                                                <li><NavLink to={publicUser.blog.GRID1}>Blog Grid</NavLink></li>
-                                                <li><NavLink to={publicUser.pages.CONTACT}>Contact</NavLink></li>
-                                                <li><NavLink to={publicUser.jobs.LIST}>Jobs Listing</NavLink></li>
-                                                <li><NavLink to={publicUser.jobs.DETAIL1}>Jobs details</NavLink></li>
+                                                <li><NavLink to={publicUser.HOME18}>Home</NavLink></li>
+                                                <li><NavLink to={publicUser.pages.ABOUT}>About Us</NavLink></li>
+                                                <li><NavLink to={publicUser.pages.CONTACT}>Contact Us</NavLink></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -60,10 +59,9 @@ function Footer2() {
                                         <div className="widget widget_services ftr-list-center">
                                             <h3 className="widget-title">Helpful Resources</h3>
                                             <ul>
-                                                <li><NavLink to={publicUser.pages.FAQ}>FAQs</NavLink></li>
-                                                <li><NavLink to={publicUser.pages.LOGIN}>Profile</NavLink></li>
-                                                <li><NavLink to={publicUser.pages.ERROR404}>404 Page</NavLink></li>
-                                                <li><NavLink to={publicUser.pages.PRICING}>Pricing</NavLink></li>
+                                                <li><NavLink to={publicUser.HOME18}>Portfolio</NavLink></li>
+                                                <li><NavLink to={publicUser.candidate.LIST}>Candidates</NavLink></li>
+                                                <li><NavLink to={publicUser.jobs.LIST}>Vacancies</NavLink></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -71,10 +69,10 @@ function Footer2() {
                                         <div className="widget widget_services ftr-list-center">
                                             <h3 className="widget-title">Quick Links</h3>
                                             <ul>
-                                                <li><NavLink to={publicUser.HOME1}>Home</NavLink></li>
-                                                <li><NavLink to={publicUser.pages.ABOUT}>About us</NavLink></li>
-                                                <li><NavLink to={publicUser.jobs.GRID}>Jobs</NavLink></li>
-                                                <li><NavLink to={publicUser.employer.LIST}>Employer</NavLink></li>
+                                                <li><NavLink to={publicUser.HOME18}>Home</NavLink></li>
+                                                <li><NavLink to={publicUser.pages.ABOUT}>About Us</NavLink></li>
+                                                <li><NavLink to={publicUser.candidate.LIST}>Candidates</NavLink></li>
+                                                <li><NavLink to={publicUser.pages.CONTACT}>Contact Us</NavLink></li>
                                             </ul>
                                         </div>
                                     </div>
