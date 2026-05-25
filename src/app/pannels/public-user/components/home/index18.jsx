@@ -14,6 +14,8 @@ function Home18Page() {
   const [selectedCandidate, setSelectedCandidate] = useState(null);
   const [candidateDetails, setCandidateDetails] = useState(null);
   const [detailsLoading, setDetailsLoading] = useState(false);
+  const [blogs, setBlogs] = useState([]);
+  const [blogsLoading, setBlogsLoading] = useState(true);
 
   useEffect(() => {
     updateSkinStyle("10", false, false)
@@ -48,6 +50,33 @@ function Home18Page() {
     };
 
     fetchCandidates();
+  }, [])
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        setBlogsLoading(true);
+        const response = await fetch('/api/blogs/latest?limit=3', {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        console.log('✅ Blogs loaded:', data.length);
+        setBlogs(data);
+      } catch (err) {
+        console.error('❌ Error fetching blogs:', err);
+        showErrorToast(err, 'Failed to load blogs. Please try again later.');
+      } finally {
+        setBlogsLoading(false);
+      }
+    };
+
+    fetchBlogs();
   }, [])
 
   const openCandidateModal = async (candidate) => {
@@ -557,99 +586,53 @@ function Home18Page() {
           </div>
           {/* title="" END*/}
           <div className="section-content">
-            <div className="twm-blog-post-1-outer-wrap">
-              <div className="owl-carousel twm-la-home-blog owl-btn-bottom-center">
-                <div className="item">
-                  {/*Block one*/}
-                  <div className="blog-post twm-blog-post-1-outer">
-                    <div className="wt-post-media">
-                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="images/blog/latest/bg1.jpg" alt="" /></NavLink>
-                    </div>
-                    <div className="wt-post-info">
-                      <div className="wt-post-meta ">
-                        <ul>
-                          <li className="post-date">March 05, 2023</li>
-                          <li className="post-author">By <NavLink to={publicUser.candidate.DETAIL1}>Mark Petter</NavLink></li>
-                        </ul>
-                      </div>
-                      <div className="wt-post-title ">
-                        <h4 className="post-title">
-                          <NavLink to={publicUser.blog.DETAIL}>How to convince recruiters and get your dream job</NavLink>
-                        </h4>
-                      </div>
-                      <div className="wt-post-text ">
-                        <p>
-                          New chip traps clusters of migrating tumor cells asperiortenetur, blanditiis odit.
-                        </p>
-                      </div>
-                      <div className="wt-post-readmore ">
-                        <NavLink to={publicUser.blog.DETAIL} className="site-button-link site-text-primary">Read More</NavLink>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="item">
-                  {/*Block two*/}
-                  <div className="blog-post twm-blog-post-1-outer">
-                    <div className="wt-post-media">
-                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="images/blog/latest/bg2.jpg" alt="" /></NavLink>
-                    </div>
-                    <div className="wt-post-info">
-                      <div className="wt-post-meta ">
-                        <ul>
-                          <li className="post-date">March 05, 2023</li>
-                          <li className="post-author">By <NavLink to={publicUser.candidate.DETAIL1}>David Wish</NavLink></li>
-                        </ul>
-                      </div>
-                      <div className="wt-post-title ">
-                        <h4 className="post-title">
-                          <NavLink to={publicUser.blog.DETAIL}>5 things to know about the March
-                            2023 jobs report</NavLink>
-                        </h4>
-                      </div>
-                      <div className="wt-post-text ">
-                        <p>
-                          New chip traps clusters of migrating tumor cells asperiortenetur, blanditiis odit.
-                        </p>
-                      </div>
-                      <div className="wt-post-readmore ">
-                        <NavLink to={publicUser.blog.DETAIL} className="site-button-link site-text-primary">Read More</NavLink>
+            {blogsLoading ? (
+              <div className="text-center p-5">
+                <p>Loading blogs...</p>
+              </div>
+            ) : blogs.length > 0 ? (
+              <div className="twm-blog-post-1-outer-wrap">
+                <div className="owl-carousel twm-la-home-blog owl-btn-bottom-center">
+                  {blogs.map((blog) => (
+                    <div key={blog.id} className="item">
+                      <div className="blog-post twm-blog-post-1-outer">
+                        <div className="wt-post-media">
+                          <NavLink to={publicUser.blog.DETAIL}>
+                            <JobZImage src={blog.image_url} alt={blog.title} />
+                          </NavLink>
+                        </div>
+                        <div className="wt-post-info">
+                          <div className="wt-post-meta">
+                            <ul>
+                              <li className="post-date">
+                                {new Date(blog.created_at).toLocaleDateString('en-US', {
+                                  year: 'numeric',
+                                  month: 'long',
+                                  day: '2-digit'
+                                })}
+                              </li>
+                              <li className="post-author">By {blog.author}</li>
+                            </ul>
+                          </div>
+                          <div className="wt-post-title">
+                            <h4 className="post-title">
+                              <NavLink to={publicUser.blog.DETAIL}>{blog.title}</NavLink>
+                            </h4>
+                          </div>
+                          <div className="wt-post-readmore">
+                            <NavLink to={publicUser.blog.DETAIL} className="site-button-link site-text-primary">Read More</NavLink>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div className="item">
-                  {/*Block three*/}
-                  <div className="blog-post twm-blog-post-1-outer">
-                    <div className="wt-post-media">
-                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="images/blog/latest/bg3.jpg" alt="" /></NavLink>
-                    </div>
-                    <div className="wt-post-info">
-                      <div className="wt-post-meta ">
-                        <ul>
-                          <li className="post-date">March 05, 2023</li>
-                          <li className="post-author">By <NavLink to={publicUser.candidate.DETAIL1}>Mike Doe</NavLink></li>
-                        </ul>
-                      </div>
-                      <div className="wt-post-title ">
-                        <h4 className="post-title">
-                          <NavLink to={publicUser.blog.DETAIL}>Job Board is the most important
-                            sector in the world</NavLink>
-                        </h4>
-                      </div>
-                      <div className="wt-post-text ">
-                        <p>
-                          New chip traps clusters of migrating tumor cells asperiortenetur, blanditiis odit.
-                        </p>
-                      </div>
-                      <div className="wt-post-readmore ">
-                        <NavLink to={publicUser.blog.DETAIL} className="site-button-link site-text-primary">Read More</NavLink>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
-            </div>
+            ) : (
+              <div className="text-center p-5">
+                <p>No blogs available</p>
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -22,6 +22,13 @@ try {
   console.error('Error loading candidates router:', error);
 }
 
+try {
+  const blogsRouter = require('./routes/blogs');
+  app.use('/api', blogsRouter);
+} catch (error) {
+  console.error('Error loading blogs router:', error);
+}
+
 const PORT = process.env.PORT || 5000;
 const isDev = process.env.NODE_ENV !== 'production';
 
