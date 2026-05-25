@@ -520,7 +520,7 @@ function Home18Page() {
                             <div className="twm-fot-content">
                               <div className="twm-left-info">
                                 <p className="twm-candidate-address"><i className="feather-map-pin" />{candidate.location || "New York"}</p>
-                                <div className="twm-jobs-vacancies">{candidate.date_of_birth}</div>
+                                <div className="twm-jobs-vacancies">{candidate.hourly_rate}</div>
                               </div>
                               <div className="twm-action-buttons" style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
                                 <button onClick={() => openCandidateModal(candidate)} className="site-button" style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px', cursor: 'pointer' }}>View Profile</button>
