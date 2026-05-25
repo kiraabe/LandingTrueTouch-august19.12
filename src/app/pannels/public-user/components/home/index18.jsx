@@ -764,20 +764,20 @@ function Home18Page() {
                       <div className="contact-info-section">
                         <div className="c-info-column">
                           <div className="c-info-icon"><i className="fas fa-map-marker-alt" /></div>
-                          <h3 className="twm-title">In the bay area?</h3>
-                          <p>1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                          <h3 className="twm-title">Our Location</h3>
+                          <p>Addis Ababa, Ethiopia</p>
+                          <p><small>Commercial Registration Number</small></p>
+                          <p><small>MT/AA/14/673/2513971/2011</small></p>
                         </div>
                         <div className="c-info-column">
                           <div className="c-info-icon custome-size"><i className="fas fa-mobile-alt" /></div>
                           <h3 className="twm-title">Feel free to contact us</h3>
-                          <p><a href="tel:+216-761-8331">+2 900 234 4241</a></p>
-                          <p><a href="tel:+216-761-8331">+2 900 234 3219</a></p>
+                          <p><a href="tel:+251911208322">+251 91 120 8322</a></p>
                         </div>
                         <div className="c-info-column">
                           <div className="c-info-icon"><i className="fas fa-envelope" /></div>
-                          <h3 className="twm-title">Support</h3>
-                          <p>infohelp@gmail.com</p>
-                          <p>support12@gmail.com</p>
+                          <h3 className="twm-title">Email</h3>
+                          <p><a href="mailto:truetouchaddis@gmail.com">truetouchaddis@gmail.com</a></p>
                         </div>
                       </div>
                     </div>
