@@ -616,7 +616,7 @@ All JavaScript fuctions Start
 	//  Latest Article Blogs Carousel function by = owl.carousel.js ========================== //
 	function twm_la_home_blog() {
 		jQuery('.twm-la-home-blog').owlCarousel({
-			loop: true,
+			loop: false,
 			nav: true,
 			dots: false,
 			margin: 30,
