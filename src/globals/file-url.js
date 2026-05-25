@@ -2,7 +2,9 @@ const FILE_SERVER_URL = import.meta.env.VITE_FILE_SERVER_URL || 'https://truetou
 
 export const constructFileUrl = (relativePath) => {
   if (!relativePath) return null;
-  return `${FILE_SERVER_URL}/uploads/${relativePath}`;
+  const fullUrl = `${FILE_SERVER_URL}/uploads/${relativePath}`;
+  // Use proxy for external images to avoid CORS issues
+  return `/api/proxy-image?url=${encodeURIComponent(fullUrl)}`;
 };
 
 export const getCandidateProfilePictureUrl = (profilePicture) => {

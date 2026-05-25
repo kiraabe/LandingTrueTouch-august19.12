@@ -1,7 +1,27 @@
 const express = require('express');
 const pool = require('../db');
+const axios = require('axios');
 
 const router = express.Router();
+
+// Image proxy endpoint - serves images from external server
+router.get('/proxy-image', async (req, res) => {
+  try {
+    const { url } = req.query;
+    if (!url) {
+      return res.status(400).json({ error: 'Missing url parameter' });
+    }
+
+    const response = await axios.get(url, { responseType: 'arraybuffer' });
+    const contentType = response.headers['content-type'];
+    res.set('Content-Type', contentType);
+    res.set('Cache-Control', 'public, max-age=3600');
+    res.send(response.data);
+  } catch (error) {
+    console.error('✗ Image proxy error:', error.message);
+    res.status(500).json({ error: 'Failed to fetch image' });
+  }
+});
 
 // Specific routes BEFORE parameterized routes
 router.get('/candidates/debug', async (req, res) => {
