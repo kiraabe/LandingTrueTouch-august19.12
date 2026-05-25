@@ -433,7 +433,7 @@ function Home18Page() {
                   {/*Block one*/}
                   <div className="blog-post twm-blog-post-3-outer">
                     <div className="wt-post-media">
-                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="images/blog/latest/bg10.jpg" alt="" /></NavLink>
+                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="assets/images/gallery/1.jpg" alt="" /></NavLink>
                     </div>
                     <div className="wt-post-info">
                       <div className="wt-post-meta ">
@@ -445,7 +445,7 @@ function Home18Page() {
                   {/*Block two*/}
                   <div className="blog-post twm-blog-post-3-outer">
                     <div className="wt-post-media">
-                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="images/blog/latest/bg11.jpg" alt="" /></NavLink>
+                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="assets/images/gallery/2.jpg" alt="" /></NavLink>
                     </div>
                     <div className="wt-post-info">
                       <div className="wt-post-meta ">
@@ -457,7 +457,7 @@ function Home18Page() {
                   {/*Block three*/}
                   <div className="blog-post twm-blog-post-3-outer">
                     <div className="wt-post-media">
-                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="images/blog/latest/bg12.jpg" alt="" /></NavLink>
+                      <NavLink to={publicUser.blog.DETAIL}><JobZImage src="assets/images/gallery/3.jpg" alt="" /></NavLink>
                     </div>
                     <div className="wt-post-info">
                       <div className="wt-post-meta ">
