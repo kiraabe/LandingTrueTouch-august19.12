@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const http = require('http');
+const https = require('https');
 require('dotenv').config();
 
 const app = express();
@@ -9,6 +10,47 @@ app.use(express.json());
 
 // Serve static files for uploads
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Image proxy endpoint for external URLs
+app.get('/proxy', async (req, res) => {
+  try {
+    const externalUrl = req.query.url;
+
+    if (!externalUrl) {
+      return res.status(400).json({ error: 'Missing url parameter' });
+    }
+
+    // Validate it's a valid URL
+    try {
+      new URL(externalUrl);
+    } catch (e) {
+      return res.status(400).json({ error: 'Invalid URL format' });
+    }
+
+    // Use http or https based on the URL
+    const protocol = externalUrl.startsWith('https') ? https : http;
+
+    protocol.get(externalUrl, { timeout: 10000 }, (response) => {
+      // Check for HTTP errors
+      if (response.statusCode >= 400) {
+        return res.status(response.statusCode).json({ error: 'Failed to fetch image' });
+      }
+
+      // Set appropriate headers
+      res.setHeader('Content-Type', response.headers['content-type'] || 'image/jpeg');
+      res.setHeader('Cache-Control', 'public, max-age=86400'); // Cache for 24 hours
+
+      // Pipe the response
+      response.pipe(res);
+    }).on('error', (err) => {
+      console.error('Proxy error:', err);
+      res.status(502).json({ error: 'Failed to fetch image' });
+    });
+  } catch (error) {
+    console.error('Proxy handler error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 // API routes
 app.get('/health', (req, res) => {

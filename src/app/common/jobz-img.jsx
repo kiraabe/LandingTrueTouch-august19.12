@@ -1,9 +1,12 @@
 import { publicUrlFor } from "../../globals/constants";
+import { getJobImageUrl } from "../../globals/file-url";
 
 function JobZImage(props) {
     const src = props.src;
-    // Use external URLs (http/https) directly, local assets via publicUrlFor
-    const processedSrc = src && (src.startsWith('http://') || src.startsWith('https://')) ? src : publicUrlFor(src);
+    // Route external URLs and relative paths through appropriate handlers
+    const processedSrc = src && (src.startsWith('http://') || src.startsWith('https://'))
+        ? getJobImageUrl(src)
+        : publicUrlFor(src);
 
     return(
         <>

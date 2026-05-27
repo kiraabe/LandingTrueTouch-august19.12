@@ -15,7 +15,15 @@ export const getCandidateCvUrl = (filename) => {
   return constructFullFileUrl(`candidates/cv/${filename}`);
 };
 
-export const getJobImageUrl = (relativePath) => {
-  if (!relativePath) return null;
-  return constructFullFileUrl(relativePath);
+export const getJobImageUrl = (imagePath) => {
+  if (!imagePath) return null;
+
+  // If it's an external URL, proxy it through the file server
+  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+    const encodedUrl = encodeURIComponent(imagePath);
+    return `${FILE_SERVER_URL}/proxy?url=${encodedUrl}`;
+  }
+
+  // Otherwise treat as a relative path
+  return constructFullFileUrl(imagePath);
 };
