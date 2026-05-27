@@ -11,8 +11,13 @@ app.use(express.json());
 // Serve static files for uploads
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// API routes
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', message: 'Backend is running' });
+});
+
 // Image proxy endpoint for external URLs
-app.get('/proxy', async (req, res) => {
+app.get('/api/proxy-image', async (req, res) => {
   try {
     const externalUrl = req.query.url;
 
@@ -50,11 +55,6 @@ app.get('/proxy', async (req, res) => {
     console.error('Proxy handler error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
-});
-
-// API routes
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok', message: 'Backend is running' });
 });
 
 try {

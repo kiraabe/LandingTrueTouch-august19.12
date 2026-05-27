@@ -18,10 +18,10 @@ export const getCandidateCvUrl = (filename) => {
 export const getJobImageUrl = (imagePath) => {
   if (!imagePath) return null;
 
-  // If it's an external URL, proxy it through the file server
+  // If it's an external URL, proxy it through the api
   if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
     const encodedUrl = encodeURIComponent(imagePath);
-    return `${FILE_SERVER_URL}/proxy?url=${encodedUrl}`;
+    return `/api/proxy-image?url=${encodedUrl}`;
   }
 
   // Otherwise treat as a relative path
