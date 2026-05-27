@@ -12,14 +12,14 @@ router.get('/proxy-image', async (req, res) => {
       return res.status(400).json({ error: 'Missing url parameter' });
     }
 
-    const response = await axios.get(url, { responseType: 'arraybuffer' });
+    const response = await axios.get(url, { responseType: 'arraybuffer', timeout: 5000 });
     const contentType = response.headers['content-type'];
     res.set('Content-Type', contentType);
     res.set('Cache-Control', 'public, max-age=3600');
     res.send(response.data);
   } catch (error) {
-    console.error('✗ Image proxy error:', error.message);
-    res.status(500).json({ error: 'Failed to fetch image' });
+    console.error('✗ Image proxy error for URL:', error.config?.url, 'Error:', error.message);
+    res.status(404).json({ error: 'Failed to fetch image', details: error.message });
   }
 });
 

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Toaster } from "sonner";
 import { showErrorToast } from "../../../../../globals/error-handler";
 import { getCandidateProfilePictureUrl, getCandidateCvUrl } from "../../../../../globals/file-url";
+import { publicUrlFor } from "../../../../../globals/constants";
 import JobZImage from "../../../../common/jobz-img";
 import './candidate-detail.css';
 
@@ -85,7 +86,7 @@ const CandidateDetail = () => {
           <div className="candidate-cover" style={{ backgroundImage: "url('images/candidates/cover-bg.jpg')" }}>
             <div className="candidate-profile-section">
               <div className="candidate-avatar">
-                <JobZImage src={getCandidateProfilePictureUrl(candidate.profile_picture) || "images/candidates/default.jpg"} alt={candidate.full_name} />
+                <JobZImage src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : publicUrlFor("images/candidates/default.jpg")} alt={candidate.full_name} />
               </div>
               <div className="candidate-info-header">
                 <h1 className="candidate-name">{candidate.full_name}</h1>
