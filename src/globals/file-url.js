@@ -8,7 +8,8 @@ export const constructFileUrl = (relativePath) => {
 };
 
 export const getCandidateProfilePictureUrl = (profilePicture) => {
-  return constructFileUrl(profilePicture);
+  if (!profilePicture) return null;
+  return `/uploads/candidates/profile_pictures/${profilePicture}`;
 };
 
 export const getCandidateCvUrl = (cv) => {
