@@ -7901,13 +7901,25 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 .twm-blog-post-1-outer-wrap {
   padding-top: 20px;
 }
+.twm-blog-post-1-outer-wrap .owl-carousel {
+  display: flex;
+  align-items: stretch;
+}
+.twm-blog-post-1-outer-wrap .owl-carousel .owl-stage {
+  display: flex !important;
+  align-items: stretch !important;
+  width: 100% !important;
+}
 .twm-blog-post-1-outer-wrap .owl-carousel .owl-stage-outer {
   padding: 0px;
+  flex: 1;
+  display: flex;
+  align-items: stretch;
 }
 .twm-blog-post-1-outer-wrap .owl-carousel .item {
   display: flex !important;
   align-items: stretch !important;
-  height: auto;
+  flex: 1;
 }
 .twm-blog-post-1-outer-wrap .owl-carousel .twm-blog-post-1-outer {
   margin-left: 10px;
