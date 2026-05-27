@@ -81,6 +81,29 @@ function Home18Page() {
     fetchBlogs();
   }, [])
 
+  // Reinitialize carousel after blogs load
+  useEffect(() => {
+    if (blogs.length > 0 && !blogsLoading && window.jQuery) {
+      setTimeout(() => {
+        window.jQuery('.twm-la-home-blog').owlCarousel('destroy');
+        window.jQuery('.twm-la-home-blog').owlCarousel({
+          loop: false,
+          nav: true,
+          dots: false,
+          margin: 30,
+          autoplay: false,
+          navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+          responsive: {
+            0: { items: 1 },
+            480: { items: 1 },
+            991: { items: 2 },
+            1199: { items: 3 }
+          }
+        });
+      }, 100);
+    }
+  }, [blogs, blogsLoading])
+
   const openCandidateModal = async (candidate) => {
     setSelectedCandidate(candidate);
     setDetailsLoading(true);
