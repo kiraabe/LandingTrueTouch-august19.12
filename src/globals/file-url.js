@@ -1,21 +1,21 @@
-const FILE_SERVER_URL = import.meta.env.VITE_FILE_SERVER_URL || 'https://truetouch-admin.onrender.com';
+const FILE_SERVER_URL = import.meta.env.VITE_FILE_SERVER_URL;
 
-export const constructFileUrl = (relativePath) => {
+const constructFullFileUrl = (relativePath) => {
+  if (!relativePath || !FILE_SERVER_URL) return null;
+  return `${FILE_SERVER_URL}/uploads/${relativePath}`;
+};
+
+export const getCandidateProfilePictureUrl = (filename) => {
+  if (!filename) return null;
+  return constructFullFileUrl(`candidates/profile_pictures/${filename}`);
+};
+
+export const getCandidateCvUrl = (filename) => {
+  if (!filename) return null;
+  return constructFullFileUrl(`candidates/cv/${filename}`);
+};
+
+export const getJobImageUrl = (relativePath) => {
   if (!relativePath) return null;
-  const fullUrl = `${FILE_SERVER_URL}/uploads/${relativePath}`;
-  // Use proxy for external images to avoid CORS issues
-  return `/api/proxy-image?url=${encodeURIComponent(fullUrl)}`;
-};
-
-export const getCandidateProfilePictureUrl = (profilePicture) => {
-  if (!profilePicture) return null;
-  return `/uploads/candidates/profile_pictures/${profilePicture}`;
-};
-
-export const getCandidateCvUrl = (cv) => {
-  return constructFileUrl(cv);
-};
-
-export const getJobImageUrl = (imageUrl) => {
-  return constructFileUrl(imageUrl);
+  return constructFullFileUrl(relativePath);
 };
