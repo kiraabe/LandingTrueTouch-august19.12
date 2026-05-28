@@ -1,5 +1,5 @@
 import JobZImage from "../jobz-img";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { publicUser } from "../../../globals/route-names";
 import { useState, useEffect } from "react";
 
@@ -8,6 +8,7 @@ function Header1({ _config }) {
     const [menuActive, setMenuActive] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
     const location = useLocation();
+    const navigate = useNavigate();
 
     function handleNavigationClick() {
         setMenuActive(!menuActive);
@@ -37,9 +38,29 @@ function Header1({ _config }) {
 
     const isNavLinkActive = (sectionId) => {
         if (sectionId === "home") {
-            return location.hash === "" || location.hash === "#";
+            return location.pathname === "/" || location.pathname === publicUser.HOME1;
         }
         return activeSection === sectionId;
+    };
+
+    const handleSectionClick = (sectionId, e) => {
+        e.preventDefault();
+        setMenuActive(false);
+
+        if (location.pathname !== "/" && location.pathname !== publicUser.HOME1) {
+            navigate(publicUser.HOME1, { replace: false });
+            setTimeout(() => {
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                }
+            }, 100);
+        } else {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+        }
     };
 
     return (
@@ -72,34 +93,23 @@ function Header1({ _config }) {
                             <div className="nav-animation header-nav navbar-collapse collapse d-flex justify-content-center">
                                 <ul className=" nav navbar-nav">
                                     <li className={isNavLinkActive("home") ? "nav-link-active" : ""}>
-                                        <a href="#home" onClick={(e) => {
+                                        <a href="/" onClick={(e) => {
                                             e.preventDefault();
-                                            document.getElementById("home")?.scrollIntoView({ behavior: "smooth" });
+                                            navigate(publicUser.HOME1);
+                                            setMenuActive(false);
                                         }}>Home</a>
                                     </li>
                                     <li className={isNavLinkActive("get-jobs") ? "nav-link-active" : ""}>
-                                        <a href="#get-jobs" onClick={(e) => {
-                                            e.preventDefault();
-                                            document.getElementById("get-jobs")?.scrollIntoView({ behavior: "smooth" });
-                                        }}>About Us</a>
+                                        <a href="#get-jobs" onClick={(e) => handleSectionClick("get-jobs", e)}>About Us</a>
                                     </li>
                                     <li className={isNavLinkActive("candidates") ? "nav-link-active" : ""}>
-                                        <a href="#candidates" onClick={(e) => {
-                                            e.preventDefault();
-                                            document.getElementById("candidates")?.scrollIntoView({ behavior: "smooth" });
-                                        }}>Candidates</a>
+                                        <a href="#candidates" onClick={(e) => handleSectionClick("candidates", e)}>Candidates</a>
                                     </li>
                                     <li className={isNavLinkActive("our-blogs") ? "nav-link-active" : ""}>
-                                        <a href="#our-blogs" onClick={(e) => {
-                                            e.preventDefault();
-                                            document.getElementById("our-blogs")?.scrollIntoView({ behavior: "smooth" });
-                                        }}>Vacancies</a>
+                                        <a href="#our-blogs" onClick={(e) => handleSectionClick("our-blogs", e)}>Vacancies</a>
                                     </li>
                                     <li className={isNavLinkActive("contact-us") ? "nav-link-active" : ""}>
-                                        <a href="#contact-us" onClick={(e) => {
-                                            e.preventDefault();
-                                            document.getElementById("contact-us")?.scrollIntoView({ behavior: "smooth" });
-                                        }}>Contact Us</a>
+                                        <a href="#contact-us" onClick={(e) => handleSectionClick("contact-us", e)}>Contact Us</a>
                                     </li>
                                 </ul>
                             </div>

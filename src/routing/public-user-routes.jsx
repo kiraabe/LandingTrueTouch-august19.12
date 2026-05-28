@@ -9,6 +9,7 @@ function PublicUserRoutes() {
         <Routes>
             <Route path={publicUser.INITIAL} element={<Home18Page />} />
             <Route path={publicUser.HOME18} element={<Home18Page />} />
+            <Route path={publicUser.HOME1} element={<Home18Page />} />
             <Route path={publicUser.candidate.DETAIL1} element={<CandidateDetail />} />
             <Route path={publicUser.candidate.DETAIL2} element={<CandidateDetail />} />
             <Route path="/can-detail/:id" element={<CandidateDetail />} />
