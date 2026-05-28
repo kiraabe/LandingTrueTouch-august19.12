@@ -54,6 +54,12 @@ function BlogDetail() {
     }
   }, [id, navigate]);
 
+  useEffect(() => {
+    if (blog) {
+      document.title = `Blog Detail - ${blog.title} | TrueTouch`;
+    }
+  }, [blog]);
+
   if (loading) {
     return (
       <>

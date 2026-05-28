@@ -22,6 +22,7 @@ function Home18Page() {
   const [pageReady, setPageReady] = useState(false);
 
   useEffect(() => {
+    document.title = 'Home | TrueTouch - Foreign Employment Recruitment Agency';
     updateSkinStyle("10", false, false)
     loadScript("js/custom.js")
   }, [])
