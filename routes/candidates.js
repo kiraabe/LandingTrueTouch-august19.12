@@ -12,7 +12,14 @@ router.get('/proxy-image', async (req, res) => {
       return res.status(400).json({ error: 'Missing url parameter' });
     }
 
-    const response = await axios.get(url, { responseType: 'arraybuffer', timeout: 5000 });
+    const response = await axios.get(url, {
+      responseType: 'arraybuffer',
+      timeout: 10000,
+      maxRedirects: 10,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+      }
+    });
     const contentType = response.headers['content-type'];
     res.set('Content-Type', contentType);
     res.set('Cache-Control', 'public, max-age=3600');

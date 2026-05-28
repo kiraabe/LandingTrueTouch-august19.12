@@ -35,7 +35,40 @@ app.get('/api/proxy-image', async (req, res) => {
     // Use http or https based on the URL
     const protocol = externalUrl.startsWith('https') ? https : http;
 
-    protocol.get(externalUrl, { timeout: 10000 }, (response) => {
+    const options = {
+      timeout: 10000,
+      maxRedirects: 10,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+      }
+    };
+
+    protocol.get(externalUrl, options, (response) => {
+      // Handle redirects
+      if (response.statusCode >= 300 && response.statusCode < 400 && response.headers.location) {
+        const redirectUrl = response.headers.location;
+        const redirectProtocol = redirectUrl.startsWith('https') ? https : http;
+        return redirectProtocol.get(redirectUrl, options, (redirectResponse) => {
+          // Check for HTTP errors
+          if (redirectResponse.statusCode >= 400) {
+            return res.status(redirectResponse.statusCode).json({ error: 'Failed to fetch image' });
+          }
+
+          // Set appropriate headers
+          res.setHeader('Content-Type', redirectResponse.headers['content-type'] || 'image/jpeg');
+          res.setHeader('Cache-Control', 'public, max-age=86400');
+          res.setHeader('Access-Control-Allow-Origin', '*');
+          res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+          res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+          // Pipe the response
+          redirectResponse.pipe(res);
+        }).on('error', (err) => {
+          console.error('Redirect proxy error:', err);
+          res.status(502).json({ error: 'Failed to fetch image' });
+        });
+      }
+
       // Check for HTTP errors
       if (response.statusCode >= 400) {
         return res.status(response.statusCode).json({ error: 'Failed to fetch image' });
@@ -43,7 +76,7 @@ app.get('/api/proxy-image', async (req, res) => {
 
       // Set appropriate headers
       res.setHeader('Content-Type', response.headers['content-type'] || 'image/jpeg');
-      res.setHeader('Cache-Control', 'public, max-age=86400'); // Cache for 24 hours
+      res.setHeader('Cache-Control', 'public, max-age=86400');
       res.setHeader('Access-Control-Allow-Origin', '*');
       res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
       res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
