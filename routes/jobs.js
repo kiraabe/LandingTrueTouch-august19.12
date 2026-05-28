@@ -59,7 +59,7 @@ router.get('/jobs/:id', async (req, res) => {
     console.log('📡 Fetching job with id:', id);
 
     const result = await pool.query(
-      'SELECT * FROM jobs WHERE id = $1 OR id::text = $1',
+      'SELECT * FROM jobs WHERE id = $1',
       [id]
     );
 
