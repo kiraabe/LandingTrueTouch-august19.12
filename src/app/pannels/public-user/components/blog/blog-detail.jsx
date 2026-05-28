@@ -77,33 +77,28 @@ function BlogDetail() {
     <>
       <Toaster position="top-right" richColors />
       <div className="blog-detail-wrapper">
-        {/* Blog Header with Image */}
-        <div className="blog-detail-header" style={{ backgroundImage: `url(${publicUrlFor('images/inner-banner/bn-1.jpg')})` }}>
-          <div className="container">
-            <div className="blog-detail-title-section">
-              <h1 className="blog-detail-title">{blog.title}</h1>
-              <div className="blog-detail-meta">
-                <span className="blog-author">
-                  <i className="fas fa-user"></i> By {blog.author || 'Admin'}
-                </span>
-                <span className="blog-date">
-                  <i className="fas fa-calendar"></i> {new Date(blog.created_at).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: '2-digit'
-                  })}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Blog Content */}
         <div className="blog-detail-content">
           <div className="container">
             <div className="row">
               <div className="col-lg-8 col-md-12">
                 <article className="blog-article">
+                  {/* Blog Title and Meta */}
+                  <div className="blog-detail-title-section">
+                    <h1 className="blog-detail-title">{blog.title}</h1>
+                    <div className="blog-detail-meta">
+                      <span className="blog-author">
+                        <i className="fas fa-user"></i> By {blog.author || 'Admin'}
+                      </span>
+                      <span className="blog-date">
+                        <i className="fas fa-calendar"></i> {new Date(blog.created_at).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: '2-digit'
+                        })}
+                      </span>
+                    </div>
+                  </div>
                   {/* Featured Image */}
                   {blog.image_url && (
                     <div className="blog-featured-image">
@@ -178,51 +173,34 @@ function BlogDetail() {
           background: #fff;
         }
 
-        .blog-detail-header {
-          background-size: cover;
-          background-position: center;
-          padding: 80px 0;
-          color: white;
-          position: relative;
-        }
-
-        .blog-detail-header::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(0, 0, 0, 0.4);
-        }
-
         .blog-detail-title-section {
-          position: relative;
-          z-index: 1;
+          margin-bottom: 40px;
         }
 
         .blog-detail-title {
-          font-size: 48px;
+          font-size: 32px;
           font-weight: 700;
-          margin-bottom: 20px;
-          line-height: 1.2;
+          margin-bottom: 16px;
+          line-height: 1.3;
+          color: #222;
         }
 
         .blog-detail-meta {
           display: flex;
-          gap: 30px;
+          gap: 20px;
           flex-wrap: wrap;
           font-size: 14px;
+          color: #666;
         }
 
         .blog-detail-meta span {
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 6px;
         }
 
         .blog-detail-meta i {
-          color: #fff;
+          color: #999;
         }
 
         .blog-detail-content {
