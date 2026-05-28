@@ -52,4 +52,28 @@ router.get('/jobs/latest', async (req, res) => {
   }
 });
 
+// Get single job/blog by ID
+router.get('/jobs/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log('📡 Fetching job with id:', id);
+
+    const result = await pool.query(
+      'SELECT * FROM jobs WHERE id = $1 OR id::text = $1',
+      [id]
+    );
+
+    if (result.rows.length === 0) {
+      console.log('Job not found for id:', id);
+      return res.status(404).json({ error: 'Job not found' });
+    }
+
+    console.log('✓ Fetched job with id:', id);
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('✗ Database query error:', error.message);
+    res.status(500).json({ error: 'Failed to fetch job', details: error.message });
+  }
+});
+
 module.exports = router;

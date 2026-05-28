@@ -17,7 +17,7 @@ function BlogDetail() {
       try {
         setLoading(true);
         console.log('📡 Fetching blog with ID:', id);
-        const url = `/api/blogs/${id}`;
+        const url = `/api/jobs/${id}`;
         console.log('📡 Full URL:', url);
 
         const response = await fetch(url, {
