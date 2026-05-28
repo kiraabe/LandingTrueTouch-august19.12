@@ -8,6 +8,21 @@ async function initializeDatabase() {
     await pool.query('DROP TABLE IF EXISTS blogs');
     console.log('✓ Blogs table removed');
 
+    // Create contact_us table
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS contact_us (
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+        username VARCHAR(100) NOT NULL,
+        email VARCHAR(100) NOT NULL,
+        phone VARCHAR(20) NOT NULL,
+        subject VARCHAR(255) NOT NULL,
+        message TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+    console.log('✓ Contact Us table created or already exists');
+
     // Create jobs table with the exact schema
     await pool.query(`
       CREATE TABLE IF NOT EXISTS jobs (

@@ -146,6 +146,38 @@ function Home18Page() {
     setCandidateDetails(null);
   };
 
+  const handleContactSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = new FormData(e.target);
+      const data = {
+        username: formData.get('username'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        subject: formData.get('subject'),
+        message: formData.get('message')
+      };
+
+      const response = await fetch('/api/contact-us', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      const result = await response.json();
+      console.log('✅ Contact form submitted:', result);
+      e.target.reset();
+      alert('Thank you! Your message has been received. We will contact you soon.');
+    } catch (err) {
+      console.error('❌ Error submitting contact form:', err);
+      alert('Failed to submit the form. Please try again.');
+    }
+  };
+
   return (
     <>
       <Toaster position="top-right" richColors />
@@ -835,7 +867,7 @@ function Home18Page() {
                       <p>Feel free to contact us and we will get back to you as soon as we can.</p>
                     </div>
                     {/* title="" END*/}
-                    <form className="cons-contact-form" method="post">
+                    <form className="cons-contact-form" onSubmit={handleContactSubmit}>
                       <div className="row">
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group mb-3">
@@ -844,7 +876,7 @@ function Home18Page() {
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group mb-3">
-                            <input name="email" type="text" className="form-control" required placeholder="Email" />
+                            <input name="email" type="email" className="form-control" required placeholder="Email" />
                           </div>
                         </div>
                         <div className="col-lg-6 col-md-6">

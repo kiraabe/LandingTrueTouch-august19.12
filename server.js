@@ -114,6 +114,13 @@ try {
   console.error('Error loading jobs router:', error);
 }
 
+try {
+  const contactRouter = require('./routes/contact');
+  app.use('/api', contactRouter);
+} catch (error) {
+  console.error('Error loading contact router:', error);
+}
+
 const PORT = process.env.PORT || 5000;
 const isDev = process.env.NODE_ENV !== 'production';
 
