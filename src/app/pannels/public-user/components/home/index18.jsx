@@ -19,6 +19,7 @@ function Home18Page() {
   const [detailsLoading, setDetailsLoading] = useState(false);
   const [blogs, setBlogs] = useState([]);
   const [blogsLoading, setBlogsLoading] = useState(true);
+  const [pageReady, setPageReady] = useState(false);
 
   useEffect(() => {
     updateSkinStyle("10", false, false)
@@ -81,6 +82,13 @@ function Home18Page() {
 
     fetchBlogs();
   }, [])
+
+  // Mark page as ready when critical data is loaded
+  useEffect(() => {
+    if (!loading && !blogsLoading) {
+      setPageReady(true);
+    }
+  }, [loading, blogsLoading]);
 
   // Reinitialize carousel after blogs load
   useEffect(() => {
@@ -178,6 +186,15 @@ function Home18Page() {
       showErrorToast(null, 'Failed to submit the form. Please try again.');
     }
   };
+
+  if (!pageReady) {
+    return (
+      <>
+        <Toaster position="top-right" richColors />
+        <Spinner />
+      </>
+    );
+  }
 
   return (
     <>
