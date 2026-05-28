@@ -187,18 +187,10 @@ function Home18Page() {
     }
   };
 
-  if (!pageReady) {
-    return (
-      <>
-        <Toaster position="top-right" richColors />
-        <Spinner />
-      </>
-    );
-  }
-
   return (
     <>
       <Toaster position="top-right" richColors />
+      {!pageReady && <Spinner fullPage={true} />}
       <div id="home" className="twm-home18-banner-section">
         <div className="row" style={{ backgroundImage: `url(${publicUrlFor("images/home-18/banner/dot-map.png")})` }}>
           {/*Left Section*/}

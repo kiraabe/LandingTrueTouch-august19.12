@@ -1,4 +1,4 @@
-function Spinner() {
+function Spinner({ fullPage = false }) {
   return (
     <>
       <style>{`
@@ -14,6 +14,19 @@ function Spinner() {
           padding: 40px 20px;
         }
 
+        .spinner-container.full-page {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100vh;
+          background: rgba(255, 255, 255, 0.9);
+          z-index: 9998;
+          padding: 0;
+        }
+
         .spinner {
           border: 4px solid #f3f3f3;
           border-top: 4px solid #3498db;
@@ -23,7 +36,7 @@ function Spinner() {
           animation: spin 1s linear infinite;
         }
       `}</style>
-      <div className="spinner-container">
+      <div className={`spinner-container ${fullPage ? 'full-page' : ''}`}>
         <div className="spinner" />
       </div>
     </>
