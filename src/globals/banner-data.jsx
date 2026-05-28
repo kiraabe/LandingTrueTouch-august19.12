@@ -152,6 +152,11 @@ export function showBanner(currentpath) {
 }
 
 export function setBanner(currentpath) {
+    // Check for dynamic blog detail route
+    if (currentpath.startsWith('/blog-detail/')) {
+        return banner.publicUser.blogs.detail
+    }
+
     switch (currentpath) {
         case pubRoute(publicUser.jobs.GRID): {
             return banner.publicUser.jobs.grid
