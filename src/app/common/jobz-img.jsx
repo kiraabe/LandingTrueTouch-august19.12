@@ -3,9 +3,9 @@ import { getJobImageUrl } from "../../globals/file-url";
 
 function JobZImage(props) {
     const src = props.src;
-    // Route external URLs and relative paths through appropriate handlers
-    const processedSrc = src && (src.startsWith('http://') || src.startsWith('https://'))
-        ? getJobImageUrl(src)
+    // Only process relative paths; full URLs are already handled
+    const processedSrc = src && (src.startsWith('http://') || src.startsWith('https://') || src.startsWith('/api/'))
+        ? src
         : publicUrlFor(src);
 
     return(
