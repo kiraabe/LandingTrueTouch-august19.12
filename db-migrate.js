@@ -4,8 +4,11 @@ async function migrate() {
   try {
     console.log('🔧 Running database migrations...');
 
+    // Wait a moment for database connection to establish
+    await new Promise(resolve => setTimeout(resolve, 500));
+
     // Create contact_us table
-    await pool.query(`
+    const createTableQuery = `
       CREATE TABLE IF NOT EXISTS contact_us (
         id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
         username VARCHAR(100) NOT NULL,
@@ -16,12 +19,21 @@ async function migrate() {
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
-    `);
+    `;
+
+    await pool.query(createTableQuery);
     console.log('✓ contact_us table created or already exists');
+
+    // Verify table was created
+    const checkTable = await pool.query(
+      "SELECT EXISTS(SELECT FROM information_schema.tables WHERE table_name = 'contact_us')"
+    );
+    console.log('✓ Table verification:', checkTable.rows[0].exists ? 'SUCCESS' : 'FAILED');
 
     console.log('✅ Database migrations complete');
   } catch (error) {
     console.error('❌ Migration failed:', error.message);
+    console.error('Full error:', error);
     throw error;
   }
 }
