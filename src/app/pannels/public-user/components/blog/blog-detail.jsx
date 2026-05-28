@@ -16,12 +16,20 @@ function BlogDetail() {
     const fetchBlogDetail = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`/api/blogs/${id}`, {
+        console.log('📡 Fetching blog with ID:', id);
+        const url = `/api/blogs/${id}`;
+        console.log('📡 Full URL:', url);
+
+        const response = await fetch(url, {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
         });
 
+        console.log('📡 Response status:', response.status);
+
         if (!response.ok) {
+          const errorData = await response.text();
+          console.error('❌ Error response:', errorData);
           throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
 
@@ -30,7 +38,7 @@ function BlogDetail() {
         setBlog(data);
       } catch (err) {
         console.error('❌ Error fetching blog:', err);
-        showErrorToast(err, 'Failed to load blog. Please try again later.');
+        showErrorToast(err, `Failed to load blog: ${err.message}`);
         setTimeout(() => navigate('/'), 2000);
       } finally {
         setLoading(false);
@@ -39,6 +47,9 @@ function BlogDetail() {
 
     if (id) {
       fetchBlogDetail();
+    } else {
+      console.warn('⚠ No blog ID provided');
+      navigate('/');
     }
   }, [id, navigate]);
 
