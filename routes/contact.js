@@ -3,32 +3,6 @@ const pool = require('../db');
 
 const router = express.Router();
 
-// Debug: Check if table exists
-router.get('/contact-us/debug', async (req, res) => {
-  try {
-    const result = await pool.query(
-      "SELECT EXISTS(SELECT FROM information_schema.tables WHERE table_name = 'contact_us')"
-    );
-    const tableExists = result.rows[0].exists;
-
-    if (tableExists) {
-      const countResult = await pool.query('SELECT COUNT(*) FROM contact_us');
-      res.json({
-        table_exists: true,
-        message: 'contact_us table exists',
-        total_records: parseInt(countResult.rows[0].count)
-      });
-    } else {
-      res.json({
-        table_exists: false,
-        message: 'contact_us table does not exist'
-      });
-    }
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
 // Submit contact form
 router.post('/contact-us', async (req, res) => {
   try {
@@ -64,6 +38,32 @@ router.get('/contact-us', async (req, res) => {
   } catch (error) {
     console.error('✗ Error fetching contact submissions:', error.message);
     res.status(500).json({ error: 'Failed to fetch contact submissions', details: error.message });
+  }
+});
+
+// Debug: Check if table exists
+router.get('/contact-us/debug', async (req, res) => {
+  try {
+    const result = await pool.query(
+      "SELECT EXISTS(SELECT FROM information_schema.tables WHERE table_name = 'contact_us')"
+    );
+    const tableExists = result.rows[0].exists;
+
+    if (tableExists) {
+      const countResult = await pool.query('SELECT COUNT(*) FROM contact_us');
+      res.json({
+        table_exists: true,
+        message: 'contact_us table exists',
+        total_records: parseInt(countResult.rows[0].count)
+      });
+    } else {
+      res.json({
+        table_exists: false,
+        message: 'contact_us table does not exist'
+      });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 });
 
