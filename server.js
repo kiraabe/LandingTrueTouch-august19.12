@@ -44,6 +44,9 @@ app.get('/api/proxy-image', async (req, res) => {
       // Set appropriate headers
       res.setHeader('Content-Type', response.headers['content-type'] || 'image/jpeg');
       res.setHeader('Cache-Control', 'public, max-age=86400'); // Cache for 24 hours
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
       // Pipe the response
       response.pipe(res);

@@ -16,6 +16,9 @@ router.get('/proxy-image', async (req, res) => {
     const contentType = response.headers['content-type'];
     res.set('Content-Type', contentType);
     res.set('Cache-Control', 'public, max-age=3600');
+    res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    res.set('Access-Control-Allow-Headers', 'Content-Type');
     res.send(response.data);
   } catch (error) {
     console.error('✗ Image proxy error for URL:', error.config?.url, 'Error:', error.message);
