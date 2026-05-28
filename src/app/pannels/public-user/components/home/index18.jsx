@@ -3,7 +3,7 @@ import ImageLightbox from "../../../../common/image-lightbox";
 import GalleryLightbox from "../../../../common/gallery-lightbox";
 import { loadScript, publicUrlFor, updateSkinStyle } from "../../../../../globals/constants";
 import { publicUser } from "../../../../../globals/route-names";
-import { showErrorToast } from "../../../../../globals/error-handler";
+import { showErrorToast, showSuccessToast } from "../../../../../globals/error-handler";
 import { getCandidateProfilePictureUrl, getCandidateCvUrl, getJobImageUrl } from "../../../../../globals/file-url";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -171,10 +171,10 @@ function Home18Page() {
       const result = await response.json();
       console.log('✅ Contact form submitted:', result);
       e.target.reset();
-      alert('Thank you! Your message has been received. We will contact you soon.');
+      showSuccessToast('Thank you! Your message has been received. We will contact you soon.');
     } catch (err) {
       console.error('❌ Error submitting contact form:', err);
-      alert('Failed to submit the form. Please try again.');
+      showErrorToast(null, 'Failed to submit the form. Please try again.');
     }
   };
 
