@@ -942,7 +942,7 @@ function Home18Page() {
                   <div className="cv-info-grid">
                     <div className="cv-info-item">
                       <span className="cv-info-label">Date of Birth</span>
-                      <span className="cv-info-value">{candidateDetails.date_of_birth || "-"}</span>
+                      <span className="cv-info-value">{candidateDetails.date_of_birth ? new Date(candidateDetails.date_of_birth).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : "-"}</span>
                     </div>
                     <div className="cv-info-item">
                       <span className="cv-info-label">Gender</span>
