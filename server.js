@@ -121,6 +121,13 @@ try {
   console.error('Error loading contact router:', error);
 }
 
+// Run migrations on startup
+const migrate = require('./db-migrate');
+migrate().catch(err => {
+  console.error('Migration failed:', err);
+  process.exit(1);
+});
+
 const PORT = process.env.PORT || 5000;
 const isDev = process.env.NODE_ENV !== 'production';
 
