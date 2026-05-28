@@ -425,7 +425,7 @@ function Home18Page() {
             </div>
             {/* title="" END*/}
             <div className="twm-read-more">
-              <NavLink to={publicUser.pages.ABOUT} className="site-button">Learn More</NavLink>
+              <NavLink to={publicUser.HOME1} className="site-button">Learn More</NavLink>
             </div>
           </div>
         </div>
@@ -452,7 +452,7 @@ function Home18Page() {
                             <p>True Touch Foreign Employment Recruitment Agency helps you find the right job abroad with full support from documentation to placement. We guide you every step of the way.</p>
                         </div>
                         <div className="twm-how-t-get-bottom">
-                            <NavLink to={publicUser.pages.ABOUT} className="site-button">Get Started</NavLink>
+                            <NavLink to={publicUser.HOME1} className="site-button">Get Started</NavLink>
                             <div className="twm-left-icon-bx">
                                 <div className="twm-left-icon-media site-bg-primary">
                                     <i className="flaticon-bell site-text-white" />
@@ -497,7 +497,7 @@ function Home18Page() {
                 {/* title="" END*/}
               </div>
               <div className="col-xl-7 col-lg-7 col-md-12 wt-separator-two-part-right text-right">
-                <NavLink to={publicUser.jobs.LIST} className=" site-button">View All Portfolios</NavLink>
+                <NavLink to={publicUser.HOME1} className=" site-button">View All Portfolios</NavLink>
               </div>
             </div>
           </div>
@@ -657,7 +657,7 @@ function Home18Page() {
                     )}
                   </div>
                   <div className="text-center m-b30">
-                    <NavLink to={publicUser.candidate.LIST} className=" site-button">All  Candidates</NavLink>
+                    <NavLink to={publicUser.HOME1} className=" site-button">All  Candidates</NavLink>
                   </div>
                 </>
               )}
@@ -735,7 +735,7 @@ function Home18Page() {
                       </ul>
                     </div>
                     <div className="twm-read-more">
-                      <NavLink to={publicUser.pages.ABOUT} className="site-button">More Offers</NavLink>
+                      <NavLink to={publicUser.HOME1} className="site-button">More Offers</NavLink>
                     </div>
                   </div>
                 </div>
