@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import JobZImage from '../../../../common/jobz-img';
+import Spinner from '../../../../common/spinner';
 import { publicUrlFor } from '../../../../../globals/constants';
 import { getJobImageUrl } from '../../../../../globals/file-url';
 import { showErrorToast } from '../../../../../globals/error-handler';
@@ -55,11 +56,12 @@ function BlogDetail() {
 
   if (loading) {
     return (
-      <div className="blog-detail-loading">
-        <div className="container">
-          <p>Loading blog...</p>
+      <>
+        <Toaster position="top-right" richColors />
+        <div className="blog-detail-loading">
+          <Spinner />
         </div>
-      </div>
+      </>
     );
   }
 

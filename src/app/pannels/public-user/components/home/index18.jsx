@@ -1,6 +1,7 @@
 import JobZImage from "../../../../common/jobz-img";
 import ImageLightbox from "../../../../common/image-lightbox";
 import GalleryLightbox from "../../../../common/gallery-lightbox";
+import Spinner from "../../../../common/spinner";
 import { loadScript, publicUrlFor, updateSkinStyle } from "../../../../../globals/constants";
 import { publicUser } from "../../../../../globals/route-names";
 import { showErrorToast, showSuccessToast } from "../../../../../globals/error-handler";
@@ -641,13 +642,7 @@ function Home18Page() {
         <div className="container-fluid">
           <div className="section-content">
             <div className="twm-candidate-h-page7">
-              {loading && (
-                <div className="row d-flex justify-content-center m-b30">
-                  <div className="col-12 text-center">
-                    <p>Loading candidates...</p>
-                  </div>
-                </div>
-              )}
+              {loading && <Spinner />}
               {!loading && (
                 <>
                   <div className="row d-flex justify-content-center m-b30">
@@ -797,11 +792,7 @@ function Home18Page() {
           </div>
           {/* title="" END*/}
           <div className="section-content">
-            {blogsLoading ? (
-              <div className="text-center p-5">
-                <p>Loading blogs...</p>
-              </div>
-            ) : blogs.length > 0 ? (
+            {blogsLoading ? <Spinner /> : blogs.length > 0 ? (
               <div className="twm-blog-post-1-outer-wrap">
                 <div className="owl-carousel twm-la-home-blog owl-btn-bottom-center">
                   {blogs.map((blog) => (
