@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { publicUser } from "../globals/route-names";
 import Home18Page from "../app/pannels/public-user/components/home/index18";
 import CandidateDetail from "../app/pannels/public-user/components/candidate/candidate-detail";
+import BlogDetail from "../app/pannels/public-user/components/blog/blog-detail";
 
 function PublicUserRoutes() {
     return (
@@ -11,6 +12,8 @@ function PublicUserRoutes() {
             <Route path={publicUser.candidate.DETAIL1} element={<CandidateDetail />} />
             <Route path={publicUser.candidate.DETAIL2} element={<CandidateDetail />} />
             <Route path="/can-detail/:id" element={<CandidateDetail />} />
+            <Route path={publicUser.blog.DETAIL} element={<BlogDetail />} />
+            <Route path="/blog-detail/:id" element={<BlogDetail />} />
             <Route path="*" element={<Home18Page />} />
         </Routes>
     )

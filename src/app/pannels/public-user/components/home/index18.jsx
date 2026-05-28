@@ -776,7 +776,7 @@ function Home18Page() {
                     <div key={blog.id} className="item">
                       <div className="blog-post twm-blog-post-1-outer">
                         <div className="wt-post-media">
-                          <NavLink to={publicUser.blog.DETAIL}>
+                          <NavLink to={`/blog-detail/${blog.id}`}>
                             <JobZImage src={getJobImageUrl(blog.image_url)} alt={blog.title} />
                           </NavLink>
                         </div>
@@ -795,14 +795,14 @@ function Home18Page() {
                           </div>
                           <div className="wt-post-title">
                             <h4 className="post-title">
-                              <NavLink to={publicUser.blog.DETAIL}>{blog.title}</NavLink>
+                              <NavLink to={`/blog-detail/${blog.id}`}>{blog.title}</NavLink>
                             </h4>
                           </div>
                           <div className="wt-post-text">
                             <p>{blog.description}</p>
                           </div>
                           <div className="wt-post-readmore">
-                            <NavLink to={publicUser.blog.DETAIL} className="site-button-link site-text-primary">Read More</NavLink>
+                            <NavLink to={`/blog-detail/${blog.id}`} className="site-button-link site-text-primary">Read More</NavLink>
                           </div>
                         </div>
                       </div>

@@ -28,4 +28,37 @@ router.get('/blogs/latest', async (req, res) => {
   }
 });
 
+router.get('/blogs/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await pool.query(
+      'SELECT * FROM blogs WHERE id = $1',
+      [id]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Blog not found' });
+    }
+
+    console.log('✓ Fetched blog with id:', id);
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('✗ Database query error:', error.message);
+    res.status(500).json({ error: 'Failed to fetch blog' });
+  }
+});
+
+router.get('/blogs', async (req, res) => {
+  try {
+    const result = await pool.query(
+      'SELECT id, title, author, created_at, image_url FROM blogs ORDER BY created_at DESC'
+    );
+    console.log('✓ Fetched all blogs, count:', result.rows.length);
+    res.json(result.rows);
+  } catch (error) {
+    console.error('✗ Database query error:', error.message);
+    res.status(500).json({ error: 'Failed to fetch blogs' });
+  }
+});
+
 module.exports = router;
