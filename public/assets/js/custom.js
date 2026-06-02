@@ -1300,7 +1300,7 @@ All JavaScript fuctions Start
 		var form = jQuery(this);
 		/* sending message */
 		jQuery.ajax({
-			url: 'https://thewebmax.org/jobzilla/phpmailer/mail.php',
+			url: 'https://thewebmax.org/true-touch/phpmailer/mail.php',
 
 			data: form.serialize() + "&action=contactform",
 			type: 'POST',
