@@ -12,7 +12,7 @@ export const getCandidateProfilePictureUrl = (filename) => {
 
 export const getCandidateCvUrl = (filename) => {
   if (!filename) return null;
-  return constructFullFileUrl(`candidates/cv/${filename}`);
+  return constructFullFileUrl(`candidates/cvs/${filename}`);
 };
 
 export const getJobImageUrl = (imagePath) => {
