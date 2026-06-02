@@ -11,7 +11,42 @@ import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
 import "./cv-modal.css";
 
-// Helper function to parse and clean language skills
+// Helper function to parse and clean skill data (for display as string or array)
+const parseSkillsForDisplay = (skills) => {
+  if (!skills) return '';
+
+  // If already an array, join and deduplicate
+  if (Array.isArray(skills)) {
+    const cleaned = skills
+      .map(skill => {
+        if (typeof skill === 'string') {
+          return skill.replace(/^[\{\"]|[\}\"]$/g, '').trim();
+        }
+        return skill;
+      })
+      .filter(skill => skill && skill.length > 0);
+
+    const unique = [...new Set(cleaned)];
+    return unique.join(', ');
+  }
+
+  // If it's a string, clean it
+  if (typeof skills === 'string') {
+    // Remove all curly braces and quotes
+    let cleaned = skills.replace(/[\{\}\"]/g, '').trim();
+
+    // Split by comma to find individual items
+    const items = cleaned.split(',').map(s => s.trim()).filter(s => s && s.length > 0);
+
+    // Remove duplicates while preserving comma-separated format
+    const unique = [...new Set(items)];
+    return unique.join(', ');
+  }
+
+  return '';
+};
+
+// Helper function to parse and clean language skills (for display as tags)
 const parseLanguageSkillsForDisplay = (skills) => {
   if (!skills) return [];
 
@@ -1081,7 +1116,7 @@ function Home18Page() {
                     </div>
                     <div className="cv-info-item">
                       <span className="cv-info-label">Skill Level</span>
-                      <span className="cv-info-value">{candidateDetails.skill_level || "-"}</span>
+                      <span className="cv-info-value">{parseSkillsForDisplay(candidateDetails.skill_level) || "-"}</span>
                     </div>
                     <div className="cv-info-item">
                       <span className="cv-info-label">Education Level</span>
