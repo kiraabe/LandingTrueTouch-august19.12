@@ -96,13 +96,10 @@ const parseSkillLevel = (skillLevel) => {
       }
     }
 
-    // Return first skill, or all skills joined if multiple
+    // Remove duplicates and return all unique skills as comma-separated string
     if (skills.length === 0) return null;
-    if (skills.length === 1) return skills[0];
-
-    // Remove duplicates and return first unique skill
     const unique = [...new Set(skills)];
-    return unique[0];
+    return unique.join(', ');
 
   } catch (e) {
     console.error('Error parsing skill_level:', e);
