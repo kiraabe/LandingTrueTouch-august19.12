@@ -6,6 +6,7 @@ const router = express.Router();
 
 // Helper function to parse PostgreSQL array of JSON strings and extract all skills
 const parseSkillLevel = (skillLevel) => {
+  console.log('🔧 parseSkillLevel called with:', skillLevel);
   if (!skillLevel) return null;
 
   try {
@@ -97,9 +98,14 @@ const parseSkillLevel = (skillLevel) => {
     }
 
     // Remove duplicates and return all unique skills as comma-separated string
-    if (skills.length === 0) return null;
+    if (skills.length === 0) {
+      console.log('🔧 No skills extracted');
+      return null;
+    }
     const unique = [...new Set(skills)];
-    return unique.join(', ');
+    const result = unique.join(', ');
+    console.log('🔧 parseSkillLevel result:', result);
+    return result;
 
   } catch (e) {
     console.error('Error parsing skill_level:', e);
@@ -210,6 +216,11 @@ router.get('/candidates/:id', async (req, res) => {
 
     const candidate = result.rows[0];
     console.log('📊 Full candidate row from DB:', JSON.stringify(candidate, null, 2));
+    console.log('🔍 Raw skill_level from DB:', candidate.skill_level);
+    console.log('🔍 Type of skill_level:', typeof candidate.skill_level);
+
+    const parsedSkillLevel = parseSkillLevel(candidate.skill_level);
+    console.log('✅ Parsed skill_level:', parsedSkillLevel);
 
     const response = {
       id: candidate.candidate_id,
@@ -226,7 +237,7 @@ router.get('/candidates/:id', async (req, res) => {
       marital_status: candidate.marital_status,
       occupation: candidate.occupation,
       job_category: candidate.job_category,
-      skill_level: parseSkillLevel(candidate.skill_level),
+      skill_level: parsedSkillLevel,
       education_level: candidate.education_level,
       language_skills: candidate.language_skills,
       city: candidate.city,
