@@ -11,6 +11,69 @@ import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
 import "./cv-modal.css";
 
+// Helper function to parse and clean language skills
+const parseLanguageSkillsForDisplay = (skills) => {
+  if (!skills) return [];
+
+  // If already an array, clean each item and deduplicate
+  if (Array.isArray(skills)) {
+    const cleaned = skills
+      .map(skill => {
+        if (typeof skill === 'string') {
+          // Remove quotes, braces, and extra whitespace
+          return skill.replace(/^[\{\"]|[\}\"]$/g, '').trim();
+        }
+        return skill;
+      })
+      .filter(skill => skill && skill.length > 0);
+
+    // Remove duplicates
+    return [...new Set(cleaned)];
+  }
+
+  // If it's a string, try to parse it
+  if (typeof skills === 'string') {
+    // If it looks like a PostgreSQL array format
+    if (skills.startsWith('{') && skills.endsWith('}')) {
+      let content = skills.slice(1, -1);
+      const parsed = [];
+      let currentItem = '';
+      let inQuotes = false;
+
+      for (let i = 0; i < content.length; i++) {
+        const char = content[i];
+        if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+          if (currentItem.trim()) {
+            const cleaned = currentItem.trim().replace(/^"|"$/g, '').trim();
+            if (cleaned) parsed.push(cleaned);
+          }
+          currentItem = '';
+        } else {
+          currentItem += char;
+        }
+      }
+
+      if (currentItem.trim()) {
+        const cleaned = currentItem.trim().replace(/^"|"$/g, '').trim();
+        if (cleaned) parsed.push(cleaned);
+      }
+
+      return [...new Set(parsed)];
+    }
+
+    // If it's a regular string, split by comma if needed
+    if (skills.includes(',')) {
+      return [...new Set(skills.split(',').map(s => s.trim()).filter(s => s))];
+    }
+
+    return [skills.trim()];
+  }
+
+  return [];
+};
+
 function Home18Page() {
   const [candidates, setCandidates] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -1036,13 +1099,9 @@ function Home18Page() {
                   <div className="cv-section">
                     <h3 className="cv-section-title">Language Skills</h3>
                     <div className="cv-skills-list">
-                      {Array.isArray(candidateDetails.language_skills) ? (
-                        candidateDetails.language_skills.map((lang, index) => (
-                          <span key={index} className="cv-skill-tag">{lang}</span>
-                        ))
-                      ) : (
-                        <span className="cv-skill-tag">{candidateDetails.language_skills}</span>
-                      )}
+                      {parseLanguageSkillsForDisplay(candidateDetails.language_skills).map((lang, index) => (
+                        <span key={index} className="cv-skill-tag">{lang}</span>
+                      ))}
                     </div>
                   </div>
                 )}
