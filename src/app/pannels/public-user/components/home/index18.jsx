@@ -1018,7 +1018,18 @@ function Home18Page() {
                     </div>
                     <div className="cv-info-item">
                       <span className="cv-info-label">Skill Level</span>
-                      <span className="cv-info-value">{candidateDetails.skill_level || "-"}</span>
+                      <span className="cv-info-value">
+                        {(() => {
+                          try {
+                            const parsed = typeof candidateDetails.skill_level === 'string'
+                              ? JSON.parse(candidateDetails.skill_level)
+                              : candidateDetails.skill_level;
+                            return Array.isArray(parsed) && parsed.length > 0 ? parsed[0] : "-";
+                          } catch {
+                            return candidateDetails.skill_level || "-";
+                          }
+                        })()}
+                      </span>
                     </div>
                     <div className="cv-info-item">
                       <span className="cv-info-label">Education Level</span>
