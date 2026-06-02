@@ -13,87 +13,77 @@ const parseSkillLevel = (skillLevel) => {
     if (typeof skillLevel !== 'string') return skillLevel;
 
     const skills = [];
+    let remaining = skillLevel;
 
-    // Handle PostgreSQL array format: {element1, element2, ...}
-    if (skillLevel.startsWith('{') && skillLevel.endsWith('}')) {
-      // Extract content between braces
-      let content = skillLevel.slice(1, -1);
+    // Try to recursively parse the structure
+    while (remaining && remaining.length > 0) {
+      remaining = remaining.trim();
 
-      // Split by }, but keep track of quoted strings
-      // We need to find where each JSON string element starts and ends
-      let currentElement = '';
-      let inQuotes = false;
-      let inEscape = false;
+      if (remaining.startsWith('{') && remaining.endsWith('}')) {
+        // Remove outer braces
+        let content = remaining.slice(1, -1).trim();
+        remaining = '';
 
-      for (let i = 0; i < content.length; i++) {
-        const char = content[i];
-        const nextChar = content[i + 1];
+        // Parse comma-separated quoted strings
+        let currentItem = '';
+        let inQuotes = false;
+        let inEscape = false;
+        let depth = 0;
 
-        if (inEscape) {
-          currentElement += char;
-          inEscape = false;
-          continue;
-        }
+        for (let i = 0; i < content.length; i++) {
+          const char = content[i];
 
-        if (char === '\\') {
-          currentElement += char;
-          inEscape = true;
-          continue;
-        }
+          if (inEscape) {
+            currentItem += char;
+            inEscape = false;
+            continue;
+          }
 
-        if (char === '"') {
-          inQuotes = !inQuotes;
-          currentElement += char;
-          continue;
-        }
+          if (char === '\\' && inQuotes) {
+            currentItem += char;
+            inEscape = true;
+            continue;
+          }
 
-        if (char === ',' && !inQuotes) {
-          // End of current element
-          if (currentElement.trim()) {
-            const trimmed = currentElement.trim().replace(/^"|"$/g, '');
-            const unescaped = trimmed.replace(/\\"/g, '"');
+          if (char === '"' && !inEscape) {
+            inQuotes = !inQuotes;
+            currentItem += char;
+            continue;
+          }
 
-            try {
-              const parsed = JSON.parse(unescaped);
-              if (Array.isArray(parsed)) {
-                skills.push(...parsed);
-              } else {
-                skills.push(parsed);
-              }
-            } catch (e) {
-              // If not valid JSON, add as-is
-              if (unescaped) skills.push(unescaped);
+          if (char === '{' && !inQuotes) {
+            depth++;
+            currentItem += char;
+            continue;
+          }
+
+          if (char === '}' && !inQuotes) {
+            depth--;
+            currentItem += char;
+            continue;
+          }
+
+          if (char === ',' && !inQuotes && depth === 0) {
+            // End of current item
+            if (currentItem.trim()) {
+              const cleaned = cleanSkillItem(currentItem.trim());
+              if (cleaned) skills.push(cleaned);
             }
-          }
-          currentElement = '';
-        } else {
-          currentElement += char;
-        }
-      }
-
-      // Process last element
-      if (currentElement.trim()) {
-        const trimmed = currentElement.trim().replace(/^"|"$/g, '');
-        const unescaped = trimmed.replace(/\\"/g, '"');
-
-        try {
-          const parsed = JSON.parse(unescaped);
-          if (Array.isArray(parsed)) {
-            skills.push(...parsed);
+            currentItem = '';
           } else {
-            skills.push(parsed);
+            currentItem += char;
           }
-        } catch (e) {
-          if (unescaped) skills.push(unescaped);
         }
-      }
-    } else {
-      // Try direct JSON parsing
-      const parsed = JSON.parse(skillLevel);
-      if (Array.isArray(parsed)) {
-        skills.push(...parsed);
+
+        // Process last item
+        if (currentItem.trim()) {
+          const cleaned = cleanSkillItem(currentItem.trim());
+          if (cleaned) skills.push(cleaned);
+        }
       } else {
-        skills.push(parsed);
+        // Not a PostgreSQL array, try as plain string
+        skills.push(remaining);
+        remaining = '';
       }
     }
 
@@ -111,6 +101,39 @@ const parseSkillLevel = (skillLevel) => {
     console.error('Error parsing skill_level:', e);
     return skillLevel;
   }
+};
+
+// Helper to clean individual skill items
+const cleanSkillItem = (item) => {
+  if (!item) return null;
+
+  // Remove surrounding quotes if they exist
+  if ((item.startsWith('"') && item.endsWith('"')) ||
+      (item.startsWith("'") && item.endsWith("'"))) {
+    item = item.slice(1, -1);
+  }
+
+  // Unescape quotes
+  item = item.replace(/\\"/g, '"').replace(/\\'/g, "'");
+
+  // Try to parse if it's JSON
+  if (item.startsWith('{') || item.startsWith('[')) {
+    try {
+      const parsed = JSON.parse(item);
+      if (Array.isArray(parsed)) {
+        return parsed.join(', ');
+      } else if (typeof parsed === 'string') {
+        return parsed;
+      }
+    } catch (e) {
+      // Not JSON, return as-is
+    }
+  }
+
+  // Clean up any remaining quotes or braces
+  item = item.replace(/[\{\}\"]/g, '').trim();
+
+  return item && item.length > 0 ? item : null;
 };
 
 // Helper function to parse and deduplicate language_skills
