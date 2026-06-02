@@ -11,6 +11,11 @@ app.use(express.json());
 // Serve static files for uploads
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Serve built Vite app in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'dist')));
+}
+
 // Run migrations on startup (async, non-blocking)
 const migrate = require('./db-migrate');
 migrate().catch(err => {
@@ -180,6 +185,11 @@ if (isDev) {
   });
 } else {
   // Production mode
+  // Serve index.html for SPA routes
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  });
+
   const server = app.listen(PORT, () => {
     console.log(`\n✓ Server running on http://localhost:${PORT}\n`);
   });
