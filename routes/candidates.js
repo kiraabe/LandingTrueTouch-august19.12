@@ -4,6 +4,43 @@ const axios = require('axios');
 
 const router = express.Router();
 
+// Helper function to parse PostgreSQL array format and extract first item
+const parseSkillLevel = (skillLevel) => {
+  if (!skillLevel) return null;
+  
+  let skillText = skillLevel;
+  
+  // Handle PostgreSQL array format: {"item1","item2"} or {'item1','item2'}
+  if (typeof skillLevel === 'string') {
+    if (skillLevel.startsWith('{') && skillLevel.endsWith('}')) {
+      try {
+        // Remove outer braces
+        const content = skillLevel.slice(1, -1);
+        // Split by comma but handle quoted strings properly
+        const items = content.split(',').map(item => {
+          return item.trim().replace(/^["']|["']$/g, '');
+        }).filter(item => item.length > 0);
+        // Return first non-empty item
+        skillText = items.length > 0 ? items[0] : null;
+      } catch (e) {
+        console.error('Error parsing skill_level:', e);
+        skillText = skillLevel;
+      }
+    } else {
+      // Try JSON parsing as fallback
+      try {
+        const parsed = JSON.parse(skillLevel);
+        skillText = Array.isArray(parsed) && parsed.length > 0 ? parsed[0] : skillLevel;
+      } catch (e) {
+        // If not JSON, return as-is
+        skillText = skillLevel;
+      }
+    }
+  }
+  
+  return skillText;
+};
+
 // Image proxy endpoint - serves images from external server
 router.get('/proxy-image', async (req, res) => {
   try {
@@ -123,7 +160,7 @@ router.get('/candidates/:id', async (req, res) => {
       marital_status: candidate.marital_status,
       occupation: candidate.occupation,
       job_category: candidate.job_category,
-      skill_level: candidate.skill_level,
+      skill_level: parseSkillLevel(candidate.skill_level),
       education_level: candidate.education_level,
       language_skills: candidate.language_skills,
       city: candidate.city,

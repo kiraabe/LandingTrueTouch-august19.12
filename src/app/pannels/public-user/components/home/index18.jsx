@@ -142,8 +142,6 @@ function Home18Page() {
       console.log('✅ Occupation:', data.occupation);
       console.log('✅ Phone:', data.phone_number);
       console.log('✅ Date of Birth:', data.date_of_birth);
-      console.log('✅ Skill Level (raw):', data.skill_level);
-      console.log('✅ Skill Level (type):', typeof data.skill_level);
       setCandidateDetails(data);
     } catch (err) {
       console.error('Error fetching candidate details:', err);
@@ -1020,41 +1018,7 @@ function Home18Page() {
                     </div>
                     <div className="cv-info-item">
                       <span className="cv-info-label">Skill Level</span>
-                      <span className="cv-info-value">
-                        {(() => {
-                          const skillLevel = candidateDetails.skill_level;
-                          if (!skillLevel) return "-";
-
-                          let skillText = skillLevel;
-
-                          // Handle PostgreSQL array format: {"item1","item2"}
-                          if (typeof skillLevel === 'string') {
-                            if (skillLevel.startsWith('{') && skillLevel.endsWith('}')) {
-                              try {
-                                // Remove outer braces and parse as PostgreSQL array
-                                const content = skillLevel.slice(1, -1);
-                                // Split by comma but be careful with quoted strings
-                                const items = content.split(',').map(item => {
-                                  return item.trim().replace(/^["']|["']$/g, '');
-                                });
-                                skillText = items[0] || skillLevel;
-                              } catch {
-                                skillText = skillLevel;
-                              }
-                            } else {
-                              // Try JSON parsing
-                              try {
-                                const parsed = JSON.parse(skillLevel);
-                                skillText = Array.isArray(parsed) ? parsed[0] : parsed;
-                              } catch {
-                                skillText = skillLevel;
-                              }
-                            }
-                          }
-
-                          return skillText || "-";
-                        })()}
-                      </span>
+                      <span className="cv-info-value">{candidateDetails.skill_level || "-"}</span>
                     </div>
                     <div className="cv-info-item">
                       <span className="cv-info-label">Education Level</span>
