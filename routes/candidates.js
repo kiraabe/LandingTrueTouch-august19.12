@@ -7,37 +7,49 @@ const router = express.Router();
 // Helper function to parse PostgreSQL array format and extract first item
 const parseSkillLevel = (skillLevel) => {
   if (!skillLevel) return null;
-  
+
   let skillText = skillLevel;
-  
-  // Handle PostgreSQL array format: {"item1","item2"} or {'item1','item2'}
+
   if (typeof skillLevel === 'string') {
-    if (skillLevel.startsWith('{') && skillLevel.endsWith('}')) {
-      try {
-        // Remove outer braces
+    try {
+      // Handle PostgreSQL array format: {json_string, json_string}
+      if (skillLevel.startsWith('{') && skillLevel.endsWith('}')) {
+        // Extract content between braces
         const content = skillLevel.slice(1, -1);
-        // Split by comma but handle quoted strings properly
-        const items = content.split(',').map(item => {
-          return item.trim().replace(/^["']|["']$/g, '');
-        }).filter(item => item.length > 0);
-        // Return first non-empty item
-        skillText = items.length > 0 ? items[0] : null;
-      } catch (e) {
-        console.error('Error parsing skill_level:', e);
-        skillText = skillLevel;
-      }
-    } else {
-      // Try JSON parsing as fallback
-      try {
+
+        // Try to parse the first element as JSON if it looks like escaped JSON
+        if (content.includes('\\')) {
+          // This looks like escaped JSON, try to unescape and parse it
+          const firstElement = content.split('",')[0] + '"'; // Get first element
+          const unescaped = firstElement.replace(/^"/, '').replace(/"$/, '').replace(/\\"/g, '"');
+
+          try {
+            const parsed = JSON.parse(unescaped);
+            skillText = Array.isArray(parsed) ? parsed[0] : parsed;
+          } catch (e) {
+            // If still fails, try to extract the skill directly
+            const match = unescaped.match(/"([^"]+)"/);
+            skillText = match ? match[1] : unescaped;
+          }
+        } else {
+          // Regular PostgreSQL array, split and extract
+          const items = content.split(',').map(item => {
+            return item.trim().replace(/^["']|["']$/g, '');
+          }).filter(item => item.length > 0);
+          skillText = items.length > 0 ? items[0] : null;
+        }
+      } else {
+        // Try direct JSON parsing
         const parsed = JSON.parse(skillLevel);
-        skillText = Array.isArray(parsed) && parsed.length > 0 ? parsed[0] : skillLevel;
-      } catch (e) {
-        // If not JSON, return as-is
-        skillText = skillLevel;
+        skillText = Array.isArray(parsed) ? parsed[0] : parsed;
       }
+    } catch (e) {
+      console.error('Error parsing skill_level:', e);
+      // Fallback: return as-is
+      skillText = skillLevel;
     }
   }
-  
+
   return skillText;
 };
 
