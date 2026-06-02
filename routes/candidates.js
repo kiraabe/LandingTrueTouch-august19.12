@@ -113,6 +113,117 @@ const parseSkillLevel = (skillLevel) => {
   }
 };
 
+// Helper function to parse and deduplicate language_skills
+const parseLanguageSkills = (languageSkills) => {
+  console.log('🔧 parseLanguageSkills called with:', languageSkills);
+  if (!languageSkills) return null;
+
+  try {
+    if (typeof languageSkills !== 'string') return languageSkills;
+
+    const skills = [];
+
+    // Handle PostgreSQL array format: {element1, element2, ...}
+    if (languageSkills.startsWith('{') && languageSkills.endsWith('}')) {
+      // Extract content between braces
+      let content = languageSkills.slice(1, -1);
+
+      // Split by }, but keep track of quoted strings
+      let currentElement = '';
+      let inQuotes = false;
+      let inEscape = false;
+
+      for (let i = 0; i < content.length; i++) {
+        const char = content[i];
+
+        if (inEscape) {
+          currentElement += char;
+          inEscape = false;
+          continue;
+        }
+
+        if (char === '\\') {
+          currentElement += char;
+          inEscape = true;
+          continue;
+        }
+
+        if (char === '"') {
+          inQuotes = !inQuotes;
+          currentElement += char;
+          continue;
+        }
+
+        if (char === ',' && !inQuotes) {
+          // End of current element
+          if (currentElement.trim()) {
+            const trimmed = currentElement.trim().replace(/^"|"$/g, '');
+            const unescaped = trimmed.replace(/\\"/g, '"');
+
+            try {
+              const parsed = JSON.parse(unescaped);
+              if (Array.isArray(parsed)) {
+                skills.push(...parsed);
+              } else {
+                skills.push(parsed);
+              }
+            } catch (e) {
+              // If not valid JSON, add as-is
+              if (unescaped) skills.push(unescaped);
+            }
+          }
+          currentElement = '';
+        } else {
+          currentElement += char;
+        }
+      }
+
+      // Process last element
+      if (currentElement.trim()) {
+        const trimmed = currentElement.trim().replace(/^"|"$/g, '');
+        const unescaped = trimmed.replace(/\\"/g, '"');
+
+        try {
+          const parsed = JSON.parse(unescaped);
+          if (Array.isArray(parsed)) {
+            skills.push(...parsed);
+          } else {
+            skills.push(parsed);
+          }
+        } catch (e) {
+          if (unescaped) skills.push(unescaped);
+        }
+      }
+    } else {
+      // Try direct JSON parsing
+      try {
+        const parsed = JSON.parse(languageSkills);
+        if (Array.isArray(parsed)) {
+          skills.push(...parsed);
+        } else {
+          skills.push(parsed);
+        }
+      } catch (e) {
+        // If not JSON, treat as plain string
+        if (languageSkills) skills.push(languageSkills);
+      }
+    }
+
+    // Remove duplicates and return as array
+    if (skills.length === 0) {
+      console.log('🔧 No language skills extracted');
+      return null;
+    }
+    const unique = [...new Set(skills)];
+    console.log('🔧 parseLanguageSkills result:', unique);
+    return unique;
+
+  } catch (e) {
+    console.error('Error parsing language_skills:', e);
+    return languageSkills;
+  }
+};
+
 // Image proxy endpoint - serves images from external server
 router.get('/proxy-image', async (req, res) => {
   try {
@@ -222,6 +333,9 @@ router.get('/candidates/:id', async (req, res) => {
     const parsedSkillLevel = parseSkillLevel(candidate.skill_level);
     console.log('✅ Parsed skill_level:', parsedSkillLevel);
 
+    const parsedLanguageSkills = parseLanguageSkills(candidate.language_skills);
+    console.log('✅ Parsed language_skills:', parsedLanguageSkills);
+
     const response = {
       id: candidate.candidate_id,
       name: candidate.name,
@@ -239,7 +353,7 @@ router.get('/candidates/:id', async (req, res) => {
       job_category: candidate.job_category,
       skill_level: parsedSkillLevel,
       education_level: candidate.education_level,
-      language_skills: candidate.language_skills,
+      language_skills: parsedLanguageSkills,
       city: candidate.city,
       current_location: candidate.current_location,
       resume_url: candidate.resume_url,
@@ -249,7 +363,7 @@ router.get('/candidates/:id', async (req, res) => {
       location: candidate.current_location,
       hourly_rate: candidate.hourly_rate,
       bio: candidate.occupation,
-      skills: candidate.language_skills,
+      skills: parsedLanguageSkills,
       experience: candidate.occupation,
       education: candidate.education_level,
       portfolio: candidate.resume_url,
