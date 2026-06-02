@@ -4,53 +4,110 @@ const axios = require('axios');
 
 const router = express.Router();
 
-// Helper function to parse PostgreSQL array format and extract first item
+// Helper function to parse PostgreSQL array of JSON strings and extract all skills
 const parseSkillLevel = (skillLevel) => {
   if (!skillLevel) return null;
 
-  let skillText = skillLevel;
+  try {
+    if (typeof skillLevel !== 'string') return skillLevel;
 
-  if (typeof skillLevel === 'string') {
-    try {
-      // Handle PostgreSQL array format: {json_string, json_string}
-      if (skillLevel.startsWith('{') && skillLevel.endsWith('}')) {
-        // Extract content between braces
-        const content = skillLevel.slice(1, -1);
+    const skills = [];
 
-        // Try to parse the first element as JSON if it looks like escaped JSON
-        if (content.includes('\\')) {
-          // This looks like escaped JSON, try to unescape and parse it
-          const firstElement = content.split('",')[0] + '"'; // Get first element
-          const unescaped = firstElement.replace(/^"/, '').replace(/"$/, '').replace(/\\"/g, '"');
+    // Handle PostgreSQL array format: {element1, element2, ...}
+    if (skillLevel.startsWith('{') && skillLevel.endsWith('}')) {
+      // Extract content between braces
+      let content = skillLevel.slice(1, -1);
 
-          try {
-            const parsed = JSON.parse(unescaped);
-            skillText = Array.isArray(parsed) ? parsed[0] : parsed;
-          } catch (e) {
-            // If still fails, try to extract the skill directly
-            const match = unescaped.match(/"([^"]+)"/);
-            skillText = match ? match[1] : unescaped;
-          }
-        } else {
-          // Regular PostgreSQL array, split and extract
-          const items = content.split(',').map(item => {
-            return item.trim().replace(/^["']|["']$/g, '');
-          }).filter(item => item.length > 0);
-          skillText = items.length > 0 ? items[0] : null;
+      // Split by }, but keep track of quoted strings
+      // We need to find where each JSON string element starts and ends
+      let currentElement = '';
+      let inQuotes = false;
+      let inEscape = false;
+
+      for (let i = 0; i < content.length; i++) {
+        const char = content[i];
+        const nextChar = content[i + 1];
+
+        if (inEscape) {
+          currentElement += char;
+          inEscape = false;
+          continue;
         }
-      } else {
-        // Try direct JSON parsing
-        const parsed = JSON.parse(skillLevel);
-        skillText = Array.isArray(parsed) ? parsed[0] : parsed;
-      }
-    } catch (e) {
-      console.error('Error parsing skill_level:', e);
-      // Fallback: return as-is
-      skillText = skillLevel;
-    }
-  }
 
-  return skillText;
+        if (char === '\\') {
+          currentElement += char;
+          inEscape = true;
+          continue;
+        }
+
+        if (char === '"') {
+          inQuotes = !inQuotes;
+          currentElement += char;
+          continue;
+        }
+
+        if (char === ',' && !inQuotes) {
+          // End of current element
+          if (currentElement.trim()) {
+            const trimmed = currentElement.trim().replace(/^"|"$/g, '');
+            const unescaped = trimmed.replace(/\\"/g, '"');
+
+            try {
+              const parsed = JSON.parse(unescaped);
+              if (Array.isArray(parsed)) {
+                skills.push(...parsed);
+              } else {
+                skills.push(parsed);
+              }
+            } catch (e) {
+              // If not valid JSON, add as-is
+              if (unescaped) skills.push(unescaped);
+            }
+          }
+          currentElement = '';
+        } else {
+          currentElement += char;
+        }
+      }
+
+      // Process last element
+      if (currentElement.trim()) {
+        const trimmed = currentElement.trim().replace(/^"|"$/g, '');
+        const unescaped = trimmed.replace(/\\"/g, '"');
+
+        try {
+          const parsed = JSON.parse(unescaped);
+          if (Array.isArray(parsed)) {
+            skills.push(...parsed);
+          } else {
+            skills.push(parsed);
+          }
+        } catch (e) {
+          if (unescaped) skills.push(unescaped);
+        }
+      }
+    } else {
+      // Try direct JSON parsing
+      const parsed = JSON.parse(skillLevel);
+      if (Array.isArray(parsed)) {
+        skills.push(...parsed);
+      } else {
+        skills.push(parsed);
+      }
+    }
+
+    // Return first skill, or all skills joined if multiple
+    if (skills.length === 0) return null;
+    if (skills.length === 1) return skills[0];
+
+    // Remove duplicates and return first unique skill
+    const unique = [...new Set(skills)];
+    return unique[0];
+
+  } catch (e) {
+    console.error('Error parsing skill_level:', e);
+    return skillLevel;
+  }
 };
 
 // Image proxy endpoint - serves images from external server
