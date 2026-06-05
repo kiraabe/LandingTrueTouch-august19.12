@@ -24970,5 +24970,24 @@ HOME PAGE 15 START
 }/*# sourceMappingURL=style.css.map */
 
 
+/* Blog responsive grid */
+.twm-blog-responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
 
+/* Tablet: 768px – 991px → 1 column */
+@media (max-width: 991px) {
+  .twm-blog-responsive-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile: up to 767px → 1 column */
+@media (max-width: 767px) {
+  .twm-blog-responsive-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
