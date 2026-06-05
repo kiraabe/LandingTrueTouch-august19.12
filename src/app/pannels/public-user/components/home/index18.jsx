@@ -636,7 +636,7 @@ function Home18Page() {
                                 <div className="col-lg-5 col-md-12">
                                     <div className="twm-explore-9-media-wrap">
                                         <div className="twm-media">
-                                            <JobZImage src="images/gir-large-2.png" alt="" />
+                                            <JobZImage src="images/gallery/7.jpeg" alt="" />
                                             <div className="rectangle1-wrap">
                                                 <div className="rectangle1 rotate-center" />
                                             </div>
