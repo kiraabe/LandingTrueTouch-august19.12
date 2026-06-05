@@ -196,6 +196,27 @@ function Home18Page() {
     }
   }, [loading, blogsLoading]);
 
+  // Initialize Swiper for notifications
+  useEffect(() => {
+    const initSwiper = () => {
+      if (window.Swiper) {
+        new window.Swiper('.v-notiinfoSwiper', {
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
+        });
+      }
+    };
+
+    setTimeout(initSwiper, 500);
+  }, []);
+
   // Reinitialize carousel after blogs load
   useEffect(() => {
     if (blogs.length > 0 && !blogsLoading && window.jQuery) {
