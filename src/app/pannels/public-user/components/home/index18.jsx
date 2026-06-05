@@ -617,7 +617,98 @@ function Home18Page() {
         </div>
     </div>
 </div>
-{/* OUR SERVICES SECTION END */}
+      {/* OUR SERVICES SECTION END */}
+
+            {/* FEATURED Cities SECTION START */}
+            <div className="section-full p-t120 pos-relative site-bg-white twm-featured-city-area">
+                <div className="twm-bg-section-box" />
+                <div className="container">
+                    {/* title="" START*/}
+                    <div className="wt-separator-two-part content-white">
+                        <div className="row wt-separator-two-part-row">
+                            <div className="col-xl-5 col-lg-5 col-md-12 wt-separator-two-part-left">
+                                {/* title="" START*/}
+                                <div className="section-head left wt-small-separator-outer">
+                                    <div className="wt-small-separator site-text-primary">
+                                        <div>Jobs by location</div>
+                                    </div>
+                                    <h2 className="wt-title">Find your favourite jobs and get.</h2>
+                                </div>
+                                {/* title="" END*/}
+                            </div>
+                            <div className="col-xl-7 col-lg-7 col-md-12 wt-separator-two-part-right text-right">
+                                <NavLink to={publicUser.jobs.LIST} className=" site-button white">View All Locations</NavLink>
+                            </div>
+                        </div>
+                    </div>
+                    {/* title="" END*/}
+                    <div className="twm-featured-city2-section">
+                        <div className="row">
+                            <div className="col-xl-4 col-lg-4 col-md-6">
+                                <div className="twm-featured-city2">
+                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/home-5/featured-cities/city1.jpg")})` }}>
+                                    </div>
+                                    <div className="twm-city-info">
+                                        <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>London, England</NavLink></h4>
+                                        <div className="twm-city-jobs">125 Jobs</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-xl-3 col-lg-4 col-md-6">
+                                <div className="twm-featured-city2">
+                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/home-5/featured-cities/city2.jpg")})` }}>
+                                    </div>
+                                    <div className="twm-city-info">
+                                        <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Paris, France</NavLink></h4>
+                                        <div className="twm-city-jobs">260 Jobs</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-xl-5 col-lg-4 col-md-6">
+                                <div className="twm-featured-city2">
+                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/home-5/featured-cities/city3.jpg")})` }}>
+                                    </div>
+                                    <div className="twm-city-info">
+                                        <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>New York, USA</NavLink></h4>
+                                        <div className="twm-city-jobs">300 Jobs</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-xl-4 col-lg-4 col-md-6">
+                                <div className="twm-featured-city2">
+                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/home-5/featured-cities/city4.jpg")})` }}>
+                                    </div>
+                                    <div className="twm-city-info">
+                                        <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Bankok, Thailand</NavLink></h4>
+                                        <div className="twm-city-jobs">2k Jobs</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-xl-5 col-lg-4 col-md-6">
+                                <div className="twm-featured-city2">
+                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/home-5/featured-cities/city5.jpg")})` }}>
+                                    </div>
+                                    <div className="twm-city-info">
+                                        <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Helsinki , Finland</NavLink></h4>
+                                        <div className="twm-city-jobs">1.5k Jobs</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-xl-3 col-lg-4 col-md-6">
+                                <div className="twm-featured-city2">
+                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/home-5/featured-cities/city6.jpg")})` }}>
+                                    </div>
+                                    <div className="twm-city-info">
+                                        <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Berlin, Germany</NavLink></h4>
+                                        <div className="twm-city-jobs">700 Jobs</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* FEATURED SECTION END */}
 
       {}
 
