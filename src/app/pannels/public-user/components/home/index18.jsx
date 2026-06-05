@@ -692,7 +692,7 @@ function Home18Page() {
                                 <div className="col-lg-4 col-md-12">
                                     <div className="twm-explore-media-wrap2">
                                         <div className="twm-media">
-                                            <JobZImage src="images/gallery/7.jpeg" alt="" />
+                                            <JobZImage src="images/gir-large-2.png" alt="" />
                                         </div>
                                     </div>
                                 </div>
