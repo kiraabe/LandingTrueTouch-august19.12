@@ -372,7 +372,7 @@ function Home18Page() {
                         </div>
                         <div className="v-content">
                           <h4 className="wt-title">Congratulations</h4>
-                          <p>Your admission successfully completed too content</p>
+                          <p>Candidate profile successfully completed and verified</p>
                         </div>
                       </div>
                     </div>
@@ -383,8 +383,8 @@ function Home18Page() {
                           <i className="far fa-envelope twm-bg-green" />
                         </div>
                         <div className="v-content">
-                          <h4 className="wt-title">Congrats</h4>
-                          <p>Your have got an Email</p>
+                          <h4 className="wt-title">New Opportunity</h4>
+                          <p>You have received a job offer from a top employer</p>
                         </div>
                       </div>
                     </div>
