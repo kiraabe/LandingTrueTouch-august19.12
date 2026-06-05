@@ -637,7 +637,7 @@ function Home18Page() {
                                 {/* title="" END*/}
                             </div>
                             <div className="col-xl-7 col-lg-7 col-md-12 wt-separator-two-part-right text-right">
-                                <NavLink to={publicUser.jobs.LIST} className=" site-button white">View All Locations</NavLink>
+                                <NavLink to={publicUser.HOME1} className=" site-button white">View All Locations</NavLink>
                             </div>
                         </div>
                     </div>
@@ -649,7 +649,7 @@ function Home18Page() {
                                     <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/ResidentialCleanerHousekeeper.jpg")})` }}>
                                     </div>
                                     <div className="twm-city-info">
-                                        <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Residential Cleaner / Housekeeper</NavLink></h4>
+                                        <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Residential Cleaner / Housekeeper</NavLink></h4>
                                     </div>
                                 </div>
                             </div>
@@ -658,7 +658,7 @@ function Home18Page() {
                                     <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/NannyChildcareSpecialist.jpg")})` }}>
                                     </div>
                                     <div className="twm-city-info">
-                                        <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Nanny / Childcare Specialist</NavLink></h4>
+                                        <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Nanny / Childcare Specialist</NavLink></h4>
                                     </div>
                                 </div>
                             </div>
@@ -667,7 +667,7 @@ function Home18Page() {
                                     <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/PrivateChefCook.jpg")})` }}>
                                     </div>
                                     <div className="twm-city-info">
-                                        <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Private Chef / Cook</NavLink></h4>
+                                        <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Private Chef / Cook</NavLink></h4>
                                     </div>
                                 </div>
                             </div>
@@ -676,7 +676,7 @@ function Home18Page() {
                                     <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/Logistics&WarehousingSupervisor.jpg")})` }}>
                                     </div>
                                     <div className="twm-city-info">
-                                        <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Logistics & Warehousing / Supervisor</NavLink></h4>
+                                        <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Logistics & Warehousing / Supervisor</NavLink></h4>
                                     </div>
                                 </div>
                             </div>
@@ -685,7 +685,7 @@ function Home18Page() {
                                     <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/ElderlyCareCaregiver.jpg")})` }}>
                                     </div>
                                     <div className="twm-city-info">
-                                        <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Elderly Care / Caregiver</NavLink></h4>
+                                        <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Elderly Care / Caregiver</NavLink></h4>
                                     </div>
                                 </div>
                             </div>
@@ -694,7 +694,7 @@ function Home18Page() {
                                     <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/KitchenCleanerCommercialCleaning.jpg")})` }}>
                                     </div>
                                     <div className="twm-city-info">
-                                        <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Kitchen Cleaner / House Cleaning</NavLink></h4>
+                                        <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Kitchen Cleaner / House Cleaning</NavLink></h4>
                                     </div>
                                 </div>
                             </div>
