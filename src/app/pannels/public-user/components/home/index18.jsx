@@ -10,7 +10,7 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
 import "./cv-modal.css";
-
+import { useEffect } from "react";
 // Helper function to truncate text to 78 characters
 const truncateText = (text, maxLength = 78) => {
   if (!text) return '';
