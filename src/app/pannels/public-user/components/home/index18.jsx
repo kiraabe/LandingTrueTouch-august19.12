@@ -627,7 +627,7 @@ function Home18Page() {
       {/* OUR SERVICES SECTION END */}
 
 
-                       {/* EXPLORE NEW LIFE START */}
+                 {/* EXPLORE NEW LIFE START */}
             <div className="section-full p-t120 p-b120 site-bg-white twm-explore-area2">
                 <div className="container">
                     <div className="section-content">
@@ -702,8 +702,6 @@ function Home18Page() {
                 </div>
             </div>
             {/* EXPLORE NEW LIFE END */}
-
-
 
 
             {/* FEATURED JOBS SECTION START */}
