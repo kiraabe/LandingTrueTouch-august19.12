@@ -10,7 +10,7 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
 import "./cv-modal.css";
-import { useEffect } from "react";
+
 // Helper function to truncate text to 78 characters
 const truncateText = (text, maxLength = 78) => {
   if (!text) return '';
@@ -625,79 +625,6 @@ function Home18Page() {
     </div>
 </div>
       {/* OUR SERVICES SECTION END */}
-
-
-            {/* EXPLORE NEW LIFE START */}
-            <div className="section-full site-bg-light-purple twm-for-employee-4">
-                <div className="container">
-                    <div className="section-content">
-                        <div className="twm-for-employee-content">
-                            <div className="row">
-                                <div className="col-xl-5 col-lg-12 col-md-12">
-                                    <div className="twm-explore-content-outer2">
-                                        <div className="twm-explore-top-section">
-                                            {/* title="" START*/}
-                                            <div className="section-head left wt-small-separator-outer">
-                                                <div className="wt-small-separator site-text-primary">
-                                                    <div>About </div>
-                                                </div>
-                                                <h2>We help you connect with the organizer</h2>
-                                                <p>Get paid easily and security. Use our resources to become independent and showcase your professional skills.</p>
-                                            </div>
-                                            {/* title="" END*/}
-                                            <div className="twm-read-more">
-                                                <NavLink to={publicUser.pages.ABOUT} className="site-button">Read More</NavLink>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-xl-7 col-lg-12 col-md-12">
-                                    <div className="twm-explore-right-section">
-                                        <div className="twm-media">
-                                            <div className="twm-bg-circle"><JobZImage src="images/home-4/bg-circle.png" alt="" /></div>
-                                            <div className="twm-employee-pic"><JobZImage src="images/home-4/employee.png" alt="" /></div>
-                                            <div className="twm-shot-pic1  anm" data-speed-x={-4} data-speed-scale={-25}><JobZImage src="images/home-4/sq-1.png" alt="" /></div>
-                                            <div className="twm-shot-pic2 anm" data-wow-delay="1000ms" data-speed-x={2} data-speed-y={2}><JobZImage src="images/home-4/triangle.png" alt="" /></div>
-                                            <div className="twm-shot-pic3  anm" data-speed-x={-4} data-speed-scale={-25}><JobZImage src="images/home-4/circle.png" alt="" /></div>
-                                        </div>
-                                        {/*block 1*/}
-                                        <div className="counter-outer-two one anm" data-speed-y={-2} data-speed-scale={15} data-speed-opacity={1}>
-                                            <div className="icon-content">
-                                                <div className="tw-count-number text-clr-yellow-2">
-                                                    <span className="counter">
-                                                        <CountUp end={5} duration={10} />
-                                                    </span>M+</div>
-                                                <p className="icon-content-info">Million daily active users</p>
-                                            </div>
-                                        </div>
-                                        {/*block 2*/}
-                                        <div className="counter-outer-two two anm" data-speed-y={2} data-speed-scale={15} data-speed-opacity={5}>
-                                            <div className="icon-content">
-                                                <div className="tw-count-number text-clr-green">
-                                                    <span className="counter">
-                                                        <CountUp end={9} duration={10} />
-                                                    </span>K+</div>
-                                                <p className="icon-content-info">Open job positions</p>
-                                            </div>
-                                        </div>
-                                        {/*block 3*/}
-                                        <div className="counter-outer-two three anm" data-speed-x={-4} data-speed-scale={-25}>
-                                            <div className="icon-content">
-                                                <div className="tw-count-number text-clr-pink">
-                                                    <span className="counter">
-                                                        <CountUp end={2} duration={10} />
-                                                    </span>M+</div>
-                                                <p className="icon-content-info">Million stories shared</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {/* EXPLORE NEW LIFE END */}
 
 
             {/* FEATURED JOBS SECTION START */}
