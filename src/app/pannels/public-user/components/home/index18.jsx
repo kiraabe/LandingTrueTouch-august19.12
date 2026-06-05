@@ -11,6 +11,13 @@ import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
 import "./cv-modal.css";
 
+// Helper function to truncate text to 78 characters
+const truncateText = (text, maxLength = 78) => {
+  if (!text) return '';
+  if (text.length <= maxLength) return text;
+  return text.substring(0, maxLength).trim() + '...';
+};
+
 // Helper function to parse and clean skill data (for display as string or array)
 const parseSkillsForDisplay = (skills) => {
   if (!skills) return '';
@@ -1015,7 +1022,7 @@ function Home18Page() {
                             </h4>
                           </div>
                           <div className="wt-post-text">
-                            <p>{blog.description}</p>
+                            <p>{truncateText(blog.description)}</p>
                           </div>
                           <div className="wt-post-readmore">
                             <NavLink to={`/blog-detail/${blog.id}`} className="site-button-link site-text-primary">Read More</NavLink>
