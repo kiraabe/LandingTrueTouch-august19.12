@@ -619,7 +619,7 @@ function Home18Page() {
 </div>
       {/* OUR SERVICES SECTION END */}
 
-            {/* FEATURED Cities SECTION START */}
+            {/* FEATURED JOBS SECTION START */}
             <div className="section-full p-t120 pos-relative site-bg-white twm-featured-city-area">
                 <div className="twm-bg-section-box" />
                 <div className="container">
@@ -650,7 +650,6 @@ function Home18Page() {
                                     </div>
                                     <div className="twm-city-info">
                                         <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>London, England</NavLink></h4>
-                                        <div className="twm-city-jobs">125 Jobs</div>
                                     </div>
                                 </div>
                             </div>
@@ -660,7 +659,6 @@ function Home18Page() {
                                     </div>
                                     <div className="twm-city-info">
                                         <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Paris, France</NavLink></h4>
-                                        <div className="twm-city-jobs">260 Jobs</div>
                                     </div>
                                 </div>
                             </div>
@@ -670,7 +668,6 @@ function Home18Page() {
                                     </div>
                                     <div className="twm-city-info">
                                         <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>New York, USA</NavLink></h4>
-                                        <div className="twm-city-jobs">300 Jobs</div>
                                     </div>
                                 </div>
                             </div>
@@ -680,7 +677,6 @@ function Home18Page() {
                                     </div>
                                     <div className="twm-city-info">
                                         <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Bankok, Thailand</NavLink></h4>
-                                        <div className="twm-city-jobs">2k Jobs</div>
                                     </div>
                                 </div>
                             </div>
@@ -690,7 +686,6 @@ function Home18Page() {
                                     </div>
                                     <div className="twm-city-info">
                                         <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Helsinki , Finland</NavLink></h4>
-                                        <div className="twm-city-jobs">1.5k Jobs</div>
                                     </div>
                                 </div>
                             </div>
@@ -700,7 +695,6 @@ function Home18Page() {
                                     </div>
                                     <div className="twm-city-info">
                                         <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Berlin, Germany</NavLink></h4>
-                                        <div className="twm-city-jobs">700 Jobs</div>
                                     </div>
                                 </div>
                             </div>
