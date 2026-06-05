@@ -655,7 +655,8 @@ function Home18Page() {
                             </div>
                             <div className="col-xl-3 col-lg-4 col-md-6">
                                 <div className="twm-featured-city2">
-                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/home-5/featured-cities/city2.jpg")})` }}>
+                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/NannyChildcareSpecialist.jpg
+")})` }}>
                                     </div>
                                     <div className="twm-city-info">
                                         <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Paris, France</NavLink></h4>
@@ -664,7 +665,7 @@ function Home18Page() {
                             </div>
                             <div className="col-xl-5 col-lg-4 col-md-6">
                                 <div className="twm-featured-city2">
-                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/home-5/featured-cities/city3.jpg")})` }}>
+                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/PrivateChefCook.jpg")})` }}>
                                     </div>
                                     <div className="twm-city-info">
                                         <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>New York, USA</NavLink></h4>
@@ -673,7 +674,7 @@ function Home18Page() {
                             </div>
                             <div className="col-xl-4 col-lg-4 col-md-6">
                                 <div className="twm-featured-city2">
-                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/home-5/featured-cities/city4.jpg")})` }}>
+                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/Logistics&WarehousingSupervisor.jpg")})` }}>
                                     </div>
                                     <div className="twm-city-info">
                                         <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Bankok, Thailand</NavLink></h4>
@@ -682,7 +683,7 @@ function Home18Page() {
                             </div>
                             <div className="col-xl-5 col-lg-4 col-md-6">
                                 <div className="twm-featured-city2">
-                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/home-5/featured-cities/city5.jpg")})` }}>
+                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/ElderlyCareCaregiver.jpg")})` }}>
                                     </div>
                                     <div className="twm-city-info">
                                         <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Helsinki , Finland</NavLink></h4>
@@ -691,7 +692,7 @@ function Home18Page() {
                             </div>
                             <div className="col-xl-3 col-lg-4 col-md-6">
                                 <div className="twm-featured-city2">
-                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/home-5/featured-cities/city6.jpg")})` }}>
+                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/KitchenCleanerCommercialCleaning.jpg")})` }}>
                                     </div>
                                     <div className="twm-city-info">
                                         <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Berlin, Germany</NavLink></h4>
