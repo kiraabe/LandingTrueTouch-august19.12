@@ -627,72 +627,39 @@ function Home18Page() {
       {/* OUR SERVICES SECTION END */}
 
 
-                 {/* EXPLORE NEW LIFE START */}
-            <div className="section-full p-t120 p-b120 site-bg-white twm-explore-area2">
+                  {/* FOR EMPLOYEE START */}
+            <div className="section-full p-t120 p-b120 twm-for-employee-9-area site-bg-white">
                 <div className="container">
                     <div className="section-content">
-                        <div className="twm-explore-content-2">
+                        <div className="twm-for-employee-9">
                             <div className="row">
-                                <div className="col-lg-8 col-md-12">
-                                    <div className="twm-explore-content-outer2">
-                                        <div className="twm-explore-top-section">
-                                            <div className="twm-title-small">For Employee</div>
-                                            <div className="twm-title-large">
-                                                <h2>We help you connect
-                                                    with the organizer</h2>
-                                                <p>Get paid easily and security. Use our resources to become
-                                                    independent and showcase your professional skills.</p>
+                                <div className="col-lg-5 col-md-12">
+                                    <div className="twm-explore-9-media-wrap">
+                                        <div className="twm-media">
+                                            <JobZImage src="images/gir-large-2.png" alt="" />
+                                            <div className="rectangle1-wrap">
+                                                <div className="rectangle1 rotate-center" />
                                             </div>
-                                            <div className="twm-read-more">
-                                                <NavLink to={publicUser.pages.ABOUT} className="site-button">Read More</NavLink>
-                                            </div>
-                                        </div>
-                                        <div className="twm-explore-bottom-section">
-                                            <div className="row">
-                                                {/*block 1*/}
-                                                <div className="col-lg-4 col-md-6">
-                                                    <div className="counter-outer-two">
-                                                        <div className="icon-content">
-                                                            <div className="tw-count-number text-clr-yellow-2">
-                                                                <span className="counter">
-                                                                    <CountUp end={5} duration={10} />
-                                                                </span>M+</div>
-                                                            <p className="icon-content-info">Million daily active users</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                {/*block 2*/}
-                                                <div className="col-lg-4 col-md-6">
-                                                    <div className="counter-outer-two">
-                                                        <div className="icon-content">
-                                                            <div className="tw-count-number text-clr-green">
-                                                                <span className="counter">
-                                                                    <CountUp end={9} duration={10} />
-                                                                </span>K+</div>
-                                                            <p className="icon-content-info">Open job positions</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                {/*block 3*/}
-                                                <div className="col-lg-4 col-md-12">
-                                                    <div className="counter-outer-two">
-                                                        <div className="icon-content">
-                                                            <div className="tw-count-number text-clr-pink">
-                                                                <span className="counter">
-                                                                    <CountUp end={2} duration={10} />
-                                                                </span>M+</div>
-                                                            <p className="icon-content-info">Million stories shared</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div className="rectangle2-wrap">
+                                                <div className="rectangle2" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-lg-4 col-md-12">
-                                    <div className="twm-explore-media-wrap2">
-                                        <div className="twm-media">
-                                            <JobZImage src="images/gir-large-2.png" alt="" />
+                                <div className="col-lg-7 col-md-12">
+                                    <div className="twm-explore-content-outer-3">
+                                        <div className="twm-explore-content-3">
+                                            <div className="twm-title-small">Explore New Life</div>
+                                            <div className="twm-title-large">
+                                                <h2>Build your personal account profile</h2>
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                                                    the standard dummy text ever since the  when an printer took. lorem Ipsum is
+                                                    simply dummy text.
+                                                </p>
+                                            </div>
+                                            <div className="twm-upload-file">
+                                                <button type="button" className="site-button">Upload Your Resume <i className="feather-upload" /></button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -701,7 +668,7 @@ function Home18Page() {
                     </div>
                 </div>
             </div>
-            {/* EXPLORE NEW LIFE END */}
+            {/* FOR EMPLOYEE END */}
 
 
             {/* FEATURED JOBS SECTION START */}
