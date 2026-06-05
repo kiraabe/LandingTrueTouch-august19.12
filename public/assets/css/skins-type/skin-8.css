@@ -874,6 +874,18 @@
   color: #d45850;
   background-color: #f9f5f4;
 }
+.twm-candidates-grid-h-page7 .twm-candidates-tag span.available {
+  color: #046c38;
+  background-color: #e8f5e9;
+}
+.twm-candidates-grid-h-page7 .twm-candidates-tag span.processing {
+  color: #7c3aed;
+  background-color: #f3e8ff;
+}
+.twm-candidates-grid-h-page7 .twm-candidates-tag span.employee {
+  color: #7c3aed;
+  background-color: #f3e8ff;
+}
 .twm-candidates-grid-h-page7 .twm-fot-content {
   background-color: #f9f5f4;
 }
