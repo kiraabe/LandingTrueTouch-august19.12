@@ -24975,6 +24975,7 @@ HOME PAGE 15 START
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+  align-items: stretch;
 }
 
 /* Tablet: 768px – 991px → 1 column */
@@ -24989,5 +24990,28 @@ HOME PAGE 15 START
   .twm-blog-responsive-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Equal height cards */
+.twm-blog-responsive-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.twm-blog-responsive-item .blog-post.twm-blog-post-1-outer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.twm-blog-responsive-item .wt-post-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Push Read More to the bottom */
+.twm-blog-responsive-item .wt-post-readmore {
+  margin-top: auto;
 }
 
