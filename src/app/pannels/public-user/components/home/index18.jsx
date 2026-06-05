@@ -646,7 +646,7 @@ function Home18Page() {
                         <div className="row">
                             <div className="col-xl-4 col-lg-4 col-md-6">
                                 <div className="twm-featured-city2">
-                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/home-5/featured-cities/city1.jpg")})` }}>
+                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/ResidentialCleanerHousekeeper.jpg")})` }}>
                                     </div>
                                     <div className="twm-city-info">
                                         <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>London, England</NavLink></h4>
