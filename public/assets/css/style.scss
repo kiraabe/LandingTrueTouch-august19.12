@@ -9703,6 +9703,23 @@ h3.twm-title{
 	.twm-candidates-tag{
 		span{
 			color: $clr-primary;
+			padding: 4px 12px;
+			border-radius: 20px;
+			font-size: 12px;
+			font-weight: 500;
+			display: inline-block;
+		}
+		span.available{
+			background-color: #e8f5e9;
+			color: #2e7d32;
+		}
+		span.processing{
+			background-color: #fff3e0;
+			color: #f57c00;
+		}
+		span.employee{
+			background-color: #e3f2fd;
+			color: #1565c0;
 		}
 	}
 	p{
