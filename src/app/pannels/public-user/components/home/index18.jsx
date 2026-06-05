@@ -372,7 +372,7 @@ function Home18Page() {
                         </div>
                         <div className="v-content">
                           <h4 className="wt-title">Congratulations</h4>
-                          <p>Your admission successfully completed too</p>
+                          <p>Your admission successfully completed too content</p>
                         </div>
                       </div>
                     </div>
