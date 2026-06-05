@@ -310,24 +310,24 @@ function Home18Page() {
                   <div className="row">
                     {/*Title*/}
                     <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                      <label>What</label>
+                      <label>Position</label>
                       <select className="wt-search-bar-select selectpicker" data-live-search="true" title="" id="j-Job_Title" data-bv-field="size">
-                        <option disabled value="">Select Category</option>
-                        <option>Job Title</option>
+                        <option disabled value="">Select Position</option>
                         <option>Web Designer</option>
                         <option>Developer</option>
-                        <option>Acountant</option>
+                        <option>Accountant</option>
+                        <option>Project Manager</option>
                       </select>
                     </div>
                     {/*All Category*/}
                     <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                      <label>Type</label>
+                      <label>Experience</label>
                       <select className="wt-search-bar-select selectpicker" data-live-search="true" title="" id="j-All_Category" data-bv-field="size">
-                        <option disabled value="">Select Category</option>
-                        <option>All Category</option>
-                        <option>Web Designer</option>
-                        <option>Developer</option>
-                        <option>Acountant</option>
+                        <option disabled value="">Select Level</option>
+                        <option>Entry Level</option>
+                        <option>Mid Level</option>
+                        <option>Senior</option>
+                        <option>Expert</option>
                       </select>
                     </div>
                     {/*Location*/}
@@ -338,19 +338,19 @@ function Home18Page() {
                         <i className="twm-input-icon fas fa-map-marker-alt" />
                       </div>
                     </div>
-                    {/*Find job btn*/}
+                    {/*Find Candidates btn*/}
                     <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                      <button type="button" className="site-button">Find Job</button>
+                      <button type="button" className="site-button">Find Candidates</button>
                     </div>
                   </div>
                 </form>
               </div>
               <div className="twm-bnr-popular-search">
-                <span className="twm-title">Popular Searches:</span>
+                <span className="twm-title">Popular Positions:</span>
                 <NavLink to={publicUser.jobs.LIST}>Developer</NavLink> ,
                 <NavLink to={publicUser.jobs.LIST}>Designer</NavLink> ,
-                <NavLink to={publicUser.jobs.LIST}>Architect</NavLink> ,
-                <NavLink to={publicUser.jobs.LIST}>Engineer</NavLink> ...
+                <NavLink to={publicUser.jobs.LIST}>Manager</NavLink> ,
+                <NavLink to={publicUser.jobs.LIST}>Specialist</NavLink> ...
               </div>
             </div>
           </div>
