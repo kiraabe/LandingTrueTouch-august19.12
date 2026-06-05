@@ -24970,29 +24970,24 @@ HOME PAGE 15 START
 }/*# sourceMappingURL=style.css.map */
 
 
-/* Blog responsive grid */
 .twm-blog-responsive-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  align-items: stretch;
 }
 
-/* Tablet: 768px – 991px → 1 column */
 @media (max-width: 991px) {
   .twm-blog-responsive-grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* Mobile: up to 767px → 1 column */
 @media (max-width: 767px) {
   .twm-blog-responsive-grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* Equal height cards */
 .twm-blog-responsive-item {
   display: flex;
   flex-direction: column;
@@ -25004,13 +24999,34 @@ HOME PAGE 15 START
   height: 100%;
 }
 
+/* Equal height & width images with cover */
+.twm-blog-responsive-item .wt-post-media {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.twm-blog-responsive-item .wt-post-media a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.twm-blog-responsive-item .wt-post-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
 .twm-blog-responsive-item .wt-post-info {
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 
-/* Push Read More to the bottom */
 .twm-blog-responsive-item .wt-post-readmore {
   margin-top: auto;
 }
