@@ -848,7 +848,7 @@ function Home18Page() {
                 <>
                   <div className="row d-flex justify-content-center m-b30">
                     {candidates.length > 0 ? (
-                      candidates.map((candidate) => (
+                      candidates.slice(0, 8).map((candidate) => (
                         <div key={candidate.id} className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                           <div className="twm-candidates-grid-h-page7 m-b30">
                             <div className="twm-top-section-content">
