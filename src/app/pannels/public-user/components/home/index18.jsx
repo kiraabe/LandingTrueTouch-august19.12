@@ -626,6 +626,83 @@ function Home18Page() {
 </div>
       {/* OUR SERVICES SECTION END */}
 
+
+                 {/* EXPLORE NEW LIFE START */}
+            <div className="section-full p-t120 p-b120 site-bg-white twm-explore-area2">
+                <div className="container">
+                    <div className="section-content">
+                        <div className="twm-explore-content-2">
+                            <div className="row">
+                                <div className="col-lg-8 col-md-12">
+                                    <div className="twm-explore-content-outer2">
+                                        <div className="twm-explore-top-section">
+                                            <div className="twm-title-small">For Employee</div>
+                                            <div className="twm-title-large">
+                                                <h2>We help you connect
+                                                    with the organizer</h2>
+                                                <p>Get paid easily and security. Use our resources to become
+                                                    independent and showcase your professional skills.</p>
+                                            </div>
+                                            <div className="twm-read-more">
+                                                <NavLink to={publicUser.pages.ABOUT} className="site-button">Read More</NavLink>
+                                            </div>
+                                        </div>
+                                        <div className="twm-explore-bottom-section">
+                                            <div className="row">
+                                                {/*block 1*/}
+                                                <div className="col-lg-4 col-md-6">
+                                                    <div className="counter-outer-two">
+                                                        <div className="icon-content">
+                                                            <div className="tw-count-number text-clr-yellow-2">
+                                                                <span className="counter">
+                                                                    <CountUp end={5} duration={10} />
+                                                                </span>M+</div>
+                                                            <p className="icon-content-info">Million daily active users</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {/*block 2*/}
+                                                <div className="col-lg-4 col-md-6">
+                                                    <div className="counter-outer-two">
+                                                        <div className="icon-content">
+                                                            <div className="tw-count-number text-clr-green">
+                                                                <span className="counter">
+                                                                    <CountUp end={9} duration={10} />
+                                                                </span>K+</div>
+                                                            <p className="icon-content-info">Open job positions</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {/*block 3*/}
+                                                <div className="col-lg-4 col-md-12">
+                                                    <div className="counter-outer-two">
+                                                        <div className="icon-content">
+                                                            <div className="tw-count-number text-clr-pink">
+                                                                <span className="counter">
+                                                                    <CountUp end={2} duration={10} />
+                                                                </span>M+</div>
+                                                            <p className="icon-content-info">Million stories shared</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-lg-4 col-md-12">
+                                    <div className="twm-explore-media-wrap2">
+                                        <div className="twm-media">
+                                            <JobZImage src="images/gallery/7.jpeg" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* EXPLORE NEW LIFE END */}
+
             {/* FEATURED JOBS SECTION START */}
             <div className="section-full p-t120 pos-relative site-bg-white twm-featured-city-area">
                 <div className="twm-bg-section-box" />
