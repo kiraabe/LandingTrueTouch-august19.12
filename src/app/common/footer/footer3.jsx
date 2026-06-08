@@ -16,7 +16,7 @@ function Footer3() {
                                     <div className="logo-footer clearfix">
                                         <NavLink to={publicUser.INITIAL}><JobZImage id="skin_footer_light_logo" src="images/truetouch-logo.webp" alt="TrueTouch Logo" /></NavLink>
                                     </div>
-                                    <p>Many desktop publishing packages and web page editors now.</p>
+                                    <p>Connecting employers with top talent for local and international recruitment needs. Providing skilled professionals for premium manpower supply, domestic helpers, and semi-skilled workers across the globe.</p>
                                     <ul className="ftr-list">
                                         <li><p><span>Email :</span><a href="mailto:truetouchaddis@gmail.com">truetouchaddis@gmail.com</a></p></li>
                                         <li><p><span>Call :</span><a href="tel:+251911208322">+251 91 120 8322</a></p></li>
