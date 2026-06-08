@@ -1154,7 +1154,7 @@ function Home18Page() {
           <div className="cv-modal" onClick={(e) => e.stopPropagation()}>
             {/* Modal Header */}
             <div className="cv-modal-header">
-              <h2 className="cv-modal-title">Professional CV</h2>
+              <h2 className="cv-modal-title">Candidates Profile</h2>
               <button onClick={closeCandidateModal} className="cv-close-btn">×</button>
             </div>
 
