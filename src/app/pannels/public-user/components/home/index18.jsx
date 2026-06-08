@@ -1016,46 +1016,55 @@ function Home18Page() {
       {blogsLoading ? (
         <Spinner />
       ) : blogs.length > 0 ? (
-        <div className="twm-blog-responsive-grid">
-          {blogs.map((blog) => (
-            <div key={blog.id} className="twm-blog-responsive-item">
-              <div className="blog-post twm-blog-post-1-outer">
-                <div className="wt-post-media">
-                  <NavLink to={`/blog-detail/${blog.id}`}>
-                    <JobZImage src={getJobImageUrl(blog.image_url)} alt={blog.title} />
-                  </NavLink>
-                </div>
-                <div className="wt-post-info">
-                  <div className="wt-post-meta">
-                    <ul>
-                      <li className="post-date">
-                        {new Date(blog.created_at).toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'long',
-                          day: '2-digit'
-                        })}
-                      </li>
-                      <li className="post-author">By {blog.author}</li>
-                    </ul>
-                  </div>
-                  <div className="wt-post-title">
-                    <h4 className="post-title">
-                      <NavLink to={`/blog-detail/${blog.id}`}>{blog.title}</NavLink>
-                    </h4>
-                  </div>
-                  <div className="wt-post-text">
-                    <p>{truncateText(blog.description)}</p>
-                  </div>
-                  <div className="wt-post-readmore">
-                    <NavLink to={`/blog-detail/${blog.id}`} className="site-button-link site-text-primary">
-                      Read More
+        <>
+          <div className="twm-blog-responsive-grid">
+            {blogs.slice(0, 6).map((blog) => (
+              <div key={blog.id} className="twm-blog-responsive-item">
+                <div className="blog-post twm-blog-post-1-outer">
+                  <div className="wt-post-media">
+                    <NavLink to={`/blog-detail/${blog.id}`}>
+                      <JobZImage src={getJobImageUrl(blog.image_url)} alt={blog.title} />
                     </NavLink>
+                  </div>
+                  <div className="wt-post-info">
+                    <div className="wt-post-meta">
+                      <ul>
+                        <li className="post-date">
+                          {new Date(blog.created_at).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: '2-digit'
+                          })}
+                        </li>
+                        <li className="post-author">By {blog.author}</li>
+                      </ul>
+                    </div>
+                    <div className="wt-post-title">
+                      <h4 className="post-title">
+                        <NavLink to={`/blog-detail/${blog.id}`}>{blog.title}</NavLink>
+                      </h4>
+                    </div>
+                    <div className="wt-post-text">
+                      <p>{truncateText(blog.description)}</p>
+                    </div>
+                    <div className="wt-post-readmore">
+                      <NavLink to={`/blog-detail/${blog.id}`} className="site-button-link site-text-primary">
+                        Read More
+                      </NavLink>
+                    </div>
                   </div>
                 </div>
               </div>
+            ))}
+          </div>
+          {blogs.length > 6 && (
+            <div className="text-center" style={{ marginTop: '40px' }}>
+              <NavLink to={publicUser.blog.LIST} className="site-button">
+                View All Blogs
+              </NavLink>
             </div>
-          ))}
-        </div>
+          )}
+        </>
       ) : (
         <div className="text-center p-5">
           <p>No blogs available</p>
