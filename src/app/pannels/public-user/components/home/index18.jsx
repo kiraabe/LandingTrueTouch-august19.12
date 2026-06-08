@@ -19,98 +19,35 @@ const truncateText = (text, maxLength = 78) => {
 };
 
 // Helper function to parse and clean skill data (for display as string or array)
+// Helper function to parse and clean skill data (for display as string or array)
 function parseSkillsForDisplay(skillLevel) {
   if (!skillLevel) return "-";
 
-  // If it's already a plain string with no braces/quotes, return as-is
-  if (typeof skillLevel === "string" && !skillLevel.includes("{") && !skillLevel.includes('"')) {
-    return skillLevel;
-  }
-
   try {
-    // Recursively unwrap escaped JSON strings until we get a plain value
-    function deepUnwrap(val) {
-      if (typeof val !== "string") return val;
+    // Remove ALL backslashes
+    let cleaned = skillLevel.replace(/\\/g, "");
 
-      let current = val.trim();
+    // Remove all curly braces and quotes
+    cleaned = cleaned.replace(/[{}"]/g, "");
 
-      // Keep parsing as long as it looks like a JSON string or object
-      while (true) {
-        try {
-          const parsed = JSON.parse(current);
-          if (typeof parsed === "string") {
-            current = parsed.trim();
-          } else {
-            return parsed; // object/array — done unwrapping
-          }
-        } catch {
-          break; // not valid JSON anymore, treat as plain string
-        }
-      }
+    // Split by comma, trim each part, remove empty entries
+    const parts = cleaned
+      .split(",")
+      .map((p) => p.trim())
+      .filter(Boolean);
 
-      return current;
-    }
-
-    // Recursively collect all leaf string values from nested arrays/objects
-    function collectLeafStrings(val) {
-      const unwrapped = deepUnwrap(val);
-
-      if (typeof unwrapped === "string") {
-        // It may be a PostgreSQL array literal like {"a","b"} or a comma-separated list
-        return parsePostgresArrayOrCSV(unwrapped);
-      }
-
-      if (Array.isArray(unwrapped)) {
-        return unwrapped.flatMap(collectLeafStrings);
-      }
-
-      if (typeof unwrapped === "object" && unwrapped !== null) {
-        return Object.values(unwrapped).flatMap(collectLeafStrings);
-      }
-
-      return [String(unwrapped)];
-    }
-
-    // Handle PostgreSQL array literal {"val1","val2"} or plain CSV
-    function parsePostgresArrayOrCSV(str) {
-      const trimmed = str.trim();
-
-      // PostgreSQL array: {"Intermediate","Intermediate"}
-      if (trimmed.startsWith("{") && trimmed.endsWith("}")) {
-        const inner = trimmed.slice(1, -1);
-        // Split by comma, strip surrounding quotes
-        const parts = inner
-          .split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/) // comma not inside quotes
-          .map((p) => p.trim().replace(/^"|"$/g, "").trim())
-          .filter(Boolean);
-
-        // Recursively handle nested arrays/strings within each part
-        return parts.flatMap((p) => {
-          if (p.startsWith("{")) return parsePostgresArrayOrCSV(p);
-          return [p];
-        });
-      }
-
-      // Plain comma-separated string
-      return trimmed
-        .split(",")
-        .map((p) => p.trim())
-        .filter(Boolean);
-    }
-
-    const allValues = collectLeafStrings(skillLevel);
-
-    // Deduplicate while preserving order
-    const unique = [...new Set(allValues.filter(Boolean))];
+    // Deduplicate (case-insensitive)
+    const seen = new Set();
+    const unique = parts.filter((p) => {
+      const key = p.toLowerCase();
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
 
     return unique.length > 0 ? unique.join(", ") : "-";
   } catch (e) {
-    console.error("parseSkillsForDisplay error:", e);
-    // Last resort: strip all backslashes, braces, and quotes
-    return skillLevel
-      .replace(/[\\{}'"]/g, " ")
-      .replace(/\s+/g, " ")
-      .trim() || "-";
+    return "-";
   }
 }
 
