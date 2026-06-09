@@ -388,13 +388,13 @@ function Home18Page() {
                                 <div className="owl-carousel twm-h1-bnr-carousal">
                                     <div className="item">
                                         <div className="slide-img">
-                                            <JobZImage src="images/main-slider/slider1/r-img1.png" alt="#" />
+                                            <JobZImage src="https://cdn.builder.io/api/v1/image/assets%2Ffe9e9d76d5ad4818a6f456f486963a0c%2Fd879be267a814e319f995d9606d7a7bd?format=webp&width=800&height=1200" alt="#" />
                                         </div>
                                     </div>
                                     <div className="item">
                                         <div className="slide-img">
                                             <div className="slide-img">
-                                                <JobZImage src="images/main-slider/slider1/r-img2.png" alt="#" />
+                                                <JobZImage src="https://cdn.builder.io/api/v1/image/assets%2Ffe9e9d76d5ad4818a6f456f486963a0c%2Fec50bafe2f5c4708a486abab5568439e?format=webp&width=800&height=1200" alt="#" />
                                             </div>
                                         </div>
                                     </div>
