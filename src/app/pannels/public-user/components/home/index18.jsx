@@ -505,49 +505,6 @@ function Home18Page() {
             {/* ABOUT SECTION END */}
 
 
-
-      {/* OUR SERVICES SECTION START */}
-<div className="section-full p-t120 p-b90 site-bg-light twm-how-t-get-wrap7">
-    <div className="container">
-        <div className="twm-how-t-get-section">
-            <div className="row">
-                <div className="col-xl-5 col-lg-5 col-md-12">
-                    <div className="twm-how-t-get-section-left">
-                        <div className="section-head left wt-small-separator-outer">
-                            <div className="wt-small-separator site-text-primary">
-                                <div>Our Services</div>
-                            </div>
-                            <h2 className="wt-title">We Connect You to Global Opportunities</h2>
-                            <p>True Touch Foreign Employment Recruitment Agency helps you find the right job abroad with full support from documentation to placement. We guide you every step of the way.</p>
-                        </div>
-                        <div className="twm-how-t-get-bottom">
-                            <NavLink to={publicUser.HOME1} className="site-button">Get Started</NavLink>
-                            <div className="twm-left-icon-bx">
-                                <div className="twm-left-icon-media site-bg-primary">
-                                    <i className="flaticon-bell site-text-white" />
-                                </div>
-                                <div className="twm-left-icon-content">
-                                    <h4 className="icon-title">New Job Available</h4>
-                                    <p>New opportunities added today</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-xl-7 col-lg-7 col-md-12">
-                    <div className="twm-how-t-get-section-right">
-                        <div className="twm-media">
-                            <JobZImage src="images/gallery/7.jpeg" alt="#" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-      {/* OUR SERVICES SECTION END */}
-
-
                   {/* FEATURED JOBS SECTION START */}
             <div className="section-full p-t120 p-t180 pos-relative site-bg-white twm-featured-city-area">
                 <div className="twm-bg-section-box" />
@@ -634,6 +591,47 @@ function Home18Page() {
             {/* FEATURED SECTION END */}
 
       {}
+
+            {/* OUR SERVICES SECTION START */}
+<div className="section-full p-t120 p-b90 site-bg-light twm-how-t-get-wrap7">
+    <div className="container">
+        <div className="twm-how-t-get-section">
+            <div className="row">
+                <div className="col-xl-5 col-lg-5 col-md-12">
+                    <div className="twm-how-t-get-section-left">
+                        <div className="section-head left wt-small-separator-outer">
+                            <div className="wt-small-separator site-text-primary">
+                                <div>Our Services</div>
+                            </div>
+                            <h2 className="wt-title">We Connect You to Global Opportunities</h2>
+                            <p>True Touch Foreign Employment Recruitment Agency helps you find the right job abroad with full support from documentation to placement. We guide you every step of the way.</p>
+                        </div>
+                        <div className="twm-how-t-get-bottom">
+                            <NavLink to={publicUser.HOME1} className="site-button">Get Started</NavLink>
+                            <div className="twm-left-icon-bx">
+                                <div className="twm-left-icon-media site-bg-primary">
+                                    <i className="flaticon-bell site-text-white" />
+                                </div>
+                                <div className="twm-left-icon-content">
+                                    <h4 className="icon-title">New Job Available</h4>
+                                    <p>New opportunities added today</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-xl-7 col-lg-7 col-md-12">
+                    <div className="twm-how-t-get-section-right">
+                        <div className="twm-media">
+                            <JobZImage src="images/gallery/7.jpeg" alt="#" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+      {/* OUR SERVICES SECTION END */}
 
       {/* Portfolio SECTION START */}
       <div id="portfolio" className="section-full p-t120 p-b90 site-bg-white twm-featured-city-carousal-area">
