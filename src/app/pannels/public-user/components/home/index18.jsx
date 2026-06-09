@@ -380,9 +380,15 @@ function Home18Page() {
                     <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
                         <div className="twm-bnr-right-content">
                             <div className="twm-img-bg-circle-area">
-                                <div className="twm-img-bg-circle1 rotate-center"><span /></div>
-                                <div className="twm-img-bg-circle2 rotate-center-reverse"><span /></div>
-                                <div className="twm-img-bg-circle3"><span /></div>
+                                <div className="twm-img-bg-circle1 rotate-center">
+                                    <JobZImage src="images/home-7/flag-icon/uae.jpg" alt="UAE" />
+                                </div>
+                                <div className="twm-img-bg-circle2 rotate-center-reverse">
+                                    <JobZImage src="images/home-7/flag-icon/turkey.jpg" alt="Turkey" />
+                                </div>
+                                <div className="twm-img-bg-circle3">
+                                    <JobZImage src="images/home-7/flag-icon/spain.jpg" alt="Spain" />
+                                </div>
                             </div>
                             <div className="twm-bnr-right-carousel">
                                 <div className="owl-carousel twm-h1-bnr-carousal">
