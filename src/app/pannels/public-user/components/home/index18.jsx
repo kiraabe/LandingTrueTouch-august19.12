@@ -374,21 +374,25 @@ function Home18Page() {
                                 <NavLink to={publicUser.jobs.LIST}>Architect</NavLink> ,
                                 <NavLink to={publicUser.jobs.LIST}>Engineer</NavLink> ...
                             </div>
-                        </div>
+            </div>
           </div>
-                    {/*right Section*/}
+          {/*right Section*/}
 <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
     <div className="twm-bnr-right-content">
         <div className="twm-img-bg-circle-area">
             <div className="twm-country-flags">
-                <div className="twm-flag-item twm-flag-item--lg">
+                <div className="twm-flag-orbit twm-flag-orbit--outer rotate-center">
+                    <div className="twm-flag-item twm-flag-item--sm">
+                        <img src={publicUrlFor("images/flags/jordan.png")} alt="Jordan" className="twm-flag-circle" />
+                    </div>
+                </div>
+                <div className="twm-flag-orbit twm-flag-orbit--inner rotate-center-reverse">
+                    <div className="twm-flag-item twm-flag-item--sm">
+                        <img src={publicUrlFor("images/flags/qatar.png")} alt="Qatar" className="twm-flag-circle" />
+                    </div>
+                </div>
+                <div className="twm-flag-item twm-flag-item--center">
                     <img src={publicUrlFor("images/flags/saudi-arabia.png")} alt="Saudi Arabia" className="twm-flag-circle" />
-                </div>
-                <div className="twm-flag-item twm-flag-item--sm twm-flag-item--top">
-                    <img src={publicUrlFor("images/flags/jordan.png")} alt="Jordan" className="twm-flag-circle" />
-                </div>
-                <div className="twm-flag-item twm-flag-item--sm twm-flag-item--bottom">
-                    <img src={publicUrlFor("images/flags/qatar.png")} alt="Qatar" className="twm-flag-circle" />
                 </div>
             </div>
         </div>
@@ -401,9 +405,7 @@ function Home18Page() {
                 </div>
                 <div className="item">
                     <div className="slide-img">
-                        <div className="slide-img">
-                            <JobZImage src="images/main-slider/slider1/r-img2.png" alt="#" />
-                        </div>
+                        <JobZImage src="images/main-slider/slider1/r-img2.png" alt="#" />
                     </div>
                 </div>
             </div>
