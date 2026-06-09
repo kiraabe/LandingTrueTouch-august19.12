@@ -419,92 +419,7 @@ function Home18Page() {
                     True Touch
                 </div>
             </div>
-      {/*Banner End*/}
-
-                        {/* FEATURED JOBS SECTION START */}
-            <div className="section-full p-t120 pos-relative site-bg-white twm-featured-city-area">
-                <div className="twm-bg-section-box" />
-                <div className="container">
-                    {/* title="" START*/}
-                    <div className="wt-separator-two-part content-white">
-                        <div className="row wt-separator-two-part-row">
-                            <div className="col-xl-5 col-lg-5 col-md-12 wt-separator-two-part-left">
-                                {/* title="" START*/}
-                                <div className="section-head left wt-small-separator-outer">
-                                    <div className="wt-small-separator site-text-primary">
-                                        <div>Jobs by Categories</div>
-                                    </div>
-                                    <h2 className="wt-title">Find your favourite jobs and get.</h2>
-                                </div>
-                                {/* title="" END*/}
-                            </div>
-                            <div className="col-xl-7 col-lg-7 col-md-12 wt-separator-two-part-right text-right">
-                                <NavLink to={publicUser.HOME1} className=" site-button white">View All Locations</NavLink>
-                            </div>
-                        </div>
-                    </div>
-                    {/* title="" END*/}
-                    <div className="twm-featured-city2-section">
-                        <div className="row">
-                            <div className="col-xl-4 col-lg-4 col-md-6">
-                                <div className="twm-featured-city2">
-                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/ResidentialCleanerHousekeeper.jpg")})` }}>
-                                    </div>
-                                    <div className="twm-city-info">
-                                        <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Residential Cleaner / Housekeeper</NavLink></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-xl-3 col-lg-4 col-md-6">
-                                <div className="twm-featured-city2">
-                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/NannyChildcareSpecialist.jpg")})` }}>
-                                    </div>
-                                    <div className="twm-city-info">
-                                        <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Nanny / Childcare Specialist</NavLink></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-xl-5 col-lg-4 col-md-6">
-                                <div className="twm-featured-city2">
-                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/PrivateChefCook.jpg")})` }}>
-                                    </div>
-                                    <div className="twm-city-info">
-                                        <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Private Chef / Cook</NavLink></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-xl-4 col-lg-4 col-md-6">
-                                <div className="twm-featured-city2">
-                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/Logistics&WarehousingSupervisor.jpg")})` }}>
-                                    </div>
-                                    <div className="twm-city-info">
-                                        <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Logistics & Warehousing / Supervisor</NavLink></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-xl-5 col-lg-4 col-md-6">
-                                <div className="twm-featured-city2">
-                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/ElderlyCareCaregiver.jpg")})` }}>
-                                    </div>
-                                    <div className="twm-city-info">
-                                        <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Elderly Care / Caregiver</NavLink></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-xl-3 col-lg-4 col-md-6">
-                                <div className="twm-featured-city2">
-                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/KitchenCleanerCommercialCleaning.jpg")})` }}>
-                                    </div>
-                                    <div className="twm-city-info">
-                                        <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Kitchen Cleaner / House Cleaning</NavLink></h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {/* FEATURED SECTION END */}
+            {/*Banner End*/}
 
                         {/* ABOUT SECTION START */}
             <div className="section-full p-t120 p-b0 site-bg-white twm-millions-1-area pos-relative">
@@ -633,6 +548,91 @@ function Home18Page() {
 </div>
       {/* OUR SERVICES SECTION END */}
 
+
+            {/* FEATURED JOBS SECTION START */}
+            <div className="section-full p-t120 pos-relative site-bg-white twm-featured-city-area">
+                <div className="twm-bg-section-box" />
+                <div className="container">
+                    {/* title="" START*/}
+                    <div className="wt-separator-two-part content-white">
+                        <div className="row wt-separator-two-part-row">
+                            <div className="col-xl-5 col-lg-5 col-md-12 wt-separator-two-part-left">
+                                {/* title="" START*/}
+                                <div className="section-head left wt-small-separator-outer">
+                                    <div className="wt-small-separator site-text-primary">
+                                        <div>Jobs by Categories</div>
+                                    </div>
+                                    <h2 className="wt-title">Find your favourite jobs and get.</h2>
+                                </div>
+                                {/* title="" END*/}
+                            </div>
+                            <div className="col-xl-7 col-lg-7 col-md-12 wt-separator-two-part-right text-right">
+                                <NavLink to={publicUser.HOME1} className=" site-button white">View All Locations</NavLink>
+                            </div>
+                        </div>
+                    </div>
+                    {/* title="" END*/}
+                    <div className="twm-featured-city2-section">
+                        <div className="row">
+                            <div className="col-xl-4 col-lg-4 col-md-6">
+                                <div className="twm-featured-city2">
+                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/ResidentialCleanerHousekeeper.jpg")})` }}>
+                                    </div>
+                                    <div className="twm-city-info">
+                                        <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Residential Cleaner / Housekeeper</NavLink></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-xl-3 col-lg-4 col-md-6">
+                                <div className="twm-featured-city2">
+                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/NannyChildcareSpecialist.jpg")})` }}>
+                                    </div>
+                                    <div className="twm-city-info">
+                                        <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Nanny / Childcare Specialist</NavLink></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-xl-5 col-lg-4 col-md-6">
+                                <div className="twm-featured-city2">
+                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/PrivateChefCook.jpg")})` }}>
+                                    </div>
+                                    <div className="twm-city-info">
+                                        <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Private Chef / Cook</NavLink></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-xl-4 col-lg-4 col-md-6">
+                                <div className="twm-featured-city2">
+                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/Logistics&WarehousingSupervisor.jpg")})` }}>
+                                    </div>
+                                    <div className="twm-city-info">
+                                        <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Logistics & Warehousing / Supervisor</NavLink></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-xl-5 col-lg-4 col-md-6">
+                                <div className="twm-featured-city2">
+                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/ElderlyCareCaregiver.jpg")})` }}>
+                                    </div>
+                                    <div className="twm-city-info">
+                                        <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Elderly Care / Caregiver</NavLink></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-xl-3 col-lg-4 col-md-6">
+                                <div className="twm-featured-city2">
+                                    <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/KitchenCleanerCommercialCleaning.jpg")})` }}>
+                                    </div>
+                                    <div className="twm-city-info">
+                                        <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Kitchen Cleaner / House Cleaning</NavLink></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* FEATURED SECTION END */}
 
       {}
 
