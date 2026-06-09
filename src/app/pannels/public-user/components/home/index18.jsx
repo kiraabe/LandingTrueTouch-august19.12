@@ -440,7 +440,7 @@ function Home18Page() {
                                             {/*2*/}
                                             <div className="twm-circle-jobs-box two bounce">
                                                 <div className="twm-circle-job-pics">
-                                                    <JobZImage src="images/home-5/millions-jobs/company-2.png" alt="#" />
+                                                    <JobZImage src="images/home-7/flag-icon/saudi-arabia.png" alt="#" />
                                                 </div>
                                             </div>
                                             {/*3*/}
