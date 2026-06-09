@@ -407,7 +407,7 @@ function Home18Page() {
                     </div>
                 </div>
                 <div className="twm-gradient-text">
-                    Jobs
+                    True Touch
                 </div>
             </div>
             {/*Banner End*/}
@@ -431,7 +431,7 @@ function Home18Page() {
                   <div className="twm-media">
                     <JobZImage src="images/featured-cities/city1.jpg" alt="" />
                     <div className="twm-city-info">
-                      <div className="twm-city-jobs">True Touch</div>
+                      <div className="twm-city-jobs">Jobs</div>
                       <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Saudi Arabia</NavLink></h4>
                     </div>
                   </div>
