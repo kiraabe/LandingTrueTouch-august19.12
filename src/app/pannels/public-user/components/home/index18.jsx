@@ -325,54 +325,6 @@ function Home18Page() {
                         <div className="twm-bnr-left-section">
                             <div className="twm-bnr-title-small">We Have <span className="site-text-primary">208,000+</span> Live Jobs</div>
                             <div className="twm-bnr-title-large">Find the <span className="site-text-primary">job</span> that fits your life</div>
-                            <div className="twm-bnr-discription">Type your keyword, then click search to find your perfect job.</div>
-                            <div className="twm-bnr-search-bar">
-                                <form>
-                                    <div className="row">
-                                        {/*Title*/}
-                                        <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                                            <label>What</label>
-                                            <select className="wt-search-bar-select selectpicker" data-live-search="true" title="" id="j-Job_Title" data-bv-field="size">
-                                                <option disabled value="" >Select Category</option>
-                                                <option>Job Title</option>
-                                                <option>Web Designer</option>
-                                                <option>Developer</option>
-                                                <option>Acountant</option>
-                                            </select>
-                                        </div>
-                                        {/*All Category*/}
-                                        <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                                            <label>Type</label>
-                                            <select className="wt-search-bar-select selectpicker" data-live-search="true" title="" id="j-All_Category" data-bv-field="size">
-                                                <option disabled value="" >Select Category</option>
-                                                <option>All Category</option>
-                                                <option>Web Designer</option>
-                                                <option>Developer</option>
-                                                <option>Acountant</option>
-                                            </select>
-                                        </div>
-                                        {/*Location*/}
-                                        <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                                            <label>Location</label>
-                                            <div className="twm-inputicon-box">
-                                                <input name="username" type="text" required className="form-control" placeholder="Search..." />
-                                                <i className="twm-input-icon fas fa-map-marker-alt" />
-                                            </div>
-                                        </div>
-                                        {/*Find job btn*/}
-                                        <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                                            <button type="button" className="site-button">Find Job</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div className="twm-bnr-popular-search">
-                                <span className="twm-title">Popular Searches:</span>
-                                <NavLink to={publicUser.jobs.LIST}>Developer</NavLink> ,
-                                <NavLink to={publicUser.jobs.LIST}>Designer</NavLink> ,
-                                <NavLink to={publicUser.jobs.LIST}>Architect</NavLink> ,
-                                <NavLink to={publicUser.jobs.LIST}>Engineer</NavLink> ...
-                            </div>
                         </div>
                     </div>
                     {/*right Section*/}
