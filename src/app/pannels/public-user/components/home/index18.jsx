@@ -12,7 +12,6 @@ import { Toaster } from "sonner";
 import "./cv-modal.css";
 import CountUp from "react-countup";
 
-// Helper function to truncate text to 78 characters
 const truncateText = (text, maxLength = 78) => {
   if (!text) return '';
   if (text.length <= maxLength) return text;
@@ -43,9 +42,7 @@ const parseLanguageSkillsForDisplay = (skills) => {
   if (Array.isArray(skills)) {
     const cleaned = skills
       .map(skill => {
-        if (typeof skill === 'string') {
-          return skill.replace(/^[\{\"]|[\}\"]$/g, '').trim();
-        }
+        if (typeof skill === 'string') return skill.replace(/^[\{\"]|[\}\"]$/g, '').trim();
         return skill;
       })
       .filter(skill => skill && skill.length > 0);
@@ -59,41 +56,85 @@ const parseLanguageSkillsForDisplay = (skills) => {
       let inQuotes = false;
       for (let i = 0; i < content.length; i++) {
         const char = content[i];
-        if (char === '"') {
-          inQuotes = !inQuotes;
-        } else if (char === ',' && !inQuotes) {
+        if (char === '"') { inQuotes = !inQuotes; }
+        else if (char === ',' && !inQuotes) {
           if (currentItem.trim()) {
-            const cleaned = currentItem.trim().replace(/^"|"$/g, '').trim();
-            if (cleaned) parsed.push(cleaned);
+            const c = currentItem.trim().replace(/^"|"$/g, '').trim();
+            if (c) parsed.push(c);
           }
           currentItem = '';
-        } else {
-          currentItem += char;
-        }
+        } else { currentItem += char; }
       }
       if (currentItem.trim()) {
-        const cleaned = currentItem.trim().replace(/^"|"$/g, '').trim();
-        if (cleaned) parsed.push(cleaned);
+        const c = currentItem.trim().replace(/^"|"$/g, '').trim();
+        if (c) parsed.push(c);
       }
       return [...new Set(parsed)];
     }
-    if (skills.includes(',')) {
-      return [...new Set(skills.split(',').map(s => s.trim()).filter(s => s))];
-    }
+    if (skills.includes(',')) return [...new Set(skills.split(',').map(s => s.trim()).filter(s => s))];
     return [skills.trim()];
   }
   return [];
 };
 
-// Flag bubbles data — uses your existing flag images from images/home-7/flag-icon/
+// Flag bubbles — reuses images already in your project
 const FLAG_BUBBLES = [
-  { src: "images/home-7/flag-icon/uae.jpg", alt: "UAE" },
+  { src: "images/home-7/flag-icon/uae.jpg",            alt: "UAE" },
   { src: "images/home-7/flag-icon/united-kingdom.jpg", alt: "UK" },
-  { src: "images/home-7/flag-icon/spain.jpg", alt: "Spain" },
-  { src: "images/home-7/flag-icon/france.jpg", alt: "France" },
-  { src: "images/home-7/flag-icon/turkey.jpg", alt: "Turkey" },
-  { src: "images/home-7/flag-icon/portugal.jpg", alt: "Portugal" },
+  { src: "images/home-7/flag-icon/spain.jpg",          alt: "Spain" },
+  { src: "images/home-7/flag-icon/france.jpg",         alt: "France" },
+  { src: "images/home-7/flag-icon/turkey.jpg",         alt: "Turkey" },
+  { src: "images/home-7/flag-icon/portugal.jpg",       alt: "Portugal" },
 ];
+
+// Inline styles so no external CSS file is needed for the bubbles
+const bubbleWrapStyle: React.CSSProperties = {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  pointerEvents: 'none',
+  zIndex: 4,
+};
+
+const bubblePositions: React.CSSProperties[] = [
+  { top: '6%',    left: '2%'   },
+  { top: '18%',   right: '2%'  },
+  { top: '42%',   left: '0%'   },
+  { top: '42%',   right: '0%'  },
+  { bottom: '22%', left: '3%'  },
+  { bottom: '8%',  right: '3%' },
+];
+
+const baseBubbleStyle: React.CSSProperties = {
+  position: 'absolute',
+  width: 52,
+  height: 52,
+  borderRadius: '50%',
+  background: '#fff',
+  boxShadow: '0 4px 16px rgba(0,0,0,0.13)',
+  border: '2.5px solid #e4eaf3',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  overflow: 'hidden',
+};
+
+const flagImgStyle: React.CSSProperties = {
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+  borderRadius: '50%',
+};
+
+// CSS keyframes injected once
+const BUBBLE_KEYFRAMES = `
+@keyframes flagFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-9px); }
+}
+`;
 
 function Home18Page() {
   const [candidates, setCandidates] = useState([]);
@@ -105,11 +146,22 @@ function Home18Page() {
   const [blogsLoading, setBlogsLoading] = useState(true);
   const [pageReady, setPageReady] = useState(false);
 
+  // Inject keyframes once
+  useEffect(() => {
+    const id = 'flag-bubble-keyframes';
+    if (!document.getElementById(id)) {
+      const style = document.createElement('style');
+      style.id = id;
+      style.textContent = BUBBLE_KEYFRAMES;
+      document.head.appendChild(style);
+    }
+  }, []);
+
   useEffect(() => {
     document.title = 'Home | TrueTouch - Foreign Employment Recruitment Agency';
-    updateSkinStyle("10", false, false)
-    loadScript("js/custom.js")
-  }, [])
+    updateSkinStyle("10", false, false);
+    loadScript("js/custom.js");
+  }, []);
 
   useEffect(() => {
     const fetchCandidates = async () => {
@@ -129,7 +181,7 @@ function Home18Page() {
       }
     };
     fetchCandidates();
-  }, [])
+  }, []);
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -149,7 +201,7 @@ function Home18Page() {
       }
     };
     fetchBlogs();
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (!loading && !blogsLoading) setPageReady(true);
@@ -179,7 +231,7 @@ function Home18Page() {
         });
       }, 100);
     }
-  }, [blogs, blogsLoading])
+  }, [blogs, blogsLoading]);
 
   const openCandidateModal = async (candidate) => {
     setSelectedCandidate(candidate);
@@ -193,7 +245,7 @@ function Home18Page() {
       const data = await response.json();
       setCandidateDetails(data);
     } catch (err) {
-      showErrorToast(err, 'Failed to load candidate details. Please check the console.');
+      showErrorToast(err, 'Failed to load candidate details.');
     } finally {
       setDetailsLoading(false);
     }
@@ -234,14 +286,23 @@ function Home18Page() {
       {!pageReady && <Spinner fullPage={true} />}
 
       {/*Banner Start*/}
-      <div className="twm-home1-banner-section site-bg-gray bg-cover" style={{ backgroundImage: `url(${publicUrlFor("images/main-slider/slider1/bg1.jpg")})` }}>
+      <div
+        className="twm-home1-banner-section site-bg-gray bg-cover"
+        style={{ backgroundImage: `url(${publicUrlFor("images/main-slider/slider1/bg1.jpg")})` }}
+      >
         <div className="row">
           {/*Left Section*/}
           <div className="col-xl-6 col-lg-6 col-md-12">
             <div className="twm-bnr-left-section">
-              <div className="twm-bnr-title-small">We Have <span className="site-text-primary">208,000+</span> Live Jobs</div>
-              <div className="twm-bnr-title-large">Find the <span className="site-text-primary">job</span> that fits your life</div>
-              <div className="twm-bnr-discription">Type your keyword, then click search to find your perfect job.</div>
+              <div className="twm-bnr-title-small">
+                We Have <span className="site-text-primary">208,000+</span> Live Jobs
+              </div>
+              <div className="twm-bnr-title-large">
+                Find the <span className="site-text-primary">job</span> that fits your life
+              </div>
+              <div className="twm-bnr-discription">
+                Type your keyword, then click search to find your perfect job.
+              </div>
               <div className="twm-bnr-search-bar">
                 <form>
                   <div className="row">
@@ -290,21 +351,13 @@ function Home18Page() {
 
           {/*Right Section*/}
           <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
-            <div className="twm-bnr-right-content">
+            <div className="twm-bnr-right-content" style={{ position: 'relative' }}>
+
               {/* Background decorative circles */}
               <div className="twm-img-bg-circle-area">
                 <div className="twm-img-bg-circle1 rotate-center"><span /></div>
                 <div className="twm-img-bg-circle2 rotate-center-reverse"><span /></div>
                 <div className="twm-img-bg-circle3"><span /></div>
-              </div>
-
-              {/* ── Flag icon bubbles ── */}
-              <div className="twm-flag-bubbles-wrap">
-                {FLAG_BUBBLES.map(({ src, alt }, i) => (
-                  <div key={alt} className={`twm-flag-bubble twm-flag-bubble-${i + 1}`} title={alt}>
-                    <JobZImage src={src} alt={alt} />
-                  </div>
-                ))}
               </div>
 
               {/* Carousel */}
@@ -322,6 +375,24 @@ function Home18Page() {
                   </div>
                 </div>
               </div>
+
+              {/* Flag icon bubbles — sit inside twm-bnr-right-content which is position:relative */}
+              <div style={bubbleWrapStyle}>
+                {FLAG_BUBBLES.map(({ src, alt }, i) => (
+                  <div
+                    key={alt}
+                    title={alt}
+                    style={{
+                      ...baseBubbleStyle,
+                      ...bubblePositions[i],
+                      animation: `flagFloat 3.6s ease-in-out ${(i * 0.6).toFixed(1)}s infinite`,
+                    }}
+                  >
+                    <img src={publicUrlFor(src)} alt={alt} style={flagImgStyle} />
+                  </div>
+                ))}
+              </div>
+
             </div>
           </div>
         </div>
@@ -394,11 +465,13 @@ function Home18Page() {
                 </div>
                 <div className="col-xl-8 col-lg-12">
                   <div className="owl-carousel home-client-carousel6 owl-btn-vertical-center">
-                    {["w1", "w2", "w3", "w4", "w5", "w6", "w1", "w2", "w3", "w5"].map((w, i) => (
+                    {["w1","w2","w3","w4","w5","w6","w1","w2","w3","w5"].map((w, i) => (
                       <div className="item" key={i}>
                         <div className="ow-client-logo">
                           <div className="client-logo client-logo-media">
-                            <NavLink to={publicUser.employer.LIST}><JobZImage src={`images/client-logo2/${w}.png`} alt="" /></NavLink>
+                            <NavLink to={publicUser.employer.LIST}>
+                              <JobZImage src={`images/client-logo2/${w}.png`} alt="" />
+                            </NavLink>
                           </div>
                         </div>
                       </div>
@@ -430,7 +503,9 @@ function Home18Page() {
                 <div className="h-page-6-getjobs-right">
                   <div className="section-head left wt-small-separator-outer">
                     <div className="wt-small-separator site-text-primary"><div>About Us</div></div>
-                    <h2 className="wt-title">Your Trusted Partner for <span className="site-text-primary">Foreign Employment</span> Opportunities</h2>
+                    <h2 className="wt-title">
+                      Your Trusted Partner for <span className="site-text-primary">Foreign Employment</span> Opportunities
+                    </h2>
                     <p>True Touch Foreign Employment Recruitment Agency is dedicated to connecting skilled workers with top employers across the Middle East and beyond. We handle everything from job matching to visa processing so you can focus on your future.</p>
                     <p>With years of experience in international recruitment, we have successfully placed thousands of candidates in rewarding careers abroad. Our team is committed to transparency, integrity, and your long-term success.</p>
                   </div>
@@ -504,12 +579,12 @@ function Home18Page() {
           <div className="twm-featured-city2-section">
             <div className="row">
               {[
-                { col: "col-xl-4 col-lg-4 col-md-6", img: "ResidentialCleanerHousekeeper.jpg", label: "Residential Cleaner / Housekeeper" },
-                { col: "col-xl-3 col-lg-4 col-md-6", img: "NannyChildcareSpecialist.jpg", label: "Nanny / Childcare Specialist" },
-                { col: "col-xl-5 col-lg-4 col-md-6", img: "PrivateChefCook.jpg", label: "Private Chef / Cook" },
-                { col: "col-xl-4 col-lg-4 col-md-6", img: "Logistics&WarehousingSupervisor.jpg", label: "Logistics & Warehousing / Supervisor" },
-                { col: "col-xl-5 col-lg-4 col-md-6", img: "ElderlyCareCaregiver.jpg", label: "Elderly Care / Caregiver" },
-                { col: "col-xl-3 col-lg-4 col-md-6", img: "KitchenCleanerCommercialCleaning.jpg", label: "Kitchen Cleaner / House Cleaning" },
+                { col: "col-xl-4 col-lg-4 col-md-6", img: "ResidentialCleanerHousekeeper.jpg",      label: "Residential Cleaner / Housekeeper" },
+                { col: "col-xl-3 col-lg-4 col-md-6", img: "NannyChildcareSpecialist.jpg",           label: "Nanny / Childcare Specialist" },
+                { col: "col-xl-5 col-lg-4 col-md-6", img: "PrivateChefCook.jpg",                    label: "Private Chef / Cook" },
+                { col: "col-xl-4 col-lg-4 col-md-6", img: "Logistics&WarehousingSupervisor.jpg",    label: "Logistics & Warehousing / Supervisor" },
+                { col: "col-xl-5 col-lg-4 col-md-6", img: "ElderlyCareCaregiver.jpg",               label: "Elderly Care / Caregiver" },
+                { col: "col-xl-3 col-lg-4 col-md-6", img: "KitchenCleanerCommercialCleaning.jpg",   label: "Kitchen Cleaner / House Cleaning" },
               ].map(({ col, img, label }) => (
                 <div key={label} className={col}>
                   <div className="twm-featured-city2">
@@ -543,11 +618,11 @@ function Home18Page() {
             </div>
           </div>
         </div>
-        <GalleryLightbox images={[1, 2, 3, 4, 5].map(n => publicUrlFor(`images/gallery/${n}.jpg`))}>
+        <GalleryLightbox images={[1,2,3,4,5].map(n => publicUrlFor(`images/gallery/${n}.jpg`))}>
           {(openLightbox) => (
             <div className="twm-featured-city-carousal-wrap">
               <div className="owl-carousel twm-featured-city-carousal">
-                {[1, 2, 3, 4, 5].map((n, i) => (
+                {[1,2,3,4,5].map((n, i) => (
                   <div className="item" key={n} onClick={() => openLightbox(i)}>
                     <div className="twm-featured-city2 portfolio-card-wrapper">
                       <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor(`images/gallery/${n}.jpg`)})` }} />
@@ -566,7 +641,7 @@ function Home18Page() {
           )}
         </GalleryLightbox>
       </div>
-      {/* FEATURED SECTION END */}
+      {/* PORTFOLIO SECTION END */}
 
       {/* CANDIDATES START */}
       <div id="candidates" className="section-full p-t120 p-b90 site-bg-white twm-candidate-h-page7-wrap pos-relative">
@@ -590,11 +665,16 @@ function Home18Page() {
                             <div className="twm-top-section-content">
                               <div className="twm-media">
                                 <div className="twm-media-pic">
-                                  <JobZImage src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : publicUrlFor("images/candidates/pic1.jpg")} alt={candidate.full_name} />
+                                  <JobZImage
+                                    src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : publicUrlFor("images/candidates/pic1.jpg")}
+                                    alt={candidate.full_name}
+                                  />
                                 </div>
                               </div>
                               <div className="twm-mid-content">
-                                <div className="twm-candidates-tag"><span className={candidate.status?.toLowerCase()}>{candidate.status}</span></div>
+                                <div className="twm-candidates-tag">
+                                  <span className={candidate.status?.toLowerCase()}>{candidate.status}</span>
+                                </div>
                                 <button onClick={() => openCandidateModal(candidate)} className="twm-job-title" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
                                   <h4>{candidate.full_name}</h4>
                                 </button>
@@ -607,8 +687,17 @@ function Home18Page() {
                                 <div className="twm-jobs-vacancies">{candidate.hourly_rate}</div>
                               </div>
                               <div className="twm-action-buttons" style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
-                                <button onClick={() => openCandidateModal(candidate)} className="site-button" style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px', cursor: 'pointer' }}>View Profile</button>
-                                <a href={`https://wa.me/?text=Hi, I'm interested in contacting ${candidate.full_name}`} target="_blank" rel="noopener noreferrer" className="site-button" style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px', backgroundColor: '#25D366' }}>WhatsApp</a>
+                                <button onClick={() => openCandidateModal(candidate)} className="site-button" style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px', cursor: 'pointer' }}>
+                                  View Profile
+                                </button>
+                                <a
+                                  href={`https://wa.me/?text=Hi, I'm interested in contacting ${candidate.full_name}`}
+                                  target="_blank" rel="noopener noreferrer"
+                                  className="site-button"
+                                  style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px', backgroundColor: '#25D366' }}
+                                >
+                                  WhatsApp
+                                </a>
                               </div>
                             </div>
                           </div>
@@ -639,14 +728,14 @@ function Home18Page() {
                     <div className="twm-j-ofr-map-list">
                       <ul>
                         {[
-                          { img: "denmark.jpg", name: "Denmark" },
-                          { img: "france.jpg", name: "France" },
-                          { img: "netherlands.jpg", name: "Netherlands" },
-                          { img: "poland.jpg", name: "Poland" },
-                          { img: "portugal.jpg", name: "Portugal" },
-                          { img: "spain.jpg", name: "Spain" },
-                          { img: "turkey.jpg", name: "Turkey" },
-                          { img: "uae.jpg", name: "UAE" },
+                          { img: "denmark.jpg",        name: "Denmark" },
+                          { img: "france.jpg",         name: "France" },
+                          { img: "netherlands.jpg",    name: "Netherlands" },
+                          { img: "poland.jpg",         name: "Poland" },
+                          { img: "portugal.jpg",       name: "Portugal" },
+                          { img: "spain.jpg",          name: "Spain" },
+                          { img: "turkey.jpg",         name: "Turkey" },
+                          { img: "uae.jpg",            name: "UAE" },
                           { img: "united-kingdom.jpg", name: "UK" },
                         ].map(({ img, name }) => (
                           <li key={name}>
@@ -701,12 +790,16 @@ function Home18Page() {
                         <div className="wt-post-info">
                           <div className="wt-post-meta">
                             <ul>
-                              <li className="post-date">{new Date(blog.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: '2-digit' })}</li>
+                              <li className="post-date">
+                                {new Date(blog.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: '2-digit' })}
+                              </li>
                               <li className="post-author">By {blog.author}</li>
                             </ul>
                           </div>
                           <div className="wt-post-title">
-                            <h4 className="post-title"><NavLink to={`/blog-detail/${blog.id}`}>{blog.title}</NavLink></h4>
+                            <h4 className="post-title">
+                              <NavLink to={`/blog-detail/${blog.id}`}>{blog.title}</NavLink>
+                            </h4>
                           </div>
                           <div className="wt-post-text"><p>{truncateText(blog.description)}</p></div>
                           <div className="wt-post-readmore">
@@ -799,7 +892,15 @@ function Home18Page() {
               <div className="cv-modal-content">
                 <div className="cv-header-section">
                   <div className="cv-photo-container">
-                    <JobZImage src={(candidateDetails.profile_picture ? getCandidateProfilePictureUrl(candidateDetails.profile_picture) : null) || (selectedCandidate.profile_picture ? getCandidateProfilePictureUrl(selectedCandidate.profile_picture) : null) || publicUrlFor("images/candidates/pic1.jpg")} alt={candidateDetails.name} className="cv-profile-photo" />
+                    <JobZImage
+                      src={
+                        (candidateDetails.profile_picture ? getCandidateProfilePictureUrl(candidateDetails.profile_picture) : null) ||
+                        (selectedCandidate.profile_picture ? getCandidateProfilePictureUrl(selectedCandidate.profile_picture) : null) ||
+                        publicUrlFor("images/candidates/pic1.jpg")
+                      }
+                      alt={candidateDetails.name}
+                      className="cv-profile-photo"
+                    />
                   </div>
                   <div className="cv-header-info">
                     <h1 className="cv-candidate-name">{candidateDetails.name}</h1>
@@ -871,7 +972,11 @@ function Home18Page() {
                 )}
                 <div className="cv-modal-actions">
                   <button onClick={closeCandidateModal} className="cv-action-btn cv-close-action">Close</button>
-                  <a href={`https://wa.me/251911208322?text=Hi ${candidateDetails.name}, I'm interested in your profile`} target="_blank" rel="noopener noreferrer" className="cv-action-btn cv-whatsapp-action">
+                  <a
+                    href={`https://wa.me/251911208322?text=Hi ${candidateDetails.name}, I'm interested in your profile`}
+                    target="_blank" rel="noopener noreferrer"
+                    className="cv-action-btn cv-whatsapp-action"
+                  >
                     <i className="fab fa-whatsapp"></i> WhatsApp
                   </a>
                 </div>
@@ -883,7 +988,7 @@ function Home18Page() {
         </div>
       )}
     </>
-  )
+  );
 }
 
 export default Home18Page;
