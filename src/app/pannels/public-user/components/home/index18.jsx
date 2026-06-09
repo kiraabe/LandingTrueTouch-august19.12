@@ -380,9 +380,6 @@ function Home18Page() {
                     <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
                         <div className="twm-bnr-right-content">
                             <div className="twm-img-bg-circle-area">
-                                <div className="twm-img-bg-circle1 rotate-center"><span /></div>
-                                <div className="twm-img-bg-circle2 rotate-center-reverse"><span /></div>
-                                <div className="twm-img-bg-circle3"><span /></div>
                             </div>
                             <div className="twm-bnr-right-carousel">
                                 <div className="owl-carousel twm-h1-bnr-carousal">
@@ -400,6 +397,9 @@ function Home18Page() {
                                     </div>
                                 </div>
                             </div>
+                            {/*Samll Ring Left*/}
+                            <div className="twm-small-ring-l slide-top-animation" />
+                            <div className="twm-small-ring-2 slide-top-animation" />
                         </div>
                     </div>
                 </div>
