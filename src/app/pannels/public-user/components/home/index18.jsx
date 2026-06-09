@@ -385,7 +385,7 @@ function Home18Page() {
                                 <div className="twm-img-bg-circle3"><span /></div>
                             </div>
                             <div className="twm-bnr-right-carousel">
-                                <div className="owl-carousel twm-h1-bnr-carousal">
+                                <div className="twm-h1-bnr-carousal">
                                     <div className="item">
                                         <div className="slide-img">
                                             <JobZImage src="images/main-slider/slider1/r-img1.png" alt="#" />
