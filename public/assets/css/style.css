@@ -25030,57 +25030,53 @@ HOME PAGE 15 START
 .twm-blog-responsive-item .wt-post-readmore {
   margin-top: auto;
 }
+/* Container */
 .twm-country-flags {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: relative;
+    width: 260px;
+    height: 260px;
+    margin: 0 auto;
 }
 
-.twm-flag-item {
-  position: absolute;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Orbiting rings that carry the flags */
+.twm-flag-orbit {
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    top: 50%;
+    left: 50%;
 }
 
-.twm-flag-item:hover {
-  transform: scale(1.07);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+.twm-flag-orbit--outer {
+    width: 240px;
+    height: 240px;
+    margin-left: -120px;
+    margin-top: -120px;
 }
 
-.twm-flag-item--lg {
-  width: 180px;
-  height: 180px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
+.twm-flag-orbit--inner {
+    width: 170px;
+    height: 170px;
+    margin-left: -85px;
+    margin-top: -85px;
 }
 
-.twm-flag-item--sm {
-  width: 110px;
-  height: 110px;
-  z-index: 2;
+/* Counter-rotate the flag inside so it stays upright */
+.twm-flag-orbit--outer .twm-flag-item {
+    animation: counter-rotate 8s linear infinite;
 }
 
-.twm-flag-item--top {
-  top: 10%;
-  right: 5%;
+.twm-flag-orbit--inner .twm-flag-item {
+    animation: counter-rotate-reverse 6s linear infinite;
 }
 
-.twm-flag-item--bottom {
-  bottom: 10%;
-  left: 5%;
+@keyframes counter-rotate {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(-360deg); }
 }
 
-.twm-flag-circle {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  display: block;
-}
+@keyframes counter-rotate-reverse {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(3
