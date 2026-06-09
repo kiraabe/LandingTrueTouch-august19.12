@@ -19024,15 +19024,25 @@ HOME PAGE 15 START
 
 /* Circular Flag Images */
 .twm-img-bg-circle-area {
-	.twm-img-bg-circle1 span,
-	.twm-img-bg-circle2 span,
-	.twm-img-bg-circle3 span {
+	.twm-img-bg-circle1 span {
+		width: 120px !important;
+		height: 120px !important;
 		overflow: hidden;
-		img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			display: block;
-		}
+	}
+	.twm-img-bg-circle2 span {
+		width: 140px !important;
+		height: 140px !important;
+		overflow: hidden;
+	}
+	.twm-img-bg-circle3 span {
+		width: 160px !important;
+		height: 160px !important;
+		overflow: hidden;
+	}
+	span img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
 	}
 }
