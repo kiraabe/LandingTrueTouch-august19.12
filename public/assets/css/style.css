@@ -6877,7 +6877,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 }
 
 @media (max-width: 991px) {
-  .section-full.p-t120, .section-full.p-b90, .section-full.p-tb120 {
+  .section-full.p-t120, .section-full.p-b90, .section-full.p-tb120, .section-full.p-t150, .section-full.p-b150 {
     padding-top: 38px;
     padding-bottom: 10px;
   }
