@@ -87,54 +87,24 @@ const FLAG_BUBBLES = [
   { src: "images/home-7/flag-icon/portugal.jpg",       alt: "Portugal" },
 ];
 
-// Inline styles so no external CSS file is needed for the bubbles
-const bubbleWrapStyle = {
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  width: '100%',
-  height: '100%',
-  pointerEvents: 'none',
-  zIndex: 4,
-};
-
-const bubblePositions = [
-  { top: '6%',    left: '2%'   },
-  { top: '18%',   right: '2%'  },
-  { top: '42%',   left: '0%'   },
-  { top: '42%',   right: '0%'  },
-  { bottom: '22%', left: '3%'  },
-  { bottom: '8%',  right: '3%' },
+// Two tilted elliptical orbits — rx/ry are fractions of container size
+const ORBITS = [
+  { rx: 0.42, ry: 0.24, tilt: -15 },
+  { rx: 0.50, ry: 0.30, tilt:  20 },
 ];
 
-const baseBubbleStyle = {
-  position: 'absolute',
-  width: 52,
-  height: 52,
-  borderRadius: '50%',
-  background: '#fff',
-  boxShadow: '0 4px 16px rgba(0,0,0,0.13)',
-  border: '2.5px solid #e4eaf3',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  overflow: 'hidden',
-};
+// Which orbit each planet rides + starting angle + direction
+const PLANET_CONFIGS = [
+  { orbit: 0, start:   0, dir:  1 },
+  { orbit: 0, start: 180, dir:  1 },
+  { orbit: 0, start:  90, dir:  1 },
+  { orbit: 1, start:  45, dir: -1 },
+  { orbit: 1, start: 225, dir: -1 },
+  { orbit: 1, start: 135, dir: -1 },
+];
 
-const flagImgStyle = {
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover',
-  borderRadius: '50%',
-};
-
-// CSS keyframes injected once
-const BUBBLE_KEYFRAMES = `
-@keyframes flagFloat {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-9px); }
-}
-`;
+// Angular speed (radians per ms → converted to degrees in the loop)
+const PLANET_SPEEDS = [0.00055, 0.00055, 0.00055, 0.00042, 0.00042, 0.00042];
 
 function Home18Page() {
   const [candidates, setCandidates] = useState([]);
@@ -145,17 +115,6 @@ function Home18Page() {
   const [blogs, setBlogs] = useState([]);
   const [blogsLoading, setBlogsLoading] = useState(true);
   const [pageReady, setPageReady] = useState(false);
-
-  // Inject keyframes once
-  useEffect(() => {
-    const id = 'flag-bubble-keyframes';
-    if (!document.getElementById(id)) {
-      const style = document.createElement('style');
-      style.id = id;
-      style.textContent = BUBBLE_KEYFRAMES;
-      document.head.appendChild(style);
-    }
-  }, []);
 
   useEffect(() => {
     document.title = 'Home | TrueTouch - Foreign Employment Recruitment Agency';
@@ -233,6 +192,67 @@ function Home18Page() {
     }
   }, [blogs, blogsLoading]);
 
+  // ── Orbital planet animation ───────────────────────────────────────────
+  useEffect(() => {
+    if (!pageReady) return;
+
+    // Small delay so layout has painted and offsetWidth/Height are real
+    const timer = setTimeout(() => {
+      const container = document.querySelector('.twm-bnr-right-content');
+      if (!container) return;
+
+      let raf;
+      let t0 = null;
+
+      function getPos(oIdx, angleDeg) {
+        const W = container.offsetWidth;
+        const H = container.offsetHeight;
+        const o = ORBITS[oIdx];
+        const rx = o.rx * W;
+        const ry = o.ry * H;
+        const rad  = (angleDeg * Math.PI) / 180;
+        const tilt = (o.tilt   * Math.PI) / 180;
+        const lx = rx * Math.cos(rad);
+        const ly = ry * Math.sin(rad);
+        return {
+          x:     W / 2 + lx * Math.cos(tilt) - ly * Math.sin(tilt),
+          y:     H / 2 + lx * Math.sin(tilt) + ly * Math.cos(tilt),
+          depth: Math.sin(rad - tilt),
+        };
+      }
+
+      function frame(ts) {
+        if (!t0) t0 = ts;
+        const elapsed = ts - t0;
+
+        const planets = document.querySelectorAll('.twm-flag-planet');
+        planets.forEach((el, i) => {
+          const cfg = PLANET_CONFIGS[i];
+          // Convert speed (rad/ms equivalent) to degrees
+          const angle = cfg.start + elapsed * PLANET_SPEEDS[i] * (180 / Math.PI) * cfg.dir;
+          const { x, y, depth } = getPos(cfg.orbit, angle);
+
+          const W = container.offsetWidth;
+          const H = container.offsetHeight;
+          const scale   = 0.75 + 0.30 * ((depth + 1) / 2);
+          const opacity = 0.55 + 0.45 * ((depth + 1) / 2);
+
+          el.style.transform = `translate(${x - W / 2}px, ${y - H / 2}px) scale(${scale})`;
+          el.style.opacity    = opacity;
+          el.style.zIndex     = depth > 0 ? 5 : 3;
+        });
+
+        raf = requestAnimationFrame(frame);
+      }
+
+      raf = requestAnimationFrame(frame);
+      return () => cancelAnimationFrame(raf);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [pageReady]);
+  // ── End orbital animation ──────────────────────────────────────────────
+
   const openCandidateModal = async (candidate) => {
     setSelectedCandidate(candidate);
     setDetailsLoading(true);
@@ -262,10 +282,10 @@ function Home18Page() {
       const formData = new FormData(e.target);
       const data = {
         username: formData.get('username'),
-        email: formData.get('email'),
-        phone: formData.get('phone'),
-        subject: formData.get('subject'),
-        message: formData.get('message')
+        email:    formData.get('email'),
+        phone:    formData.get('phone'),
+        subject:  formData.get('subject'),
+        message:  formData.get('message')
       };
       const response = await fetch('/api/contact-us', {
         method: 'POST',
@@ -351,7 +371,7 @@ function Home18Page() {
 
           {/*Right Section*/}
           <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
-            <div className="twm-bnr-right-content" style={{ position: 'relative' }}>
+            <div className="twm-bnr-right-content">
 
               {/* Background decorative circles */}
               <div className="twm-img-bg-circle-area">
@@ -376,19 +396,11 @@ function Home18Page() {
                 </div>
               </div>
 
-              {/* Flag icon bubbles — sit inside twm-bnr-right-content which is position:relative */}
-              <div style={bubbleWrapStyle}>
+              {/* Orbital flag planets */}
+              <div className="twm-orbit-system">
                 {FLAG_BUBBLES.map(({ src, alt }, i) => (
-                  <div
-                    key={alt}
-                    title={alt}
-                    style={{
-                      ...baseBubbleStyle,
-                      ...bubblePositions[i],
-                      animation: `flagFloat 3.6s ease-in-out ${(i * 0.6).toFixed(1)}s infinite`,
-                    }}
-                  >
-                    <img src={publicUrlFor(src)} alt={alt} style={flagImgStyle} />
+                  <div key={alt} className="twm-flag-planet" title={alt}>
+                    <img src={publicUrlFor(src)} alt={alt} />
                   </div>
                 ))}
               </div>
