@@ -1307,6 +1307,28 @@ Home page 11 banner
   background-color: #e0e9e6 !important;
 }
 
+.wt-search-bar-select .btn-light {
+  background-color: #e0e9e6 !important;
+  color: #2d5a2d;
+  border-color: #7FD87F !important;
+}
+
+.wt-search-bar-select .btn-light:hover {
+  background-color: #d9f0d9 !important;
+  border-color: #7FD87F !important;
+}
+
+.wt-search-bar-select .btn-light:focus,
+.wt-search-bar-select .btn-light:active {
+  background-color: #e0e9e6 !important;
+  border-color: #7FD87F !important;
+  box-shadow: 0 0 0 0.2rem rgba(127, 216, 127, 0.25) !important;
+}
+
+.dropdown.bootstrap-select.wt-search-bar-select .btn-light::after {
+  border-top-color: #7FD87F;
+}
+
 /*Breadcrumb*/
 .wt-breadcrumb li {
   color: #7FD87F;
