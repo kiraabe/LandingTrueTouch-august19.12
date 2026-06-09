@@ -79,16 +79,16 @@ const parseLanguageSkillsForDisplay = (skills) => {
 
 // Flag bubbles — reuses images already in your project
 const FLAG_BUBBLES = [
-  { src: "images/home-7/flag-icon/uae.jpg",            alt: "UAE" },
+  { src: "images/home-7/flag-icon/uae.jpg", alt: "UAE" },
   { src: "images/home-7/flag-icon/united-kingdom.jpg", alt: "UK" },
-  { src: "images/home-7/flag-icon/spain.jpg",          alt: "Spain" },
-  { src: "images/home-7/flag-icon/france.jpg",         alt: "France" },
-  { src: "images/home-7/flag-icon/turkey.jpg",         alt: "Turkey" },
-  { src: "images/home-7/flag-icon/portugal.jpg",       alt: "Portugal" },
+  { src: "images/home-7/flag-icon/spain.jpg", alt: "Spain" },
+  { src: "images/home-7/flag-icon/france.jpg", alt: "France" },
+  { src: "images/home-7/flag-icon/turkey.jpg", alt: "Turkey" },
+  { src: "images/home-7/flag-icon/portugal.jpg", alt: "Portugal" },
 ];
 
 // Inline styles so no external CSS file is needed for the bubbles
-const bubbleWrapStyle: React.CSSProperties = {
+const bubbleWrapStyle = {
   position: 'absolute',
   top: 0,
   left: 0,
@@ -98,16 +98,16 @@ const bubbleWrapStyle: React.CSSProperties = {
   zIndex: 4,
 };
 
-const bubblePositions: React.CSSProperties[] = [
-  { top: '6%',    left: '2%'   },
-  { top: '18%',   right: '2%'  },
-  { top: '42%',   left: '0%'   },
-  { top: '42%',   right: '0%'  },
-  { bottom: '22%', left: '3%'  },
-  { bottom: '8%',  right: '3%' },
+const bubblePositions = [
+  { top: '6%', left: '2%' },
+  { top: '18%', right: '2%' },
+  { top: '42%', left: '0%' },
+  { top: '42%', right: '0%' },
+  { bottom: '22%', left: '3%' },
+  { bottom: '8%', right: '3%' },
 ];
 
-const baseBubbleStyle: React.CSSProperties = {
+const baseBubbleStyle = {
   position: 'absolute',
   width: 52,
   height: 52,
@@ -465,7 +465,7 @@ function Home18Page() {
                 </div>
                 <div className="col-xl-8 col-lg-12">
                   <div className="owl-carousel home-client-carousel6 owl-btn-vertical-center">
-                    {["w1","w2","w3","w4","w5","w6","w1","w2","w3","w5"].map((w, i) => (
+                    {["w1", "w2", "w3", "w4", "w5", "w6", "w1", "w2", "w3", "w5"].map((w, i) => (
                       <div className="item" key={i}>
                         <div className="ow-client-logo">
                           <div className="client-logo client-logo-media">
@@ -579,12 +579,12 @@ function Home18Page() {
           <div className="twm-featured-city2-section">
             <div className="row">
               {[
-                { col: "col-xl-4 col-lg-4 col-md-6", img: "ResidentialCleanerHousekeeper.jpg",      label: "Residential Cleaner / Housekeeper" },
-                { col: "col-xl-3 col-lg-4 col-md-6", img: "NannyChildcareSpecialist.jpg",           label: "Nanny / Childcare Specialist" },
-                { col: "col-xl-5 col-lg-4 col-md-6", img: "PrivateChefCook.jpg",                    label: "Private Chef / Cook" },
-                { col: "col-xl-4 col-lg-4 col-md-6", img: "Logistics&WarehousingSupervisor.jpg",    label: "Logistics & Warehousing / Supervisor" },
-                { col: "col-xl-5 col-lg-4 col-md-6", img: "ElderlyCareCaregiver.jpg",               label: "Elderly Care / Caregiver" },
-                { col: "col-xl-3 col-lg-4 col-md-6", img: "KitchenCleanerCommercialCleaning.jpg",   label: "Kitchen Cleaner / House Cleaning" },
+                { col: "col-xl-4 col-lg-4 col-md-6", img: "ResidentialCleanerHousekeeper.jpg", label: "Residential Cleaner / Housekeeper" },
+                { col: "col-xl-3 col-lg-4 col-md-6", img: "NannyChildcareSpecialist.jpg", label: "Nanny / Childcare Specialist" },
+                { col: "col-xl-5 col-lg-4 col-md-6", img: "PrivateChefCook.jpg", label: "Private Chef / Cook" },
+                { col: "col-xl-4 col-lg-4 col-md-6", img: "Logistics&WarehousingSupervisor.jpg", label: "Logistics & Warehousing / Supervisor" },
+                { col: "col-xl-5 col-lg-4 col-md-6", img: "ElderlyCareCaregiver.jpg", label: "Elderly Care / Caregiver" },
+                { col: "col-xl-3 col-lg-4 col-md-6", img: "KitchenCleanerCommercialCleaning.jpg", label: "Kitchen Cleaner / House Cleaning" },
               ].map(({ col, img, label }) => (
                 <div key={label} className={col}>
                   <div className="twm-featured-city2">
@@ -618,11 +618,11 @@ function Home18Page() {
             </div>
           </div>
         </div>
-        <GalleryLightbox images={[1,2,3,4,5].map(n => publicUrlFor(`images/gallery/${n}.jpg`))}>
+        <GalleryLightbox images={[1, 2, 3, 4, 5].map(n => publicUrlFor(`images/gallery/${n}.jpg`))}>
           {(openLightbox) => (
             <div className="twm-featured-city-carousal-wrap">
               <div className="owl-carousel twm-featured-city-carousal">
-                {[1,2,3,4,5].map((n, i) => (
+                {[1, 2, 3, 4, 5].map((n, i) => (
                   <div className="item" key={n} onClick={() => openLightbox(i)}>
                     <div className="twm-featured-city2 portfolio-card-wrapper">
                       <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor(`images/gallery/${n}.jpg`)})` }} />
@@ -728,14 +728,14 @@ function Home18Page() {
                     <div className="twm-j-ofr-map-list">
                       <ul>
                         {[
-                          { img: "denmark.jpg",        name: "Denmark" },
-                          { img: "france.jpg",         name: "France" },
-                          { img: "netherlands.jpg",    name: "Netherlands" },
-                          { img: "poland.jpg",         name: "Poland" },
-                          { img: "portugal.jpg",       name: "Portugal" },
-                          { img: "spain.jpg",          name: "Spain" },
-                          { img: "turkey.jpg",         name: "Turkey" },
-                          { img: "uae.jpg",            name: "UAE" },
+                          { img: "denmark.jpg", name: "Denmark" },
+                          { img: "france.jpg", name: "France" },
+                          { img: "netherlands.jpg", name: "Netherlands" },
+                          { img: "poland.jpg", name: "Poland" },
+                          { img: "portugal.jpg", name: "Portugal" },
+                          { img: "spain.jpg", name: "Spain" },
+                          { img: "turkey.jpg", name: "Turkey" },
+                          { img: "uae.jpg", name: "UAE" },
                           { img: "united-kingdom.jpg", name: "UK" },
                         ].map(({ img, name }) => (
                           <li key={name}>
