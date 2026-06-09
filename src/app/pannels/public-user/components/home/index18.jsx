@@ -380,29 +380,89 @@ function Home18Page() {
                     <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
                         <div className="twm-bnr-right-content">
                             <div className="twm-img-bg-circle-area">
-                                <div className="twm-img-bg-circle1 rotate-center">
-        <span style={{ position: 'relative', display: 'block', width: '100%', height: '100%' }}>
-            {/* Flags positioned around circle1 */}
-            <span style={{ position: 'absolute', fontSize: '22px', top: '15%', right: '-10px', lineHeight: 1 }}>🇺🇸</span>
-            <span style={{ position: 'absolute', fontSize: '22px', bottom: '15%', left: '-10px', lineHeight: 1 }}>🇬🇧</span>
-        </span>
-    </div>
-    <div className="twm-img-bg-circle2 rotate-center-reverse">
-        <span style={{ position: 'relative', display: 'block', width: '100%', height: '100%' }}>
-            {/* Flags positioned around circle2 */}
-            <span style={{ position: 'absolute', fontSize: '22px', bottom: '12%', right: '5%', lineHeight: 1 }}>🇩🇪</span>
-            <span style={{ position: 'absolute', fontSize: '22px', top: '10%', left: '5%', lineHeight: 1 }}>🇫🇷</span>
-            <span style={{ position: 'absolute', fontSize: '22px', top: '45%', right: '-12px', lineHeight: 1 }}>🇨🇦</span>
-        </span>
-    </div>
-    <div className="twm-img-bg-circle3">
-        <span style={{ position: 'relative', display: 'block', width: '100%', height: '100%' }}>
-            {/* Flags positioned around circle3 */}
-            <span style={{ position: 'absolute', fontSize: '22px', top: '8%', right: '10%', lineHeight: 1 }}>🇦🇺</span>
-            <span style={{ position: 'absolute', fontSize: '22px', bottom: '8%', left: '10%', lineHeight: 1 }}>🇯🇵</span>
-            <span style={{ position: 'absolute', fontSize: '22px', top: '45%', left: '-12px', lineHeight: 1 }}>🇮🇳</span>
-        </span>
-    </div>
+                            {/* Add this CSS to your stylesheet or a <style> tag */}
+{/*
+@keyframes orbit {
+  from { transform: rotate(var(--start-angle)) translateX(var(--radius)); }
+  to   { transform: rotate(calc(var(--start-angle) + 360deg)) translateX(var(--radius)); }
+}
+@keyframes counter-orbit {
+  from { transform: translate(-50%, -50%) rotate(calc(-1 * var(--start-angle))); }
+  to   { transform: translate(-50%, -50%) rotate(calc(-1 * var(--start-angle) - 360deg)); }
+}
+*/}
+
+<div className="twm-img-bg-circle-area" style={{ position: 'relative' }}>
+  <div className="twm-img-bg-circle1 rotate-center"><span /></div>
+  <div className="twm-img-bg-circle2 rotate-center-reverse"><span /></div>
+  <div className="twm-img-bg-circle3"><span /></div>
+
+  {/* --- Orbit ring 1 (inner, fast) --- */}
+  {[
+    { flag: '🇺🇸', start: '0deg'   },
+    { flag: '🇬🇧', start: '180deg' },
+  ].map(({ flag, start }, i) => (
+    <span key={`r1-${i}`} style={{
+      position: 'absolute', top: '50%', left: '50%',
+      width: 0, height: 0,
+      '--start-angle': start,
+      '--radius': '70px',
+      animation: `orbit 5s linear infinite`,
+      animationDelay: '0s',
+    }}>
+      <span style={{
+        position: 'absolute', fontSize: '22px', lineHeight: 1,
+        transform: 'translate(-50%, -50%)',
+        '--start-angle': start,
+        animation: `counter-orbit 5s linear infinite`,
+      }}>{flag}</span>
+    </span>
+  ))}
+
+  {/* --- Orbit ring 2 (mid, medium) --- */}
+  {[
+    { flag: '🇩🇪', start: '0deg'   },
+    { flag: '🇫🇷', start: '120deg' },
+    { flag: '🇨🇦', start: '240deg' },
+  ].map(({ flag, start }, i) => (
+    <span key={`r2-${i}`} style={{
+      position: 'absolute', top: '50%', left: '50%',
+      width: 0, height: 0,
+      '--start-angle': start,
+      '--radius': '120px',
+      animation: `orbit 9s linear infinite`,
+    }}>
+      <span style={{
+        position: 'absolute', fontSize: '22px', lineHeight: 1,
+        transform: 'translate(-50%, -50%)',
+        '--start-angle': start,
+        animation: `counter-orbit 9s linear infinite`,
+      }}>{flag}</span>
+    </span>
+  ))}
+
+  {/* --- Orbit ring 3 (outer, slow) --- */}
+  {[
+    { flag: '🇦🇺', start: '0deg'   },
+    { flag: '🇯🇵', start: '90deg'  },
+    { flag: '🇮🇳', start: '180deg' },
+    { flag: '🇧🇷', start: '270deg' },
+  ].map(({ flag, start }, i) => (
+    <span key={`r3-${i}`} style={{
+      position: 'absolute', top: '50%', left: '50%',
+      width: 0, height: 0,
+      '--start-angle': start,
+      '--radius': '180px',
+      animation: `orbit 14s linear infinite`,
+    }}>
+      <span style={{
+        position: 'absolute', fontSize: '22px', lineHeight: 1,
+        transform: 'translate(-50%, -50%)',
+        '--start-angle': start,
+        animation: `counter-orbit 14s linear infinite`,
+      }}>{flag}</span>
+    </span>
+  ))}
                             </div>
                             <div className="twm-bnr-right-carousel">
                                 <div className="owl-carousel twm-h1-bnr-carousal">
