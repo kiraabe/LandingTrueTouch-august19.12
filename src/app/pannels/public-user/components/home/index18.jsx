@@ -382,18 +382,15 @@ function Home18Page() {
                             <div className="twm-img-bg-circle-area">
                                 <div className="twm-img-bg-circle1 rotate-center">
                                     <span>
-                                        <JobZImage src="images/home-7/flag-icon/uae.jpg" alt="UAE" />
+                    <JobZImage src="images/home-7/flag-icon/jordan.png" alt="JORDAN" />
                                     </span>
                                 </div>
                                 <div className="twm-img-bg-circle2 rotate-center-reverse">
                                     <span>
-                                        <JobZImage src="images/home-7/flag-icon/turkey.jpg" alt="Turkey" />
+                    <JobZImage src="images/home-7/flag-icon/united-arab-emirates.png" alt="UAE" />
                                     </span>
                                 </div>
                                 <div className="twm-img-bg-circle3">
-                                    <span>
-                                        <JobZImage src="images/home-7/flag-icon/spain.jpg" alt="Spain" />
-                                    </span>
                                 </div>
                             </div>
                             <div className="twm-bnr-right-carousel">
