@@ -10997,9 +10997,9 @@ ol.comment-list li.comment .comment-respond .comment-form p {
   }
 }
 .twm-home1-banner-section .twm-bnr-right-section .twm-img-bg-circle-area .twm-img-bg-circle2 span:after {
-  width: 17px;
-  height: 17px;
-  background-color: #1967d2;
+  width: 60px;
+  height: 60px;
+  background-image: url('../images/home-7/flag-icon/qatar.png');
   border-radius: 50%;
   content: "";
   position: absolute;
