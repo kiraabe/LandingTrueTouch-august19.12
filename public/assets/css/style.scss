@@ -19024,12 +19024,15 @@ HOME PAGE 15 START
 
 /* Circular Flag Images */
 .twm-img-bg-circle-area {
-	span {
+	.twm-img-bg-circle1 span,
+	.twm-img-bg-circle2 span,
+	.twm-img-bg-circle3 span {
+		overflow: hidden;
 		img {
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
-			border-radius: 50%;
+			display: block;
 		}
 	}
 }
