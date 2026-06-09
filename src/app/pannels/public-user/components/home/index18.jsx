@@ -379,44 +379,10 @@ function Home18Page() {
                     {/*right Section*/}
                     <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
                         <div className="twm-bnr-right-content">
-              <div className="twm-img-bg-circle-area">
-                                {/* Background rings — unchanged */}
-    <div className="twm-img-bg-circle1 rotate-center"><span /></div>
-    <div className="twm-img-bg-circle2 rotate-center-reverse"><span /></div>
-    <div className="twm-img-bg-circle3"><span /></div>
-
-    {/* Ring 1 flags — 2 flags, 5s, radius 70px */}
-    <div className="twm-orbit-arm" style={{ animation: 'twmOrbit1a 5s linear infinite' }}>
-        <span className="twm-orbit-flag" style={{ animation: 'twmUpright 5s linear infinite' }}>🇺🇸</span>
-    </div>
-    <div className="twm-orbit-arm" style={{ animation: 'twmOrbit1b 5s linear infinite' }}>
-        <span className="twm-orbit-flag" style={{ animation: 'twmUpright 5s linear infinite' }}>🇬🇧</span>
-    </div>
-
-    {/* Ring 2 flags — 3 flags, 9s, radius 130px */}
-    <div className="twm-orbit-arm" style={{ animation: 'twmOrbit2a 9s linear infinite' }}>
-        <span className="twm-orbit-flag" style={{ animation: 'twmUpright 9s linear infinite' }}>🇩🇪</span>
-    </div>
-    <div className="twm-orbit-arm" style={{ animation: 'twmOrbit2b 9s linear infinite' }}>
-        <span className="twm-orbit-flag" style={{ animation: 'twmUpright 9s linear infinite' }}>🇫🇷</span>
-    </div>
-    <div className="twm-orbit-arm" style={{ animation: 'twmOrbit2c 9s linear infinite' }}>
-        <span className="twm-orbit-flag" style={{ animation: 'twmUpright 9s linear infinite' }}>🇨🇦</span>
-    </div>
-
-    {/* Ring 3 flags — 4 flags, 14s, radius 190px */}
-    <div className="twm-orbit-arm" style={{ animation: 'twmOrbit3a 14s linear infinite' }}>
-        <span className="twm-orbit-flag" style={{ animation: 'twmUpright 14s linear infinite' }}>🇦🇺</span>
-    </div>
-    <div className="twm-orbit-arm" style={{ animation: 'twmOrbit3b 14s linear infinite' }}>
-        <span className="twm-orbit-flag" style={{ animation: 'twmUpright 14s linear infinite' }}>🇯🇵</span>
-    </div>
-    <div className="twm-orbit-arm" style={{ animation: 'twmOrbit3c 14s linear infinite' }}>
-        <span className="twm-orbit-flag" style={{ animation: 'twmUpright 14s linear infinite' }}>🇮🇳</span>
-    </div>
-    <div className="twm-orbit-arm" style={{ animation: 'twmOrbit3d 14s linear infinite' }}>
-        <span className="twm-orbit-flag" style={{ animation: 'twmUpright 14s linear infinite' }}>🇧🇷</span>
-    </div>
+                            <div className="twm-img-bg-circle-area">
+                                <div className="twm-img-bg-circle1 rotate-center"><span /></div>
+                                <div className="twm-img-bg-circle2 rotate-center-reverse"><span /></div>
+                                <div className="twm-img-bg-circle3"><span /></div>
                             </div>
                             <div className="twm-bnr-right-carousel">
                                 <div className="owl-carousel twm-h1-bnr-carousal">
