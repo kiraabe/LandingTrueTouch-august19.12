@@ -434,7 +434,7 @@ function Home18Page() {
                                             {/*1*/}
                                             <div className="twm-circle-jobs-box one bounce2">
                                                 <div className="twm-circle-job-pics">
-                                                    <JobZImage src="images/home-5/millions-jobs/company-1.png" alt="#" />
+                                                    <JobZImage src="images/home-7/flag-icon/qatar.png" alt="#" />
                                                 </div>
                                             </div>
                                             {/*2*/}
@@ -446,13 +446,13 @@ function Home18Page() {
                                             {/*3*/}
                                             <div className="twm-circle-jobs-box three bounce2">
                                                 <div className="twm-circle-job-pics">
-                                                    <JobZImage src="images/home-5/millions-jobs/company-3.png" alt="#" />
+                                                    <JobZImage src="images/home-7/flag-icon/jordan.png" alt="#" />
                                                 </div>
                                             </div>
                                             {/*4*/}
                                             <div className="twm-circle-jobs-box four bounce">
                                                 <div className="twm-circle-job-pics">
-                                                    <JobZImage src="images/home-5/millions-jobs/company-4.png" alt="#" />
+                                                    <JobZImage src="images/home-7/flag-icon/united-arab-emirates.png" alt="#" />
                                                 </div>
                                             </div>
                                             {/*5*/}
