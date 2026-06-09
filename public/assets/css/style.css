@@ -25031,3 +25031,37 @@ HOME PAGE 15 START
   margin-top: auto;
 }
 
+
+/* Flag orbit animations */
+@keyframes flagOrbit1a { from { transform: rotate(0deg)   translateX(70px); } to { transform: rotate(360deg)  translateX(70px); } }
+@keyframes flagOrbit1b { from { transform: rotate(180deg) translateX(70px); } to { transform: rotate(540deg)  translateX(70px); } }
+
+@keyframes flagOrbit2a { from { transform: rotate(0deg)   translateX(130px); } to { transform: rotate(360deg)  translateX(130px); } }
+@keyframes flagOrbit2b { from { transform: rotate(120deg) translateX(130px); } to { transform: rotate(480deg)  translateX(130px); } }
+@keyframes flagOrbit2c { from { transform: rotate(240deg) translateX(130px); } to { transform: rotate(600deg)  translateX(130px); } }
+
+@keyframes flagOrbit3a { from { transform: rotate(0deg)   translateX(190px); } to { transform: rotate(360deg)  translateX(190px); } }
+@keyframes flagOrbit3b { from { transform: rotate(90deg)  translateX(190px); } to { transform: rotate(450deg)  translateX(190px); } }
+@keyframes flagOrbit3c { from { transform: rotate(180deg) translateX(190px); } to { transform: rotate(540deg)  translateX(190px); } }
+@keyframes flagOrbit3d { from { transform: rotate(270deg) translateX(190px); } to { transform: rotate(630deg)  translateX(190px); } }
+
+@keyframes flagUpright5  { from { transform: translate(-50%,-50%) rotate(0deg);   } to { transform: translate(-50%,-50%) rotate(-360deg); } }
+@keyframes flagUpright9  { from { transform: translate(-50%,-50%) rotate(0deg);   } to { transform: translate(-50%,-50%) rotate(-360deg); } }
+@keyframes flagUpright14 { from { transform: translate(-50%,-50%) rotate(0deg);   } to { transform: translate(-50%,-50%) rotate(-360deg); } }
+
+.twm-flag-orbiter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+.twm-flag-orbiter .twm-flag-emoji {
+    position: absolute;
+    font-size: 22px;
+    line-height: 1;
+    display: block;
+    pointer-events: auto;
+}
+
