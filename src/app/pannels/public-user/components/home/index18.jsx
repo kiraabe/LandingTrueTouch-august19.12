@@ -550,7 +550,7 @@ function Home18Page() {
 
 
                   {/* FEATURED JOBS SECTION START */}
-            <div className="section-full p-t120 pos-relative site-bg-white twm-featured-city-area">
+            <div className="section-full p-t120 p-t180 pos-relative site-bg-white twm-featured-city-area">
                 <div className="twm-bg-section-box" />
                 <div className="container">
                     {/* title="" START*/}
