@@ -380,9 +380,29 @@ function Home18Page() {
                     <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
                         <div className="twm-bnr-right-content">
                             <div className="twm-img-bg-circle-area">
-                                <div className="twm-img-bg-circle1 rotate-center"><span /></div>
-                                <div className="twm-img-bg-circle2 rotate-center-reverse"><span /></div>
-                                <div className="twm-img-bg-circle3"><span /></div>
+                                <div className="twm-img-bg-circle1 rotate-center">
+        <span style={{ position: 'relative', display: 'block', width: '100%', height: '100%' }}>
+            {/* Flags positioned around circle1 */}
+            <span style={{ position: 'absolute', fontSize: '22px', top: '15%', right: '-10px', lineHeight: 1 }}>🇺🇸</span>
+            <span style={{ position: 'absolute', fontSize: '22px', bottom: '15%', left: '-10px', lineHeight: 1 }}>🇬🇧</span>
+        </span>
+    </div>
+    <div className="twm-img-bg-circle2 rotate-center-reverse">
+        <span style={{ position: 'relative', display: 'block', width: '100%', height: '100%' }}>
+            {/* Flags positioned around circle2 */}
+            <span style={{ position: 'absolute', fontSize: '22px', bottom: '12%', right: '5%', lineHeight: 1 }}>🇩🇪</span>
+            <span style={{ position: 'absolute', fontSize: '22px', top: '10%', left: '5%', lineHeight: 1 }}>🇫🇷</span>
+            <span style={{ position: 'absolute', fontSize: '22px', top: '45%', right: '-12px', lineHeight: 1 }}>🇨🇦</span>
+        </span>
+    </div>
+    <div className="twm-img-bg-circle3">
+        <span style={{ position: 'relative', display: 'block', width: '100%', height: '100%' }}>
+            {/* Flags positioned around circle3 */}
+            <span style={{ position: 'absolute', fontSize: '22px', top: '8%', right: '10%', lineHeight: 1 }}>🇦🇺</span>
+            <span style={{ position: 'absolute', fontSize: '22px', bottom: '8%', left: '10%', lineHeight: 1 }}>🇯🇵</span>
+            <span style={{ position: 'absolute', fontSize: '22px', top: '45%', left: '-12px', lineHeight: 1 }}>🇮🇳</span>
+        </span>
+    </div>
                             </div>
                             <div className="twm-bnr-right-carousel">
                                 <div className="owl-carousel twm-h1-bnr-carousal">
