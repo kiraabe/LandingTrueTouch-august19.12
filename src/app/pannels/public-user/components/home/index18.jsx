@@ -421,63 +421,6 @@ function Home18Page() {
             </div>
             {/*Banner End*/}
 
-      {/* FEATURED SECTION START */}
-      <div className="section-full p-t120 p-b90 site-bg-white twm-featured-city-area">
-        <div className="container">
-          {/* title="" START*/}
-          <div className="section-head center wt-small-separator-outer">
-            <div className="wt-small-separator site-text-primary">
-              <div>Featured Cities</div>
-            </div>
-            <h2 className="wt-title">Browse job offers by
-              popular locations</h2>
-          </div>
-          {/* title="" END*/}
-          <div className="twm-featured-city-section">
-            <div className="row">
-              <div className="col-xl-8 col-lg-8 col-md-12">
-                <div className="twm-featured-city twm-large-block">
-                  <div className="twm-media">
-                    <JobZImage src="images/featured-cities/city1.jpg" alt="" />
-                    <div className="twm-city-info">
-                      <div className="twm-city-jobs">Jobs</div>
-                      <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Saudi Arabia</NavLink></h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-xl-4 col-lg-4 col-md-12">
-                <div className="row">
-                  <div className="col-lg-12 col-md-12">
-                    <div className="twm-featured-city">
-                      <div className="twm-media">
-                        <JobZImage src="images/featured-cities/city2.jpg" alt="" />
-                        <div className="twm-city-info">
-                          <div className="twm-city-jobs">Jobs</div>
-                          <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Qatar</NavLink></h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-12 col-md-12">
-                    <div className="twm-featured-city">
-                      <div className="twm-media">
-                        <JobZImage src="images/featured-cities/city3.jpg" alt="" />
-                        <div className="twm-city-info">
-                          <div className="twm-city-jobs">Jobs</div>
-                          <h4 className="twm-title"><NavLink to={publicUser.jobs.LIST}>Jordan</NavLink></h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* FEATURED SECTION END */}
-
 
       {/* GET JOBS SECTION START */}
 <div id="get-jobs" className="section-full site-bg-white h-page6-getjobs-wrap">
