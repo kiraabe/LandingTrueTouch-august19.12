@@ -410,6 +410,7 @@ function Home18Page() {
                 <div className="twm-img-bg-circle2 rotate-center-reverse"><span /></div>
                 <div className="twm-img-bg-circle3"><span /></div>
               </div>
+              
               <div className="twm-bnr-right-carousel">
                 <div className="owl-carousel twm-h1-bnr-carousal">
                   <div className="item">
