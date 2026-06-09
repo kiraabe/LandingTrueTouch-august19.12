@@ -399,19 +399,6 @@ function Home18Page() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="twm-bnr-blocks-position-wrap">
-                                    {/*icon-block-3*/}
-                                    <div className="twm-bnr-blocks-3 twm-bnr-blocks-position-3">
-                                        <div className="twm-pics">
-                                            <span><JobZImage src="images/main-slider/slider1/user/u-1.jpg" alt="" /></span>
-                                            <span><JobZImage src="images/main-slider/slider1/user/u-2.jpg" alt="" /></span>
-                                            <span><JobZImage src="images/main-slider/slider1/user/u-3.jpg" alt="" /></span>
-                                            <span><JobZImage src="images/main-slider/slider1/user/u-4.jpg" alt="" /></span>
-                                            <span><JobZImage src="images/main-slider/slider1/user/u-5.jpg" alt="" /></span>
-                                            <span><JobZImage src="images/main-slider/slider1/user/u-6.jpg" alt="" /></span>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             {/*Samll Ring Left*/}
                             <div className="twm-small-ring-l slide-top-animation" />
