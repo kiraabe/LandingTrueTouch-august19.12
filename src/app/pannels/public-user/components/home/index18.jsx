@@ -400,9 +400,6 @@ function Home18Page() {
                                     </div>
                                 </div>
                             </div>
-                            {/*Samll Ring Left*/}
-                            <div className="twm-small-ring-l slide-top-animation" />
-                            <div className="twm-small-ring-2 slide-top-animation" />
                         </div>
                     </div>
                 </div>
