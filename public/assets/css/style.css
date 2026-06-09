@@ -25049,7 +25049,22 @@ HOME PAGE 15 START
    ═══════════════════════════════════════════════════════════════════════════ */
 
 /* Column: must be position:relative so absolute children measure against it */
+.twm-bnr-right-section {
+  position: relative;
+  overflow: visible; /* planets may extend slightly beyond column edges */
+}
 
+/* Keep the inner content wrapper non-clipping too */
+.twm-bnr-right-content {
+  position: relative;
+  overflow: visible;
+}
+
+/* Push the decorative rings down the stack so planets can clear them */
+.twm-img-bg-circle-area {
+  position: relative;
+  z-index: 2; /* rings sit at 2; planets behind = 6, planets in front = 20 */
+}
 
 /* ── Orbit wrapper ─────────────────────────────────────────────────────── */
 /*
