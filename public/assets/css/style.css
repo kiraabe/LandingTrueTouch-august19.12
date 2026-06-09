@@ -17408,7 +17408,6 @@ strong {
 }
 
 .twm-bg-shape5 {
-  background-image: url(../images/home-5/bg-shape.png);
   background-repeat: no-repeat;
   position: absolute;
   z-index: -1;
@@ -25030,4 +25029,3 @@ HOME PAGE 15 START
 .twm-blog-responsive-item .wt-post-readmore {
   margin-top: auto;
 }
-
