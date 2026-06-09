@@ -316,109 +316,149 @@ function Home18Page() {
     <>
       <Toaster position="top-right" richColors />
       {!pageReady && <Spinner fullPage={true} />}
-      <div id="home" className="twm-home18-banner-section">
-        <div className="row" style={{ backgroundImage: `url(${publicUrlFor("images/home-18/banner/dot-map.png")})` }}>
-          {/*Left Section*/}
-          <div className="col-xl-6 col-lg-6 col-md-12">
-            <div className="twm-bnr-left-section">
-              <div className="twm-bnr-title-small">Connect with <span className="site-text-primary">10,000+</span> Top Candidates</div>
-              <div className="twm-bnr-title-large">Find the <span className="site-text-primary">talent</span> your business needs</div>
-              <div className="twm-bnr-discription">Search qualified candidates by skills, experience, and location to build your ideal team.</div>
-              <div className="twm-bnr-search-bar">
-                <form>
-                  <div className="row">
-                    {/*Title*/}
-                    <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                      <label>Position</label>
-                      <select className="wt-search-bar-select selectpicker" data-live-search="true" title="" id="j-Job_Title" data-bv-field="size">
-                        <option disabled value="">Select Position</option>
-                        <option>Web Designer</option>
-                        <option>Developer</option>
-                        <option>Accountant</option>
-                        <option>Project Manager</option>
-                      </select>
-                    </div>
-                    {/*All Category*/}
-                    <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                      <label>Experience</label>
-                      <select className="wt-search-bar-select selectpicker" data-live-search="true" title="" id="j-All_Category" data-bv-field="size">
-                        <option disabled value="">Select Level</option>
-                        <option>Entry Level</option>
-                        <option>Mid Level</option>
-                        <option>Senior</option>
-                        <option>Expert</option>
-                      </select>
-                    </div>
-                    {/*Location*/}
-                    <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                      <label>Location</label>
-                      <div className="twm-inputicon-box">
-                        <input name="username" type="text" required className="form-control" placeholder="Search..." />
-                        <i className="twm-input-icon fas fa-map-marker-alt" />
-                      </div>
-                    </div>
-                    {/*Find Candidates btn*/}
-                    <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                      <button type="button" className="site-button">Find Candidates</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div className="twm-bnr-popular-search">
-                <span className="twm-title">Popular Positions:</span>
-                <NavLink to={publicUser.jobs.LIST}>Developer</NavLink> ,
-                <NavLink to={publicUser.jobs.LIST}>Designer</NavLink> ,
-                <NavLink to={publicUser.jobs.LIST}>Manager</NavLink> ,
-                <NavLink to={publicUser.jobs.LIST}>Specialist</NavLink> ...
-              </div>
-            </div>
-          </div>
-          {/*right Section*/}
-          <div className="col-xl-6 col-lg-6 col-md-12">
-            <div className="twm-h-page-18-bnr-right-section">
-              <div className="twm-h-page18-bnr-pic">
-                <JobZImage src="images/home-18/banner/bnr-pic.png" alt="#" />
-              </div>
-              <div className="twm-h-page-18-bnr-noti">
-                {/* Swiper */}
-                <div className="swiper v-notiinfoSwiper v-noti-slider-h-page-18">
-                  <div className="swiper-wrapper">
-                    {/*SLide 1*/}
-                    <div className="swiper-slide">
-                      <div className="v-noti-wrap">
-                        <div className="v-media">
-                          <i className="far fa-check-circle twm-bg-purple" />
+
+                  {/*Banner Start*/}
+            <div className="twm-home1-banner-section site-bg-gray bg-cover" style={{ backgroundImage: `url(${publicUrlFor("images/main-slider/slider1/bg1.jpg")})` }}>
+                <div className="row">
+                    {/*Left Section*/}
+                    <div className="col-xl-6 col-lg-6 col-md-12">
+                        <div className="twm-bnr-left-section">
+                            <div className="twm-bnr-title-small">We Have <span className="site-text-primary">208,000+</span> Live Jobs</div>
+                            <div className="twm-bnr-title-large">Find the <span className="site-text-primary">job</span> that fits your life</div>
+                            <div className="twm-bnr-discription">Type your keyword, then click search to find your perfect job.</div>
+                            <div className="twm-bnr-search-bar">
+                                <form>
+                                    <div className="row">
+                                        {/*Title*/}
+                                        <div className="form-group col-xl-3 col-lg-6 col-md-6">
+                                            <label>What</label>
+                                            <select className="wt-search-bar-select selectpicker" data-live-search="true" title="" id="j-Job_Title" data-bv-field="size">
+                                                <option disabled value="" >Select Category</option>
+                                                <option>Job Title</option>
+                                                <option>Web Designer</option>
+                                                <option>Developer</option>
+                                                <option>Acountant</option>
+                                            </select>
+                                        </div>
+                                        {/*All Category*/}
+                                        <div className="form-group col-xl-3 col-lg-6 col-md-6">
+                                            <label>Type</label>
+                                            <select className="wt-search-bar-select selectpicker" data-live-search="true" title="" id="j-All_Category" data-bv-field="size">
+                                                <option disabled value="" >Select Category</option>
+                                                <option>All Category</option>
+                                                <option>Web Designer</option>
+                                                <option>Developer</option>
+                                                <option>Acountant</option>
+                                            </select>
+                                        </div>
+                                        {/*Location*/}
+                                        <div className="form-group col-xl-3 col-lg-6 col-md-6">
+                                            <label>Location</label>
+                                            <div className="twm-inputicon-box">
+                                                <input name="username" type="text" required className="form-control" placeholder="Search..." />
+                                                <i className="twm-input-icon fas fa-map-marker-alt" />
+                                            </div>
+                                        </div>
+                                        {/*Find job btn*/}
+                                        <div className="form-group col-xl-3 col-lg-6 col-md-6">
+                                            <button type="button" className="site-button">Find Job</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div className="twm-bnr-popular-search">
+                                <span className="twm-title">Popular Searches:</span>
+                                <NavLink to={publicUser.jobs.LIST}>Developer</NavLink> ,
+                                <NavLink to={publicUser.jobs.LIST}>Designer</NavLink> ,
+                                <NavLink to={publicUser.jobs.LIST}>Architect</NavLink> ,
+                                <NavLink to={publicUser.jobs.LIST}>Engineer</NavLink> ...
+                            </div>
                         </div>
-                        <div className="v-content">
-                          <h4 className="wt-title">Congratulations</h4>
-                          <p>Candidate profile successfully completed and verified</p>
-                        </div>
-                      </div>
                     </div>
-                    {/*SLide 2*/}
-                    <div className="swiper-slide">
-                      <div className="v-noti-wrap">
-                        <div className="v-media">
-                          <i className="far fa-envelope twm-bg-green" />
+                    {/*right Section*/}
+                    <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
+                        <div className="twm-bnr-right-content">
+                            <div className="twm-img-bg-circle-area">
+                                <div className="twm-img-bg-circle1 rotate-center"><span /></div>
+                                <div className="twm-img-bg-circle2 rotate-center-reverse"><span /></div>
+                                <div className="twm-img-bg-circle3"><span /></div>
+                            </div>
+                            <div className="twm-bnr-right-carousel">
+                                <div className="owl-carousel twm-h1-bnr-carousal">
+                                    <div className="item">
+                                        <div className="slide-img">
+                                            <JobZImage src="images/main-slider/slider1/r-img1.png" alt="#" />
+                                        </div>
+                                    </div>
+                                    <div className="item">
+                                        <div className="slide-img">
+                                            <div className="slide-img">
+                                                <JobZImage src="images/main-slider/slider1/r-img2.png" alt="#" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="twm-bnr-blocks-position-wrap">
+                                    {/*icon-block-1*/}
+                                    <div className="twm-bnr-blocks twm-bnr-blocks-position-1">
+                                        <div className="twm-icon">
+                                            <JobZImage src="images/main-slider/slider1/icon-1.png" alt="" />
+                                        </div>
+                                        <div className="twm-content">
+                                            <div className="tw-count-number text-clr-sky">
+                                                <span className="counter">
+                                                    <CountUp end={12} duration={10} />
+                                                </span>K+
+                                            </div>
+                                            <p className="icon-content-info">Companies Jobs</p>
+                                        </div>
+                                    </div>
+                                    {/*icon-block-2*/}
+                                    <div className="twm-bnr-blocks twm-bnr-blocks-position-2">
+                                        <div className="twm-icon">
+                                            <JobZImage src="images/main-slider/slider1/icon-2.png" alt="" />
+                                        </div>
+                                        <div className="twm-content">
+                                            <div className="tw-count-number text-clr-pink">
+                                                <span className="counter">
+                                                    <CountUp end={98} duration={10} />
+                                                </span> +
+                                            </div>
+                                            <p className="icon-content-info">Job For Countries </p>
+                                        </div>
+                                    </div>
+                                    {/*icon-block-3*/}
+                                    <div className="twm-bnr-blocks-3 twm-bnr-blocks-position-3">
+                                        <div className="twm-pics">
+                                            <span><JobZImage src="images/main-slider/slider1/user/u-1.jpg" alt="" /></span>
+                                            <span><JobZImage src="images/main-slider/slider1/user/u-2.jpg" alt="" /></span>
+                                            <span><JobZImage src="images/main-slider/slider1/user/u-3.jpg" alt="" /></span>
+                                            <span><JobZImage src="images/main-slider/slider1/user/u-4.jpg" alt="" /></span>
+                                            <span><JobZImage src="images/main-slider/slider1/user/u-5.jpg" alt="" /></span>
+                                            <span><JobZImage src="images/main-slider/slider1/user/u-6.jpg" alt="" /></span>
+                                        </div>
+                                        <div className="twm-content">
+                                            <div className="tw-count-number text-clr-green">
+                                                <span className="counter">
+                                                    <CountUp end={3} duration={10} />
+                                                </span>K+
+                                            </div>
+                                            <p className="icon-content-info">Jobs Done</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {/*Samll Ring Left*/}
+                            <div className="twm-small-ring-l slide-top-animation" />
+                            <div className="twm-small-ring-2 slide-top-animation" />
                         </div>
-                        <div className="v-content">
-                          <h4 className="wt-title">New Opportunity</h4>
-                          <p>You have received a job offer from a top employer</p>
-                        </div>
-                      </div>
                     </div>
-                  </div>
-                  {/* Add Pagination */}
-                  <div className="swiper-pagination" />
                 </div>
-              </div>
-              {/*Samll Ring Left*/}
-              <div className="twm-shape-l bounce" />
-              <div className="twm-shape-2 bounce2" />
+                <div className="twm-gradient-text">
+                    Jobs
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
+            {/*Banner End*/}
 
       {/* FEATURED SECTION START */}
       <div className="section-full p-t120 p-b90 site-bg-white twm-featured-city-area">
