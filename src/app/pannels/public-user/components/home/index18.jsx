@@ -127,7 +127,7 @@ function Home18Page() {
 
   useEffect(() => {
     document.title = 'Home | TrueTouch - Foreign Employment Recruitment Agency';
-    updateSkinStyle("2", false, false)
+    updateSkinStyle("11", false, false)
     loadScript("js/custom.js")
   }, [])
 
