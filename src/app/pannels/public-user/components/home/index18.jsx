@@ -7,10 +7,14 @@ import { publicUser } from "../../../../../globals/route-names";
 import { showErrorToast, showSuccessToast } from "../../../../../globals/error-handler";
 import { getCandidateProfilePictureUrl, getCandidateCvUrl, getJobImageUrl } from "../../../../../globals/file-url";
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Toaster } from "sonner";
 import "./cv-modal.css";
 import CountUp from "react-countup";
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Helpers
+// ─────────────────────────────────────────────────────────────────────────────
 
 const truncateText = (text, maxLength = 78) => {
   if (!text) return '';
@@ -77,34 +81,41 @@ const parseLanguageSkillsForDisplay = (skills) => {
   return [];
 };
 
-// Flag bubbles — reuses images already in your project
+// ─────────────────────────────────────────────────────────────────────────────
+// Orbital system constants
+// ─────────────────────────────────────────────────────────────────────────────
+
 const FLAG_BUBBLES = [
-  { src: "images/home-7/flag-icon/uae.jpg",            alt: "UAE" },
+  { src: "images/home-7/flag-icon/uae.jpg", alt: "UAE" },
   { src: "images/home-7/flag-icon/united-kingdom.jpg", alt: "UK" },
-  { src: "images/home-7/flag-icon/spain.jpg",          alt: "Spain" },
-  { src: "images/home-7/flag-icon/france.jpg",         alt: "France" },
-  { src: "images/home-7/flag-icon/turkey.jpg",         alt: "Turkey" },
-  { src: "images/home-7/flag-icon/portugal.jpg",       alt: "Portugal" },
+  { src: "images/home-7/flag-icon/spain.jpg", alt: "Spain" },
+  { src: "images/home-7/flag-icon/france.jpg", alt: "France" },
+  { src: "images/home-7/flag-icon/turkey.jpg", alt: "Turkey" },
+  { src: "images/home-7/flag-icon/portugal.jpg", alt: "Portugal" },
 ];
 
-// Two tilted elliptical orbits — rx/ry are fractions of container size
+// Two tilted ellipses — rx/ry are fractions of the container dimensions
 const ORBITS = [
-  { rx: 0.42, ry: 0.24, tilt: -15 },
-  { rx: 0.50, ry: 0.30, tilt:  20 },
+  { rx: 0.44, ry: 0.26, tilt: -18 },
+  { rx: 0.52, ry: 0.32, tilt: 22 },
 ];
 
-// Which orbit each planet rides + starting angle + direction
+// Which orbit, starting angle (deg), rotation direction
 const PLANET_CONFIGS = [
-  { orbit: 0, start:   0, dir:  1 },
-  { orbit: 0, start: 180, dir:  1 },
-  { orbit: 0, start:  90, dir:  1 },
-  { orbit: 1, start:  45, dir: -1 },
+  { orbit: 0, start: 0, dir: 1 },
+  { orbit: 0, start: 180, dir: 1 },
+  { orbit: 0, start: 90, dir: 1 },
+  { orbit: 1, start: 45, dir: -1 },
   { orbit: 1, start: 225, dir: -1 },
   { orbit: 1, start: 135, dir: -1 },
 ];
 
-// Angular speed (radians per ms → converted to degrees in the loop)
-const PLANET_SPEEDS = [0.00055, 0.00055, 0.00055, 0.00042, 0.00042, 0.00042];
+// degrees per millisecond
+const PLANET_SPEEDS = [0.032, 0.032, 0.032, 0.024, 0.024, 0.024];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Component
+// ─────────────────────────────────────────────────────────────────────────────
 
 function Home18Page() {
   const [candidates, setCandidates] = useState([]);
@@ -116,23 +127,26 @@ function Home18Page() {
   const [blogsLoading, setBlogsLoading] = useState(true);
   const [pageReady, setPageReady] = useState(false);
 
+  // ref to the right-section column — the orbit anchor
+  const orbitAnchorRef = useRef(null);
+
+  // ── Initialise page ────────────────────────────────────────────────────────
   useEffect(() => {
     document.title = 'Home | TrueTouch - Foreign Employment Recruitment Agency';
     updateSkinStyle("10", false, false);
     loadScript("js/custom.js");
   }, []);
 
+  // ── Fetch candidates ───────────────────────────────────────────────────────
   useEffect(() => {
     const fetchCandidates = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/api/candidates/featured', {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json' }
+        const res = await fetch('/api/candidates/featured', {
+          headers: { 'Content-Type': 'application/json' },
         });
-        if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-        const data = await response.json();
-        setCandidates(data);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        setCandidates(await res.json());
       } catch (err) {
         showErrorToast(err, 'Failed to load featured candidates. Please try again later.');
       } finally {
@@ -142,17 +156,16 @@ function Home18Page() {
     fetchCandidates();
   }, []);
 
+  // ── Fetch blogs ────────────────────────────────────────────────────────────
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
         setBlogsLoading(true);
-        const response = await fetch('/api/jobs/latest?limit=3', {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json' }
+        const res = await fetch('/api/jobs/latest?limit=3', {
+          headers: { 'Content-Type': 'application/json' },
         });
-        if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-        const data = await response.json();
-        setBlogs(data);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        setBlogs(await res.json());
       } catch (err) {
         showErrorToast(err, 'Failed to load blogs. Please try again later.');
       } finally {
@@ -162,12 +175,14 @@ function Home18Page() {
     fetchBlogs();
   }, []);
 
+  // ── Page ready ─────────────────────────────────────────────────────────────
   useEffect(() => {
     if (!loading && !blogsLoading) setPageReady(true);
   }, [loading, blogsLoading]);
 
+  // ── Swiper ─────────────────────────────────────────────────────────────────
   useEffect(() => {
-    const initSwiper = () => {
+    setTimeout(() => {
       if (window.Swiper) {
         new window.Swiper('.v-notiinfoSwiper', {
           loop: true,
@@ -175,10 +190,10 @@ function Home18Page() {
           autoplay: { delay: 3000, disableOnInteraction: false },
         });
       }
-    };
-    setTimeout(initSwiper, 500);
+    }, 500);
   }, []);
 
+  // ── Blog owl carousel ──────────────────────────────────────────────────────
   useEffect(() => {
     if (blogs.length > 0 && !blogsLoading && window.jQuery) {
       setTimeout(() => {
@@ -186,37 +201,44 @@ function Home18Page() {
         window.jQuery('.twm-la-home-blog').owlCarousel({
           loop: false, nav: true, dots: false, margin: 30, autoplay: false,
           navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-          responsive: { 0: { items: 1 }, 480: { items: 1 }, 991: { items: 2 }, 1199: { items: 3 } }
+          responsive: { 0: { items: 1 }, 480: { items: 1 }, 991: { items: 2 }, 1199: { items: 3 } },
         });
       }, 100);
     }
   }, [blogs, blogsLoading]);
 
-  // ── Orbital planet animation ───────────────────────────────────────────
+  // ── Orbital planet animation ───────────────────────────────────────────────
+  //
+  //  Strategy: we attach the orbit to .twm-bnr-right-section (the Bootstrap
+  //  column) via orbitAnchorRef.  The planets div (.twm-orbit-system) is a
+  //  direct child of that column — rendered AFTER .twm-bnr-right-content —
+  //  so it lives completely outside the .twm-img-bg-circle-area stacking
+  //  context and can never be clipped or buried by it.
+  //
   useEffect(() => {
     if (!pageReady) return;
 
-    // Small delay so layout has painted and offsetWidth/Height are real
-    const timer = setTimeout(() => {
-      const container = document.querySelector('.twm-bnr-right-content');
-      if (!container) return;
+    const tid = setTimeout(() => {
+      const anchor = orbitAnchorRef.current;
+      if (!anchor) return;
 
       let raf;
       let t0 = null;
 
-      function getPos(oIdx, angleDeg) {
-        const W = container.offsetWidth;
-        const H = container.offsetHeight;
+      function orbitPos(oIdx, angleDeg) {
+        const W = anchor.offsetWidth;
+        const H = anchor.offsetHeight;
         const o = ORBITS[oIdx];
         const rx = o.rx * W;
         const ry = o.ry * H;
-        const rad  = (angleDeg * Math.PI) / 180;
-        const tilt = (o.tilt   * Math.PI) / 180;
+        const rad = (angleDeg * Math.PI) / 180;
+        const tilt = (o.tilt * Math.PI) / 180;
         const lx = rx * Math.cos(rad);
         const ly = ry * Math.sin(rad);
         return {
-          x:     W / 2 + lx * Math.cos(tilt) - ly * Math.sin(tilt),
-          y:     H / 2 + lx * Math.sin(tilt) + ly * Math.cos(tilt),
+          x: W / 2 + lx * Math.cos(tilt) - ly * Math.sin(tilt),
+          y: H / 2 + lx * Math.sin(tilt) + ly * Math.cos(tilt),
+          // depth: -1 (far back) → +1 (front)
           depth: Math.sin(rad - tilt),
         };
       }
@@ -225,21 +247,20 @@ function Home18Page() {
         if (!t0) t0 = ts;
         const elapsed = ts - t0;
 
-        const planets = document.querySelectorAll('.twm-flag-planet');
-        planets.forEach((el, i) => {
+        anchor.querySelectorAll('.twm-flag-planet').forEach((el, i) => {
           const cfg = PLANET_CONFIGS[i];
-          // Convert speed (rad/ms equivalent) to degrees
-          const angle = cfg.start + elapsed * PLANET_SPEEDS[i] * (180 / Math.PI) * cfg.dir;
-          const { x, y, depth } = getPos(cfg.orbit, angle);
+          const angle = cfg.start + elapsed * PLANET_SPEEDS[i] * cfg.dir;
+          const W = anchor.offsetWidth;
+          const H = anchor.offsetHeight;
+          const { x, y, depth } = orbitPos(cfg.orbit, angle);
 
-          const W = container.offsetWidth;
-          const H = container.offsetHeight;
-          const scale   = 0.75 + 0.30 * ((depth + 1) / 2);
-          const opacity = 0.55 + 0.45 * ((depth + 1) / 2);
+          const scale = 0.72 + 0.32 * ((depth + 1) / 2);   // 0.72 → 1.04
+          const opacity = 0.50 + 0.50 * ((depth + 1) / 2);   // 0.50 → 1.00
 
           el.style.transform = `translate(${x - W / 2}px, ${y - H / 2}px) scale(${scale})`;
-          el.style.opacity    = opacity;
-          el.style.zIndex     = depth > 0 ? 5 : 3;
+          el.style.opacity = opacity;
+          // planets behind the hero sit at z 6, planets in front at z 20
+          el.style.zIndex = depth > 0 ? 20 : 6;
         });
 
         raf = requestAnimationFrame(frame);
@@ -247,23 +268,22 @@ function Home18Page() {
 
       raf = requestAnimationFrame(frame);
       return () => cancelAnimationFrame(raf);
-    }, 300);
+    }, 350);
 
-    return () => clearTimeout(timer);
+    return () => clearTimeout(tid);
   }, [pageReady]);
-  // ── End orbital animation ──────────────────────────────────────────────
+  // ── End orbital animation ──────────────────────────────────────────────────
 
+  // ── Candidate modal ────────────────────────────────────────────────────────
   const openCandidateModal = async (candidate) => {
     setSelectedCandidate(candidate);
     setDetailsLoading(true);
     try {
-      const response = await fetch(`/api/candidates/${candidate.id}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
+      const res = await fetch(`/api/candidates/${candidate.id}`, {
+        headers: { 'Content-Type': 'application/json' },
       });
-      if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-      const data = await response.json();
-      setCandidateDetails(data);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      setCandidateDetails(await res.json());
     } catch (err) {
       showErrorToast(err, 'Failed to load candidate details.');
     } finally {
@@ -276,23 +296,23 @@ function Home18Page() {
     setCandidateDetails(null);
   };
 
+  // ── Contact form ───────────────────────────────────────────────────────────
   const handleContactSubmit = async (e) => {
     e.preventDefault();
     try {
-      const formData = new FormData(e.target);
-      const data = {
-        username: formData.get('username'),
-        email:    formData.get('email'),
-        phone:    formData.get('phone'),
-        subject:  formData.get('subject'),
-        message:  formData.get('message')
-      };
-      const response = await fetch('/api/contact-us', {
+      const fd = new FormData(e.target);
+      const res = await fetch('/api/contact-us', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        body: JSON.stringify({
+          username: fd.get('username'),
+          email: fd.get('email'),
+          phone: fd.get('phone'),
+          subject: fd.get('subject'),
+          message: fd.get('message'),
+        }),
       });
-      if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       e.target.reset();
       showSuccessToast('Thank you! Your message has been received. We will contact you soon.');
     } catch (err) {
@@ -300,18 +320,20 @@ function Home18Page() {
     }
   };
 
+  // ── Render ─────────────────────────────────────────────────────────────────
   return (
     <>
       <Toaster position="top-right" richColors />
       {!pageReady && <Spinner fullPage={true} />}
 
-      {/*Banner Start*/}
+      {/* ── BANNER ── */}
       <div
         className="twm-home1-banner-section site-bg-gray bg-cover"
         style={{ backgroundImage: `url(${publicUrlFor("images/main-slider/slider1/bg1.jpg")})` }}
       >
         <div className="row">
-          {/*Left Section*/}
+
+          {/* Left */}
           <div className="col-xl-6 col-lg-6 col-md-12">
             <div className="twm-bnr-left-section">
               <div className="twm-bnr-title-small">
@@ -369,18 +391,25 @@ function Home18Page() {
             </div>
           </div>
 
-          {/*Right Section*/}
-          <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
+          {/*
+            Right column — orbitAnchorRef is placed HERE (on the column itself),
+            NOT inside twm-bnr-right-content.  This means:
+              • twm-orbit-system is a sibling of twm-bnr-right-content
+              • It is never inside twm-img-bg-circle-area's stacking context
+              • z-index values on the planets work correctly
+          */}
+          <div
+            className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section"
+            ref={orbitAnchorRef}
+            style={{ position: 'relative', overflow: 'visible' }}
+          >
+            {/* Hero image + decorative rings */}
             <div className="twm-bnr-right-content">
-
-              {/* Background decorative circles */}
               <div className="twm-img-bg-circle-area">
                 <div className="twm-img-bg-circle1 rotate-center"><span /></div>
                 <div className="twm-img-bg-circle2 rotate-center-reverse"><span /></div>
                 <div className="twm-img-bg-circle3"><span /></div>
               </div>
-
-              {/* Carousel */}
               <div className="twm-bnr-right-carousel">
                 <div className="owl-carousel twm-h1-bnr-carousal">
                   <div className="item">
@@ -395,24 +424,33 @@ function Home18Page() {
                   </div>
                 </div>
               </div>
-
-              {/* Orbital flag planets */}
-              <div className="twm-orbit-system">
-                {FLAG_BUBBLES.map(({ src, alt }, i) => (
-                  <div key={alt} className="twm-flag-planet" title={alt}>
-                    <img src={publicUrlFor(src)} alt={alt} />
-                  </div>
-                ))}
-              </div>
-
             </div>
+
+            {/*
+              Orbit system — sibling of twm-bnr-right-content, rendered AFTER it
+              so it naturally sits above in the stacking order.
+              position:absolute + inset:0 makes it overlay the entire column.
+              pointer-events:none so clicks pass through to the carousel.
+              z-index:15 clears ALL children of twm-bnr-right-content
+              (circles are typically z 1–9 in the theme).
+            */}
+            <div className="twm-orbit-system">
+              {FLAG_BUBBLES.map(({ src, alt }) => (
+                <div key={alt} className="twm-flag-planet" title={alt}>
+                  <img src={publicUrlFor(src)} alt={alt} />
+                </div>
+              ))}
+            </div>
+
           </div>
+          {/* End right column */}
+
         </div>
         <div className="twm-gradient-text">True Touch</div>
       </div>
-      {/*Banner End*/}
+      {/* ── END BANNER ── */}
 
-      {/* FEATURED SECTION START */}
+      {/* ── FEATURED CITIES ── */}
       <div className="section-full p-t120 p-b90 site-bg-white twm-featured-city-area">
         <div className="container">
           <div className="section-head center wt-small-separator-outer">
@@ -462,9 +500,8 @@ function Home18Page() {
           </div>
         </div>
       </div>
-      {/* FEATURED SECTION END */}
 
-      {/* GET JOBS SECTION START */}
+      {/* ── GET JOBS / ABOUT ── */}
       <div id="get-jobs" className="section-full site-bg-white h-page6-getjobs-wrap">
         <div className="h-page6-client-slider-outer">
           <div className="container">
@@ -477,7 +514,7 @@ function Home18Page() {
                 </div>
                 <div className="col-xl-8 col-lg-12">
                   <div className="owl-carousel home-client-carousel6 owl-btn-vertical-center">
-                    {["w1","w2","w3","w4","w5","w6","w1","w2","w3","w5"].map((w, i) => (
+                    {["w1", "w2", "w3", "w4", "w5", "w6", "w1", "w2", "w3", "w5"].map((w, i) => (
                       <div className="item" key={i}>
                         <div className="ow-client-logo">
                           <div className="client-logo client-logo-media">
@@ -530,9 +567,8 @@ function Home18Page() {
           </div>
         </div>
       </div>
-      {/* GET JOBS SECTION END */}
 
-      {/* OUR SERVICES SECTION START */}
+      {/* ── OUR SERVICES ── */}
       <div className="section-full p-t120 p-b90 site-bg-light twm-how-t-get-wrap7">
         <div className="container">
           <div className="twm-how-t-get-section">
@@ -569,9 +605,8 @@ function Home18Page() {
           </div>
         </div>
       </div>
-      {/* OUR SERVICES SECTION END */}
 
-      {/* FEATURED JOBS SECTION START */}
+      {/* ── JOBS BY CATEGORY ── */}
       <div className="section-full p-t120 pos-relative site-bg-white twm-featured-city-area">
         <div className="twm-bg-section-box" />
         <div className="container">
@@ -591,12 +626,12 @@ function Home18Page() {
           <div className="twm-featured-city2-section">
             <div className="row">
               {[
-                { col: "col-xl-4 col-lg-4 col-md-6", img: "ResidentialCleanerHousekeeper.jpg",      label: "Residential Cleaner / Housekeeper" },
-                { col: "col-xl-3 col-lg-4 col-md-6", img: "NannyChildcareSpecialist.jpg",           label: "Nanny / Childcare Specialist" },
-                { col: "col-xl-5 col-lg-4 col-md-6", img: "PrivateChefCook.jpg",                    label: "Private Chef / Cook" },
-                { col: "col-xl-4 col-lg-4 col-md-6", img: "Logistics&WarehousingSupervisor.jpg",    label: "Logistics & Warehousing / Supervisor" },
-                { col: "col-xl-5 col-lg-4 col-md-6", img: "ElderlyCareCaregiver.jpg",               label: "Elderly Care / Caregiver" },
-                { col: "col-xl-3 col-lg-4 col-md-6", img: "KitchenCleanerCommercialCleaning.jpg",   label: "Kitchen Cleaner / House Cleaning" },
+                { col: "col-xl-4 col-lg-4 col-md-6", img: "ResidentialCleanerHousekeeper.jpg", label: "Residential Cleaner / Housekeeper" },
+                { col: "col-xl-3 col-lg-4 col-md-6", img: "NannyChildcareSpecialist.jpg", label: "Nanny / Childcare Specialist" },
+                { col: "col-xl-5 col-lg-4 col-md-6", img: "PrivateChefCook.jpg", label: "Private Chef / Cook" },
+                { col: "col-xl-4 col-lg-4 col-md-6", img: "Logistics&WarehousingSupervisor.jpg", label: "Logistics & Warehousing / Supervisor" },
+                { col: "col-xl-5 col-lg-4 col-md-6", img: "ElderlyCareCaregiver.jpg", label: "Elderly Care / Caregiver" },
+                { col: "col-xl-3 col-lg-4 col-md-6", img: "KitchenCleanerCommercialCleaning.jpg", label: "Kitchen Cleaner / House Cleaning" },
               ].map(({ col, img, label }) => (
                 <div key={label} className={col}>
                   <div className="twm-featured-city2">
@@ -611,9 +646,8 @@ function Home18Page() {
           </div>
         </div>
       </div>
-      {/* FEATURED SECTION END */}
 
-      {/* Portfolio SECTION START */}
+      {/* ── PORTFOLIO ── */}
       <div id="portfolio" className="section-full p-t120 p-b90 site-bg-white twm-featured-city-carousal-area">
         <div className="container">
           <div className="wt-separator-two-part">
@@ -630,11 +664,11 @@ function Home18Page() {
             </div>
           </div>
         </div>
-        <GalleryLightbox images={[1,2,3,4,5].map(n => publicUrlFor(`images/gallery/${n}.jpg`))}>
+        <GalleryLightbox images={[1, 2, 3, 4, 5].map(n => publicUrlFor(`images/gallery/${n}.jpg`))}>
           {(openLightbox) => (
             <div className="twm-featured-city-carousal-wrap">
               <div className="owl-carousel twm-featured-city-carousal">
-                {[1,2,3,4,5].map((n, i) => (
+                {[1, 2, 3, 4, 5].map((n, i) => (
                   <div className="item" key={n} onClick={() => openLightbox(i)}>
                     <div className="twm-featured-city2 portfolio-card-wrapper">
                       <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor(`images/gallery/${n}.jpg`)})` }} />
@@ -653,9 +687,8 @@ function Home18Page() {
           )}
         </GalleryLightbox>
       </div>
-      {/* PORTFOLIO SECTION END */}
 
-      {/* CANDIDATES START */}
+      {/* ── CANDIDATES ── */}
       <div id="candidates" className="section-full p-t120 p-b90 site-bg-white twm-candidate-h-page7-wrap pos-relative">
         <div className="container">
           <div className="section-head center wt-small-separator-outer">
@@ -678,7 +711,9 @@ function Home18Page() {
                               <div className="twm-media">
                                 <div className="twm-media-pic">
                                   <JobZImage
-                                    src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : publicUrlFor("images/candidates/pic1.jpg")}
+                                    src={candidate.profile_picture
+                                      ? getCandidateProfilePictureUrl(candidate.profile_picture)
+                                      : publicUrlFor("images/candidates/pic1.jpg")}
                                     alt={candidate.full_name}
                                   />
                                 </div>
@@ -687,7 +722,11 @@ function Home18Page() {
                                 <div className="twm-candidates-tag">
                                   <span className={candidate.status?.toLowerCase()}>{candidate.status}</span>
                                 </div>
-                                <button onClick={() => openCandidateModal(candidate)} className="twm-job-title" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                                <button
+                                  onClick={() => openCandidateModal(candidate)}
+                                  className="twm-job-title"
+                                  style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                                >
                                   <h4>{candidate.full_name}</h4>
                                 </button>
                                 <p>{candidate.profession}</p>
@@ -695,11 +734,17 @@ function Home18Page() {
                             </div>
                             <div className="twm-fot-content">
                               <div className="twm-left-info">
-                                <p className="twm-candidate-address"><i className="feather-map-pin" />{candidate.location || "New York"}</p>
+                                <p className="twm-candidate-address">
+                                  <i className="feather-map-pin" />{candidate.location || "New York"}
+                                </p>
                                 <div className="twm-jobs-vacancies">{candidate.hourly_rate}</div>
                               </div>
                               <div className="twm-action-buttons" style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
-                                <button onClick={() => openCandidateModal(candidate)} className="site-button" style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px', cursor: 'pointer' }}>
+                                <button
+                                  onClick={() => openCandidateModal(candidate)}
+                                  className="site-button"
+                                  style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px', cursor: 'pointer' }}
+                                >
                                   View Profile
                                 </button>
                                 <a
@@ -735,19 +780,21 @@ function Home18Page() {
                 <div className="col-lg-7 col-md-12">
                   <div className="twm-j-ofr-map-content">
                     <div className="section-head left wt-small-separator-outer">
-                      <h2 className="wt-title">We also have <span className="site-text-primary">job offers</span> in other countries</h2>
+                      <h2 className="wt-title">
+                        We also have <span className="site-text-primary">job offers</span> in other countries
+                      </h2>
                     </div>
                     <div className="twm-j-ofr-map-list">
                       <ul>
                         {[
-                          { img: "denmark.jpg",        name: "Denmark" },
-                          { img: "france.jpg",         name: "France" },
-                          { img: "netherlands.jpg",    name: "Netherlands" },
-                          { img: "poland.jpg",         name: "Poland" },
-                          { img: "portugal.jpg",       name: "Portugal" },
-                          { img: "spain.jpg",          name: "Spain" },
-                          { img: "turkey.jpg",         name: "Turkey" },
-                          { img: "uae.jpg",            name: "UAE" },
+                          { img: "denmark.jpg", name: "Denmark" },
+                          { img: "france.jpg", name: "France" },
+                          { img: "netherlands.jpg", name: "Netherlands" },
+                          { img: "poland.jpg", name: "Poland" },
+                          { img: "portugal.jpg", name: "Portugal" },
+                          { img: "spain.jpg", name: "Spain" },
+                          { img: "turkey.jpg", name: "Turkey" },
+                          { img: "uae.jpg", name: "UAE" },
                           { img: "united-kingdom.jpg", name: "UK" },
                         ].map(({ img, name }) => (
                           <li key={name}>
@@ -776,9 +823,8 @@ function Home18Page() {
           </div>
         </div>
       </div>
-      {/* CANDIDATES END */}
 
-      {/* OUR BLOG START */}
+      {/* ── BLOGS ── */}
       <div id="our-blogs" className="section-full p-t120 p-b90 site-bg-gray">
         <div className="container">
           <div className="section-head center wt-small-separator-outer">
@@ -815,7 +861,9 @@ function Home18Page() {
                           </div>
                           <div className="wt-post-text"><p>{truncateText(blog.description)}</p></div>
                           <div className="wt-post-readmore">
-                            <NavLink to={`/blog-detail/${blog.id}`} className="site-button-link site-text-primary">Read More</NavLink>
+                            <NavLink to={`/blog-detail/${blog.id}`} className="site-button-link site-text-primary">
+                              Read More
+                            </NavLink>
                           </div>
                         </div>
                       </div>
@@ -834,9 +882,8 @@ function Home18Page() {
           </div>
         </div>
       </div>
-      {/* OUR BLOG END */}
 
-      {/* CONTACT US SECTION START */}
+      {/* ── CONTACT ── */}
       <div id="contact-us" className="section-full twm-contact-one">
         <div className="section-content">
           <div className="container">
@@ -851,9 +898,9 @@ function Home18Page() {
                     <form className="cons-contact-form" onSubmit={handleContactSubmit}>
                       <div className="row">
                         <div className="col-lg-6 col-md-6"><div className="form-group mb-3"><input name="username" type="text" required className="form-control" placeholder="Name" /></div></div>
-                        <div className="col-lg-6 col-md-6"><div className="form-group mb-3"><input name="email" type="email" className="form-control" required placeholder="Email" /></div></div>
-                        <div className="col-lg-6 col-md-6"><div className="form-group mb-3"><input name="phone" type="text" className="form-control" required placeholder="Phone" /></div></div>
-                        <div className="col-lg-6 col-md-6"><div className="form-group mb-3"><input name="subject" type="text" className="form-control" required placeholder="Subject" /></div></div>
+                        <div className="col-lg-6 col-md-6"><div className="form-group mb-3"><input name="email" type="email" required className="form-control" placeholder="Email" /></div></div>
+                        <div className="col-lg-6 col-md-6"><div className="form-group mb-3"><input name="phone" type="text" required className="form-control" placeholder="Phone" /></div></div>
+                        <div className="col-lg-6 col-md-6"><div className="form-group mb-3"><input name="subject" type="text" required className="form-control" placeholder="Subject" /></div></div>
                         <div className="col-lg-12"><div className="form-group mb-3"><textarea name="message" className="form-control" rows={3} placeholder="Message" defaultValue={""} /></div></div>
                         <div className="col-md-12"><button type="submit" className="site-button">Submit Now</button></div>
                       </div>
@@ -888,9 +935,8 @@ function Home18Page() {
           </div>
         </div>
       </div>
-      {/* CONTACT US SECTION END */}
 
-      {/* CANDIDATE CV MODAL */}
+      {/* ── CANDIDATE CV MODAL ── */}
       {selectedCandidate && (
         <div className="cv-modal-overlay" onClick={closeCandidateModal}>
           <div className="cv-modal" onClick={(e) => e.stopPropagation()}>
@@ -906,8 +952,12 @@ function Home18Page() {
                   <div className="cv-photo-container">
                     <JobZImage
                       src={
-                        (candidateDetails.profile_picture ? getCandidateProfilePictureUrl(candidateDetails.profile_picture) : null) ||
-                        (selectedCandidate.profile_picture ? getCandidateProfilePictureUrl(selectedCandidate.profile_picture) : null) ||
+                        (candidateDetails.profile_picture
+                          ? getCandidateProfilePictureUrl(candidateDetails.profile_picture)
+                          : null) ||
+                        (selectedCandidate.profile_picture
+                          ? getCandidateProfilePictureUrl(selectedCandidate.profile_picture)
+                          : null) ||
                         publicUrlFor("images/candidates/pic1.jpg")
                       }
                       alt={candidateDetails.name}
