@@ -233,8 +233,8 @@ $box-shadow-light:rgba(220, 220, 220, 0.3);
 			.twm-img-bg-circle1{
 				span{
 					background-color:$box-shadow-light-circle;
-					&:after{background-color: $clr-primary;}
-					&:before{background-color: $clr-primary;}
+					&:after{background-image: url('../images/home-7/flag-icon/saudi-arabia.png');}
+					&:before{background-image: url('../images/home-7/flag-icon/saudi-arabia.png');}
 				}
 			}
 			.twm-img-bg-circle2{
