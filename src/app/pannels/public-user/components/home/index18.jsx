@@ -507,91 +507,46 @@ function Home18Page() {
 
 
 
-            {/* ABOUT SECTION START */}
-            <div className="section-full p-t120 p-b90 twm-about-8-area">
-                <div className="container">
-                    <div className="twm-about-9-section-wrap">
-                        <div className="row">
-                            <div className="col-lg-6 col-md-12">
-                                <div className="twm-about-9-section">
-                                    <div className="twm-media">
-                                        <JobZImage src="images/gallery/7.jpeg" alt="" />
-                                    </div>
-                                    <div className="img-bg-circle" />
-                                </div>
+      {/* OUR SERVICES SECTION START */}
+<div className="section-full p-t120 p-b90 site-bg-light twm-how-t-get-wrap7">
+    <div className="container">
+        <div className="twm-how-t-get-section">
+            <div className="row">
+                <div className="col-xl-5 col-lg-5 col-md-12">
+                    <div className="twm-how-t-get-section-left">
+                        <div className="section-head left wt-small-separator-outer">
+                            <div className="wt-small-separator site-text-primary">
+                                <div>Our Services</div>
                             </div>
-                            <div className="col-lg-6 col-md-12">
-                                <div className="twm-about-9-section-right">
-                                    {/* title="" START*/}
-                                    <div className="section-head left wt-small-separator-outer">
-                                        <div className="wt-small-separator site-text-primary">
-                                            <div>About </div>
-                                        </div>
-                                        <h2 className="wt-title">Millions of jobs. Find the
-                                            one that’s right for you.</h2>
-                                    </div>
-                                    {/* title="" END*/}
-                                    <ul className="description-list">
-                                        <li>
-                                            <i className="feather-check" />
-                                            Full lifetime access
-                                        </li>
-                                        <li>
-                                            <i className="feather-check" />
-                                            20+ downloadable resources
-                                        </li>
-                                        <li>
-                                            <i className="feather-check" />
-                                            Certificate of completion
-                                        </li>
-                                        <li>
-                                            <i className="feather-check" />
-                                            Free Trial 7 Days
-                                        </li>
-                                    </ul>
-                                    <div className="twm-about-1-bottom-wrap">
-                                        <div className="row">
-                                            <div className="col-lg-6 col-md-6">
-                                                {/*icon-block-1*/}
-                                                <div className="twm-card-blocks">
-                                                    <div className="twm-icon pink">
-                                                        <JobZImage src="images/main-slider/slider2/icon-2.png" alt="" />
-                                                    </div>
-                                                    <div className="twm-content">
-                                                        <div className="tw-count-number text-clr-pink">
-                                                            <span className="counter">
-<CountUp end={98} duration={10} />
-</span> +
-                                                        </div>
-                                                        <p className="icon-content-info">Job For Countries </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="col-lg-6 col-md-6">
-                                                {/*icon-block-3*/}
-                                                <div className="twm-card-blocks">
-                                                    <div className="twm-icon">
-                                                        <JobZImage src="images/main-slider/slider2/icon-1.png" alt="" />
-                                                    </div>
-                                                    <div className="twm-content">
-                                                        <div className="tw-count-number text-clr-sky">
-                                                            <span className="counter">
-<CountUp end={12} duration={10} />
-</span>K+
-                                                        </div>
-                                                        <p className="icon-content-info">Companies Jobs</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <h2 className="wt-title">We Connect You to Global Opportunities</h2>
+                            <p>True Touch Foreign Employment Recruitment Agency helps you find the right job abroad with full support from documentation to placement. We guide you every step of the way.</p>
+                        </div>
+                        <div className="twm-how-t-get-bottom">
+                            <NavLink to={publicUser.HOME1} className="site-button">Get Started</NavLink>
+                            <div className="twm-left-icon-bx">
+                                <div className="twm-left-icon-media site-bg-primary">
+                                    <i className="flaticon-bell site-text-white" />
+                                </div>
+                                <div className="twm-left-icon-content">
+                                    <h4 className="icon-title">New Job Available</h4>
+                                    <p>New opportunities added today</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div className="col-xl-7 col-lg-7 col-md-12">
+                    <div className="twm-how-t-get-section-right">
+                        <div className="twm-media">
+                            <JobZImage src="images/gallery/7.jpeg" alt="#" />
+                        </div>
+                    </div>
+                </div>
             </div>
-            {/* ABOUT SECTION END */}
+        </div>
+    </div>
+</div>
+      {/* OUR SERVICES SECTION END */}
 
 
                   {/* FEATURED JOBS SECTION START */}
