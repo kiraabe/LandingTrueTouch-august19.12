@@ -458,13 +458,13 @@ function Home18Page() {
                                             {/*5*/}
                                             <div className="twm-circle-jobs-box five bounce2">
                                                 <div className="twm-circle-job-pics">
-                                                    <JobZImage src="images/home-5/millions-jobs/company-5.png" alt="#" />
+                                                    <JobZImage src="images/home-7/flag-icon/qatar.png" alt="#" />
                                                 </div>
                                             </div>
                                             {/*6*/}
                                             <div className="twm-circle-jobs-box six bounce">
                                                 <div className="twm-circle-job-pics">
-                                                    <JobZImage src="images/home-5/millions-jobs/company-6.png" alt="#" />
+                                                    <JobZImage src="images/home-7/flag-icon/saudi-arabia.png" alt="#" />
                                                 </div>
                                             </div>
                                         </div>
@@ -508,7 +508,7 @@ function Home18Page() {
 
 
       {/* OUR SERVICES SECTION START */}
-<div className="section-full p-t120 p-b150 site-bg-light twm-how-t-get-wrap7">
+<div className="section-full p-t120 p-b90 site-bg-light twm-how-t-get-wrap7">
     <div className="container">
         <div className="twm-how-t-get-section">
             <div className="row">
@@ -550,7 +550,7 @@ function Home18Page() {
 
 
                   {/* FEATURED JOBS SECTION START */}
-            <div className="section-full p-t150 pos-relative site-bg-white twm-featured-city-area">
+            <div className="section-full p-t120 pos-relative site-bg-white twm-featured-city-area">
                 <div className="twm-bg-section-box" />
                 <div className="container">
                     {/* title="" START*/}
