@@ -400,34 +400,6 @@ function Home18Page() {
                                     </div>
                                 </div>
                                 <div className="twm-bnr-blocks-position-wrap">
-                                    {/*icon-block-1*/}
-                                    <div className="twm-bnr-blocks twm-bnr-blocks-position-1">
-                                        <div className="twm-icon">
-                                            <JobZImage src="images/main-slider/slider1/icon-1.png" alt="" />
-                                        </div>
-                                        <div className="twm-content">
-                                            <div className="tw-count-number text-clr-sky">
-                                                <span className="counter">
-                                                    <CountUp end={12} duration={10} />
-                                                </span>K+
-                                            </div>
-                                            <p className="icon-content-info">Companies Jobs</p>
-                                        </div>
-                                    </div>
-                                    {/*icon-block-2*/}
-                                    <div className="twm-bnr-blocks twm-bnr-blocks-position-2">
-                                        <div className="twm-icon">
-                                            <JobZImage src="images/main-slider/slider1/icon-2.png" alt="" />
-                                        </div>
-                                        <div className="twm-content">
-                                            <div className="tw-count-number text-clr-pink">
-                                                <span className="counter">
-                                                    <CountUp end={98} duration={10} />
-                                                </span> +
-                                            </div>
-                                            <p className="icon-content-info">Job For Countries </p>
-                                        </div>
-                                    </div>
                                     {/*icon-block-3*/}
                                     <div className="twm-bnr-blocks-3 twm-bnr-blocks-position-3">
                                         <div className="twm-pics">
@@ -437,14 +409,6 @@ function Home18Page() {
                                             <span><JobZImage src="images/main-slider/slider1/user/u-4.jpg" alt="" /></span>
                                             <span><JobZImage src="images/main-slider/slider1/user/u-5.jpg" alt="" /></span>
                                             <span><JobZImage src="images/main-slider/slider1/user/u-6.jpg" alt="" /></span>
-                                        </div>
-                                        <div className="twm-content">
-                                            <div className="tw-count-number text-clr-green">
-                                                <span className="counter">
-                                                    <CountUp end={3} duration={10} />
-                                                </span>K+
-                                            </div>
-                                            <p className="icon-content-info">Jobs Done</p>
                                         </div>
                                     </div>
                                 </div>
