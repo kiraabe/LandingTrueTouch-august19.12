@@ -390,7 +390,7 @@ function Home18Page() {
                                         <JobZImage src="images/home-7/flag-icon/turkey.jpg" alt="Turkey" />
                                     </span>
                                 </div>
-                                <div className="twm-img-bg-circle3">
+                                <div className="twm-img-bg-circle3 rotate-center">
                                     <span>
                                         <JobZImage src="images/home-7/flag-icon/spain.jpg" alt="Spain" />
                                     </span>
