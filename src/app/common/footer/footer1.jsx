@@ -51,8 +51,8 @@ function Footer1() {
                                             <h3 className="widget-title">For Employers</h3>
                                             <ul>
                                                 <li><NavLink to={publicUser.HOME1}>Home</NavLink></li>
-                                                <li><a href="#get-jobs">Our Services</a></li>
-                                                <li><a href="#contact-us">Request Quote</a></li>
+                                                <li><a href="#portfolio" onClick={(e) => { e.preventDefault(); document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' }); }}>Our Services</a></li>
+                                                <li><a href="#contact-us" onClick={(e) => { e.preventDefault(); document.getElementById('contact-us')?.scrollIntoView({ behavior: 'smooth' }); }}>Request Quote</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -60,7 +60,7 @@ function Footer1() {
                                         <div className="widget widget_services ftr-list-center">
                                             <h3 className="widget-title">Our Services</h3>
                                             <ul>
-                                                <li><a href="#get-jobs" onClick={(e) => { e.preventDefault(); document.getElementById('get-jobs')?.scrollIntoView({ behavior: 'smooth' }); }}>Manpower Supply</a></li>
+                                                <li><a href="#portfolio" onClick={(e) => { e.preventDefault(); document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' }); }}>Manpower Supply</a></li>
                                                 <li><a href="#candidates" onClick={(e) => { e.preventDefault(); document.getElementById('candidates')?.scrollIntoView({ behavior: 'smooth' }); }}>Talent Pool</a></li>
                                                 <li><a href="#our-blogs" onClick={(e) => { e.preventDefault(); document.getElementById('our-blogs')?.scrollIntoView({ behavior: 'smooth' }); }}>News</a></li>
                                             </ul>
@@ -71,7 +71,7 @@ function Footer1() {
                                             <h3 className="widget-title">Service Areas</h3>
                                             <ul>
                                                 <li><NavLink to={publicUser.HOME1}>Qatar & Oman</NavLink></li>
-                                                <li><a href="#get-jobs" onClick={(e) => { e.preventDefault(); document.getElementById('get-jobs')?.scrollIntoView({ behavior: 'smooth' }); }}>Saudi Arabia</a></li>
+                                                <li><a href="#portfolio" onClick={(e) => { e.preventDefault(); document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' }); }}>Saudi Arabia</a></li>
                                                 <li><a href="#contact-us" onClick={(e) => { e.preventDefault(); document.getElementById('contact-us')?.scrollIntoView({ behavior: 'smooth' }); }}>Gulf Region</a></li>
                                             </ul>
                                         </div>

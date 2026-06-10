@@ -8,10 +8,11 @@ import { publicUser } from "./route-names"
 
 export function showFloatingMenus(currentpath) {
     switch (currentpath) {
-        case publicUser.HOME18:
+        case publicUser.pages.MAINTENANCE:
+        case publicUser.pages.COMING:
             return false;
         default:
-            return false;
+            return true;
     }
 }
 

@@ -31,7 +31,7 @@ function Footer3() {
                                             <h3 className="widget-title">For Employers</h3>
                                             <ul>
                                                 <li><NavLink to={publicUser.HOME1}>Home</NavLink></li>
-                                                <li><a href="#get-jobs" onClick={(e) => { e.preventDefault(); document.getElementById('get-jobs')?.scrollIntoView({ behavior: 'smooth' }); }}>About Us</a></li>
+                                                <li><a href="#portfolio" onClick={(e) => { e.preventDefault(); document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' }); }}>About Us</a></li>
                                                 <li><a href="#contact-us" onClick={(e) => { e.preventDefault(); document.getElementById('contact-us')?.scrollIntoView({ behavior: 'smooth' }); }}>Contact Us</a></li>
                                             </ul>
                                         </div>
@@ -51,7 +51,7 @@ function Footer3() {
                                             <h3 className="widget-title">Quick Links</h3>
                                             <ul>
                                                 <li><NavLink to={publicUser.HOME1}>Home</NavLink></li>
-                                                <li><a href="#get-jobs" onClick={(e) => { e.preventDefault(); document.getElementById('get-jobs')?.scrollIntoView({ behavior: 'smooth' }); }}>About Us</a></li>
+                                                <li><a href="#portfolio" onClick={(e) => { e.preventDefault(); document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' }); }}>About Us</a></li>
                                                 <li><a href="#candidates" onClick={(e) => { e.preventDefault(); document.getElementById('candidates')?.scrollIntoView({ behavior: 'smooth' }); }}>Candidates</a></li>
                                                 <li><a href="#contact-us" onClick={(e) => { e.preventDefault(); document.getElementById('contact-us')?.scrollIntoView({ behavior: 'smooth' }); }}>Contact Us</a></li>
                                             </ul>

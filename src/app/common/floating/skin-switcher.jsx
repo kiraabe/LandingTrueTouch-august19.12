@@ -20,8 +20,12 @@ function SkinSwitcher() {
     ];
 
     const handleSkinChange = (skinId) => {
-        updateSkinStyle(String(skinId), false, false);
-        setShowColors(false);
+        try {
+            updateSkinStyle(String(skinId), false, false);
+            setShowColors(false);
+        } catch (error) {
+            console.error('Error changing skin:', error);
+        }
     };
 
     return (

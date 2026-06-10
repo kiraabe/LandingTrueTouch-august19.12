@@ -369,7 +369,10 @@ function Home18Page() {
                 </svg>
               </span></div>
               <p className="twm-bnr-tagline">True Touch connects employers with vetted, skilled professionals from Asia and Africa. We provide reliable domestic helpers, healthcare workers, chefs, and skilled labor across the Gulf, Middle East, and beyond.</p>
-              <NavLink to={publicUser.pages.ABOUT} className="site-button twm-bnr-cta">Get in Touch</NavLink>
+              <a href="#contact-us" className="site-button twm-bnr-cta" onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('contact-us')?.scrollIntoView({ behavior: 'smooth' });
+              }}>Get in Touch</a>
             </div>
           </div>
           <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
@@ -441,8 +444,14 @@ function Home18Page() {
                   </div>
                   <div className="twm-avail-jobs"><span>1000+</span> Placements Completed</div>
                   <div className="twm-read-more cplumn-2">
-                    <NavLink to={publicUser.pages.ABOUT} className="site-button">Hire Now</NavLink>
-                    <NavLink to={publicUser.pages.ABOUT} className="site-button-link underline">View Our Solutions</NavLink>
+                    <a href="#contact-us" className="site-button" onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById('contact-us')?.scrollIntoView({ behavior: 'smooth' });
+                    }}>Hire Now</a>
+                    <a href="#contact-us" className="site-button-link underline" onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById('contact-us')?.scrollIntoView({ behavior: 'smooth' });
+                    }}>View Our Solutions</a>
                   </div>
                 </div>
               </div>
