@@ -330,20 +330,6 @@ function Home18Page() {
                     {/*right Section*/}
                     <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
                         <div className="twm-bnr-right-content">
-                            <div className="twm-img-bg-circle-area">
-                                <div className="twm-img-bg-circle1 rotate-center">
-                                    <span>
-                                    <JobZImage src="images/home-7/flag-icon/jordan.png" alt="JORDAN" />
-                                    </span>
-                                </div>
-                                <div className="twm-img-bg-circle2 rotate-center-reverse">
-                                    <span>
-                                     <JobZImage src="images/home-7/flag-icon/united-arab-emirates.png" alt="UAE" />
-                                    </span>
-                                </div>
-                                <div className="twm-img-bg-circle3">
-                                </div>
-                            </div>
                             <div className="twm-bnr-right-carousel">
                                 <div className="owl-carousel twm-h1-bnr-carousal">
                                     <div className="item">
