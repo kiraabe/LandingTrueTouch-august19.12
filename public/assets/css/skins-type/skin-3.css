@@ -75,8 +75,8 @@
   background-color: #e47c3f;
 }
 .header-style-3 .header-nav-btn-section .twm-nav-btn-left .twm-nav-sign-up {
-  color: #000000;
-  background-color: #e0e9e6;
+  color: #000000 !important;
+  background-color: #e0e9e6 !important;
 }
 .header-style-3 .header-search a.header-search-icon {
   color: #232323;
