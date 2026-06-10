@@ -339,7 +339,9 @@ function Home18Page() {
                                     </div>
                                     <div className="item">
                                         <div className="slide-img">
-                                            <JobZImage src="images/main-slider/slider1/r-img2.png" alt="#" />
+                                            <div className="slide-img">
+                                                <JobZImage src="images/main-slider/slider1/r-img2.png" alt="#" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -483,7 +485,8 @@ function Home18Page() {
                                         <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Nanny / Childcare Specialist</NavLink></h4>
                                     </div>
                                 </div>
-                            </div>
+              </div>
+                           
                             <div className="col-xl-5 col-lg-4 col-md-6">
                                 <div className="twm-featured-city2">
                                     <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/PrivateChefCook.jpg")})` }}>
