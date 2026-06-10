@@ -2,6 +2,7 @@ import { useState } from "react";
 import AllDemoFloatingMenu from "./all-demo";
 import AllDemoFloatingOptions from "./all-demo-options";
 import BuyNowFloatingMenu from "./buy-now";
+import SkinSwitcher from "./skin-switcher";
 
 function FloatingMenus() {
 
@@ -14,6 +15,7 @@ function FloatingMenus() {
     return (
         <>
             <AllDemoFloatingOptions onClick={handleDemoClick} active={demosActive} />
+            <SkinSwitcher />
             <div className="buy-btn-wrap">
                 <div className="buy-btn-list">
                     <AllDemoFloatingMenu onClick={handleDemoClick} />

@@ -49,9 +49,9 @@ function Footer4() {
                                         <div className="widget widget_services ftr-list-center">
                                             <h3 className="widget-title">For Employers</h3>
                                             <ul>
-                                                <li><a href="#home">Home</a></li>
-                                                <li><a href="#get-jobs">About Us</a></li>
-                                                <li><a href="#contact-us">Contact Us</a></li>
+                                                <li><NavLink to={publicUser.HOME1}>Home</NavLink></li>
+                                                <li><a href="#get-jobs" onClick={(e) => { e.preventDefault(); document.getElementById('get-jobs')?.scrollIntoView({ behavior: 'smooth' }); }}>About Us</a></li>
+                                                <li><a href="#contact-us" onClick={(e) => { e.preventDefault(); document.getElementById('contact-us')?.scrollIntoView({ behavior: 'smooth' }); }}>Contact Us</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -59,9 +59,9 @@ function Footer4() {
                                         <div className="widget widget_services ftr-list-center">
                                             <h3 className="widget-title">Helpful Resources</h3>
                                             <ul>
-                                                <li><a href="#portfolio">Portfolio</a></li>
-                                                <li><a href="#candidates">Candidates</a></li>
-                                                <li><a href="#our-blogs">Vacancies</a></li>
+                                                <li><a href="#portfolio" onClick={(e) => { e.preventDefault(); document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' }); }}>Portfolio</a></li>
+                                                <li><a href="#candidates" onClick={(e) => { e.preventDefault(); document.getElementById('candidates')?.scrollIntoView({ behavior: 'smooth' }); }}>Candidates</a></li>
+                                                <li><a href="#our-blogs" onClick={(e) => { e.preventDefault(); document.getElementById('our-blogs')?.scrollIntoView({ behavior: 'smooth' }); }}>Vacancies</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -69,10 +69,10 @@ function Footer4() {
                                         <div className="widget widget_services ftr-list-center">
                                             <h3 className="widget-title">Quick Links</h3>
                                             <ul>
-                                                <li><a href="#home">Home</a></li>
-                                                <li><a href="#get-jobs">About Us</a></li>
-                                                <li><a href="#candidates">Candidates</a></li>
-                                                <li><a href="#contact-us">Contact Us</a></li>
+                                                <li><NavLink to={publicUser.HOME1}>Home</NavLink></li>
+                                                <li><a href="#get-jobs" onClick={(e) => { e.preventDefault(); document.getElementById('get-jobs')?.scrollIntoView({ behavior: 'smooth' }); }}>About Us</a></li>
+                                                <li><a href="#candidates" onClick={(e) => { e.preventDefault(); document.getElementById('candidates')?.scrollIntoView({ behavior: 'smooth' }); }}>Candidates</a></li>
+                                                <li><a href="#contact-us" onClick={(e) => { e.preventDefault(); document.getElementById('contact-us')?.scrollIntoView({ behavior: 'smooth' }); }}>Contact Us</a></li>
                                             </ul>
                                         </div>
                                     </div>

@@ -123,10 +123,13 @@ function Header1({ _config }) {
                                 <div className="extra-cell">
                                     <div className="header-nav-btn-section">
                                         <div className="twm-nav-btn-left">
-                                            <a className="twm-nav-sign-up" href="#contact-us">
-                                                <i className="feather-log-in" /> Request Workforce
-                                            </a>
-                                        </div>
+                                    <a className="twm-nav-sign-up" href="#contact-us" onClick={(e) => {
+                                        e.preventDefault();
+                                        handleSectionClick("contact-us", e);
+                                    }}>
+                                        <i className="feather-log-in" /> Request Workforce
+                                    </a>
+                                </div>
                                     </div>
                                 </div>
                             </div>

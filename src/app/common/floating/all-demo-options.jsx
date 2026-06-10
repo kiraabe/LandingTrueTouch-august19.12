@@ -10,7 +10,10 @@ function AllDemoFloatingOptions(props) {
                     <a
                         href="#"
                         className="all-demo-close"
-                        onClick={props.onClick}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            props.onClick();
+                        }}
                     ></a>
                     <ul className="twm-all-demo-list">
                         <li><NavLink to={publicUser.HOME1}><JobZImage src="images/home-14/all-demo-pages/1.jpg" /></NavLink></li>

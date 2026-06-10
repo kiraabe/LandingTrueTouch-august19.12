@@ -4,7 +4,10 @@ function AllDemoFloatingMenu(props) {
             <a href="#"
                 id="all-demo-open"
                 className="all-demos-view"
-                onClick={props.onClick}
+                onClick={(e) => {
+                    e.preventDefault();
+                    props.onClick();
+                }}
             >All Demo</a>
         </>
     )
