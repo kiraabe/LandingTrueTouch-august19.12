@@ -267,6 +267,16 @@ function Home18Page() {
     }
   }, [blogs, blogsLoading]);
 
+  // Initialize marker animation path length
+  useEffect(() => {
+    const path = document.querySelector('.circle-svg path');
+    if (path) {
+      const len = path.getTotalLength();
+      path.style.strokeDasharray = len;
+      path.style.strokeDashoffset = len;
+    }
+  }, []);
+
   const openCandidateModal = async (candidate) => {
     setSelectedCandidate(candidate);
     setDetailsLoading(true);
@@ -346,7 +356,19 @@ function Home18Page() {
           <div className="col-xl-6 col-lg-6 col-md-12">
             <div className="twm-bnr-left-section">
               <div className="twm-bnr-title-small">Premium <span className="site-text-primary">Global</span> Manpower Solutions</div>
-              <div className="twm-bnr-title-large">Hire Skilled Workers <span className="site-text-primary">Instantly</span></div>
+              <div className="twm-bnr-title-large">Hire Skilled Workers <span className="marker-wrap site-text-primary">Instantly
+                <svg className="circle-svg" viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+                  <path d="
+                    M 22,8
+                    C 35,-2 80,-5 115,4
+                    C 142,11 158,22 155,35
+                    C 152,48 130,58 95,60
+                    C 62,62 28,56 12,44
+                    C -2,33 2,16 22,8
+                    Z
+                  "/>
+                </svg>
+              </span></div>
               <p className="twm-bnr-tagline">True Touch connects employers with vetted, skilled professionals from Asia and Africa. We provide reliable domestic helpers, healthcare workers, chefs, and skilled labor across the Gulf, Middle East, and beyond.</p>
               <NavLink to={publicUser.pages.ABOUT} className="site-button twm-bnr-cta">Get in Touch</NavLink>
             </div>

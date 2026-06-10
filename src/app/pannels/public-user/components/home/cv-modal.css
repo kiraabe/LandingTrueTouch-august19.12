@@ -1,3 +1,37 @@
+/* Marker Animation Styles */
+.marker-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.marker-wrap svg.circle-svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 40px);
+  height: calc(100% + 28px);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.marker-wrap svg.circle-svg path {
+  fill: none;
+  stroke: #e05c1a;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawCircle 1.2s cubic-bezier(0.3, 0, 0.2, 1) 0.7s forwards;
+}
+
+@keyframes drawCircle {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 /* Portfolio Fullscreen Modal */
 .portfolio-fullscreen-overlay {
   position: fixed;
