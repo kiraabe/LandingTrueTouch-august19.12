@@ -72,7 +72,7 @@ function Header1({ _config }) {
                             <div className="logo-header">
                                 <div className="logo-header-inner logo-header-one">
                                     <NavLink to={publicUser.HOME1}>
-                                        <JobZImage src="images/truetouch-logo.webp" alt="TrueTouch Logo" />
+                                        <JobZImage src="images/logo-dark.png" alt="TrueTouch Logo" />
                                     </NavLink>
                                 </div>
                             </div>
