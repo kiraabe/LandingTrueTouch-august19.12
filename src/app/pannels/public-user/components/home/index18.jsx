@@ -142,6 +142,12 @@ function Home18Page() {
         });
         if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         const data = await response.json();
+        // Clean backslashes from skill levels
+        if (data.skillLevels && Array.isArray(data.skillLevels)) {
+          data.skillLevels = data.skillLevels.map(s =>
+            typeof s === 'string' ? s.replace(/\\+/g, '').trim() : s
+          ).filter(s => s.length > 0);
+        }
         console.log('✅ Filter options loaded:', data);
         setFilterOptions(data);
       } catch (err) {
