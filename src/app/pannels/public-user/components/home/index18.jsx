@@ -822,7 +822,7 @@ function Home18Page() {
           </div>
         </div>
 
-        <div className="twm-bg-candi-pattern" />
+<div className="twm-bg-candi-pattern" />
 
         <div className="container">
           <div className="twm-j-ofr-wrap">
@@ -890,6 +890,7 @@ function Home18Page() {
               </div>
             </div>
           </div>
+      </div>
       {/* CANDIDATES END */}
 
       {/* OUR BLOG START */}
