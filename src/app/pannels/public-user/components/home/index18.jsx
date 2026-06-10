@@ -23,9 +23,9 @@ const truncateText = (text, maxLength = 78) => {
 function parseSkillsForDisplay(skillLevel) {
   if (!skillLevel) return "-";
   try {
-    let cleaned = skillLevel.replace(/\\/g, "");
+    let cleaned = skillLevel.replace(/\\+/g, "");
     cleaned = cleaned.replace(/[{}"]/g, "");
-    const parts = cleaned.split(",").map(p => p.trim()).filter(Boolean);
+    const parts = cleaned.split(",").map(p => p.trim()).filter(s => s.length > 0);
     const seen = new Set();
     const unique = parts.filter(p => {
       const key = p.toLowerCase();
@@ -188,8 +188,9 @@ function Home18Page() {
       result = result.filter(c => {
         if (!c.skill_level) return false;
         // Clean the raw skill_level string and check if it contains the selected skill
-        const cleaned = c.skill_level.replace(/[{}"\\]/g, '');
-        const skillParts = cleaned.split(',').map(s => s.trim().toLowerCase());
+        let cleaned = c.skill_level.replace(/\\+/g, '');
+        cleaned = cleaned.replace(/[{}"]/g, '');
+        const skillParts = cleaned.split(',').map(s => s.trim().toLowerCase()).filter(s => s.length > 0);
         return skillParts.includes(selectedSkill);
       });
     }
