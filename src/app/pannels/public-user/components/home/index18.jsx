@@ -668,7 +668,7 @@ function Home18Page() {
                         <select
                           value={filters.jobCategory}
                           onChange={e => handleFilterChange('jobCategory', e.target.value)}
-                          style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', minWidth: '160px', cursor: 'pointer' }}
+                          style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', width: '160px', cursor: 'pointer' }}
                         >
                           <option value="">All Job Categories</option>
                           {filterOptions.professions.map(p => (
@@ -682,7 +682,7 @@ function Home18Page() {
                         <select
                           value={filters.location}
                           onChange={e => handleFilterChange('location', e.target.value)}
-                          style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', minWidth: '160px', cursor: 'pointer' }}
+                          style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', width: '160px', cursor: 'pointer' }}
                         >
                           <option value="">All Locations</option>
                           {filterOptions.locations.map(l => (
@@ -696,7 +696,7 @@ function Home18Page() {
                         <select
                           value={filters.skillLevel}
                           onChange={e => handleFilterChange('skillLevel', e.target.value)}
-                          style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', minWidth: '160px', cursor: 'pointer' }}
+                          style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', width: '160px', cursor: 'pointer' }}
                         >
                           <option value="">All Skill Levels</option>
                           {filterOptions.skillLevels.map(s => (
@@ -710,7 +710,7 @@ function Home18Page() {
                         <select
                           value={filters.status}
                           onChange={e => handleFilterChange('status', e.target.value)}
-                          style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', minWidth: '160px', cursor: 'pointer' }}
+                          style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', width: '160px', cursor: 'pointer' }}
                         >
                           <option value="">All Statuses</option>
                           {filterOptions.statuses.length > 0
