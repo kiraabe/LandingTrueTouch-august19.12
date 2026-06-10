@@ -314,11 +314,42 @@ router.get('/candidates/list-all', async (req, res) => {
 
 router.get('/candidates/featured', async (req, res) => {
   try {
-    const result = await pool.query(
-      'SELECT candidate_id AS id, id as numeric_id, name AS full_name, job_category AS profession, current_location AS location, profile_picture, religion AS hourly_rate, COALESCE(status, \'No Status\') as status FROM candidates WHERE profile_picture IS NOT NULL LIMIT 8'
-    );
+    const { search, profession, location, skill_level, status } = req.query;
+
+    let query = 'SELECT candidate_id AS id, id as numeric_id, name AS full_name, job_category AS profession, current_location AS location, profile_picture, religion AS hourly_rate, COALESCE(status, \'No Status\') as status FROM candidates WHERE profile_picture IS NOT NULL';
+    const params = [];
+
+    if (search) {
+      query += ' AND (LOWER(name) LIKE $' + (params.length + 1) + ' OR LOWER(job_category) LIKE $' + (params.length + 1) + ' OR LOWER(current_location) LIKE $' + (params.length + 1) + ')';
+      params.push('%' + search.toLowerCase() + '%');
+    }
+
+    if (profession) {
+      query += ' AND job_category = $' + (params.length + 1);
+      params.push(profession);
+    }
+
+    if (location) {
+      query += ' AND current_location = $' + (params.length + 1);
+      params.push(location);
+    }
+
+    if (skill_level) {
+      query += ' AND skill_level = $' + (params.length + 1);
+      params.push(skill_level);
+    }
+
+    if (status) {
+      query += ' AND status = $' + (params.length + 1);
+      params.push(status);
+    }
+
+    query += ' LIMIT 100';
+
+    const result = await pool.query(query, params);
     console.log('✓ Fetched featured candidates, count:', result.rows.length);
     console.log('✓ Sample UUIDs:', result.rows.map(r => r.id).slice(0, 2));
+    console.log('✓ Query filters:', { search, profession, location, skill_level, status });
     res.json(result.rows);
   } catch (error) {
     console.error('✗ Database query error:', error.message);
