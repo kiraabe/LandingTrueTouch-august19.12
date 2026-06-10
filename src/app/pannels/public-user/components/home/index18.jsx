@@ -340,6 +340,8 @@ function Home18Page() {
             <div className="twm-bnr-left-section">
               <div className="twm-bnr-title-small">We Have <span className="site-text-primary">208,000+</span> Live Jobs</div>
               <div className="twm-bnr-title-large">Find the <span className="site-text-primary">job</span> that fits your life</div>
+              <p className="twm-bnr-tagline">Discover your perfect opportunity with True Touch. We connect you with global employment prospects that match your skills and aspirations.</p>
+              <NavLink to={publicUser.pages.ABOUT} className="site-button twm-bnr-cta">Explore Jobs Now</NavLink>
             </div>
           </div>
           <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
