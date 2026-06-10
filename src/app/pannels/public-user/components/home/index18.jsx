@@ -125,6 +125,7 @@ function Home18Page() {
   const [blogsLoading, setBlogsLoading] = useState(true);
   const [pageReady, setPageReady] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [debouncedSearchQuery, setDebouncedSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState('all');
   const [filters, setFilters] = useState({ jobCategory: '', location: '', skillLevel: '', status: '' });
 
@@ -134,13 +135,21 @@ function Home18Page() {
   }, [])
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearchQuery(searchQuery);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [searchQuery])
+
+  useEffect(() => {
     const fetchCandidates = async () => {
       try {
         setLoading(true);
 
         // Build query parameters
         const params = new URLSearchParams();
-        if (searchQuery) params.append('search', searchQuery);
+        if (debouncedSearchQuery) params.append('search', debouncedSearchQuery);
         if (filters.jobCategory) params.append('profession', filters.jobCategory);
         if (filters.location) params.append('location', filters.location);
         if (filters.skillLevel) params.append('skill_level', filters.skillLevel);
@@ -171,7 +180,7 @@ function Home18Page() {
     };
 
     fetchCandidates();
-  }, [searchQuery, filters])
+  }, [debouncedSearchQuery, filters])
 
   useEffect(() => {
     const fetchBlogs = async () => {
