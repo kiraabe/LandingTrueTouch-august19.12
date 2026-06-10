@@ -799,7 +799,7 @@ function Home18Page() {
                                   href={`https://wa.me/?text=Hi, I'm interested in contacting ${candidate.full_name}`}
                                   target="_blank" rel="noopener noreferrer"
                                   className="site-button"
-                                  style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px', backgroundColor: '#25D366' }}
+                                  style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px' }}
                                 >
                                   WhatsApp
                                 </a>
