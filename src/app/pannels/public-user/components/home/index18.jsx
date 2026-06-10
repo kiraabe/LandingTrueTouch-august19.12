@@ -764,7 +764,7 @@ function Home18Page() {
                             border: 'none',
                             cursor: 'pointer',
                             fontWeight: '500',
-                            backgroundColor: activeTab === tab ? 'var(--site-primary, #F7B500)' : '#f0f0f0',
+                            backgroundColor: activeTab === tab ? 'var(--site-primary, #7FD87F)' : '#f0f0f0',
                             color: activeTab === tab ? 'white' : '#333',
                             transition: 'all 0.3s ease'
                           }}
@@ -795,7 +795,7 @@ function Home18Page() {
                           transition: 'border-color 0.3s',
                           boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
                         }}
-                        onFocus={(e) => e.target.style.borderColor = 'var(--site-primary, #F7B500)'}
+                        onFocus={(e) => e.target.style.borderColor = 'var(--site-primary, #7FD87F)'}
                         onBlur={(e) => e.target.style.borderColor = '#ddd'}
                       />
                     </div>
