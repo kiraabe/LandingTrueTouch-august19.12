@@ -822,74 +822,57 @@ function Home18Page() {
           </div>
         </div>
 
-<div className="twm-bg-candi-pattern" />
-
+        <div className="twm-bg-candi-pattern" />
         <div className="container">
-          <div className="twm-j-ofr-wrap">
-            <div className="twm-j-ofr-content" style={{ backgroundImage: `url(${publicUrlFor("images/home-7/ofr-bg.jpg")})` }}>
-              <div className="row align-items-center">
-
-                <div className="col-lg-5 col-md-12">
-                  <div className="twm-j-ofr-map-content">
-                    <div className="section-head left wt-small-separator-outer">
-                      <h2 className="wt-title">Find Us at Our <span className="site-text-primary">Office</span></h2>
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
-                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                        <i className="fas fa-map-marker-alt site-text-primary" style={{ fontSize: '18px', marginTop: '3px' }} />
-                        <div>
-                          <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Our Address</h4>
-                          <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>Addis Ababa, Ethiopia</p>
-                        </div>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                        <i className="fas fa-phone site-text-primary" style={{ fontSize: '18px', marginTop: '3px' }} />
-                        <div>
-                          <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Phone</h4>
-                          <p style={{ margin: 0 }}>
-                            <a href="tel:+251911208322" style={{ color: '#666', fontSize: '14px' }}>+251 91 120 8322</a>
-                          </p>
-                        </div>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                        <i className="fas fa-envelope site-text-primary" style={{ fontSize: '18px', marginTop: '3px' }} />
-                        <div>
-                          <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Email</h4>
-                          <p style={{ margin: 0 }}>
-                            <a href="mailto:truetouchaddis@gmail.com" style={{ color: '#666', fontSize: '14px' }}>truetouchaddis@gmail.com</a>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    
-href="https://www.google.com/maps?q=9.011711495201522,38.75411823390739"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="site-button"
->
-  Get Directions
-</a>
-                  </div>
+  <div className="twm-j-ofr-wrap">
+    <div className="twm-j-ofr-content" style={{ backgroundImage: `url(${publicUrlFor("images/home-7/ofr-bg.jpg")})` }}>
+      <div className="row align-items-center">
+        <div className="col-lg-5 col-md-12">
+          <div className="twm-j-ofr-map-content">
+            <div className="section-head left wt-small-separator-outer">
+              <h2 className="wt-title">Find Us at Our <span className="site-text-primary">Office</span></h2>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                <i className="fas fa-map-marker-alt site-text-primary" style={{ fontSize: '18px', marginTop: '3px' }} />
+                <div>
+                  <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Our Address</h4>
+                  <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>Addis Ababa, Ethiopia</p>
                 </div>
-
-                <div className="col-lg-7 col-md-12" style={{ marginTop: '20px' }}>
-                  <div style={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.12)' }}>
-                    <iframe
-                      title="TrueTouch Office Location"
-                      src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d100!2d38.75411823390739!3d9.011711495201522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOcKwMDAnNDIuMiJOIDM4wrA0NSc5NC44IkU!5e0!3m2!1sen!2set!4v1700000000000"
-                      width="100%"
-                      height="380"
-                      style={{ border: 0, display: 'block' }}
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                    />
-                  </div>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                <i className="fas fa-phone site-text-primary" style={{ fontSize: '18px', marginTop: '3px' }} />
+                <div>
+                  <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Phone</h4>
+                  <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>+251 91 120 8322</p>
                 </div>
-
+              </div>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                <i className="fas fa-envelope site-text-primary" style={{ fontSize: '18px', marginTop: '3px' }} />
+                <div>
+                  <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Email</h4>
+                  <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>truetouchaddis@gmail.com</p>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+        <div className="col-lg-7 col-md-12" style={{ marginTop: '20px' }}>
+          <div style={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.12)' }}>
+            <iframe
+              title="TrueTouch Office"
+              width="100%"
+              height="380"
+              style={{ border: 0, display: 'block' }}
+              loading="lazy"
+              src="https://maps.google.com/maps?q=9.011711495201522,38.75411823390739&z=16&output=embed"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
       </div>
       {/* CANDIDATES END */}
 
