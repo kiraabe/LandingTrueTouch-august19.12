@@ -310,6 +310,8 @@ router.get('/candidates/featured', async (req, res) => {
 // Filter options — skill_level unnested and cleaned from PostgreSQL array format
 router.get('/candidates/filter-options', async (req, res) => {
   try {
+    console.log('🔍 Fetching filter options...');
+
     // Job categories — distinct clean values
     const professions = await pool.query(`
       SELECT DISTINCT TRIM(job_category) AS profession
@@ -319,6 +321,7 @@ router.get('/candidates/filter-options', async (req, res) => {
         AND TRIM(job_category) != ''
       ORDER BY profession
     `);
+    console.log('✓ Professions found:', professions.rows.length, professions.rows.slice(0, 3));
 
     // Locations — distinct clean values
     const locations = await pool.query(`
@@ -329,6 +332,7 @@ router.get('/candidates/filter-options', async (req, res) => {
         AND TRIM(current_location) != ''
       ORDER BY location
     `);
+    console.log('✓ Locations found:', locations.rows.length, locations.rows.slice(0, 3));
 
     // Skill levels — unnest PostgreSQL array, clean braces/quotes, deduplicate
     const skillLevels = await pool.query(`
@@ -348,6 +352,7 @@ router.get('/candidates/filter-options', async (req, res) => {
       WHERE TRIM(skill) != ''
       ORDER BY skill
     `);
+    console.log('✓ Skill levels found:', skillLevels.rows.length, skillLevels.rows.slice(0, 3));
 
     // Statuses — normalized to lowercase
     const statuses = await pool.query(`
@@ -358,17 +363,37 @@ router.get('/candidates/filter-options', async (req, res) => {
         AND TRIM(status) != ''
       ORDER BY status
     `);
+    console.log('✓ Statuses found:', statuses.rows.length, statuses.rows.slice(0, 3));
 
-    res.json({
-      professions: professions.rows.map(r => r.profession),
-      locations: locations.rows.map(r => r.location),
+    const response = {
+      professions: professions.rows.map(r => r.profession).filter(Boolean),
+      locations: locations.rows.map(r => r.location).filter(Boolean),
       skillLevels: skillLevels.rows.map(r => r.skill).filter(Boolean),
-      statuses: statuses.rows.map(r => r.status)
-    });
+      statuses: statuses.rows.map(r => r.status).filter(Boolean)
+    };
+
+    console.log('✅ Filter options response:', JSON.stringify(response));
+
+    // Provide default values if no data found
+    if (response.professions.length === 0) {
+      response.professions = ['Software Developer', 'Data Scientist', 'Housekeeper', 'Chef'];
+    }
+    if (response.locations.length === 0) {
+      response.locations = ['New York', 'Los Angeles', 'London', 'Dubai'];
+    }
+    if (response.skillLevels.length === 0) {
+      response.skillLevels = ['Beginner', 'Intermediate', 'Advanced', 'Expert'];
+    }
+    if (response.statuses.length === 0) {
+      response.statuses = ['available', 'hired', 'pending'];
+    }
+
+    res.json(response);
   } catch (error) {
     console.error('✗ Filter options error:', error.message);
     res.status(500).json({
       error: 'Failed to fetch filter options',
+      details: error.message,
       professions: [],
       locations: [],
       skillLevels: [],

@@ -162,20 +162,30 @@ function Home18Page() {
 
     const fetchFilterOptions = async () => {
       try {
+        console.log('📡 Fetching filter options...');
         const response = await fetch('/api/candidates/filter-options', {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
         });
 
+        console.log('📊 Filter options response status:', response.status);
+
         if (!response.ok) {
+          const errorText = await response.text();
+          console.error('❌ Filter options error response:', errorText);
           throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
 
         const data = await response.json();
         console.log('✅ Filter options loaded:', data);
+        console.log('  - Professions:', data.professions?.length || 0);
+        console.log('  - Locations:', data.locations?.length || 0);
+        console.log('  - Skill levels:', data.skillLevels?.length || 0);
+        console.log('  - Statuses:', data.statuses?.length || 0);
         setFilterOptions(data);
       } catch (err) {
         console.error('❌ Error fetching filter options:', err);
+        setFilterOptions({ professions: [], locations: [], skillLevels: [], statuses: [] });
       }
     };
 
@@ -366,22 +376,33 @@ function Home18Page() {
     }
   };
 
-  // Get filter options from database
+  // Get filter options - combine from API and from loaded candidates data
   const getProfessions = () => {
-    const profs = filterOptions.professions || [];
-    return profs.filter(p => p && p.trim());
+    const fromApi = filterOptions.professions || [];
+    const fromCandidates = [...new Set(allCandidates.map(c => c.profession).filter(Boolean))];
+    const combined = [...new Set([...fromApi, ...fromCandidates])];
+    return combined.filter(p => p && p.trim()).sort();
   };
+
   const getLocations = () => {
-    const locs = filterOptions.locations || [];
-    return locs.filter(l => l && l.trim());
+    const fromApi = filterOptions.locations || [];
+    const fromCandidates = [...new Set(allCandidates.map(c => c.location).filter(Boolean))];
+    const combined = [...new Set([...fromApi, ...fromCandidates])];
+    return combined.filter(l => l && l.trim()).sort();
   };
+
   const getSkillLevels = () => {
-    const skills = filterOptions.skillLevels || [];
-    return skills.filter(s => s && s.trim());
+    const fromApi = filterOptions.skillLevels || [];
+    const fromCandidates = [...new Set(allCandidates.map(c => c.skill_level).filter(Boolean))];
+    const combined = [...new Set([...fromApi, ...fromCandidates])];
+    return combined.filter(s => s && s.trim()).sort();
   };
+
   const getStatuses = () => {
-    const stats = filterOptions.statuses || [];
-    return stats.filter(s => s && s.trim());
+    const fromApi = filterOptions.statuses || [];
+    const fromCandidates = [...new Set(allCandidates.map(c => c.status?.toLowerCase()).filter(Boolean))];
+    const combined = [...new Set([...fromApi, ...fromCandidates])];
+    return combined.filter(s => s && s.trim()).sort();
   };
 
   // Handle tab clicks - reset filters except when clicking contextual dropdowns
