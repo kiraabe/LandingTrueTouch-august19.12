@@ -41,6 +41,42 @@
   }
 }
 
+/* View Profile Button */
+.btn-view-profile {
+  background-color: #3498db;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-view-profile:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+/* WhatsApp Button */
+.btn-whatsapp-action {
+  background-color: #25d366;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.btn-whatsapp-action:hover {
+  background-color: #20ba58;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
 /* Portfolio Fullscreen Modal */
 .portfolio-fullscreen-overlay {
   position: fixed;

@@ -813,13 +813,13 @@ function Home18Page() {
                                 <div className="twm-jobs-vacancies">{candidate.hourly_rate}</div>
                               </div>
                               <div className="twm-action-buttons" style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
-                                <button onClick={() => openCandidateModal(candidate)} className="site-button" style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px', cursor: 'pointer' }}>
+                                <button onClick={() => openCandidateModal(candidate)} className="btn-view-profile" style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px', cursor: 'pointer' }}>
                                   View Profile
                                 </button>
                                 <a
                                   href={`https://wa.me/?text=Hi, I'm interested in contacting ${candidate.full_name}`}
                                   target="_blank" rel="noopener noreferrer"
-                                  className="site-button"
+                                  className="btn-whatsapp-action"
                                   style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px' }}
                                 >
                                   WhatsApp
