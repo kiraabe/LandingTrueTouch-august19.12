@@ -15,16 +15,13 @@ const parseSkillLevel = (skillLevel) => {
     const skills = [];
     let remaining = skillLevel;
 
-    // Try to recursively parse the structure
     while (remaining && remaining.length > 0) {
       remaining = remaining.trim();
 
       if (remaining.startsWith('{') && remaining.endsWith('}')) {
-        // Remove outer braces
         let content = remaining.slice(1, -1).trim();
         remaining = '';
 
-        // Parse comma-separated quoted strings
         let currentItem = '';
         let inQuotes = false;
         let inEscape = false;
@@ -64,7 +61,6 @@ const parseSkillLevel = (skillLevel) => {
           }
 
           if (char === ',' && !inQuotes && depth === 0) {
-            // End of current item
             if (currentItem.trim()) {
               const cleaned = cleanSkillItem(currentItem.trim());
               if (cleaned) skills.push(cleaned);
@@ -75,23 +71,17 @@ const parseSkillLevel = (skillLevel) => {
           }
         }
 
-        // Process last item
         if (currentItem.trim()) {
           const cleaned = cleanSkillItem(currentItem.trim());
           if (cleaned) skills.push(cleaned);
         }
       } else {
-        // Not a PostgreSQL array, try as plain string
         skills.push(remaining);
         remaining = '';
       }
     }
 
-    // Remove duplicates and return all unique skills as comma-separated string
-    if (skills.length === 0) {
-      console.log('🔧 No skills extracted');
-      return null;
-    }
+    if (skills.length === 0) return null;
     const unique = [...new Set(skills)];
     const result = unique.join(', ');
     console.log('🔧 parseSkillLevel result:', result);
@@ -107,16 +97,13 @@ const parseSkillLevel = (skillLevel) => {
 const cleanSkillItem = (item) => {
   if (!item) return null;
 
-  // Remove surrounding quotes if they exist
   if ((item.startsWith('"') && item.endsWith('"')) ||
       (item.startsWith("'") && item.endsWith("'"))) {
     item = item.slice(1, -1);
   }
 
-  // Unescape quotes
   item = item.replace(/\\"/g, '"').replace(/\\'/g, "'");
 
-  // Try to parse if it's JSON
   if (item.startsWith('{') || item.startsWith('[')) {
     try {
       const parsed = JSON.parse(item);
@@ -130,9 +117,7 @@ const cleanSkillItem = (item) => {
     }
   }
 
-  // Clean up any remaining quotes or braces
   item = item.replace(/[\{\}\"]/g, '').trim();
-
   return item && item.length > 0 ? item : null;
 };
 
@@ -146,12 +131,8 @@ const parseLanguageSkills = (languageSkills) => {
 
     const skills = [];
 
-    // Handle PostgreSQL array format: {element1, element2, ...}
     if (languageSkills.startsWith('{') && languageSkills.endsWith('}')) {
-      // Extract content between braces
       let content = languageSkills.slice(1, -1);
-
-      // Split by }, but keep track of quoted strings
       let currentElement = '';
       let inQuotes = false;
       let inEscape = false;
@@ -178,7 +159,6 @@ const parseLanguageSkills = (languageSkills) => {
         }
 
         if (char === ',' && !inQuotes) {
-          // End of current element
           if (currentElement.trim()) {
             const trimmed = currentElement.trim().replace(/^"|"$/g, '');
             const unescaped = trimmed.replace(/\\"/g, '"');
@@ -191,7 +171,6 @@ const parseLanguageSkills = (languageSkills) => {
                 skills.push(parsed);
               }
             } catch (e) {
-              // If not valid JSON, add as-is
               if (unescaped) skills.push(unescaped);
             }
           }
@@ -201,7 +180,6 @@ const parseLanguageSkills = (languageSkills) => {
         }
       }
 
-      // Process last element
       if (currentElement.trim()) {
         const trimmed = currentElement.trim().replace(/^"|"$/g, '');
         const unescaped = trimmed.replace(/\\"/g, '"');
@@ -218,7 +196,6 @@ const parseLanguageSkills = (languageSkills) => {
         }
       }
     } else {
-      // Try direct JSON parsing
       try {
         const parsed = JSON.parse(languageSkills);
         if (Array.isArray(parsed)) {
@@ -227,16 +204,11 @@ const parseLanguageSkills = (languageSkills) => {
           skills.push(parsed);
         }
       } catch (e) {
-        // If not JSON, treat as plain string
         if (languageSkills) skills.push(languageSkills);
       }
     }
 
-    // Remove duplicates and return as array
-    if (skills.length === 0) {
-      console.log('🔧 No language skills extracted');
-      return null;
-    }
+    if (skills.length === 0) return null;
     const unique = [...new Set(skills)];
     console.log('🔧 parseLanguageSkills result:', unique);
     return unique;
@@ -247,13 +219,11 @@ const parseLanguageSkills = (languageSkills) => {
   }
 };
 
-// Image proxy endpoint - serves images from external server
+// Image proxy endpoint
 router.get('/proxy-image', async (req, res) => {
   try {
     const { url } = req.query;
-    if (!url) {
-      return res.status(400).json({ error: 'Missing url parameter' });
-    }
+    if (!url) return res.status(400).json({ error: 'Missing url parameter' });
 
     const response = await axios.get(url, {
       responseType: 'arraybuffer',
@@ -263,23 +233,22 @@ router.get('/proxy-image', async (req, res) => {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
       }
     });
-    const contentType = response.headers['content-type'];
-    res.set('Content-Type', contentType);
+
+    res.set('Content-Type', response.headers['content-type']);
     res.set('Cache-Control', 'public, max-age=3600');
     res.set('Access-Control-Allow-Origin', '*');
     res.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
     res.set('Access-Control-Allow-Headers', 'Content-Type');
     res.send(response.data);
   } catch (error) {
-    console.error('✗ Image proxy error for URL:', error.config?.url, 'Error:', error.message);
+    console.error('✗ Image proxy error:', error.message);
     res.status(404).json({ error: 'Failed to fetch image', details: error.message });
   }
 });
 
-// Specific routes BEFORE parameterized routes
+// Debug endpoint
 router.get('/candidates/debug', async (req, res) => {
   try {
-    console.log('✓ Debug endpoint hit');
     const tableExists = await pool.query(
       "SELECT table_name FROM information_schema.tables WHERE table_name = 'candidates'"
     );
@@ -289,7 +258,6 @@ router.get('/candidates/debug', async (req, res) => {
     }
 
     const allCandidates = await pool.query('SELECT candidate_id, id, name FROM candidates ORDER BY id');
-    console.log(`✓ Found ${allCandidates.rows.length} candidates`);
     res.json({
       table_exists: true,
       total_candidates: allCandidates.rows.length,
@@ -302,6 +270,7 @@ router.get('/candidates/debug', async (req, res) => {
   }
 });
 
+// List all candidates
 router.get('/candidates/list-all', async (req, res) => {
   try {
     const result = await pool.query('SELECT candidate_id, id, name FROM candidates ORDER BY id LIMIT 50');
@@ -312,13 +281,25 @@ router.get('/candidates/list-all', async (req, res) => {
   }
 });
 
+// Featured candidates — status normalized to lowercase
 router.get('/candidates/featured', async (req, res) => {
   try {
-    const result = await pool.query(
-      'SELECT candidate_id AS id, id as numeric_id, name AS full_name, job_category AS profession, current_location AS location, profile_picture, religion AS hourly_rate, COALESCE(status, \'No Status\') as status, skill_level FROM candidates WHERE profile_picture IS NOT NULL LIMIT 100'
-    );
+    const result = await pool.query(`
+      SELECT
+        candidate_id AS id,
+        id AS numeric_id,
+        name AS full_name,
+        job_category AS profession,
+        current_location AS location,
+        profile_picture,
+        religion AS hourly_rate,
+        LOWER(COALESCE(status, 'no status')) AS status,
+        skill_level
+      FROM candidates
+      WHERE profile_picture IS NOT NULL
+      LIMIT 100
+    `);
     console.log('✓ Fetched featured candidates, count:', result.rows.length);
-    console.log('✓ Sample UUIDs:', result.rows.map(r => r.id).slice(0, 2));
     res.json(result.rows);
   } catch (error) {
     console.error('✗ Database query error:', error.message);
@@ -326,32 +307,66 @@ router.get('/candidates/featured', async (req, res) => {
   }
 });
 
+// Filter options — skill_level unnested and cleaned from PostgreSQL array format
 router.get('/candidates/filter-options', async (req, res) => {
   try {
-    const professions = await pool.query(
-      'SELECT DISTINCT job_category AS profession FROM candidates WHERE profile_picture IS NOT NULL AND job_category IS NOT NULL ORDER BY job_category'
-    );
+    // Job categories — distinct clean values
+    const professions = await pool.query(`
+      SELECT DISTINCT TRIM(job_category) AS profession
+      FROM candidates
+      WHERE profile_picture IS NOT NULL
+        AND job_category IS NOT NULL
+        AND TRIM(job_category) != ''
+      ORDER BY profession
+    `);
 
-    const locations = await pool.query(
-      'SELECT DISTINCT current_location AS location FROM candidates WHERE profile_picture IS NOT NULL AND current_location IS NOT NULL ORDER BY current_location'
-    );
+    // Locations — distinct clean values
+    const locations = await pool.query(`
+      SELECT DISTINCT TRIM(current_location) AS location
+      FROM candidates
+      WHERE profile_picture IS NOT NULL
+        AND current_location IS NOT NULL
+        AND TRIM(current_location) != ''
+      ORDER BY location
+    `);
 
-    const skillLevels = await pool.query(
-      'SELECT DISTINCT skill_level FROM candidates WHERE profile_picture IS NOT NULL AND skill_level IS NOT NULL ORDER BY skill_level'
-    );
+    // Skill levels — unnest PostgreSQL array, clean braces/quotes, deduplicate
+    const skillLevels = await pool.query(`
+      SELECT DISTINCT TRIM(skill) AS skill
+      FROM (
+        SELECT UNNEST(
+          string_to_array(
+            regexp_replace(skill_level, '[{}"]', '', 'g'),
+            ','
+          )
+        ) AS skill
+        FROM candidates
+        WHERE profile_picture IS NOT NULL
+          AND skill_level IS NOT NULL
+          AND skill_level != ''
+      ) AS skills_expanded
+      WHERE TRIM(skill) != ''
+      ORDER BY skill
+    `);
 
-    const statuses = await pool.query(
-      'SELECT DISTINCT status FROM candidates WHERE profile_picture IS NOT NULL AND status IS NOT NULL ORDER BY status'
-    );
+    // Statuses — normalized to lowercase
+    const statuses = await pool.query(`
+      SELECT DISTINCT LOWER(TRIM(status)) AS status
+      FROM candidates
+      WHERE profile_picture IS NOT NULL
+        AND status IS NOT NULL
+        AND TRIM(status) != ''
+      ORDER BY status
+    `);
 
     res.json({
       professions: professions.rows.map(r => r.profession),
       locations: locations.rows.map(r => r.location),
-      skillLevels: skillLevels.rows.map(r => r.skill_level),
+      skillLevels: skillLevels.rows.map(r => r.skill).filter(Boolean),
       statuses: statuses.rows.map(r => r.status)
     });
   } catch (error) {
-    console.error('✗ Database query error:', error.message);
+    console.error('✗ Filter options error:', error.message);
     res.status(500).json({
       error: 'Failed to fetch filter options',
       professions: [],
@@ -362,38 +377,26 @@ router.get('/candidates/filter-options', async (req, res) => {
   }
 });
 
-// Parameterized route - AFTER specific routes
+// Single candidate by UUID
 router.get('/candidates/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(`📌 Fetching candidate with ID (UUID): ${id}`);
+    console.log(`📌 Fetching candidate with UUID: ${id}`);
 
-    if (!id) {
-      return res.status(400).json({ error: 'Invalid candidate ID' });
-    }
+    if (!id) return res.status(400).json({ error: 'Invalid candidate ID' });
 
     const result = await pool.query(
       'SELECT * FROM candidates WHERE candidate_id = $1',
       [id]
     );
 
-    console.log(`✓ Query result for candidate ${id}:`, result.rows.length, 'rows');
-
     if (result.rows.length === 0) {
-      console.log(`✗ Candidate ${id} not found in database`);
       return res.status(404).json({ error: `Candidate not found with ID: ${id}` });
     }
 
     const candidate = result.rows[0];
-    console.log('📊 Full candidate row from DB:', JSON.stringify(candidate, null, 2));
-    console.log('🔍 Raw skill_level from DB:', candidate.skill_level);
-    console.log('🔍 Type of skill_level:', typeof candidate.skill_level);
-
     const parsedSkillLevel = parseSkillLevel(candidate.skill_level);
-    console.log('✅ Parsed skill_level:', parsedSkillLevel);
-
     const parsedLanguageSkills = parseLanguageSkills(candidate.language_skills);
-    console.log('✅ Parsed language_skills:', parsedLanguageSkills);
 
     const response = {
       id: candidate.candidate_id,
@@ -429,7 +432,7 @@ router.get('/candidates/:id', async (req, res) => {
       about: candidate.occupation
     };
 
-    console.log(`✓ Returning candidate:`, response.full_name);
+    console.log(`✓ Returning candidate: ${response.full_name}`);
     res.json(response);
   } catch (error) {
     console.error('✗ Database query error:', error);
