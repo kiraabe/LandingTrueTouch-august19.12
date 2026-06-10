@@ -356,7 +356,7 @@ function Home18Page() {
           <div className="col-xl-6 col-lg-6 col-md-12">
             <div className="twm-bnr-left-section">
               <div className="twm-bnr-title-small">Premium <span className="site-text-primary">Global</span> Manpower Solutions</div>
-              <div className="twm-bnr-title-large">Hire Skilled Workers <span className="marker-wrap site-text-primary">Instantly
+              <div className="twm-bnr-title-large">Hire Skilled Workers with <span className="marker-wrap site-text-primary">True Touch
                 <svg className="circle-svg" viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
                   <path d="
                     M 32,8
