@@ -823,12 +823,12 @@ function Home18Page() {
         </div>
 
         <div className="twm-bg-candi-pattern" />
+
         <div className="container">
           <div className="twm-j-ofr-wrap">
             <div className="twm-j-ofr-content" style={{ backgroundImage: `url(${publicUrlFor("images/home-7/ofr-bg.jpg")})` }}>
               <div className="row align-items-center">
 
-                {/* Left: company info */}
                 <div className="col-lg-5 col-md-12">
                   <div className="twm-j-ofr-map-content">
                     <div className="section-head left wt-small-separator-outer">
@@ -861,38 +861,36 @@ function Home18Page() {
                         </div>
                       </div>
                     </div>
-
-                    href="https://www.google.com/maps?q=9.011711495201522,38.75411823390739"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="site-button"
-            >
-                    Get Directions
-                  </a>
+                    
+                      href="https://www.google.com/maps?q=9.011711495201522,38.75411823390739"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="site-button"
+                    >
+                      Get Directions
+                    </a>
+                  </div>
                 </div>
-              </div>
 
-              {/* Right: embedded Google Map */}
-              <div className="col-lg-7 col-md-12" style={{ marginTop: '20px' }}>
-                <div style={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.12)' }}>
-                  <iframe
-                    title="TrueTouch Office Location"
-                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d100!2d38.75411823390739!3d9.011711495201522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOcKwMDAnNDIuMiJOIDM4wrA0NSc5NC44IkU!5e0!3m2!1sen!2set!4v1700000000000"
-                    width="100%"
-                    height="380"
-                    style={{ border: 0, display: 'block' }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
+                <div className="col-lg-7 col-md-12" style={{ marginTop: '20px' }}>
+                  <div style={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.12)' }}>
+                    <iframe
+                      title="TrueTouch Office Location"
+                      src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d100!2d38.75411823390739!3d9.011711495201522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOcKwMDAnNDIuMiJOIDM4wrA0NSc5NC44IkU!5e0!3m2!1sen!2set!4v1700000000000"
+                      width="100%"
+                      height="380"
+                      style={{ border: 0, display: 'block' }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    />
+                  </div>
                 </div>
-              </div>
 
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      </div>
       {/* CANDIDATES END */}
 
       {/* OUR BLOG START */}
