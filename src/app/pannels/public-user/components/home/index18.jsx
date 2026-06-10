@@ -137,7 +137,17 @@ function Home18Page() {
     const fetchCandidates = async () => {
       try {
         setLoading(true);
-        const fetchUrl = '/api/candidates/featured';
+
+        // Build query parameters
+        const params = new URLSearchParams();
+        if (searchQuery) params.append('search', searchQuery);
+        if (filters.jobCategory) params.append('profession', filters.jobCategory);
+        if (filters.location) params.append('location', filters.location);
+        if (filters.skillLevel) params.append('skill_level', filters.skillLevel);
+        if (filters.status) params.append('status', filters.status);
+
+        const queryString = params.toString();
+        const fetchUrl = `/api/candidates/featured${queryString ? '?' + queryString : ''}`;
         console.log('📡 Fetching from:', fetchUrl);
 
         const response = await fetch(fetchUrl, {
@@ -161,7 +171,7 @@ function Home18Page() {
     };
 
     fetchCandidates();
-  }, [])
+  }, [searchQuery, filters])
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -319,22 +329,6 @@ function Home18Page() {
   const getUniqueValues = (key) => {
     return [...new Set(candidates.map(c => c[key]).filter(Boolean))].sort();
   };
-
-  // Filter candidates based on search query and filters
-  const filteredCandidates = candidates.filter(candidate => {
-    const searchLower = searchQuery.toLowerCase();
-    const matchesSearch = !searchQuery ||
-      (candidate.full_name?.toLowerCase().includes(searchLower)) ||
-      (candidate.profession?.toLowerCase().includes(searchLower)) ||
-      (candidate.location?.toLowerCase().includes(searchLower));
-
-    const matchesCategory = !filters.jobCategory || candidate.profession === filters.jobCategory;
-    const matchesLocation = !filters.location || candidate.location === filters.location;
-    const matchesSkillLevel = !filters.skillLevel || candidate.skill_level === filters.skillLevel;
-    const matchesStatus = !filters.status || candidate.status === filters.status;
-
-    return matchesSearch && matchesCategory && matchesLocation && matchesSkillLevel && matchesStatus;
-  });
 
   // Handle tab clicks - reset filters except when clicking contextual dropdowns
   const handleTabClick = (tab) => {
@@ -915,13 +909,13 @@ function Home18Page() {
 
                     {/* Results Count */}
                     <div style={{ textAlign: 'center', color: '#999', fontSize: '14px', marginBottom: '20px' }}>
-                      Showing {filteredCandidates.length} of {candidates.length} candidates
+                      Showing {candidates.length} candidates
                     </div>
                   </div>
 
                   <div className="row d-flex justify-content-center m-b30">
-                    {filteredCandidates.length > 0 ? (
-                      filteredCandidates.slice(0, 8).map((candidate) => (
+                    {candidates.length > 0 ? (
+                      candidates.slice(0, 8).map((candidate) => (
                         <div key={candidate.id} className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                           <div className="twm-candidates-grid-h-page7 m-b30">
                             <div className="twm-top-section-content">
