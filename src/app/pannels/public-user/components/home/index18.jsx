@@ -116,7 +116,8 @@ const parseLanguageSkillsForDisplay = (skills) => {
 };
 
 function Home18Page() {
-  const [candidates, setCandidates] = useState([]);
+  const [allCandidates, setAllCandidates] = useState([]);
+  const [filteredCandidates, setFilteredCandidates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCandidate, setSelectedCandidate] = useState(null);
   const [candidateDetails, setCandidateDetails] = useState(null);
@@ -125,7 +126,6 @@ function Home18Page() {
   const [blogsLoading, setBlogsLoading] = useState(true);
   const [pageReady, setPageReady] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [debouncedSearchQuery, setDebouncedSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState('all');
   const [filters, setFilters] = useState({ jobCategory: '', location: '', skillLevel: '', status: '' });
 
@@ -135,31 +135,10 @@ function Home18Page() {
   }, [])
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedSearchQuery(searchQuery);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, [searchQuery])
-
-  useEffect(() => {
     const fetchCandidates = async () => {
       try {
         setLoading(true);
-
-        // Build query parameters
-        const params = new URLSearchParams();
-        if (debouncedSearchQuery) params.append('search', debouncedSearchQuery);
-        if (filters.jobCategory) params.append('profession', filters.jobCategory);
-        if (filters.location) params.append('location', filters.location);
-        if (filters.skillLevel) params.append('skill_level', filters.skillLevel);
-        if (filters.status) params.append('status', filters.status);
-
-        const queryString = params.toString();
-        const fetchUrl = `/api/candidates/featured${queryString ? '?' + queryString : ''}`;
-        console.log('📡 Fetching from:', fetchUrl);
-
-        const response = await fetch(fetchUrl, {
+        const response = await fetch('/api/candidates/featured', {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
         });
@@ -169,8 +148,9 @@ function Home18Page() {
         }
 
         const data = await response.json();
-        console.log('✅ Candidates loaded:', data.length);
-        setCandidates(data);
+        console.log('✅ All candidates loaded:', data.length);
+        setAllCandidates(data);
+        setFilteredCandidates(data);
       } catch (err) {
         console.error('❌ Error fetching candidates:', err);
         showErrorToast(err, 'Failed to load featured candidates. Please try again later.');
@@ -180,7 +160,38 @@ function Home18Page() {
     };
 
     fetchCandidates();
-  }, [debouncedSearchQuery, filters])
+  }, [])
+
+  useEffect(() => {
+    let filtered = [...allCandidates];
+
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase();
+      filtered = filtered.filter(c =>
+        c.full_name?.toLowerCase().includes(query) ||
+        c.profession?.toLowerCase().includes(query) ||
+        c.location?.toLowerCase().includes(query)
+      );
+    }
+
+    if (filters.jobCategory) {
+      filtered = filtered.filter(c => c.profession === filters.jobCategory);
+    }
+
+    if (filters.location) {
+      filtered = filtered.filter(c => c.location === filters.location);
+    }
+
+    if (filters.skillLevel) {
+      filtered = filtered.filter(c => c.skill_level === filters.skillLevel);
+    }
+
+    if (filters.status) {
+      filtered = filtered.filter(c => c.status === filters.status);
+    }
+
+    setFilteredCandidates(filtered);
+  }, [searchQuery, filters, allCandidates])
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -334,9 +345,9 @@ function Home18Page() {
     }
   };
 
-  // Get unique values from candidates for filter dropdowns
+  // Get unique values from allCandidates for filter dropdowns
   const getUniqueValues = (key) => {
-    return [...new Set(candidates.map(c => c[key]).filter(Boolean))].sort();
+    return [...new Set(allCandidates.map(c => c[key]).filter(Boolean))].sort();
   };
 
   // Handle tab clicks - reset filters except when clicking contextual dropdowns
@@ -918,13 +929,13 @@ function Home18Page() {
 
                     {/* Results Count */}
                     <div style={{ textAlign: 'center', color: '#999', fontSize: '14px', marginBottom: '20px' }}>
-                      Showing {candidates.length} candidates
+                      Showing {filteredCandidates.length} candidates
                     </div>
                   </div>
 
                   <div className="row d-flex justify-content-center m-b30">
-                    {candidates.length > 0 ? (
-                      candidates.slice(0, 8).map((candidate) => (
+                    {filteredCandidates.length > 0 ? (
+                      filteredCandidates.slice(0, 8).map((candidate) => (
                         <div key={candidate.id} className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                           <div className="twm-candidates-grid-h-page7 m-b30">
                             <div className="twm-top-section-content">
