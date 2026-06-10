@@ -128,6 +128,7 @@ function Home18Page() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState('all');
   const [filters, setFilters] = useState({ jobCategory: '', location: '', skillLevel: '', status: '' });
+  const [filterOptions, setFilterOptions] = useState({ professions: [], locations: [], skillLevels: [], statuses: [] });
 
   useEffect(() => {
     document.title = 'Home | TrueTouch - Foreign Employment Recruitment Agency';
@@ -159,7 +160,27 @@ function Home18Page() {
       }
     };
 
+    const fetchFilterOptions = async () => {
+      try {
+        const response = await fetch('/api/candidates/filter-options', {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        console.log('✅ Filter options loaded:', data);
+        setFilterOptions(data);
+      } catch (err) {
+        console.error('❌ Error fetching filter options:', err);
+      }
+    };
+
     fetchCandidates();
+    fetchFilterOptions();
   }, [])
 
   useEffect(() => {
@@ -345,10 +366,11 @@ function Home18Page() {
     }
   };
 
-  // Get unique values from allCandidates for filter dropdowns
-  const getUniqueValues = (key) => {
-    return [...new Set(allCandidates.map(c => c[key]).filter(Boolean))].sort();
-  };
+  // Get filter options from database
+  const getProfessions = () => filterOptions.professions || [];
+  const getLocations = () => filterOptions.locations || [];
+  const getSkillLevels = () => filterOptions.skillLevels || [];
+  const getStatuses = () => filterOptions.statuses || [];
 
   // Handle tab clicks - reset filters except when clicking contextual dropdowns
   const handleTabClick = (tab) => {
@@ -832,7 +854,7 @@ function Home18Page() {
                           }}
                         >
                           <option value="">Select Category</option>
-                          {getUniqueValues('profession').map((cat) => (
+                          {getProfessions().map((cat) => (
                             <option key={cat} value={cat}>{cat}</option>
                           ))}
                         </select>
@@ -854,7 +876,7 @@ function Home18Page() {
                           }}
                         >
                           <option value="">Select Location</option>
-                          {getUniqueValues('location').map((loc) => (
+                          {getLocations().map((loc) => (
                             <option key={loc} value={loc}>{loc}</option>
                           ))}
                         </select>
@@ -876,7 +898,7 @@ function Home18Page() {
                           }}
                         >
                           <option value="">Select Skill Level</option>
-                          {getUniqueValues('skill_level').map((level) => (
+                          {getSkillLevels().map((level) => (
                             <option key={level} value={level}>{level}</option>
                           ))}
                         </select>

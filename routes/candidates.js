@@ -326,6 +326,42 @@ router.get('/candidates/featured', async (req, res) => {
   }
 });
 
+router.get('/candidates/filter-options', async (req, res) => {
+  try {
+    const professions = await pool.query(
+      'SELECT DISTINCT job_category AS profession FROM candidates WHERE profile_picture IS NOT NULL AND job_category IS NOT NULL ORDER BY job_category'
+    );
+
+    const locations = await pool.query(
+      'SELECT DISTINCT current_location AS location FROM candidates WHERE profile_picture IS NOT NULL AND current_location IS NOT NULL ORDER BY current_location'
+    );
+
+    const skillLevels = await pool.query(
+      'SELECT DISTINCT skill_level FROM candidates WHERE profile_picture IS NOT NULL AND skill_level IS NOT NULL ORDER BY skill_level'
+    );
+
+    const statuses = await pool.query(
+      'SELECT DISTINCT status FROM candidates WHERE profile_picture IS NOT NULL AND status IS NOT NULL ORDER BY status'
+    );
+
+    res.json({
+      professions: professions.rows.map(r => r.profession),
+      locations: locations.rows.map(r => r.location),
+      skillLevels: skillLevels.rows.map(r => r.skill_level),
+      statuses: statuses.rows.map(r => r.status)
+    });
+  } catch (error) {
+    console.error('✗ Database query error:', error.message);
+    res.status(500).json({
+      error: 'Failed to fetch filter options',
+      professions: [],
+      locations: [],
+      skillLevels: [],
+      statuses: []
+    });
+  }
+});
+
 // Parameterized route - AFTER specific routes
 router.get('/candidates/:id', async (req, res) => {
   try {
