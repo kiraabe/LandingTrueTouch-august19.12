@@ -534,8 +534,8 @@ function Home18Page() {
             {/* OUR SERVICES SECTION START */}
 <div className="section-full p-t120 p-b90 site-bg-light twm-how-t-get-wrap7">
     <div className="container">
-          <div className="twm-how-t-get-section">
-            <div className="row g-5 align-items-center">
+        <div className="twm-how-t-get-section">
+            <div className="row">
                 <div className="col-xl-5 col-lg-5 col-md-12">
                     <div className="twm-how-t-get-section-left">
                         <div className="section-head left wt-small-separator-outer">
