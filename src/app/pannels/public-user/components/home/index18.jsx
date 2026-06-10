@@ -333,12 +333,12 @@ function Home18Page() {
                             <div className="twm-img-bg-circle-area">
                                 <div className="twm-img-bg-circle1 rotate-center">
                                     <span>
-                    <JobZImage src="images/home-7/flag-icon/jordan.png" alt="JORDAN" />
+                                    <JobZImage src="images/home-7/flag-icon/jordan.png" alt="JORDAN" />
                                     </span>
                                 </div>
                                 <div className="twm-img-bg-circle2 rotate-center-reverse">
                                     <span>
-                    <JobZImage src="images/home-7/flag-icon/united-arab-emirates.png" alt="UAE" />
+                                     <JobZImage src="images/home-7/flag-icon/united-arab-emirates.png" alt="UAE" />
                                     </span>
                                 </div>
                                 <div className="twm-img-bg-circle3">
