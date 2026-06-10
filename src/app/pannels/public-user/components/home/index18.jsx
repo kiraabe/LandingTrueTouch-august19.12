@@ -348,7 +348,7 @@ function Home18Page() {
               <div className="twm-bnr-title-small">Premium <span className="site-text-primary">Global</span> Manpower Solutions</div>
               <div className="twm-bnr-title-large">Hire Skilled Workers <span className="site-text-primary">Instantly</span></div>
               <p className="twm-bnr-tagline">True Touch connects employers with vetted, skilled professionals from Asia and Africa. We provide reliable domestic helpers, healthcare workers, chefs, and skilled labor across the Gulf, Middle East, and beyond.</p>
-              <NavLink to={publicUser.pages.ABOUT} className="site-button twm-bnr-cta">Post Your Requirement</NavLink>
+              <NavLink to={publicUser.pages.ABOUT} className="site-button twm-bnr-cta">Get in Touch</NavLink>
             </div>
           </div>
           <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
