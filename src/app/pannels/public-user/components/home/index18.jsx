@@ -345,9 +345,9 @@ function Home18Page() {
         <div className="row">
           <div className="col-xl-6 col-lg-6 col-md-12">
             <div className="twm-bnr-left-section">
-              <div className="twm-bnr-title-small">We Have <span className="site-text-primary">208,000+</span> Live Jobs</div>
-              <div className="twm-bnr-title-large">Find the <span className="site-text-primary">job</span> that fits your life</div>
-              <p className="twm-bnr-tagline">Discover your perfect opportunity with True Touch. We connect you with global employment prospects that match your skills and aspirations.</p>
+              <div className="twm-bnr-title-small">Premium <span className="site-text-primary">International</span> Recruitment</div>
+              <div className="twm-bnr-title-large">Your Gateway to <span className="site-text-primary">Global</span> Employment</div>
+              <p className="twm-bnr-tagline">True Touch connects skilled workers from Asia and Africa with premium opportunities across the Gulf, Middle East, and beyond. Professional manpower supply and international recruitment made simple.</p>
               <NavLink to={publicUser.pages.ABOUT} className="site-button twm-bnr-cta">Explore Jobs Now</NavLink>
             </div>
           </div>
@@ -414,11 +414,11 @@ function Home18Page() {
               <div className="col-lg-5 col-md-12">
                 <div className="twm-millions-1-section-right">
                   <div className="section-head left wt-small-separator-outer">
-                    <div className="wt-small-separator site-text-primary"><div>Millions of Jobs</div></div>
-                    <h2 className="wt-title">Find The One That's Right For You</h2>
-                    <p>You need to create an account to find the best and preferred job. lorem Ipsum is simply dummy text of the printing and typesetting industry the standard dummy text ever since took.</p>
+                    <div className="wt-small-separator site-text-primary"><div>Why Choose Us</div></div>
+                    <h2 className="wt-title">Premium Manpower Supply & Recruitment</h2>
+                    <p>With offices in Qatar, Oman, Kenya, and the Philippines, True Touch specializes in connecting talented workers with leading employers across the Middle East and beyond. We provide comprehensive support from recruitment through final placement.</p>
                   </div>
-                  <div className="twm-avail-jobs"><span>45 +</span> Jobs Available</div>
+                  <div className="twm-avail-jobs"><span>4</span> Regional Offices</div>
                   <div className="twm-read-more cplumn-2">
                     <NavLink to={publicUser.pages.ABOUT} className="site-button">Search Jobs</NavLink>
                     <NavLink to={publicUser.pages.ABOUT} className="site-button-link underline">Learn More</NavLink>
@@ -440,8 +440,8 @@ function Home18Page() {
             <div className="row wt-separator-two-part-row">
               <div className="col-xl-5 col-lg-5 col-md-12 wt-separator-two-part-left">
                 <div className="section-head left wt-small-separator-outer">
-                  <div className="wt-small-separator site-text-primary"><div>Jobs by Categories</div></div>
-                  <h2 className="wt-title">Find your favourite jobs and get.</h2>
+                  <div className="wt-small-separator site-text-primary"><div>Service Specialties</div></div>
+                  <h2 className="wt-title">We Serve Multiple Sectors</h2>
                 </div>
               </div>
               <div className="col-xl-7 col-lg-7 col-md-12 wt-separator-two-part-right text-right">
@@ -455,7 +455,7 @@ function Home18Page() {
                 <div className="twm-featured-city2">
                   <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/ResidentialCleanerHousekeeper.jpg")})` }} />
                   <div className="twm-city-info">
-                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Residential Cleaner / Housekeeper</NavLink></h4>
+                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Domestic Helpers & Housekeeping</NavLink></h4>
                   </div>
                 </div>
               </div>
@@ -463,7 +463,7 @@ function Home18Page() {
                 <div className="twm-featured-city2">
                   <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/NannyChildcareSpecialist.jpg")})` }} />
                   <div className="twm-city-info">
-                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Nanny / Childcare Specialist</NavLink></h4>
+                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Childcare & Caregiving</NavLink></h4>
                   </div>
                 </div>
               </div>
@@ -471,7 +471,7 @@ function Home18Page() {
                 <div className="twm-featured-city2">
                   <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/PrivateChefCook.jpg")})` }} />
                   <div className="twm-city-info">
-                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Private Chef / Cook</NavLink></h4>
+                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Culinary Professionals</NavLink></h4>
                   </div>
                 </div>
               </div>
@@ -479,7 +479,7 @@ function Home18Page() {
                 <div className="twm-featured-city2">
                   <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/Logistics&WarehousingSupervisor.jpg")})` }} />
                   <div className="twm-city-info">
-                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Logistics & Warehousing / Supervisor</NavLink></h4>
+                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Skilled & Semi-Skilled Workers</NavLink></h4>
                   </div>
                 </div>
               </div>
@@ -487,7 +487,7 @@ function Home18Page() {
                 <div className="twm-featured-city2">
                   <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/ElderlyCareCaregiver.jpg")})` }} />
                   <div className="twm-city-info">
-                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Elderly Care / Caregiver</NavLink></h4>
+                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Healthcare & Elderly Care</NavLink></h4>
                   </div>
                 </div>
               </div>
@@ -495,7 +495,7 @@ function Home18Page() {
                 <div className="twm-featured-city2">
                   <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/KitchenCleanerCommercialCleaning.jpg")})` }} />
                   <div className="twm-city-info">
-                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Kitchen Cleaner / House Cleaning</NavLink></h4>
+                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Commercial Services</NavLink></h4>
                   </div>
                 </div>
               </div>
@@ -513,9 +513,9 @@ function Home18Page() {
               <div className="col-xl-5 col-lg-5 col-md-12">
                 <div className="twm-how-t-get-section-left">
                   <div className="section-head left wt-small-separator-outer">
-                    <div className="wt-small-separator site-text-primary"><div>Our Services</div></div>
-                    <h2 className="wt-title">We Connect You to Global Opportunities</h2>
-                    <p>True Touch Foreign Employment Recruitment Agency helps you find the right job abroad with full support from documentation to placement. We guide you every step of the way.</p>
+                    <div className="wt-small-separator site-text-primary"><div>Our Expertise</div></div>
+                    <h2 className="wt-title">Connecting Talent to Opportunity</h2>
+                    <p>True Touch specializes in premium manpower recruitment across multiple sectors. We place skilled and semi-skilled workers from Asia and Africa to Qatar, Oman, Saudi Arabia, Kuwait, Jordan, UAE, Bahrain, and Lebanon. With our regional offices and comprehensive vetting process, we ensure the perfect match for every placement.</p>
                   </div>
                   <div className="twm-how-t-get-bottom">
                     <NavLink to={publicUser.HOME1} className="site-button">Get Started</NavLink>
@@ -551,8 +551,8 @@ function Home18Page() {
             <div className="row wt-separator-two-part-row">
               <div className="col-xl-5 col-lg-5 col-md-12 wt-separator-two-part-left">
                 <div className="section-head left wt-small-separator-outer">
-                  <div className="wt-small-separator site-text-primary"><div>Our Portfolio</div></div>
-                  <h2 className="wt-title">Our Portfolio Projects.</h2>
+                  <div className="wt-small-separator site-text-primary"><div>Our Presence</div></div>
+                  <h2 className="wt-title">Regional Offices & Global Reach</h2>
                 </div>
               </div>
               <div className="col-xl-7 col-lg-7 col-md-12 wt-separator-two-part-right text-right">
@@ -596,8 +596,8 @@ function Home18Page() {
       <div id="candidates" className="section-full p-t120 p-b90 site-bg-white twm-candidate-h-page7-wrap pos-relative">
         <div className="container">
           <div className="section-head center wt-small-separator-outer">
-            <div className="wt-small-separator site-text-primary"><div>Candidates</div></div>
-            <h2 className="wt-title">Featured Candidates</h2>
+            <div className="wt-small-separator site-text-primary"><div>Our Professionals</div></div>
+            <h2 className="wt-title">Talented Workers Ready for Opportunities</h2>
           </div>
         </div>
 
@@ -836,8 +836,8 @@ function Home18Page() {
       <div id="our-blogs" className="section-full p-t120 p-b90 site-bg-gray">
         <div className="container">
           <div className="section-head center wt-small-separator-outer">
-            <div className="wt-small-separator site-text-primary"><div>Our Blogs</div></div>
-            <h2 className="wt-title">Latest Article</h2>
+            <div className="wt-small-separator site-text-primary"><div>Industry Updates</div></div>
+            <h2 className="wt-title">News & Insights</h2>
           </div>
           <div className="section-content">
             {blogsLoading ? (
@@ -900,20 +900,27 @@ function Home18Page() {
         <div className="col-lg-5 col-md-12">
           <div className="twm-j-ofr-map-content">
             <div className="section-head left wt-small-separator-outer">
-              <h2 className="wt-title">Find Us at Our <span className="site-text-primary">Office</span></h2>
+              <h2 className="wt-title">Our <span className="site-text-primary">Regional Offices</span></h2>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                 <i className="fas fa-map-marker-alt site-text-primary" style={{ fontSize: '18px', marginTop: '3px' }} />
                 <div>
-                  <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Our Address</h4>
+                  <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Primary Location</h4>
                   <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>Addis Ababa, Ethiopia</p>
+                </div>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                <i className="fas fa-globe site-text-primary" style={{ fontSize: '18px', marginTop: '3px' }} />
+                <div>
+                  <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Regional Offices</h4>
+                  <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>Qatar, Oman, Kenya, Philippines</p>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                 <i className="fas fa-phone site-text-primary" style={{ fontSize: '18px', marginTop: '3px' }} />
                 <div>
-                  <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Phone</h4>
+                  <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Contact</h4>
                   <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>+251 91 120 8322</p>
                 </div>
               </div>
@@ -921,7 +928,7 @@ function Home18Page() {
                 <i className="fas fa-envelope site-text-primary" style={{ fontSize: '18px', marginTop: '3px' }} />
                 <div>
                   <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Email</h4>
-                  <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>truetouchaddis@gmail.com</p>
+                  <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>info@truetouchrecruitment.com</p>
                 </div>
               </div>
             </div>
@@ -1000,18 +1007,18 @@ function Home18Page() {
                       <div className="contact-info-section">
                         <div className="c-info-column">
                           <div className="c-info-icon"><i className="fas fa-map-marker-alt" /></div>
-                          <h3 className="twm-title">In the bay area?</h3>
-                          <p>1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                          <h3 className="twm-title">Head Office</h3>
+                          <p>Addis Ababa, Ethiopia</p>
                         </div>
                         <div className="c-info-column">
                           <div className="c-info-icon custome-size"><i className="fas fa-mobile-alt" /></div>
-                          <h3 className="twm-title">Feel free to contact us</h3>
+                          <h3 className="twm-title">Call Us</h3>
                           <p><a href="tel:+251911208322">+251 91 120 8322</a></p>
                         </div>
                         <div className="c-info-column">
                           <div className="c-info-icon"><i className="fas fa-envelope" /></div>
-                          <h3 className="twm-title">Support</h3>
-                          <p><a href="mailto:truetouchaddis@gmail.com">truetouchaddis@gmail.com</a></p>
+                          <h3 className="twm-title">Email</h3>
+                          <p><a href="mailto:info@truetouchrecruitment.com">info@truetouchrecruitment.com</a></p>
                         </div>
                       </div>
                     </div>

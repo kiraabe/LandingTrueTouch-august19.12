@@ -13,8 +13,8 @@ function Footer1() {
                         <div className="row">
                             <div className="col-md-5">
                                 <div className="ftr-nw-title">
-                                    Join our email subscription now to get updates
-                                    on new jobs and notifications.
+                                    Stay updated on recruitment opportunities and industry insights.
+                                    Subscribe to our newsletter for exclusive job placements.
                                 </div>
                             </div>
                             <div className="col-md-7">
@@ -36,11 +36,11 @@ function Footer1() {
                                     <div className="logo-footer clearfix">
                                         <NavLink to={publicUser.HOME1}><JobZImage id="skin_footer_dark_logo" src="images/truetouch-logo.webp" alt="TrueTouch Logo" /></NavLink>
                                     </div>
-                                    <p>Many desktop publishing packages and web page editors now.</p>
+                                    <p>True Touch is a premium manpower recruitment agency connecting talented workers from Asia and Africa with leading employers across the Gulf and Middle East.</p>
                                     <ul className="ftr-list">
-                                        <li><p><span>Email :</span><a href="mailto:truetouchaddis@gmail.com">truetouchaddis@gmail.com</a></p></li>
+                                        <li><p><span>Email :</span><a href="mailto:info@truetouchrecruitment.com">info@truetouchrecruitment.com</a></p></li>
                                         <li><p><span>Call :</span><a href="tel:+251911208322">+251 91 120 8322</a></p></li>
-                                        <li><p><span>Registration :</span>MT/AA/14/673/2513971/2011</p></li>
+                                        <li><p><span>Offices :</span>Qatar, Oman, Kenya, Philippines</p></li>
                                     </ul>
                                 </div>
                             </div>
@@ -51,29 +51,28 @@ function Footer1() {
                                             <h3 className="widget-title">For Employers</h3>
                                             <ul>
                                                 <li><a href="#home">Home</a></li>
-                                                <li><a href="#get-jobs">About Us</a></li>
-                                                <li><a href="#contact-us">Contact Us</a></li>
+                                                <li><a href="#get-jobs">Our Services</a></li>
+                                                <li><a href="#contact-us">Request Quote</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div className="col-lg-4 col-md-6 col-sm-6">
                                         <div className="widget widget_services ftr-list-center">
-                                            <h3 className="widget-title">Helpful Resources</h3>
+                                            <h3 className="widget-title">Our Services</h3>
                                             <ul>
-                                                <li><a href="#portfolio">Portfolio</a></li>
-                                                <li><a href="#candidates">Candidates</a></li>
-                                                <li><a href="#our-blogs">Vacancies</a></li>
+                                                <li><a href="#get-jobs">Manpower Supply</a></li>
+                                                <li><a href="#candidates">Talent Pool</a></li>
+                                                <li><a href="#our-blogs">News</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div className="col-lg-4 col-md-6 col-sm-6">
                                         <div className="widget widget_services ftr-list-center">
-                                            <h3 className="widget-title">Quick Links</h3>
+                                            <h3 className="widget-title">Service Areas</h3>
                                             <ul>
-                                                <li><a href="#home">Home</a></li>
-                                                <li><a href="#get-jobs">About Us</a></li>
-                                                <li><a href="#candidates">Candidates</a></li>
-                                                <li><a href="#contact-us">Contact Us</a></li>
+                                                <li><a href="#home">Qatar & Oman</a></li>
+                                                <li><a href="#get-jobs">Saudi Arabia</a></li>
+                                                <li><a href="#contact-us">Gulf Region</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -85,7 +84,7 @@ function Footer1() {
                     <div className="footer-bottom">
                         <div className="footer-bottom-info">
                             <div className="footer-copy-right">
-                                <span className="copyrights-text">Copyright © 2023 by thewebmax All Rights Reserved.</span>
+                                <span className="copyrights-text">Copyright © 2024 True Touch Foreign Employment Recruitment Agency. All Rights Reserved.</span>
                             </div>
                             <ul className="social-icons">
                                 <li><a href="https://www.facebook.com/" className="fab fa-facebook-f" /></li>
