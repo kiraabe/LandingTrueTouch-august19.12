@@ -23,11 +23,20 @@
   stroke-linejoin: round;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  animation: drawCircle 1.2s cubic-bezier(0.3, 0, 0.2, 1) 0.7s forwards;
+  animation: drawCircle 5s cubic-bezier(0.3, 0, 0.2, 1) infinite;
 }
 
 @keyframes drawCircle {
-  to {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  14% {
+    stroke-dashoffset: 1000;
+  }
+  38% {
+    stroke-dashoffset: 0;
+  }
+  100% {
     stroke-dashoffset: 0;
   }
 }
