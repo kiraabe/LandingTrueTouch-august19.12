@@ -359,13 +359,12 @@ function Home18Page() {
               <div className="twm-bnr-title-large">Hire Skilled Workers <span className="marker-wrap site-text-primary">Instantly
                 <svg className="circle-svg" viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
                   <path d="
-                    M 22,8
+                    M 32,8
                     C 35,-2 80,-5 115,4
                     C 142,11 158,22 155,35
                     C 152,48 130,58 95,60
                     C 62,62 28,56 12,44
-                    C -2,33 2,16 22,8
-                    Z
+                    C -2,33 2,16 22,12
                   "/>
                 </svg>
               </span></div>
