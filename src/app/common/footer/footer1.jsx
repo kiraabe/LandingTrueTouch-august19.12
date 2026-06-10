@@ -13,8 +13,8 @@ function Footer1() {
                         <div className="row">
                             <div className="col-md-5">
                                 <div className="ftr-nw-title">
-                                    Stay updated on recruitment opportunities and industry insights.
-                                    Subscribe to our newsletter for exclusive job placements.
+                                    Need skilled workers? Subscribe to get updates on new recruitment solutions,
+                                    industry insights, and exclusive staffing opportunities.
                                 </div>
                             </div>
                             <div className="col-md-7">

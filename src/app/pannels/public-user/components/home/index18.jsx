@@ -345,10 +345,10 @@ function Home18Page() {
         <div className="row">
           <div className="col-xl-6 col-lg-6 col-md-12">
             <div className="twm-bnr-left-section">
-              <div className="twm-bnr-title-small">Premium <span className="site-text-primary">International</span> Recruitment</div>
-              <div className="twm-bnr-title-large">Your Gateway to <span className="site-text-primary">Global</span> Employment</div>
-              <p className="twm-bnr-tagline">True Touch connects skilled workers from Asia and Africa with premium opportunities across the Gulf, Middle East, and beyond. Professional manpower supply and international recruitment made simple.</p>
-              <NavLink to={publicUser.pages.ABOUT} className="site-button twm-bnr-cta">Explore Jobs Now</NavLink>
+              <div className="twm-bnr-title-small">Premium <span className="site-text-primary">Global</span> Manpower Solutions</div>
+              <div className="twm-bnr-title-large">Hire Skilled Workers <span className="site-text-primary">Instantly</span></div>
+              <p className="twm-bnr-tagline">True Touch connects employers with vetted, skilled professionals from Asia and Africa. We provide reliable domestic helpers, healthcare workers, chefs, and skilled labor across the Gulf, Middle East, and beyond.</p>
+              <NavLink to={publicUser.pages.ABOUT} className="site-button twm-bnr-cta">Post Your Requirement</NavLink>
             </div>
           </div>
           <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
@@ -414,14 +414,14 @@ function Home18Page() {
               <div className="col-lg-5 col-md-12">
                 <div className="twm-millions-1-section-right">
                   <div className="section-head left wt-small-separator-outer">
-                    <div className="wt-small-separator site-text-primary"><div>Why Choose Us</div></div>
-                    <h2 className="wt-title">Premium Manpower Supply & Recruitment</h2>
-                    <p>With offices in Qatar, Oman, Kenya, and the Philippines, True Touch specializes in connecting talented workers with leading employers across the Middle East and beyond. We provide comprehensive support from recruitment through final placement.</p>
+                    <div className="wt-small-separator site-text-primary"><div>Why Partner With Us</div></div>
+                    <h2 className="wt-title">Trusted Manpower Recruitment Provider</h2>
+                    <p>With offices in Qatar, Oman, Kenya, and the Philippines, True Touch is your trusted partner for hiring skilled and semi-skilled workers. We handle full recruitment, vetting, documentation, and placement support—so you get the perfect candidate quickly.</p>
                   </div>
-                  <div className="twm-avail-jobs"><span>4</span> Regional Offices</div>
+                  <div className="twm-avail-jobs"><span>1000+</span> Placements Completed</div>
                   <div className="twm-read-more cplumn-2">
-                    <NavLink to={publicUser.pages.ABOUT} className="site-button">Search Jobs</NavLink>
-                    <NavLink to={publicUser.pages.ABOUT} className="site-button-link underline">Learn More</NavLink>
+                    <NavLink to={publicUser.pages.ABOUT} className="site-button">Hire Now</NavLink>
+                    <NavLink to={publicUser.pages.ABOUT} className="site-button-link underline">View Our Solutions</NavLink>
                   </div>
                 </div>
               </div>
@@ -440,8 +440,8 @@ function Home18Page() {
             <div className="row wt-separator-two-part-row">
               <div className="col-xl-5 col-lg-5 col-md-12 wt-separator-two-part-left">
                 <div className="section-head left wt-small-separator-outer">
-                  <div className="wt-small-separator site-text-primary"><div>Service Specialties</div></div>
-                  <h2 className="wt-title">We Serve Multiple Sectors</h2>
+                  <div className="wt-small-separator site-text-primary"><div>Recruitment Services</div></div>
+                  <h2 className="wt-title">Professional Staff for Every Industry</h2>
                 </div>
               </div>
               <div className="col-xl-7 col-lg-7 col-md-12 wt-separator-two-part-right text-right">
@@ -513,9 +513,9 @@ function Home18Page() {
               <div className="col-xl-5 col-lg-5 col-md-12">
                 <div className="twm-how-t-get-section-left">
                   <div className="section-head left wt-small-separator-outer">
-                    <div className="wt-small-separator site-text-primary"><div>Our Expertise</div></div>
-                    <h2 className="wt-title">Connecting Talent to Opportunity</h2>
-                    <p>True Touch specializes in premium manpower recruitment across multiple sectors. We place skilled and semi-skilled workers from Asia and Africa to Qatar, Oman, Saudi Arabia, Kuwait, Jordan, UAE, Bahrain, and Lebanon. With our regional offices and comprehensive vetting process, we ensure the perfect match for every placement.</p>
+                    <div className="wt-small-separator site-text-primary"><div>Our Commitment</div></div>
+                    <h2 className="wt-title">Quality Staffing Solutions You Can Trust</h2>
+                    <p>We specialize in supplying quality manpower to employers across Qatar, Oman, Saudi Arabia, Kuwait, Jordan, UAE, Bahrain, and Lebanon. We source, vet, and place skilled professionals from across Asia and Africa—ensuring reliable, competent staff that meets your exact requirements.</p>
                   </div>
                   <div className="twm-how-t-get-bottom">
                     <NavLink to={publicUser.HOME1} className="site-button">Get Started</NavLink>
@@ -551,8 +551,8 @@ function Home18Page() {
             <div className="row wt-separator-two-part-row">
               <div className="col-xl-5 col-lg-5 col-md-12 wt-separator-two-part-left">
                 <div className="section-head left wt-small-separator-outer">
-                  <div className="wt-small-separator site-text-primary"><div>Our Presence</div></div>
-                  <h2 className="wt-title">Regional Offices & Global Reach</h2>
+                  <div className="wt-small-separator site-text-primary"><div>Our Network</div></div>
+                  <h2 className="wt-title">Local Offices, Global Reach</h2>
                 </div>
               </div>
               <div className="col-xl-7 col-lg-7 col-md-12 wt-separator-two-part-right text-right">
@@ -596,8 +596,8 @@ function Home18Page() {
       <div id="candidates" className="section-full p-t120 p-b90 site-bg-white twm-candidate-h-page7-wrap pos-relative">
         <div className="container">
           <div className="section-head center wt-small-separator-outer">
-            <div className="wt-small-separator site-text-primary"><div>Our Professionals</div></div>
-            <h2 className="wt-title">Talented Workers Ready for Opportunities</h2>
+            <div className="wt-small-separator site-text-primary"><div>Our Candidates</div></div>
+            <h2 className="wt-title">Pre-Screened Professionals Available for Hiring</h2>
           </div>
         </div>
 
@@ -836,8 +836,8 @@ function Home18Page() {
       <div id="our-blogs" className="section-full p-t120 p-b90 site-bg-gray">
         <div className="container">
           <div className="section-head center wt-small-separator-outer">
-            <div className="wt-small-separator site-text-primary"><div>Industry Updates</div></div>
-            <h2 className="wt-title">News & Insights</h2>
+            <div className="wt-small-separator site-text-primary"><div>Industry Resources</div></div>
+            <h2 className="wt-title">Insights & Updates for Employers</h2>
           </div>
           <div className="section-content">
             {blogsLoading ? (
@@ -964,8 +964,8 @@ function Home18Page() {
                 <div className="col-lg-6 col-md-12">
                   <div className="contact-form-outer">
                     <div className="section-head left wt-small-separator-outer">
-                      <h2 className="wt-title">Send Us a Message</h2>
-                      <p>Feel free to contact us and we will get back to you as soon as we can.</p>
+                      <h2 className="wt-title">Request Your Workforce</h2>
+                      <p>Tell us about your staffing needs and we'll match you with the right professionals. We'll get back to you within 24 hours.</p>
                     </div>
                     <form className="cons-contact-form" onSubmit={handleContactSubmit}>
                       <div className="row">

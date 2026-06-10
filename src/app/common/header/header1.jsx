@@ -123,8 +123,8 @@ function Header1({ _config }) {
                                 <div className="extra-cell">
                                     <div className="header-nav-btn-section">
                                         <div className="twm-nav-btn-left">
-                                            <a className="twm-nav-sign-up" href="#">
-                                                <i className="feather-log-in" /> Get a Quote
+                                            <a className="twm-nav-sign-up" href="#contact-us">
+                                                <i className="feather-log-in" /> Request Workforce
                                             </a>
                                         </div>
                                     </div>
