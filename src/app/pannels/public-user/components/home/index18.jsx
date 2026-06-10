@@ -823,60 +823,7 @@ function Home18Page() {
         </div>
 
         <div className="twm-bg-candi-pattern" />
-        <div className="container">
-  <div className="twm-j-ofr-wrap">
-    <div className="twm-j-ofr-content" style={{ backgroundImage: `url(${publicUrlFor("images/home-7/ofr-bg.jpg")})` }}>
-      <div className="row align-items-center">
-        <div className="col-lg-5 col-md-12">
-          <div className="twm-j-ofr-map-content">
-            <div className="section-head left wt-small-separator-outer">
-              <h2 className="wt-title">Find Us at Our <span className="site-text-primary">Office</span></h2>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                <i className="fas fa-map-marker-alt site-text-primary" style={{ fontSize: '18px', marginTop: '3px' }} />
-                <div>
-                  <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Our Address</h4>
-                  <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>Addis Ababa, Ethiopia</p>
-                </div>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                <i className="fas fa-phone site-text-primary" style={{ fontSize: '18px', marginTop: '3px' }} />
-                <div>
-                  <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Phone</h4>
-                  <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>+251 91 120 8322</p>
-                </div>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                <i className="fas fa-envelope site-text-primary" style={{ fontSize: '18px', marginTop: '3px' }} />
-                <div>
-                  <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Email</h4>
-                  <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>truetouchaddis@gmail.com</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-7 col-md-12" style={{ marginTop: '20px' }}>
-          <div style={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.12)' }}>
-            <iframe
-              title="TrueTouch Office"
-              width="100%"
-              height="380"
-              style={{ border: 0, display: 'block' }}
-              loading="lazy"
-              src="https://maps.google.com/maps?q=9.011711495201522,38.75411823390739&z=16&output=embed"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-      </div>
-      {/* CANDIDATES END */}
-
-      {/* OUR BLOG START */}
+              {/* OUR BLOG START */}
       <div id="our-blogs" className="section-full p-t120 p-b90 site-bg-gray">
         <div className="container">
           <div className="section-head center wt-small-separator-outer">
@@ -934,7 +881,63 @@ function Home18Page() {
           </div>
         </div>
       </div>
-      {/* OUR BLOG END */}
+        {/* OUR BLOG END */}
+
+      
+        <div className="container">
+          <div className="twm-j-ofr-wrap">
+            <div className="twm-j-ofr-content" style={{ backgroundImage: `url(${publicUrlFor("images/home-7/ofr-bg.jpg")})` }}>
+      <div className="row align-items-center">
+        <div className="col-lg-5 col-md-12">
+          <div className="twm-j-ofr-map-content">
+            <div className="section-head left wt-small-separator-outer">
+              <h2 className="wt-title">Find Us at Our <span className="site-text-primary">Office</span></h2>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                <i className="fas fa-map-marker-alt site-text-primary" style={{ fontSize: '18px', marginTop: '3px' }} />
+                <div>
+                  <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Our Address</h4>
+                  <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>Addis Ababa, Ethiopia</p>
+                </div>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                <i className="fas fa-phone site-text-primary" style={{ fontSize: '18px', marginTop: '3px' }} />
+                <div>
+                  <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Phone</h4>
+                  <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>+251 91 120 8322</p>
+                </div>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                <i className="fas fa-envelope site-text-primary" style={{ fontSize: '18px', marginTop: '3px' }} />
+                <div>
+                  <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Email</h4>
+                  <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>truetouchaddis@gmail.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="col-lg-7 col-md-12" style={{ marginTop: '20px' }}>
+          <div style={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.12)' }}>
+            <iframe
+              title="TrueTouch Office"
+              width="100%"
+              height="380"
+              style={{ border: 0, display: 'block' }}
+              loading="lazy"
+              src="https://maps.google.com/maps?q=9.011711495201522,38.75411823390739&z=16&output=embed"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+      {/* CANDIDATES END */}
+
+
 
       {/* CONTACT US SECTION START */}
       <div id="contact-us" className="section-full twm-contact-one">
