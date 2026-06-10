@@ -890,7 +890,6 @@ function Home18Page() {
               </div>
             </div>
           </div>
-        </div>
       {/* CANDIDATES END */}
 
       {/* OUR BLOG START */}
