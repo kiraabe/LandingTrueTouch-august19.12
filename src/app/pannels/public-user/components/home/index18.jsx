@@ -339,9 +339,7 @@ function Home18Page() {
                                     </div>
                                     <div className="item">
                                         <div className="slide-img">
-                                            <div className="slide-img">
-                                                <JobZImage src="images/main-slider/slider1/r-img2.png" alt="#" />
-                                            </div>
+                                            <JobZImage src="images/main-slider/slider1/r-img2.png" alt="#" />
                                         </div>
                                     </div>
                                 </div>
