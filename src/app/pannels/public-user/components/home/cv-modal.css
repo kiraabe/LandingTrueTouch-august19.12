@@ -9,8 +9,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: calc(100% + 80px);
-  height: calc(100% + 12px);
+  width: calc(100% + 40px);
+  height: calc(100% + 50px);
   overflow: visible;
   pointer-events: none;
 }
@@ -18,7 +18,7 @@
 .marker-wrap svg.circle-svg path {
   fill: none;
   stroke: #e05c1a;
-  stroke-width: 3.5;
+  stroke-width: 1.5px;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-dasharray: 1000;
