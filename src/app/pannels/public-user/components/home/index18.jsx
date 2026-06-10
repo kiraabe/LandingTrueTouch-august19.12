@@ -124,6 +124,9 @@ function Home18Page() {
   const [blogs, setBlogs] = useState([]);
   const [blogsLoading, setBlogsLoading] = useState(true);
   const [pageReady, setPageReady] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeTab, setActiveTab] = useState('all');
+  const [filters, setFilters] = useState({ jobCategory: '', location: '', skillLevel: '', status: '' });
 
   useEffect(() => {
     document.title = 'Home | TrueTouch - Foreign Employment Recruitment Agency';
@@ -310,6 +313,49 @@ function Home18Page() {
       console.error('❌ Error submitting contact form:', err);
       showErrorToast(null, 'Failed to submit the form. Please try again.');
     }
+  };
+
+  // Get unique values from candidates for filter dropdowns
+  const getUniqueValues = (key) => {
+    return [...new Set(candidates.map(c => c[key]).filter(Boolean))].sort();
+  };
+
+  // Filter candidates based on search query and filters
+  const filteredCandidates = candidates.filter(candidate => {
+    const searchLower = searchQuery.toLowerCase();
+    const matchesSearch = !searchQuery ||
+      (candidate.full_name?.toLowerCase().includes(searchLower)) ||
+      (candidate.profession?.toLowerCase().includes(searchLower)) ||
+      (candidate.location?.toLowerCase().includes(searchLower));
+
+    const matchesCategory = !filters.jobCategory || candidate.profession === filters.jobCategory;
+    const matchesLocation = !filters.location || candidate.location === filters.location;
+    const matchesSkillLevel = !filters.skillLevel || candidate.skill_level === filters.skillLevel;
+    const matchesStatus = !filters.status || candidate.status === filters.status;
+
+    return matchesSearch && matchesCategory && matchesLocation && matchesSkillLevel && matchesStatus;
+  });
+
+  // Handle tab clicks - reset filters except when clicking contextual dropdowns
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+    setSearchQuery('');
+    setFilters({ jobCategory: '', location: '', skillLevel: '', status: '' });
+  };
+
+  // Handle filter changes
+  const handleFilterChange = (filterKey, value) => {
+    setFilters(prev => ({ ...prev, [filterKey]: value }));
+  };
+
+  // Check if any filters are active
+  const hasActiveFilters = searchQuery || Object.values(filters).some(v => v);
+
+  // Clear all filters
+  const clearFilters = () => {
+    setSearchQuery('');
+    setFilters({ jobCategory: '', location: '', skillLevel: '', status: '' });
+    setActiveTab('all');
   };
 
   return (
@@ -704,9 +750,178 @@ function Home18Page() {
               {loading && <Spinner />}
               {!loading && (
                 <>
+                  {/* Filter and Search UI */}
+                  <div className="twm-candidate-filter-section" style={{ marginBottom: '40px' }}>
+                    {/* Tabs */}
+                    <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginBottom: '24px', flexWrap: 'wrap' }}>
+                      {['all', 'category', 'country', 'availability'].map((tab) => (
+                        <button
+                          key={tab}
+                          onClick={() => handleTabClick(tab)}
+                          style={{
+                            padding: '10px 20px',
+                            borderRadius: '20px',
+                            border: 'none',
+                            cursor: 'pointer',
+                            fontWeight: '500',
+                            backgroundColor: activeTab === tab ? 'var(--site-primary, #F7B500)' : '#f0f0f0',
+                            color: activeTab === tab ? 'white' : '#333',
+                            transition: 'all 0.3s ease'
+                          }}
+                        >
+                          {tab === 'all' && 'All'}
+                          {tab === 'category' && 'By Job Category'}
+                          {tab === 'country' && 'By Country'}
+                          {tab === 'availability' && 'By Availability'}
+                        </button>
+                      ))}
+                    </div>
+
+                    {/* Search Input */}
+                    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
+                      <input
+                        type="text"
+                        placeholder="Search by name, profession, or location..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        style={{
+                          width: '100%',
+                          maxWidth: '500px',
+                          padding: '12px 16px',
+                          borderRadius: '24px',
+                          border: '1px solid #ddd',
+                          fontSize: '14px',
+                          outline: 'none',
+                          transition: 'border-color 0.3s',
+                          boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+                        }}
+                        onFocus={(e) => e.target.style.borderColor = 'var(--site-primary, #F7B500)'}
+                        onBlur={(e) => e.target.style.borderColor = '#ddd'}
+                      />
+                    </div>
+
+                    {/* Filter Dropdowns */}
+                    <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '20px' }}>
+                      {/* Category Dropdown */}
+                      {(activeTab === 'all' || activeTab === 'category') && (
+                        <select
+                          value={filters.jobCategory}
+                          onChange={(e) => handleFilterChange('jobCategory', e.target.value)}
+                          style={{
+                            padding: '10px 14px',
+                            borderRadius: '6px',
+                            border: '1px solid #ddd',
+                            fontSize: '14px',
+                            backgroundColor: 'white',
+                            cursor: 'pointer',
+                            outline: 'none'
+                          }}
+                        >
+                          <option value="">Select Category</option>
+                          {getUniqueValues('profession').map((cat) => (
+                            <option key={cat} value={cat}>{cat}</option>
+                          ))}
+                        </select>
+                      )}
+
+                      {/* Location Dropdown */}
+                      {(activeTab === 'all' || activeTab === 'country') && (
+                        <select
+                          value={filters.location}
+                          onChange={(e) => handleFilterChange('location', e.target.value)}
+                          style={{
+                            padding: '10px 14px',
+                            borderRadius: '6px',
+                            border: '1px solid #ddd',
+                            fontSize: '14px',
+                            backgroundColor: 'white',
+                            cursor: 'pointer',
+                            outline: 'none'
+                          }}
+                        >
+                          <option value="">Select Location</option>
+                          {getUniqueValues('location').map((loc) => (
+                            <option key={loc} value={loc}>{loc}</option>
+                          ))}
+                        </select>
+                      )}
+
+                      {/* Skill Level Dropdown - All Tab Only */}
+                      {activeTab === 'all' && (
+                        <select
+                          value={filters.skillLevel}
+                          onChange={(e) => handleFilterChange('skillLevel', e.target.value)}
+                          style={{
+                            padding: '10px 14px',
+                            borderRadius: '6px',
+                            border: '1px solid #ddd',
+                            fontSize: '14px',
+                            backgroundColor: 'white',
+                            cursor: 'pointer',
+                            outline: 'none'
+                          }}
+                        >
+                          <option value="">Select Skill Level</option>
+                          {getUniqueValues('skill_level').map((level) => (
+                            <option key={level} value={level}>{level}</option>
+                          ))}
+                        </select>
+                      )}
+
+                      {/* Status Dropdown */}
+                      {(activeTab === 'all' || activeTab === 'availability') && (
+                        <select
+                          value={filters.status}
+                          onChange={(e) => handleFilterChange('status', e.target.value)}
+                          style={{
+                            padding: '10px 14px',
+                            borderRadius: '6px',
+                            border: '1px solid #ddd',
+                            fontSize: '14px',
+                            backgroundColor: 'white',
+                            cursor: 'pointer',
+                            outline: 'none'
+                          }}
+                        >
+                          <option value="">Select Status</option>
+                          <option value="Available">Available</option>
+                          <option value="Hired">Hired</option>
+                          <option value="Pending">Pending</option>
+                        </select>
+                      )}
+
+                      {/* Clear Filters Button */}
+                      {hasActiveFilters && (
+                        <button
+                          onClick={clearFilters}
+                          style={{
+                            padding: '10px 14px',
+                            borderRadius: '6px',
+                            border: 'none',
+                            fontSize: '14px',
+                            backgroundColor: '#ff4444',
+                            color: 'white',
+                            cursor: 'pointer',
+                            fontWeight: '500',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '6px'
+                          }}
+                        >
+                          ✕ Clear Filters
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Results Count */}
+                    <div style={{ textAlign: 'center', color: '#999', fontSize: '14px', marginBottom: '20px' }}>
+                      Showing {filteredCandidates.length} of {candidates.length} candidates
+                    </div>
+                  </div>
+
                   <div className="row d-flex justify-content-center m-b30">
-                    {candidates.length > 0 ? (
-                      candidates.slice(0, 8).map((candidate) => (
+                    {filteredCandidates.length > 0 ? (
+                      filteredCandidates.slice(0, 8).map((candidate) => (
                         <div key={candidate.id} className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                           <div className="twm-candidates-grid-h-page7 m-b30">
                             <div className="twm-top-section-content">
@@ -738,7 +953,7 @@ function Home18Page() {
                       ))
                     ) : (
                       <div className="col-12 text-center">
-                        <p>No featured candidates available</p>
+                        <p>{hasActiveFilters ? 'No candidates match your filters' : 'No candidates available'}</p>
                       </div>
                     )}
                   </div>
