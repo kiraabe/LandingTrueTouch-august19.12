@@ -353,7 +353,7 @@ function Home18Page() {
               <a href="#contact-us" className="site-button twm-bnr-cta" onClick={(e) => {
                 e.preventDefault();
                 document.getElementById('contact-us')?.scrollIntoView({ behavior: 'smooth' });
-              }}>Get in Touch <i className="feather-arrow-right"></i></a>
+              }}>Get in Touch  <i className="feather-arrow-right"></i></a>
             </div>
           </div>
           <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
