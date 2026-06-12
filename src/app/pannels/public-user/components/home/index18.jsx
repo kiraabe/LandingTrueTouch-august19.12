@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
 import "./cv-modal.css";
 import CountUp from "react-countup";
+import AirplaneCircleHighlight from "./AirplaneCircleHighlight";
 
 // Truncate text helper
 const truncateText = (text, maxLength = 78) => {
@@ -267,15 +268,6 @@ function Home18Page() {
     }
   }, [blogs, blogsLoading]);
 
-  // Initialize marker animation path length
-  useEffect(() => {
-    const path = document.querySelector('.circle-svg path');
-    if (path) {
-      const len = path.getTotalLength();
-      path.style.strokeDasharray = len;
-      path.style.strokeDashoffset = len;
-    }
-  }, []);
 
   const openCandidateModal = async (candidate) => {
     setSelectedCandidate(candidate);
@@ -356,18 +348,7 @@ function Home18Page() {
           <div className="col-xl-6 col-lg-6 col-md-12">
             <div className="twm-bnr-left-section">
               <div className="twm-bnr-title-small">Premium <span className="site-text-primary">Global</span> Manpower Solutions</div>
-              <div className="twm-bnr-title-large">Hire Skilled Workers with <span className="marker-wrap site-text-primary">True Touch
-                <svg className="circle-svg" viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
-                  <path d="
-                    M 32,8
-                    C 35,-2 80,-5 115,4
-                    C 142,11 158,22 155,35
-                    C 152,48 130,58 95,60
-                    C 62,62 28,56 12,44
-                    C -2,33 2,16 22,12
-                  "/>
-                </svg>
-              </span></div>
+              <div className="twm-bnr-title-large">Hire Skilled Workers with <AirplaneCircleHighlight className="site-text-primary">True Touch</AirplaneCircleHighlight></div>
               <p className="twm-bnr-tagline">True Touch connects employers with vetted, skilled professionals from Asia and Africa. We provide reliable domestic helpers, healthcare workers, chefs, and skilled labor across the Gulf, Middle East, and beyond.</p>
               <a href="#contact-us" className="site-button twm-bnr-cta" onClick={(e) => {
                 e.preventDefault();
