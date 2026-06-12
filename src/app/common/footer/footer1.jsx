@@ -34,7 +34,7 @@ function Footer1() {
                             <div className="col-lg-3 col-md-12">
                                 <div className="widget widget_about">
                                     <div className="logo-footer clearfix">
-                                        <NavLink to={publicUser.HOME1}><JobZImage id="skin_footer_dark_logo" src="images/truetouch-logo.webp" alt="TrueTouch Logo" /></NavLink>
+                                        <NavLink to={publicUser.HOME1}><JobZImage id="skin_footer_dark_logo" src="images/logo-dark.png" alt="TrueTouch Logo" /></NavLink>
                                     </div>
                                     <p>True Touch is a premium manpower recruitment agency connecting talented workers from Asia and Africa with leading employers across the Gulf and Middle East.</p>
                                     <ul className="ftr-list">

@@ -14,7 +14,7 @@ function Footer3() {
                             <div className="col-lg-3 col-md-12">
                                 <div className="widget widget_about">
                                     <div className="logo-footer clearfix">
-                                        <NavLink to={publicUser.INITIAL}><JobZImage id="skin_footer_light_logo" src="images/truetouch-logo.webp" alt="TrueTouch Logo" /></NavLink>
+                                        <NavLink to={publicUser.INITIAL}><JobZImage id="skin_footer_light_logo" src="images/logo-dark.png" alt="TrueTouch Logo" /></NavLink>
                                     </div>
                                     <p>Connecting employers with top talent for local and international recruitment needs.</p>
                                     <ul className="ftr-list">

@@ -62,9 +62,9 @@ export function updateSkinStyle(skin, headerLogoLight, footerLogoLight) {
     var _skin_maintain_logo = document.getElementById("skin_maintain_logo");
     var _skin_header_inner_logo_12 = document.getElementById("skin_header_inner_logo_12");
     var _skin_header_inner_logo_15 = document.getElementById("skin_header_inner_logo_15");
-    const _logo = publicUrlFor('images/truetouch-logo.webp');
-    const _logo_light = publicUrlFor('images/truetouch-logo.webp');
-    const _logo_white = publicUrlFor('images/truetouch-logo.webp');
+    const _logo = publicUrlFor('images/logo-dark.png');
+    const _logo_light = publicUrlFor('images/logo-dark.png');
+    const _logo_white = publicUrlFor('images/logo-dark.png');
 
     if (_skin_style)
         _skin_style.href = publicUrlFor('css/skins-type/skin-' + skin + '.css');
