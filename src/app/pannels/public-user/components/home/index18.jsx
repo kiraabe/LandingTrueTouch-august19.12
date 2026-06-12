@@ -636,11 +636,11 @@ function Home18Page() {
                             padding: '10px 22px',
                             borderRadius: '22px',
                             border: '2px solid',
-                            borderColor: activeTab === tab.key ? 'var(--site-primary, #7FD87F)' : '#e0e0e0',
+                            borderColor: activeTab === tab.key ? 'var(--site-primary, #A9C731)' : '#e0e0e0',
                             cursor: 'pointer',
                             fontWeight: '500',
                             fontSize: '14px',
-                            backgroundColor: activeTab === tab.key ? 'var(--site-primary, #7FD87F)' : 'white',
+                            backgroundColor: activeTab === tab.key ? 'var(--site-primary, #A9C731)' : 'white',
                             color: activeTab === tab.key ? 'white' : '#555',
                             transition: 'all 0.25s ease'
                           }}
@@ -672,7 +672,7 @@ function Home18Page() {
                             boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
                             transition: 'border-color 0.2s'
                           }}
-                          onFocus={e => e.target.style.borderColor = 'var(--site-primary, #7FD87F)'}
+                          onFocus={e => e.target.style.borderColor = 'var(--site-primary, #A9C731)'}
                           onBlur={e => e.target.style.borderColor = '#ddd'}
                         />
                       </div>
