@@ -152,6 +152,11 @@ export function showBanner(currentpath) {
 }
 
 export function setBanner(currentpath) {
+    // Check for dynamic candidate detail route
+    if (currentpath.startsWith('/can-detail/')) {
+        return banner.publicUser.candidate.detail1
+    }
+
     // Check for dynamic blog detail route
     if (currentpath.startsWith('/blog-detail/')) {
         return banner.publicUser.blogs.detail
