@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getCandidateProfilePictureUrl, getCandidateCvUrl } from "../../../../../globals/file-url";
+import { getCandidateProfilePictureUrl } from "../../../../../globals/file-url";
 import { publicUrlFor } from "../../../../../globals/constants";
 import JobZImage from "../../../../common/jobz-img";
 
@@ -34,17 +34,18 @@ const SectionCandidateShortIntro = () => {
         <div className="can-intro-overlay" />
         <div className="can-intro-content">
           <div className="can-intro-avatar">
-            <JobZImage 
-              src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : publicUrlFor("images/candidates/default.jpg")} 
-              alt={candidate.full_name} 
+            <JobZImage
+              src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : publicUrlFor("images/candidates/default.jpg")}
+              alt={candidate.full_name}
             />
           </div>
           <div className="can-intro-info">
             <h1 className="can-intro-name">{candidate.full_name}</h1>
-            <p className="can-intro-title">{candidate.job_title}</p>
+            <p className="can-intro-title">{candidate.profession || candidate.job_title || 'Not specified'}</p>
             <div className="can-intro-meta">
-              <span className="can-intro-location"><i className="feather-map-pin" /> {candidate.location}</span>
-              <span className="can-intro-rate"><i className="feather-dollar-sign" /> {candidate.hourly_rate}/{candidate.rate_type}</span>
+              {candidate.location && <span className="can-intro-location"><i className="feather-map-pin" /> {candidate.location}</span>}
+              {candidate.hourly_rate && <span className="can-intro-rate"><i className="feather-dollar-sign" /> {candidate.hourly_rate}/{candidate.rate_type || 'hour'}</span>}
+              {candidate.status && <span className="can-intro-status"><i className="feather-briefcase" /> {candidate.status}</span>}
             </div>
           </div>
         </div>

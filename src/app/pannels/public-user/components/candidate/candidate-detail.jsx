@@ -6,6 +6,7 @@ import { loadScript } from "../../../../../globals/constants";
 import SectionCandidateShortIntro from "./section-can-short-intro";
 import SectionCandidateAbout from "./section-can-about";
 import SectionCandidateSkills from "./section-can-skills";
+import SectionCandidatePersonalInfo from "./section-can-personal-info";
 import SectionCandidateExperience from "./section-can-experience";
 import SectionCandidateEducation from "./section-can-education";
 import SectionEmployersCandidateSidebar from "./section-emp-can-sidebar";
@@ -89,6 +90,7 @@ const CandidateDetail = () => {
                 <div className="candidate-detail-info">
                   <SectionCandidateShortIntro />
                   <SectionCandidateAbout />
+                  <SectionCandidatePersonalInfo />
                   <SectionCandidateSkills />
                   <SectionCandidateExperience />
                   <SectionCandidateEducation />
