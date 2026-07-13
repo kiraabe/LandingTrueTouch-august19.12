@@ -129,9 +129,7 @@ All JavaScript fuctions Start
 	// > page scroll top on button click function by = custom.js ===================== //	
 	function scroll_top() {
 		jQuery("button.scroltop").on('click', function () {
-			jQuery("html, body").animate({
-				scrollTop: 0
-			}, 1000);
+			jQuery("html, body").scrollTop(0);
 			return false;
 		});
 
