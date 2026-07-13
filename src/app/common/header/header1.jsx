@@ -71,9 +71,25 @@ function Header1({ _config }) {
                         <div className="container-fluid clearfix">
                             <div className="logo-header">
                                 <div className="logo-header-inner logo-header-one">
-                                    <NavLink to={publicUser.HOME1}>
+                                    <a href="/" onClick={(e) => {
+                                        e.preventDefault();
+                                        if (location.pathname !== "/" && location.pathname !== publicUser.HOME1) {
+                                            navigate(publicUser.INITIAL, { replace: false });
+                                            setTimeout(() => {
+                                                const element = document.getElementById('home-hero');
+                                                if (element) {
+                                                    element.scrollIntoView({ behavior: 'smooth' });
+                                                }
+                                            }, 100);
+                                        } else {
+                                            const element = document.getElementById('home-hero');
+                                            if (element) {
+                                                element.scrollIntoView({ behavior: 'smooth' });
+                                            }
+                                        }
+                                    }}>
                                         <JobZImage src="images/logo-dark.png" alt="TrueTouch Logo" />
-                                    </NavLink>
+                                    </a>
                                 </div>
                             </div>
                             {/* NAV Toggle Button */}
