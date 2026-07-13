@@ -7,7 +7,10 @@ const constructFullFileUrl = (relativePath) => {
 
 export const getCandidateProfilePictureUrl = (filename) => {
   if (!filename) return null;
-  return constructFullFileUrl(`candidates/profile_pictures/${filename}`);
+  const imageUrl = filename.startsWith('http://') || filename.startsWith('https://')
+    ? filename
+    : constructFullFileUrl(`candidates/profile_pictures/${filename}`);
+  return imageUrl ? `/api/proxy-image?url=${encodeURIComponent(imageUrl)}` : null;
 };
 
 export const getCandidateCvUrl = (filename) => {
