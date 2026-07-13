@@ -145,8 +145,8 @@ function Header1({ _config }) {
                                     <li className={isNavLinkActive("get-jobs") ? "nav-link-active" : ""}>
                                         <a href="#get-jobs" onClick={(e) => handleSectionClick("get-jobs", e)}>About Us</a>
                                     </li>
-                                    <li className={isNavLinkActive("candidates") ? "nav-link-active" : ""}>
-                                        <a href="#candidates" onClick={(e) => handleSectionClick("candidates", e)}>Candidates</a>
+                                    <li className={location.pathname === publicUser.candidate.GRID ? "nav-link-active" : ""}>
+                                        <NavLink to={publicUser.candidate.GRID} onClick={() => setMenuActive(false)}>Candidates</NavLink>
                                     </li>
                                     <li className={isNavLinkActive("our-blogs") ? "nav-link-active" : ""}>
                                         <a href="#our-blogs" onClick={(e) => handleSectionClick("our-blogs", e)}>Vacancies</a>
