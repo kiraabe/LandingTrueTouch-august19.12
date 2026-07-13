@@ -705,7 +705,7 @@ function Home18Page() {
                           style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', width: '160px', cursor: 'pointer' }}
                         >
                           <option value="">All Job Categories</option>
-                          {filterOptions.professions.map(p => (
+                          {Array.from(new Set(filterOptions.professions)).map(p => (
                             <option key={p} value={p}>{p}</option>
                           ))}
                         </select>
@@ -719,7 +719,7 @@ function Home18Page() {
                           style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', width: '160px', cursor: 'pointer' }}
                         >
                           <option value="">All Locations</option>
-                          {filterOptions.locations.map(l => (
+                          {Array.from(new Set(filterOptions.locations)).map(l => (
                             <option key={l} value={l}>{l}</option>
                           ))}
                         </select>
@@ -733,7 +733,7 @@ function Home18Page() {
                           style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', width: '160px', cursor: 'pointer' }}
                         >
                           <option value="">All Skill Levels</option>
-                          {filterOptions.skillLevels.map(s => (
+                          {Array.from(new Set(filterOptions.skillLevels)).map(s => (
                             <option key={s} value={s}>{s}</option>
                           ))}
                         </select>
@@ -748,7 +748,7 @@ function Home18Page() {
                         >
                           <option value="">All Statuses</option>
                           {filterOptions.statuses.length > 0
-                            ? filterOptions.statuses.map(s => (
+                            ? Array.from(new Set(filterOptions.statuses)).map(s => (
                                 <option key={s} value={s}>
                                   {s.charAt(0).toUpperCase() + s.slice(1)}
                                 </option>
