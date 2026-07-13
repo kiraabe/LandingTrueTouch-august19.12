@@ -99,6 +99,45 @@
   font-size: 14px;
 }
 
+.candidate-age-range-field {
+  position: relative;
+}
+
+.candidate-age-range-values {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  color: #696969;
+  font-size: 13px;
+}
+
+.candidate-age-range-sliders {
+  position: relative;
+  height: 20px;
+}
+
+.candidate-age-range-sliders input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  margin: 0;
+  background: transparent;
+  accent-color: #1967d2;
+  pointer-events: none;
+}
+
+.candidate-age-range-sliders input::-webkit-slider-thumb {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.candidate-age-range-sliders input::-moz-range-thumb {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
 .candidate-directory-count {
   margin-bottom: 24px;
   color: #696969;

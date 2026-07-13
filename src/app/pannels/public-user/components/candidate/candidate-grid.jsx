@@ -14,7 +14,7 @@ function CandidateGridPage() {
   const [candidates, setCandidates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filters, setFilters] = useState({ jobCategory: "", location: "", skillLevel: "", ageRange: "", status: "" });
+  const [filters, setFilters] = useState({ jobCategory: "", location: "", skillLevel: "", ageMin: 0, ageMax: 100, status: "" });
   const [filterOptions, setFilterOptions] = useState({ professions: [], locations: [], skillLevels: [], statuses: [] });
 
   useEffect(() => {
@@ -59,25 +59,23 @@ function CandidateGridPage() {
       const candidateAge = birthday && !Number.isNaN(birthday.getTime())
         ? today.getFullYear() - birthday.getFullYear() - (today < new Date(today.getFullYear(), birthday.getMonth(), birthday.getDate()) ? 1 : 0)
         : null;
-      const matchesAge = !filters.ageRange || (candidateAge !== null && {
-        "18-25": candidateAge >= 18 && candidateAge <= 25,
-        "26-35": candidateAge >= 26 && candidateAge <= 35,
-        "36-45": candidateAge >= 36 && candidateAge <= 45,
-        "46+": candidateAge >= 46
-      }[filters.ageRange]);
+      const matchesAge = (filters.ageMin === 0 && filters.ageMax === 100)
+        || (candidateAge !== null && candidateAge >= filters.ageMin && candidateAge <= filters.ageMax);
       const matchesStatus = !filters.status || candidate.status?.trim().toLowerCase() === filters.status.trim().toLowerCase();
       return matchesSearch && matchesCategory && matchesLocation && matchesSkill && matchesAge && matchesStatus;
     });
   }, [candidates, filters, searchQuery]);
 
-  const hasActiveFilters = Object.values(filters).some(Boolean) || searchQuery;
+  const hasActiveFilters = Object.entries(filters).some(([name, value]) =>
+    name === "ageMin" ? value !== 0 : name === "ageMax" ? value !== 100 : Boolean(value)
+  ) || searchQuery;
 
   const updateFilter = (name, value) => {
     setFilters((currentFilters) => ({ ...currentFilters, [name]: value }));
   };
 
   const clearFilters = () => {
-    setFilters({ jobCategory: "", location: "", skillLevel: "", ageRange: "", status: "" });
+    setFilters({ jobCategory: "", location: "", skillLevel: "", ageMin: 0, ageMax: 100, status: "" });
     setSearchQuery("");
   };
 
@@ -132,16 +130,31 @@ function CandidateGridPage() {
                     {Array.from(new Set(filterOptions.skillLevels)).map((option) => <option key={option} value={option}>{option}</option>)}
                   </select>
                 </label>
-                <label className="candidate-filter-field">
+                <div className="candidate-filter-field candidate-age-range-field">
                   <span>Age range</span>
-                  <select value={filters.ageRange} onChange={(event) => updateFilter("ageRange", event.target.value)}>
-                    <option value="">All ages</option>
-                    <option value="18-25">18–25 years</option>
-                    <option value="26-35">26–35 years</option>
-                    <option value="36-45">36–45 years</option>
-                    <option value="46+">46 years and over</option>
-                  </select>
-                </label>
+                  <div className="candidate-age-range-values" aria-live="polite">
+                    <span>{filters.ageMin === 0 ? "Any" : filters.ageMin}</span>
+                    <span>{filters.ageMax === 100 ? "Any" : filters.ageMax}</span>
+                  </div>
+                  <div className="candidate-age-range-sliders">
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      value={filters.ageMin}
+                      onChange={(event) => updateFilter("ageMin", Math.min(Number(event.target.value), filters.ageMax))}
+                      aria-label="Minimum age"
+                    />
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      value={filters.ageMax}
+                      onChange={(event) => updateFilter("ageMax", Math.max(Number(event.target.value), filters.ageMin))}
+                      aria-label="Maximum age"
+                    />
+                  </div>
+                </div>
                 <label className="candidate-filter-field">
                   <span>Status</span>
                   <select value={filters.status} onChange={(event) => updateFilter("status", event.target.value)}>
