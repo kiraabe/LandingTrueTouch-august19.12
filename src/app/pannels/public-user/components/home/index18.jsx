@@ -905,11 +905,9 @@ function Home18Page() {
                     </div>
                   ))}
                 </div>
-                {blogs.length > 6 && (
-                  <div className="text-center" style={{ marginTop: '40px' }}>
-                    <NavLink to={publicUser.blog.LIST} className="site-button">View All Blogs</NavLink>
-                  </div>
-                )}
+                <div className="text-center" style={{ marginTop: '40px' }}>
+                  <NavLink to={publicUser.blog.LIST} className="site-button">All Blogs</NavLink>
+                </div>
               </>
             ) : (
               <div className="text-center p-5"><p>No blogs available</p></div>
