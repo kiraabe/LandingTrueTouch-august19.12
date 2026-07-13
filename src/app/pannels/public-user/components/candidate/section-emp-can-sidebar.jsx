@@ -1,29 +1,7 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { getCandidateCvUrl } from "../../../../../globals/file-url";
 
-const SectionEmployersCandidateSidebar = ({ type = "1" }) => {
-  const { id } = useParams();
-  const [candidate, setCandidate] = useState(null);
-
-  useEffect(() => {
-    if (!id) return;
-
-    const fetchCandidate = async () => {
-      try {
-        const response = await fetch(`/api/candidates/${id}`);
-        if (response.ok) {
-          const data = await response.json();
-          setCandidate(data);
-        }
-      } catch (err) {
-        console.error('Error fetching candidate:', err);
-      }
-    };
-
-    fetchCandidate();
-  }, [id]);
-
+const SectionEmployersCandidateSidebar = ({ candidate, type = "1" }) => {
   if (!candidate) return null;
 
   return (

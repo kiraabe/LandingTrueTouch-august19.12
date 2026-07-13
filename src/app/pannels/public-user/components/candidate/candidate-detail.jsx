@@ -91,17 +91,17 @@ const CandidateDetail = () => {
             <div className="row d-flex justify-content-center">
               <div className="col-lg-8 col-md-12">
                 <div className="candidate-detail-info">
-                  <SectionCandidateShortIntro />
-                  <SectionCandidateAbout />
-                  <SectionCandidatePersonalInfo />
-                  <SectionCandidateSkills />
-                  <SectionCandidateExperience />
-                  <SectionCandidateEducation />
+                  <SectionCandidateShortIntro candidate={candidate} />
+                  <SectionCandidateAbout candidate={candidate} />
+                  <SectionCandidatePersonalInfo candidate={candidate} />
+                  <SectionCandidateSkills candidate={candidate} />
+                  <SectionCandidateExperience candidate={candidate} />
+                  <SectionCandidateEducation candidate={candidate} />
                 </div>
               </div>
 
               <div className="col-lg-4 col-md-12 rightSidebar">
-                <SectionEmployersCandidateSidebar type="1" />
+                <SectionEmployersCandidateSidebar candidate={candidate} type="1" />
               </div>
             </div>
           </div>
