@@ -10,10 +10,13 @@ const cleanFilterValue = (value) => typeof value === "string"
   ? value.replace(/\\+/g, "").replace(/[{}\"]/g, "").trim()
   : value;
 
+const CANDIDATES_PER_PAGE = 6;
+
 function CandidateGridPage() {
   const [candidates, setCandidates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState({ jobCategory: "", location: "", skillLevel: "", ageMin: 0, ageMax: 100, status: "" });
   const [filterOptions, setFilterOptions] = useState({ professions: [], locations: [], skillLevels: [], statuses: [] });
 
@@ -66,9 +69,20 @@ function CandidateGridPage() {
     });
   }, [candidates, filters, searchQuery]);
 
+  const pageCount = Math.ceil(visibleCandidates.length / CANDIDATES_PER_PAGE);
+  const paginatedCandidates = visibleCandidates.slice(
+    (currentPage - 1) * CANDIDATES_PER_PAGE,
+    currentPage * CANDIDATES_PER_PAGE
+  );
+  const firstVisibleCandidate = visibleCandidates.length ? (currentPage - 1) * CANDIDATES_PER_PAGE + 1 : 0;
+  const lastVisibleCandidate = Math.min(currentPage * CANDIDATES_PER_PAGE, visibleCandidates.length);
   const hasActiveFilters = Object.entries(filters).some(([name, value]) =>
     name === "ageMin" ? value !== 0 : name === "ageMax" ? value !== 100 : Boolean(value)
   ) || searchQuery;
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [filters, searchQuery]);
 
   const updateFilter = (name, value) => {
     setFilters((currentFilters) => ({ ...currentFilters, [name]: value }));
@@ -165,10 +179,15 @@ function CandidateGridPage() {
               </div>
             </aside>
             <div className="col-lg-8">
-              <p className="candidate-directory-count">Showing {visibleCandidates.length} of {candidates.length} candidate{candidates.length === 1 ? "" : "s"}</p>
+              <p className="candidate-directory-count">
+                {visibleCandidates.length
+                  ? `Showing ${firstVisibleCandidate}-${lastVisibleCandidate} of ${visibleCandidates.length} candidate${visibleCandidates.length === 1 ? "" : "s"}`
+                  : "Showing 0 candidates"}
+              </p>
               {visibleCandidates.length > 0 ? (
-                <div className="row">
-                  {visibleCandidates.map((candidate) => (
+                <>
+                  <div className="row">
+                  {paginatedCandidates.map((candidate) => (
                     <div key={candidate.id} className="col-md-6">
                       <article className="candidate-directory-card">
                         <div className="candidate-directory-photo-wrap">
@@ -191,7 +210,42 @@ function CandidateGridPage() {
                       </article>
                     </div>
                   ))}
-                </div>
+                  </div>
+                  {pageCount > 1 && (
+                    <nav className="candidate-directory-pagination" aria-label="Candidate pages">
+                      <button
+                        type="button"
+                        className="candidate-directory-page-button"
+                        onClick={() => setCurrentPage((page) => page - 1)}
+                        disabled={currentPage === 1}
+                      >
+                        Previous
+                      </button>
+                      <div className="candidate-directory-page-numbers">
+                        {Array.from({ length: pageCount }, (_, index) => index + 1).map((page) => (
+                          <button
+                            key={page}
+                            type="button"
+                            className={`candidate-directory-page-button${currentPage === page ? " is-active" : ""}`}
+                            onClick={() => setCurrentPage(page)}
+                            aria-label={`Go to page ${page}`}
+                            aria-current={currentPage === page ? "page" : undefined}
+                          >
+                            {page}
+                          </button>
+                        ))}
+                      </div>
+                      <button
+                        type="button"
+                        className="candidate-directory-page-button"
+                        onClick={() => setCurrentPage((page) => page + 1)}
+                        disabled={currentPage === pageCount}
+                      >
+                        Next
+                      </button>
+                    </nav>
+                  )}
+                </>
               ) : (
                 <div className="candidate-directory-state">
                   <p>{candidates.length ? "No candidates match your filters." : "No candidates are available right now."}</p>
