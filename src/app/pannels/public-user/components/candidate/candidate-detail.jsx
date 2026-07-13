@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
 import { showErrorToast } from "../../../../../globals/error-handler";
 import { loadScript } from "../../../../../globals/constants";
+import InnerPageBanner from "../../../../common/inner-page-banner";
 import SectionCandidateShortIntro from "./section-can-short-intro";
 import SectionCandidateAbout from "./section-can-about";
 import SectionCandidateSkills from "./section-can-skills";
@@ -16,6 +17,7 @@ const CandidateDetail = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [candidate, setCandidate] = useState(null);
 
   useEffect(() => {
     loadScript("js/custom.js");
@@ -48,7 +50,8 @@ const CandidateDetail = () => {
           throw new Error(`HTTP ${response.status}: ${errorMsg}`);
         }
 
-        await response.json();
+        const data = await response.json();
+        setCandidate(data);
       } catch (err) {
         console.error('Error fetching candidate:', err);
         setError(err.message);
@@ -82,6 +85,14 @@ const CandidateDetail = () => {
   return (
     <>
       <Toaster position="top-right" richColors />
+      {candidate && (
+        <InnerPageBanner
+          _data={{
+            title: candidate.full_name,
+            crumb: `${candidate.profession || candidate.job_title || 'Candidate'}`
+          }}
+        />
+      )}
       <div className="section-full p-t120 p-b90 bg-white">
         <div className="container">
           <div className="section-content">
