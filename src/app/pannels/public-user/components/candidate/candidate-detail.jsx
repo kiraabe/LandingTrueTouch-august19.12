@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
+import Spinner from "../../../../common/spinner";
 import { showErrorToast } from "../../../../../globals/error-handler";
 import { loadScript } from "../../../../../globals/constants";
 import SectionCandidateShortIntro from "./section-can-short-intro";
@@ -67,7 +68,7 @@ const CandidateDetail = () => {
     return (
       <div className="candidate-detail-container">
         <Toaster position="top-right" richColors />
-        <div className="loading-spinner">Loading candidate profile...</div>
+        <Spinner />
       </div>
     );
   }
