@@ -6,7 +6,7 @@ import { loadScript, publicUrlFor, updateSkinStyle } from "../../../../../global
 import { publicUser } from "../../../../../globals/route-names";
 import { showErrorToast, showSuccessToast } from "../../../../../globals/error-handler";
 import { getCandidateProfilePictureUrl, getCandidateCvUrl, getJobImageUrl } from "../../../../../globals/file-url";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
 import "./cv-modal.css";
@@ -92,6 +92,7 @@ const parseLanguageSkillsForDisplay = (skills) => {
 };
 
 function Home18Page() {
+  const location = useLocation();
   const [allCandidates, setAllCandidates] = useState([]);
   const [filteredCandidates, setFilteredCandidates] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -112,6 +113,21 @@ function Home18Page() {
     document.title = 'Home | TrueTouch - Foreign Employment Recruitment Agency';
     loadScript("js/custom.js");
   }, []);
+
+  // Read search query from URL parameters
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const search = params.get('search');
+    if (search) {
+      setSearchQuery(search);
+      setTimeout(() => {
+        const element = document.getElementById('candidates');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [location.search]);
 
   // Fetch candidates + filter options in parallel
   useEffect(() => {

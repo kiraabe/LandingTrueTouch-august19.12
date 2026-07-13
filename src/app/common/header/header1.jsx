@@ -167,10 +167,17 @@ function Header1({ _config }) {
                     {/* SITE Search */}
                     <div id="search">
                         <span className="close" />
-                        <form role="search" id="searchform" action="/search" method="get" className="radius-xl">
+                        <form role="search" id="searchform" className="radius-xl" onSubmit={(e) => {
+                            e.preventDefault();
+                            const query = e.target.q.value.trim();
+                            if (query) {
+                                navigate(`${publicUser.HOME1}?search=${encodeURIComponent(query)}`);
+                                document.querySelector('#search .close')?.click();
+                            }
+                        }}>
                             <input className="form-control" name="q" type="search" placeholder="Type to search" />
                             <span className="input-group-append">
-                                <button type="button" className="search-btn">
+                                <button type="submit" className="search-btn">
                                     <i className="fa fa-paper-plane" />
                                 </button>
                             </span>
