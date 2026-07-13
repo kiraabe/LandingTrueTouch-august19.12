@@ -57,19 +57,31 @@ const SectionEmployersCandidateSidebar = ({ type = "1" }) => {
         )}
       </div>
 
-      {/* CV Download */}
-      {candidate.cv && (
+      {/* Resume/CV Download */}
+      {(candidate.cv || candidate.resume) && (
         <div className="can-sidebar-card can-cv-card">
           <h3 className="can-card-title">Resume</h3>
-          <a
-            href={getCandidateCvUrl(candidate.cv)}
-            target="_blank"
-            rel="noopener noreferrer"
-            download
-            className="can-cv-link"
-          >
-            <i className="feather-download" /> Download CV
-          </a>
+          {candidate.cv && (
+            <a
+              href={getCandidateCvUrl(candidate.cv)}
+              target="_blank"
+              rel="noopener noreferrer"
+              download
+              className="can-cv-link"
+            >
+              <i className="feather-download" /> Download CV
+            </a>
+          )}
+          {candidate.resume && !candidate.cv && (
+            <a
+              href={candidate.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="can-cv-link"
+            >
+              <i className="feather-download" /> View Resume
+            </a>
+          )}
         </div>
       )}
 

@@ -211,7 +211,7 @@
 
 .can-personal-info-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
 }
 
@@ -247,6 +247,11 @@
 .can-info-block .can-info-value a:hover {
   color: #0d47a1;
   text-decoration: underline;
+}
+
+.can-info-block .can-info-value a i {
+  margin-right: 6px;
+  font-size: 14px;
 }
 
 .can-education-title {

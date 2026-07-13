@@ -25,40 +25,49 @@ const SectionCandidatePersonalInfo = () => {
 
   if (!candidate) return null;
 
-  const hasInfo = candidate.phone || candidate.email || candidate.date_of_birth || candidate.gender;
+  const infoFields = [
+    { label: 'Full Name', value: candidate.full_name },
+    { label: 'Email', value: candidate.email, href: candidate.email ? `mailto:${candidate.email}` : null },
+    { label: 'Phone', value: candidate.phone, href: candidate.phone ? `tel:${candidate.phone}` : null },
+    { label: 'Date of Birth', value: candidate.date_of_birth ? new Date(candidate.date_of_birth).toLocaleDateString() : null },
+    { label: 'Gender', value: candidate.gender },
+    { label: 'Nationality', value: candidate.nationality },
+    { label: 'Religion', value: candidate.religion },
+    { label: 'Marital Status', value: candidate.marital_status },
+    { label: 'Job Category', value: candidate.job_category },
+    { label: 'Country', value: candidate.country },
+    { label: 'City', value: candidate.city },
+    { label: 'Current Location', value: candidate.current_location },
+  ];
 
-  if (!hasInfo) return null;
+  const visibleFields = infoFields.filter(field => field.value);
+
+  if (visibleFields.length === 0) return null;
 
   return (
     <div className="can-personal-info-section">
       <h2 className="can-section-title">Personal Information</h2>
       <div className="can-personal-info-grid">
-        {candidate.email && (
-          <div className="can-info-block">
-            <span className="can-info-label">Email</span>
+        {visibleFields.map((field, index) => (
+          <div key={index} className="can-info-block">
+            <span className="can-info-label">{field.label}</span>
             <span className="can-info-value">
-              <a href={`mailto:${candidate.email}`}>{candidate.email}</a>
+              {field.href ? (
+                <a href={field.href}>{field.value}</a>
+              ) : (
+                field.value
+              )}
             </span>
           </div>
-        )}
-        {candidate.phone && (
+        ))}
+        {candidate.resume && (
           <div className="can-info-block">
-            <span className="can-info-label">Phone</span>
+            <span className="can-info-label">Resume</span>
             <span className="can-info-value">
-              <a href={`tel:${candidate.phone}`}>{candidate.phone}</a>
+              <a href={candidate.resume} target="_blank" rel="noopener noreferrer">
+                <i className="feather-download" /> View Resume
+              </a>
             </span>
-          </div>
-        )}
-        {candidate.date_of_birth && (
-          <div className="can-info-block">
-            <span className="can-info-label">Date of Birth</span>
-            <span className="can-info-value">{new Date(candidate.date_of_birth).toLocaleDateString()}</span>
-          </div>
-        )}
-        {candidate.gender && (
-          <div className="can-info-block">
-            <span className="can-info-label">Gender</span>
-            <span className="can-info-value">{candidate.gender}</span>
           </div>
         )}
       </div>
