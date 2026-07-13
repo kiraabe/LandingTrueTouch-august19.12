@@ -151,6 +151,16 @@ function CandidateGridPage() {
                     <span>{filters.ageMax === 100 ? "Any" : filters.ageMax}</span>
                   </div>
                   <div className="candidate-age-range-sliders">
+                    <svg className="candidate-age-range-track" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true">
+                      <line className="candidate-age-range-track-base" x1="0" y1="10" x2="100" y2="10" />
+                      <line
+                        className="candidate-age-range-track-selected"
+                        x1={filters.ageMin}
+                        y1="10"
+                        x2={filters.ageMax}
+                        y2="10"
+                      />
+                    </svg>
                     <input
                       type="range"
                       min="0"
