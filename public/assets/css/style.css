@@ -11094,7 +11094,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
   font-weight: 800;
   text-transform: uppercase;
   padding-right: 200px;
-  color: #A9C731;
+  color: rgba(220, 220, 220, 0.3);
 }
 @media (max-width: 991px) {
   .twm-home1-banner-section .twm-gradient-text {
