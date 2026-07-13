@@ -850,7 +850,7 @@ function Home18Page() {
                   </div>
 
                   <div className="text-center m-b30">
-                    <NavLink to={publicUser.HOME1} className="site-button">All Candidates</NavLink>
+                    <NavLink to={publicUser.candidate.GRID} className="site-button">All Candidates</NavLink>
                   </div>
                 </>
               )}
