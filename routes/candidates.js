@@ -293,6 +293,7 @@ router.get('/candidates/featured', async (req, res) => {
         current_location AS location,
         profile_picture,
         religion AS hourly_rate,
+        date_of_birth,
         LOWER(COALESCE(status, 'no status')) AS status,
         skill_level
       FROM candidates

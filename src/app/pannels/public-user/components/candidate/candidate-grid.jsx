@@ -14,7 +14,7 @@ function CandidateGridPage() {
   const [candidates, setCandidates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filters, setFilters] = useState({ jobCategory: "", location: "", skillLevel: "", status: "" });
+  const [filters, setFilters] = useState({ jobCategory: "", location: "", skillLevel: "", ageRange: "", status: "" });
   const [filterOptions, setFilterOptions] = useState({ professions: [], locations: [], skillLevels: [], statuses: [] });
 
   useEffect(() => {
@@ -54,8 +54,19 @@ function CandidateGridPage() {
       const matchesLocation = !filters.location || candidate.location?.trim().toLowerCase() === filters.location.trim().toLowerCase();
       const candidateSkills = candidate.skill_level?.split(",").map((skill) => cleanFilterValue(skill).toLowerCase());
       const matchesSkill = !filters.skillLevel || candidateSkills?.includes(filters.skillLevel.trim().toLowerCase());
+      const birthday = candidate.date_of_birth && new Date(candidate.date_of_birth);
+      const today = new Date();
+      const candidateAge = birthday && !Number.isNaN(birthday.getTime())
+        ? today.getFullYear() - birthday.getFullYear() - (today < new Date(today.getFullYear(), birthday.getMonth(), birthday.getDate()) ? 1 : 0)
+        : null;
+      const matchesAge = !filters.ageRange || (candidateAge !== null && {
+        "18-25": candidateAge >= 18 && candidateAge <= 25,
+        "26-35": candidateAge >= 26 && candidateAge <= 35,
+        "36-45": candidateAge >= 36 && candidateAge <= 45,
+        "46+": candidateAge >= 46
+      }[filters.ageRange]);
       const matchesStatus = !filters.status || candidate.status?.trim().toLowerCase() === filters.status.trim().toLowerCase();
-      return matchesSearch && matchesCategory && matchesLocation && matchesSkill && matchesStatus;
+      return matchesSearch && matchesCategory && matchesLocation && matchesSkill && matchesAge && matchesStatus;
     });
   }, [candidates, filters, searchQuery]);
 
@@ -66,7 +77,7 @@ function CandidateGridPage() {
   };
 
   const clearFilters = () => {
-    setFilters({ jobCategory: "", location: "", skillLevel: "", status: "" });
+    setFilters({ jobCategory: "", location: "", skillLevel: "", ageRange: "", status: "" });
     setSearchQuery("");
   };
 
@@ -119,6 +130,16 @@ function CandidateGridPage() {
                   <select value={filters.skillLevel} onChange={(event) => updateFilter("skillLevel", event.target.value)}>
                     <option value="">All skill levels</option>
                     {Array.from(new Set(filterOptions.skillLevels)).map((option) => <option key={option} value={option}>{option}</option>)}
+                  </select>
+                </label>
+                <label className="candidate-filter-field">
+                  <span>Age range</span>
+                  <select value={filters.ageRange} onChange={(event) => updateFilter("ageRange", event.target.value)}>
+                    <option value="">All ages</option>
+                    <option value="18-25">18–25 years</option>
+                    <option value="26-35">26–35 years</option>
+                    <option value="36-45">36–45 years</option>
+                    <option value="46+">46 years and over</option>
                   </select>
                 </label>
                 <label className="candidate-filter-field">
