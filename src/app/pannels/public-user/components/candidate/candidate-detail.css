@@ -1,9 +1,4 @@
-.candidate-detail-container {
-  min-height: 100vh;
-  background-color: #f8f9fa;
-  padding-bottom: 60px;
-}
-
+/* Loading & Error States */
 .loading-spinner,
 .error-message {
   text-align: center;
@@ -12,13 +7,17 @@
   color: #666;
 }
 
-/* Header Section */
-.candidate-header {
-  background: white;
-  margin-bottom: 40px;
+/* Main Container */
+.candidate-detail-info {
+  width: 100%;
 }
 
-.candidate-cover {
+/* Intro Section */
+.can-intro-section {
+  margin-bottom: 30px;
+}
+
+.can-intro-header {
   height: 280px;
   background-size: cover;
   background-position: center;
@@ -26,10 +25,11 @@
   display: flex;
   align-items: flex-end;
   padding: 40px 0;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.candidate-cover::before {
-  content: '';
+.can-intro-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -38,7 +38,7 @@
   background: rgba(0, 0, 0, 0.3);
 }
 
-.candidate-profile-section {
+.can-intro-content {
   position: relative;
   z-index: 2;
   width: 100%;
@@ -48,11 +48,11 @@
   gap: 30px;
 }
 
-.candidate-avatar {
+.can-intro-avatar {
   flex-shrink: 0;
 }
 
-.candidate-avatar img {
+.can-intro-avatar img {
   width: 180px;
   height: 180px;
   border-radius: 50%;
@@ -61,31 +61,31 @@
   object-fit: cover;
 }
 
-.candidate-info-header {
+.can-intro-info {
   flex-grow: 1;
   padding-bottom: 10px;
 }
 
-.candidate-name {
+.can-intro-name {
   font-size: 32px;
   font-weight: 700;
   color: white;
   margin: 0 0 8px 0;
 }
 
-.candidate-title {
+.can-intro-title {
   font-size: 18px;
   color: rgba(255, 255, 255, 0.95);
   margin: 0 0 15px 0;
 }
 
-.candidate-meta {
+.can-intro-meta {
   display: flex;
   gap: 25px;
   flex-wrap: wrap;
 }
 
-.candidate-meta span {
+.can-intro-meta span {
   color: rgba(255, 255, 255, 0.9);
   font-size: 14px;
   display: flex;
@@ -93,16 +93,15 @@
   gap: 6px;
 }
 
-.candidate-meta i {
+.can-intro-meta i {
   font-size: 16px;
 }
 
-/* Content Section */
-.candidate-detail-content {
-  padding: 40px 0;
-}
-
-.detail-section {
+/* Section Styles */
+.can-about-section,
+.can-skills-section,
+.can-experience-section,
+.can-education-section {
   background: white;
   border-radius: 8px;
   padding: 30px;
@@ -110,7 +109,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.detail-section h2 {
+.can-section-title {
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 20px;
@@ -119,21 +118,21 @@
   border-bottom: 2px solid #f0f0f0;
 }
 
-.detail-section p {
+.can-about-text {
   color: #666;
   line-height: 1.8;
   font-size: 15px;
-  margin-bottom: 0;
+  margin: 0;
 }
 
-/* Skills Section */
-.skills-list {
+/* Skills */
+.can-skills-list {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
 }
 
-.skill-tag {
+.can-skill-tag {
   display: inline-block;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
@@ -143,80 +142,57 @@
   font-weight: 500;
 }
 
-/* Experience & Education */
-.experience-item,
-.education-item {
+/* Experience */
+.can-experience-item {
   padding: 20px;
   background: #f8f9fa;
   border-left: 4px solid #667eea;
   border-radius: 4px;
-  margin-bottom: 20px;
 }
 
-.experience-item:last-child,
-.education-item:last-child {
-  margin-bottom: 0;
-}
-
-.experience-item h4,
-.education-item h4 {
+.can-experience-title {
   margin: 0 0 8px 0;
   color: #333;
   font-size: 16px;
   font-weight: 600;
 }
 
-.timeline {
+.can-experience-status {
   margin: 0;
   color: #999;
   font-size: 13px;
 }
 
-/* Portfolio Section */
-.portfolio-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 15px;
-}
-
-.portfolio-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 15px;
+/* Education */
+.can-education-item {
+  padding: 20px;
   background: #f8f9fa;
-  border-radius: 6px;
-  border: 1px solid #e0e0e0;
+  border-left: 4px solid #667eea;
+  border-radius: 4px;
+}
+
+.can-education-title {
+  margin: 0;
   color: #333;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-.portfolio-item:hover {
-  background: #eff2f7;
-  border-color: #667eea;
-}
-
-.portfolio-item i {
-  color: #667eea;
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 /* Sidebar */
-.detail-sidebar {
+.can-sidebar {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.card {
+.can-sidebar-card {
   background: white;
   border-radius: 8px;
   padding: 25px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.card h3 {
+.can-card-title {
   font-size: 18px;
   font-weight: 700;
   margin: 0 0 15px 0;
@@ -226,30 +202,30 @@
 }
 
 /* Rate Card */
-.rate-card {
+.can-rate-card {
   text-align: center;
 }
 
-.rate-display {
+.can-rate-display {
   display: flex;
   align-items: baseline;
   justify-content: center;
   gap: 5px;
 }
 
-.rate-display .amount {
+.can-rate-amount {
   font-size: 42px;
   font-weight: 700;
   color: #667eea;
 }
 
-.rate-display .period {
+.can-rate-period {
   font-size: 16px;
   color: #999;
 }
 
 /* Contact Card */
-.contact-card .contact-btn {
+.can-contact-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -264,46 +240,70 @@
   transition: all 0.3s ease;
   margin-bottom: 10px;
   color: white;
+  text-decoration: none;
 }
 
-.contact-card .contact-btn:last-child {
+.can-contact-btn:last-child {
   margin-bottom: 0;
 }
 
-.hire-btn {
+.can-hire-btn {
   background-color: #667eea;
 }
 
-.hire-btn:hover {
+.can-hire-btn:hover {
   background-color: #5568d3;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
-.whatsapp-btn {
+.can-whatsapp-btn {
   background-color: #25d366;
 }
 
-.whatsapp-btn:hover {
+.can-whatsapp-btn:hover {
   background-color: #20ba58;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
 }
 
+/* CV Card */
+.can-cv-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #667eea;
+  color: white;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.can-cv-link:hover {
+  background-color: #5568d3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
 /* Info Card */
-.info-item {
+.can-info-item {
   display: flex;
   flex-direction: column;
   padding: 15px 0;
   border-bottom: 1px solid #f0f0f0;
 }
 
-.info-item:last-child {
+.can-info-item:last-child {
   border-bottom: none;
   padding-bottom: 0;
 }
 
-.info-item .label {
+.can-info-label {
   font-size: 12px;
   color: #999;
   font-weight: 600;
@@ -311,10 +311,67 @@
   margin-bottom: 6px;
 }
 
-.info-item .value {
+.can-info-value {
   font-size: 15px;
   color: #333;
   font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .can-intro-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .can-intro-info {
+    padding-bottom: 0;
+  }
+
+  .can-intro-meta {
+    justify-content: center;
+  }
+
+  .can-intro-name {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 768px) {
+  .can-intro-header {
+    height: 200px;
+    padding: 30px 0;
+  }
+
+  .can-intro-avatar img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .can-intro-name {
+    font-size: 22px;
+  }
+
+  .can-intro-title {
+    font-size: 16px;
+  }
+
+  .can-intro-meta {
+    gap: 15px;
+  }
+
+  .can-about-section,
+  .can-skills-section,
+  .can-experience-section,
+  .can-education-section {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .can-section-title {
+    font-size: 18px;
+  }
 }
 
 /* Responsive Design */

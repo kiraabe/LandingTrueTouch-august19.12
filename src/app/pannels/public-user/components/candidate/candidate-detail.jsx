@@ -1,16 +1,24 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
 import { showErrorToast } from "../../../../../globals/error-handler";
-import { getCandidateProfilePictureUrl, getCandidateCvUrl } from "../../../../../globals/file-url";
-import { publicUrlFor } from "../../../../../globals/constants";
-import JobZImage from "../../../../common/jobz-img";
+import { loadScript } from "../../../../../globals/constants";
+import SectionCandidateShortIntro from "./section-can-short-intro";
+import SectionCandidateAbout from "./section-can-about";
+import SectionCandidateSkills from "./section-can-skills";
+import SectionCandidateExperience from "./section-can-experience";
+import SectionCandidateEducation from "./section-can-education";
+import SectionEmployersCandidateSidebar from "./section-emp-can-sidebar";
 import './candidate-detail.css';
 
 const CandidateDetail = () => {
   const { id } = useParams();
-  const [candidate, setCandidate] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    loadScript("js/custom.js");
+  }, []);
 
   useEffect(() => {
     if (!id) {
@@ -21,35 +29,28 @@ const CandidateDetail = () => {
     const fetchCandidateDetail = async () => {
       try {
         setLoading(true);
+        setError(null);
         const url = `/api/candidates/${id}`;
-        console.log('Fetching candidate from:', url);
 
         const response = await fetch(url, {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
         });
 
-        console.log('Response status:', response.status);
-
         if (!response.ok) {
           let errorData = {};
           const contentType = response.headers.get('content-type');
           if (contentType && contentType.includes('application/json')) {
             errorData = await response.json().catch(() => ({}));
-          } else {
-            const text = await response.text();
-            console.error('Non-JSON response:', text);
           }
-          console.error('API Error details:', JSON.stringify(errorData, null, 2));
           const errorMsg = errorData.error || `No candidate found with ID: ${id}`;
           throw new Error(`HTTP ${response.status}: ${errorMsg}`);
         }
 
-        const data = await response.json();
-        console.log('Candidate data received:', data);
-        setCandidate(data);
+        await response.json();
       } catch (err) {
         console.error('Error fetching candidate:', err);
+        setError(err.message);
         showErrorToast(err, 'Failed to load candidate profile. Please try again.');
       } finally {
         setLoading(false);
@@ -68,7 +69,7 @@ const CandidateDetail = () => {
     );
   }
 
-  if (!candidate) {
+  if (error) {
     return (
       <div className="candidate-detail-container">
         <Toaster position="top-right" richColors />
@@ -78,132 +79,30 @@ const CandidateDetail = () => {
   }
 
   return (
-    <div className="candidate-detail-container">
+    <>
       <Toaster position="top-right" richColors />
-      
-      <div className="candidate-header">
+      <div className="section-full p-t120 p-b90 bg-white">
         <div className="container">
-          <div className="candidate-cover" style={{ backgroundImage: "url('images/candidates/cover-bg.jpg')" }}>
-            <div className="candidate-profile-section">
-              <div className="candidate-avatar">
-                <JobZImage src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : publicUrlFor("images/candidates/default.jpg")} alt={candidate.full_name} />
-              </div>
-              <div className="candidate-info-header">
-                <h1 className="candidate-name">{candidate.full_name}</h1>
-                <p className="candidate-title">{candidate.job_title}</p>
-                <div className="candidate-meta">
-                  <span className="location"><i className="feather-map-pin" /> {candidate.location}</span>
-                  <span className="rate"><i className="feather-dollar-sign" /> {candidate.hourly_rate}/{candidate.rate_type}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="container">
-        <div className="candidate-detail-content">
-          <div className="row">
-            <div className="col-lg-8 col-md-12">
-              {/* About Section */}
-              <div className="detail-section">
-                <h2>About Me</h2>
-                <p>{candidate.about}</p>
-              </div>
-
-              {/* Skills Section */}
-              <div className="detail-section">
-                <h2>Skills</h2>
-                <div className="skills-list">
-                  {candidate.skills && candidate.skills.map((skill, index) => (
-                    <span key={index} className="skill-tag">{skill}</span>
-                  ))}
+          <div className="section-content">
+            <div className="row d-flex justify-content-center">
+              <div className="col-lg-8 col-md-12">
+                <div className="candidate-detail-info">
+                  <SectionCandidateShortIntro />
+                  <SectionCandidateAbout />
+                  <SectionCandidateSkills />
+                  <SectionCandidateExperience />
+                  <SectionCandidateEducation />
                 </div>
               </div>
 
-              {/* Experience Section */}
-              <div className="detail-section">
-                <h2>Experience</h2>
-                <div className="experience-item">
-                  <h4>{candidate.experience}</h4>
-                  <p className="timeline">Currently Working</p>
-                </div>
-              </div>
-
-              {/* Education Section */}
-              <div className="detail-section">
-                <h2>Education</h2>
-                <div className="education-item">
-                  <h4>{candidate.education}</h4>
-                </div>
-              </div>
-
-              {/* CV Download Section */}
-              {candidate.cv && (
-                <div className="detail-section">
-                  <h2>Curriculum Vitae</h2>
-                  <a href={getCandidateCvUrl(candidate.cv)} target="_blank" rel="noopener noreferrer" download className="cv-download-link">
-                    <i className="feather-download" /> Download CV
-                  </a>
-                </div>
-              )}
-
-              {/* Portfolio Section */}
-              {candidate.portfolio && candidate.portfolio.length > 0 && (
-                <div className="detail-section">
-                  <h2>Portfolio</h2>
-                  <div className="portfolio-list">
-                    {candidate.portfolio.map((item, index) => (
-                      <div key={index} className="portfolio-item">
-                        <i className="feather-file-text" />
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Sidebar */}
-            <div className="col-lg-4 col-md-12">
-              <div className="detail-sidebar">
-                {/* Rate Card */}
-                <div className="card rate-card">
-                  <h3>Rate</h3>
-                  <div className="rate-display">
-                    <span className="amount">${candidate.hourly_rate}</span>
-                    <span className="period">/{candidate.rate_type}</span>
-                  </div>
-                </div>
-
-                {/* Contact Card */}
-                <div className="card contact-card">
-                  <h3>Get In Touch</h3>
-                  <button className="contact-btn hire-btn">
-                    <i className="feather-mail" /> Send Message
-                  </button>
-                  <a href={`https://wa.me/251911208322?text=Hi ${candidate.full_name}, I'm interested in your services`} target="_blank" rel="noopener noreferrer" className="contact-btn whatsapp-btn">
-                    <i className="feather-message-circle" /> WhatsApp
-                  </a>
-                </div>
-
-                {/* Info Card */}
-                <div className="card info-card">
-                  <div className="info-item">
-                    <span className="label">Location</span>
-                    <span className="value">{candidate.location}</span>
-                  </div>
-                  <div className="info-item">
-                    <span className="label">Title</span>
-                    <span className="value">{candidate.job_title}</span>
-                  </div>
-                </div>
+              <div className="col-lg-4 col-md-12 rightSidebar">
+                <SectionEmployersCandidateSidebar type="1" />
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

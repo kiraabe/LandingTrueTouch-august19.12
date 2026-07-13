@@ -1,0 +1,56 @@
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getCandidateProfilePictureUrl, getCandidateCvUrl } from "../../../../../globals/file-url";
+import { publicUrlFor } from "../../../../../globals/constants";
+import JobZImage from "../../../../common/jobz-img";
+
+const SectionCandidateShortIntro = () => {
+  const { id } = useParams();
+  const [candidate, setCandidate] = useState(null);
+
+  useEffect(() => {
+    if (!id) return;
+
+    const fetchCandidate = async () => {
+      try {
+        const response = await fetch(`/api/candidates/${id}`);
+        if (response.ok) {
+          const data = await response.json();
+          setCandidate(data);
+        }
+      } catch (err) {
+        console.error('Error fetching candidate:', err);
+      }
+    };
+
+    fetchCandidate();
+  }, [id]);
+
+  if (!candidate) return null;
+
+  return (
+    <div className="can-intro-section">
+      <div className="can-intro-header" style={{ backgroundImage: "url('images/candidates/cover-bg.jpg')" }}>
+        <div className="can-intro-overlay" />
+        <div className="can-intro-content">
+          <div className="can-intro-avatar">
+            <JobZImage 
+              src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : publicUrlFor("images/candidates/default.jpg")} 
+              alt={candidate.full_name} 
+            />
+          </div>
+          <div className="can-intro-info">
+            <h1 className="can-intro-name">{candidate.full_name}</h1>
+            <p className="can-intro-title">{candidate.job_title}</p>
+            <div className="can-intro-meta">
+              <span className="can-intro-location"><i className="feather-map-pin" /> {candidate.location}</span>
+              <span className="can-intro-rate"><i className="feather-dollar-sign" /> {candidate.hourly_rate}/{candidate.rate_type}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SectionCandidateShortIntro;
