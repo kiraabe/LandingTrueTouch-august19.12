@@ -363,7 +363,7 @@ function Home18Page() {
         <div className="row">
           <div className="col-xl-6 col-lg-6 col-md-12">
             <div className="twm-bnr-left-section">
-              <div className="twm-bnr-title-small">Premium <span className="site-text-primary">Global</span> Manpower Solutions</div>
+              <div className="twm-bnr-title-small">Your Partner in <span className="site-text-primary">Global</span> Recruitment</div>
               <div className="twm-bnr-title-large">Hire <AirplaneCircleHighlight className="site-text-primary">Skilled </AirplaneCircleHighlight>  Workers with True Touch</div>
               <p className="twm-bnr-tagline">True Touch connects employers with vetted, skilled professionals from Asia and Africa. We provide reliable domestic helpers, healthcare workers, chefs, and skilled labor across the Gulf, Middle East, and beyond.</p>
               <a href="#contact-us" className="site-button twm-bnr-cta" onClick={(e) => {
