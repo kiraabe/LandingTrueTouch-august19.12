@@ -111,8 +111,21 @@ function Header1({ _config }) {
                                     <li className={isNavLinkActive("home") ? "nav-link-active" : ""}>
                                         <a href="/" onClick={(e) => {
                                             e.preventDefault();
-                                            navigate(publicUser.HOME1);
                                             setMenuActive(false);
+                                            if (location.pathname !== "/" && location.pathname !== publicUser.HOME1) {
+                                                navigate(publicUser.INITIAL, { replace: false });
+                                                setTimeout(() => {
+                                                    const element = document.getElementById('home-hero');
+                                                    if (element) {
+                                                        element.scrollIntoView({ behavior: 'smooth' });
+                                                    }
+                                                }, 100);
+                                            } else {
+                                                const element = document.getElementById('home-hero');
+                                                if (element) {
+                                                    element.scrollIntoView({ behavior: 'smooth' });
+                                                }
+                                            }
                                         }}>Home</a>
                                     </li>
                                     <li className={isNavLinkActive("get-jobs") ? "nav-link-active" : ""}>
