@@ -1,0 +1,74 @@
+.language-switcher-wrapper {
+  position: relative;
+}
+
+.language-switcher-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.language-switcher-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.language-switcher-btn i {
+  font-size: 16px;
+}
+
+.language-label {
+  min-width: 70px;
+  text-align: left;
+}
+
+.language-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-width: 150px;
+  z-index: 1000;
+  margin-top: 4px;
+}
+
+.language-option {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.language-option:hover {
+  background-color: #f5f5f5;
+}
+
+.language-option.active {
+  background-color: #f0f0f0;
+  font-weight: 600;
+  color: #1a73e8;
+}
+
+.language-option:first-child {
+  border-radius: 4px 4px 0 0;
+}
+
+.language-option:last-child {
+  border-radius: 0 0 4px 4px;
+}

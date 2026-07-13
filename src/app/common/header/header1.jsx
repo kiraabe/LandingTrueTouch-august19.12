@@ -2,11 +2,14 @@ import JobZImage from "../jobz-img";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { publicUser } from "../../../globals/route-names";
 import { useState, useEffect } from "react";
+import "./header1.css";
 
 function Header1({ _config }) {
 
     const [menuActive, setMenuActive] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
+    const [currentLanguage, setCurrentLanguage] = useState("en");
+    const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -61,6 +64,17 @@ function Header1({ _config }) {
                 element.scrollIntoView({ behavior: "smooth" });
             }
         }
+    };
+
+    const handleLanguageChange = (lang) => {
+        setCurrentLanguage(lang);
+        setShowLanguageDropdown(false);
+    };
+
+    const languageLabels = {
+        en: "English",
+        ar: "Arabic",
+        am: "Amharic"
     };
 
     return (
@@ -150,15 +164,38 @@ function Header1({ _config }) {
                                     </div>
                                 </div>
                                 <div className="extra-cell">
-                                    <div className="header-nav-btn-section">
-                                        <div className="twm-nav-btn-left">
-                                    <a className="twm-nav-sign-up" href="#contact-us" onClick={(e) => {
-                                        e.preventDefault();
-                                        handleSectionClick("contact-us", e);
-                                    }}>
-                                        <i className="feather-log-in" /> Request Workforce
-                                    </a>
-                                </div>
+                                    <div className="language-switcher-wrapper">
+                                        <button
+                                            className="language-switcher-btn"
+                                            onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
+                                            title="Select language"
+                                        >
+                                            <i className="feather-globe" />
+                                            <span className="language-label">{languageLabels[currentLanguage]}</span>
+                                            <i className="feather-chevron-down" />
+                                        </button>
+                                        {showLanguageDropdown && (
+                                            <div className="language-dropdown">
+                                                <button
+                                                    className={`language-option ${currentLanguage === 'en' ? 'active' : ''}`}
+                                                    onClick={() => handleLanguageChange('en')}
+                                                >
+                                                    English
+                                                </button>
+                                                <button
+                                                    className={`language-option ${currentLanguage === 'ar' ? 'active' : ''}`}
+                                                    onClick={() => handleLanguageChange('ar')}
+                                                >
+                                                    العربية
+                                                </button>
+                                                <button
+                                                    className={`language-option ${currentLanguage === 'am' ? 'active' : ''}`}
+                                                    onClick={() => handleLanguageChange('am')}
+                                                >
+                                                    አማርኛ
+                                                </button>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
