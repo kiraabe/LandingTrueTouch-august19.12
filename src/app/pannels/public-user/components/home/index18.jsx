@@ -366,10 +366,6 @@ function Home18Page() {
               <div className="twm-bnr-title-small">Your Partner in <span className="site-text-primary">Global</span> Recruitment</div>
               <div className="twm-bnr-title-large">Hire <AirplaneCircleHighlight className="site-text-primary">Skilled </AirplaneCircleHighlight>  Workers with True Touch</div>
               <p className="twm-bnr-tagline">True Touch connects employers with vetted, skilled professionals from Asia and Africa. We provide reliable domestic helpers, healthcare workers, chefs, and skilled labor across the Gulf, Middle East, and beyond.</p>
-              <a href="#contact-us" className="site-button twm-bnr-cta" onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('contact-us')?.scrollIntoView({ behavior: 'smooth' });
-              }}>Get in Touch  <i className="feather-arrow-right"></i></a>
               <div className="twm-bnr-search-bar">
                 <form>
                   <div className="row">
