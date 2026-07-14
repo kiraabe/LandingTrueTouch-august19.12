@@ -457,6 +457,7 @@ router.get('/candidates/:id', async (req, res) => {
       language_skills: parsedLanguageSkills,
       city: candidate.city,
       current_location: candidate.current_location,
+      preferred_work_country: candidate.preferred_work_country,
       resume_url: candidate.resume_url,
       medical_status: candidate.medical_status,
       status: candidate.status,

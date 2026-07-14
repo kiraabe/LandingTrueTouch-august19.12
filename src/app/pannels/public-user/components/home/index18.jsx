@@ -106,8 +106,8 @@ function Home18Page() {
   // Search, filter, tab state
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState('all');
-  const [filters, setFilters] = useState({ jobCategory: '', location: '', skillLevel: '', status: '' });
-  const [filterOptions, setFilterOptions] = useState({ professions: [], locations: [], skillLevels: [], statuses: [] });
+  const [filters, setFilters] = useState({ jobCategory: '', preferredWorkCountry: '', skillLevel: '', status: '' });
+  const [filterOptions, setFilterOptions] = useState({ professions: [], preferredWorkCountries: [], skillLevels: [], statuses: [] });
 
   useEffect(() => {
     document.title = 'Home | TrueTouch - Foreign Employment Recruitment Agency';
@@ -197,10 +197,10 @@ function Home18Page() {
       );
     }
 
-    // Location filter
-    if (filters.location) {
+    // Preferred work country filter
+    if (filters.preferredWorkCountry) {
       result = result.filter(c =>
-        c.location?.trim().toLowerCase() === filters.location.trim().toLowerCase()
+        c.preferred_work_country?.trim().toLowerCase() === filters.preferredWorkCountry.trim().toLowerCase()
       );
     }
 
@@ -338,7 +338,7 @@ function Home18Page() {
   const handleTabClick = (tab) => {
     setActiveTab(tab);
     setSearchQuery('');
-    setFilters({ jobCategory: '', location: '', skillLevel: '', status: '' });
+    setFilters({ jobCategory: '', preferredWorkCountry: '', skillLevel: '', status: '' });
   };
 
   const handleFilterChange = (key, value) => {
@@ -349,7 +349,7 @@ function Home18Page() {
 
   const clearFilters = () => {
     setSearchQuery('');
-    setFilters({ jobCategory: '', location: '', skillLevel: '', status: '' });
+    setFilters({ jobCategory: '', preferredWorkCountry: '', skillLevel: '', status: '' });
     setActiveTab('all');
   };
 
@@ -711,16 +711,16 @@ function Home18Page() {
                         </select>
                       )}
 
-                      {/* Location — shown on tabs: all, country */}
+                      {/* Preferred work country — shown on tabs: all, country */}
                       {(activeTab === 'all' || activeTab === 'country') && (
                         <select
-                          value={filters.location}
-                          onChange={e => handleFilterChange('location', e.target.value)}
+                          value={filters.preferredWorkCountry}
+                          onChange={e => handleFilterChange('preferredWorkCountry', e.target.value)}
                           style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', width: '160px', cursor: 'pointer' }}
                         >
-                          <option value="">All Locations</option>
-                          {Array.from(new Set(filterOptions.locations)).map(l => (
-                            <option key={l} value={l}>{l}</option>
+                          <option value="">All Preferred Countries</option>
+                          {Array.from(new Set(filterOptions.preferredWorkCountries)).map(country => (
+                            <option key={country} value={country}>{country}</option>
                           ))}
                         </select>
                       )}
@@ -1127,6 +1127,10 @@ function Home18Page() {
                     <div className="cv-info-item">
                       <span className="cv-info-label">Current Location</span>
                       <span className="cv-info-value">{candidateDetails.current_location || "-"}</span>
+                    </div>
+                    <div className="cv-info-item">
+                      <span className="cv-info-label">Preferred Work Country</span>
+                      <span className="cv-info-value">{candidateDetails.preferred_work_country || "-"}</span>
                     </div>
                   </div>
                 </div>
