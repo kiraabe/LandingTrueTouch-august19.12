@@ -859,6 +859,138 @@ function Home18Page() {
         </div>
 
         <div className="twm-bg-candi-pattern" />
+
+                    {/* TESTIMONIAL SECTION START */}
+            <div className="section-full p-t120 p-b90 site-bg-light twm-testimonial-8-area">
+                <div className="container">
+                    {/* title="" START*/}
+                    <div className="section-head left wt-small-separator-outer">
+                        <div className="section-head center wt-small-separator-outer">
+                            <div className="wt-small-separator site-text-primary">
+                                <div>Client Testimonials</div>
+                            </div>
+                            <h2 className="wt-title">What Our Customers
+                                Say About Us</h2>
+                        </div>
+                    </div>
+                    {/* title="" END*/}
+                    <div className="section-content">
+                        <div className="owl-carousel twm-testimonial-8-carousel m-b30 owl-btn-bottom-center ">
+                            {/* COLUMNS 1 */}
+                            <div className="item ">
+                                <div className="testimonials-v site-bg-white">
+                                    <div className="twm-testi-media">
+                                        <JobZImage src="images/home-6/testimonial/pic1.jpg" alt="#" />
+                                    </div>
+                                    <div className="testimonial-v-content">
+                                        <div className="t-testimonial-top">
+                                            <div className="t-quote"><i className="fa fa-quote-left" /></div>
+                                            <div className="t-rating">
+                                                <span><i className="fa fa-star" /></span>
+                                                <span><i className="fa fa-star" /></span>
+                                                <span><i className="fa fa-star" /></span>
+                                                <span><i className="fa fa-star" /></span>
+                                                <span><i className="fa fa-star" /></span>
+                                            </div>
+                                        </div>
+                                        <div className="t-discription">I have minim mollit non deserunt ullamco est sit aliqua
+                                            dolor do Eam et sint. Velit officia consequat.
+                                        </div>
+                                        <div className="twm-testi-detail">
+                                            <div className="twm-testi-name">Guy Hawkins</div>
+                                            <div className="twm-testi-position">UI/UX Designer</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* COLUMNS 2 */}
+                            <div className="item ">
+                                <div className="testimonials-v site-bg-white">
+                                    <div className="twm-testi-media">
+                                        <JobZImage src="images/home-6/testimonial/pic2.jpg" alt="#" />
+                                    </div>
+                                    <div className="testimonial-v-content">
+                                        <div className="t-testimonial-top">
+                                            <div className="t-quote"><i className="fa fa-quote-left" /></div>
+                                            <div className="t-rating">
+                                                <span><i className="fa fa-star" /></span>
+                                                <span><i className="fa fa-star" /></span>
+                                                <span><i className="fa fa-star" /></span>
+                                                <span><i className="fa fa-star" /></span>
+                                                <span><i className="fa fa-star" /></span>
+                                            </div>
+                                        </div>
+                                        <div className="t-discription">I have minim mollit non deserunt ullamco est sit aliqua
+                                            dolor do Eam et sint. Velit officia consequat.
+                                        </div>
+                                        <div className="twm-testi-detail">
+                                            <div className="twm-testi-name">Guy Hawkins</div>
+                                            <div className="twm-testi-position">UI/UX Designer</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* COLUMNS 3 */}
+                            <div className="item ">
+                                <div className="testimonials-v site-bg-white">
+                                    <div className="twm-testi-media">
+                                        <JobZImage src="images/home-6/testimonial/pic3.jpg" alt="#" />
+                                    </div>
+                                    <div className="testimonial-v-content">
+                                        <div className="t-testimonial-top">
+                                            <div className="t-quote"><i className="fa fa-quote-left" /></div>
+                                            <div className="t-rating">
+                                                <span><i className="fa fa-star" /></span>
+                                                <span><i className="fa fa-star" /></span>
+                                                <span><i className="fa fa-star" /></span>
+                                                <span><i className="fa fa-star" /></span>
+                                                <span><i className="fa fa-star" /></span>
+                                            </div>
+                                        </div>
+                                        <div className="t-discription">I have minim mollit non deserunt ullamco est sit aliqua
+                                            dolor do Eam et sint. Velit officia consequat.
+                                        </div>
+                                        <div className="twm-testi-detail">
+                                            <div className="twm-testi-name">Guy Hawkins</div>
+                                            <div className="twm-testi-position">UI/UX Designer</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* COLUMNS 4 */}
+                            <div className="item ">
+                                <div className="testimonials-v site-bg-white">
+                                    <div className="twm-testi-media">
+                                        <JobZImage src="images/home-6/testimonial/pic1.jpg" alt="#" />
+                                    </div>
+                                    <div className="testimonial-v-content">
+                                        <div className="t-testimonial-top">
+                                            <div className="t-quote"><i className="fa fa-quote-left" /></div>
+                                            <div className="t-rating">
+                                                <span><i className="fa fa-star" /></span>
+                                                <span><i className="fa fa-star" /></span>
+                                                <span><i className="fa fa-star" /></span>
+                                                <span><i className="fa fa-star" /></span>
+                                                <span><i className="fa fa-star" /></span>
+                                            </div>
+                                        </div>
+                                        <div className="t-discription">I have minim mollit non deserunt ullamco est sit aliqua
+                                            dolor do Eam et sint. Velit officia consequat.
+                                        </div>
+                                        <div className="twm-testi-detail">
+                                            <div className="twm-testi-name">Guy Hawkins</div>
+                                            <div className="twm-testi-position">UI/UX Designer</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* TESTIMONIAL SECTION END */}
+
+
               {/* OUR BLOG START */}
       <div id="our-blogs" className="section-full p-t120 p-b90 site-bg-gray">
         <div className="container">
