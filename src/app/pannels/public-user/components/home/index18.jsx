@@ -520,6 +520,65 @@ function Home18Page() {
       </div>
       {/* ABOUT SECTION END */}
 
+                  {/* Counter SECTION START */}
+            <div className="section-full p-t0 p-b0 site-bg-white twm-counter-page-5-wrap">
+                <div className="container">
+                    <div className="twm-company-approch5-outer">
+                        <div className="twm-company-approch5" style={{ backgroundImage: `url(${publicUrlFor("images/home-5/ctr-bg.jpg")})` }}>
+                            <div className="row">
+                                {/*block 1*/}
+                                <div className="col-lg-3 col-md-6 col-sm-6">
+                                    <div className="counter-outer-two">
+                                        <div className="icon-content">
+                                            <div className="tw-count-number site-text-white">
+                                                <span className="counter">
+<CountUp end={25} duration={10} />
+</span>k+</div>
+                                            <p className="icon-content-info">Completed Cases</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/*block 2*/}
+                                <div className="col-lg-3 col-md-6 col-sm-6">
+                                    <div className="counter-outer-two">
+                                        <div className="icon-content">
+                                            <div className="tw-count-number site-text-white">
+                                                <span className="counter">
+<CountUp end={17} duration={10} />
+</span>+</div>
+                                            <p className="icon-content-info">Our Office</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/*block 3*/}
+                                <div className="col-lg-3 col-md-6 col-sm-6">
+                                    <div className="counter-outer-two">
+                                        <div className="icon-content">
+                                            <div className="tw-count-number site-text-white">
+                                                <span className="counter">86</span>+</div>
+                                            <p className="icon-content-info">Skilled People</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/*block 4*/}
+                                <div className="col-lg-3 col-md-6 col-sm-6">
+                                    <div className="counter-outer-two">
+                                        <div className="icon-content">
+                                            <div className="tw-count-number site-text-white">
+                                                <span className="counter">
+<CountUp end={28} duration={10} />
+</span>+</div>
+                                            <p className="icon-content-info">Happy Client</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* Counter SECTION END */}
+
       {/* FEATURED JOBS SECTION START */}
       <div className="section-full p-t120 p-t180 pos-relative site-bg-white twm-featured-city-area">
         <div className="twm-bg-section-box" />
