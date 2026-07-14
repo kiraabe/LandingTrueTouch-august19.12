@@ -11098,6 +11098,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
+  pointer-events: none;
   font-weight: 800;
   text-transform: uppercase;
   padding-right: 200px;
