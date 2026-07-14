@@ -407,7 +407,7 @@ function Home18Page() {
                       </div>
                     </div>
                     <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                      <button type="submit" className="site-button">Find Job</button>
+                      <button type="submit" className="site-button">Search</button>
                     </div>
                   </div>
                 </form>
