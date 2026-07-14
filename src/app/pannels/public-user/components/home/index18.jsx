@@ -184,13 +184,13 @@ function Home18Page() {
   useEffect(() => {
     let result = [...allCandidates];
 
-    // Search: matches name, profession, or location
+    // Search across candidate text fields, including country and skills
     if (searchQuery.trim()) {
       const q = searchQuery.trim().toLowerCase();
-      result = result.filter(c =>
-        c.full_name?.toLowerCase().includes(q) ||
-        c.profession?.toLowerCase().includes(q) ||
-        c.location?.toLowerCase().includes(q)
+      result = result.filter(candidate =>
+        Object.values(candidate)
+          .flatMap(value => Array.isArray(value) ? value : [value])
+          .some(value => value !== null && value !== undefined && String(value).replace(/[{}"]+/g, '').toLowerCase().includes(q))
       );
     }
 
@@ -215,9 +215,10 @@ function Home18Page() {
       result = result.filter(c => {
         if (!c.skill_level) return false;
         // Clean the raw skill_level string and check if it contains the selected skill
-        let cleaned = c.skill_level.replace(/\\+/g, '');
-        cleaned = cleaned.replace(/[{}"]/g, '');
-        const skillParts = cleaned.split(',').map(s => s.trim().toLowerCase()).filter(s => s.length > 0);
+        const skillValues = Array.isArray(c.skill_level) ? c.skill_level : c.skill_level.split(',');
+        const skillParts = skillValues
+          .map(skill => String(skill).replace(/\\+/g, '').replace(/[{}"]+/g, '').trim().toLowerCase())
+          .filter(Boolean);
         return skillParts.includes(selectedSkill);
       });
     }
