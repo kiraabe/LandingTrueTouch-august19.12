@@ -109,8 +109,8 @@ function Home18Page() {
   const [searchQuery, setSearchQuery] = useState('');
   const [heroLocation, setHeroLocation] = useState('');
   const [activeTab, setActiveTab] = useState('all');
-  const [filters, setFilters] = useState({ jobCategory: '', preferredWorkCountry: '', skillLevel: '', status: '' });
-  const [filterOptions, setFilterOptions] = useState({ professions: [], preferredWorkCountries: [], skillLevels: [], statuses: [] });
+  const [filters, setFilters] = useState({ jobCategory: '', preferredWorkCountry: '', skillLevel: '', religion: '', status: '' });
+  const [filterOptions, setFilterOptions] = useState({ professions: [], preferredWorkCountries: [], skillLevels: [], religions: [], statuses: [] });
 
   useEffect(() => {
     document.title = 'Home | TrueTouch - Foreign Employment Recruitment Agency';
@@ -146,6 +146,10 @@ function Home18Page() {
         console.log('✅ Candidates loaded:', data.length);
         setAllCandidates(data);
         setFilteredCandidates(data);
+        setFilterOptions(currentOptions => ({
+          ...currentOptions,
+          religions: [...new Set(data.map(candidate => candidate.religion).filter(Boolean))]
+        }));
       } catch (err) {
         console.error('❌ Error fetching candidates:', err);
         showErrorToast(err, 'Failed to load featured candidates.');
@@ -221,6 +225,13 @@ function Home18Page() {
           .filter(Boolean);
         return skillParts.includes(selectedSkill);
       });
+    }
+
+    // Religion filter
+    if (filters.religion) {
+      result = result.filter(c =>
+        c.religion?.trim().toLowerCase() === filters.religion.trim().toLowerCase()
+      );
     }
 
     // Status filter — both sides normalized to lowercase in DB and here
@@ -343,7 +354,7 @@ function Home18Page() {
   const handleTabClick = (tab) => {
     setActiveTab(tab);
     setSearchQuery('');
-    setFilters({ jobCategory: '', preferredWorkCountry: '', skillLevel: '', status: '' });
+    setFilters({ jobCategory: '', preferredWorkCountry: '', skillLevel: '', religion: '', status: '' });
   };
 
   const handleFilterChange = (key, value) => {
@@ -354,7 +365,7 @@ function Home18Page() {
 
   const clearFilters = () => {
     setSearchQuery('');
-    setFilters({ jobCategory: '', preferredWorkCountry: '', skillLevel: '', status: '' });
+    setFilters({ jobCategory: '', preferredWorkCountry: '', skillLevel: '', religion: '', status: '' });
     setActiveTab('all');
   };
 
@@ -364,7 +375,7 @@ function Home18Page() {
     setFilters(currentFilters => ({
       ...currentFilters,
       jobCategory: formData.get('jobCategory') || '',
-      status: formData.get('status') || ''
+      religion: formData.get('religion') || ''
     }));
     setSearchQuery(heroLocation.trim());
     setTimeout(() => document.getElementById('candidates')?.scrollIntoView({ behavior: 'smooth' }), 0);
