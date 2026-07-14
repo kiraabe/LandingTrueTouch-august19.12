@@ -9376,6 +9376,8 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 
 .twm-bnr-search-bar .hero-location-input {
   background-color: #fff;
+  position: relative;
+  z-index: 1;
 }
 .twm-inputicon-box .twm-input-icon {
   position: absolute;
@@ -9384,6 +9386,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
   width: 20px;
   height: 34px;
   z-index: 5;
+  pointer-events: none;
   line-height: 34px;
   text-align: center;
   font-size: 18px;
