@@ -172,6 +172,7 @@ function Home18Page() {
         setFilterOptions({
           professions: cleanOptions(data.professions),
           preferredWorkCountries: cleanOptions(data.preferredWorkCountries),
+          religions: cleanOptions(data.religions),
           statuses: cleanOptions(data.statuses),
           skillLevels: cleanOptions(data.skillLevels)
         });
@@ -406,9 +407,9 @@ function Home18Page() {
                     </div>
                     <div className="form-group col-xl-3 col-lg-6 col-md-6">
                       <label>Religion</label>
-                      <select name="status" value={filters.status} onChange={(event) => handleFilterChange('status', event.target.value)} className="wt-search-bar-select" id="j-All_Category">
-                        <option value="">Select Status</option>
-                        {filterOptions.statuses.map(status => <option key={status} value={status}>{status}</option>)}
+                      <select name="religion" value={filters.religion} onChange={(event) => handleFilterChange('religion', event.target.value)} className="wt-search-bar-select" id="j-All_Category">
+                        <option value="">Select Religion</option>
+                        {filterOptions.religions.map(religion => <option key={religion} value={religion}>{religion}</option>)}
                       </select>
                     </div>
                     <div className="form-group col-xl-3 col-lg-6 col-md-6">

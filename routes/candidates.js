@@ -366,6 +366,16 @@ router.get('/candidates/filter-options', async (req, res) => {
     `);
     console.log('✓ Skill levels found:', skillLevels.rows.length, skillLevels.rows.slice(0, 3));
 
+    const religions = await pool.query(`
+      SELECT DISTINCT TRIM(religion) AS religion
+      FROM candidates
+      WHERE profile_picture IS NOT NULL
+        AND religion IS NOT NULL
+        AND TRIM(religion) != ''
+      ORDER BY religion
+    `);
+    console.log('✓ Religions found:', religions.rows.length, religions.rows.slice(0, 3));
+
     // Statuses — normalized to lowercase
     const statuses = await pool.query(`
       SELECT DISTINCT LOWER(TRIM(status)) AS status
@@ -381,6 +391,7 @@ router.get('/candidates/filter-options', async (req, res) => {
       professions: professions.rows.map(r => r.profession).filter(Boolean),
       locations: locations.rows.map(r => r.location).filter(Boolean),
       preferredWorkCountries: preferredWorkCountries.rows.map(r => r.preferred_work_country).filter(Boolean),
+      religions: religions.rows.map(r => r.religion).filter(Boolean),
       skillLevels: skillLevels.rows.map(r => r.skill).filter(Boolean),
       statuses: statuses.rows.map(r => r.status).filter(Boolean)
     };
@@ -393,6 +404,9 @@ router.get('/candidates/filter-options', async (req, res) => {
     }
     if (response.locations.length === 0) {
       response.locations = ['New York', 'Los Angeles', 'London', 'Dubai'];
+    }
+    if (response.religions.length === 0) {
+      response.religions = ['Christianity', 'Islam', 'Hinduism', 'Buddhism', 'Judaism', 'Other'];
     }
     if (response.skillLevels.length === 0) {
       response.skillLevels = ['Beginner', 'Intermediate', 'Advanced', 'Expert'];
@@ -410,6 +424,7 @@ router.get('/candidates/filter-options', async (req, res) => {
       professions: [],
       locations: [],
       preferredWorkCountries: [],
+      religions: [],
       skillLevels: [],
       statuses: []
     });
