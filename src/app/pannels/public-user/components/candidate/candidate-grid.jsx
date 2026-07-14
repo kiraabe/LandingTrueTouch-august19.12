@@ -52,7 +52,9 @@ function CandidateGridPage() {
   const visibleCandidates = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
     return candidates.filter((candidate) => {
-      const matchesSearch = !query || candidate.full_name?.toLowerCase().includes(query);
+      const matchesSearch = !query || Object.values(candidate).some((value) =>
+        typeof value === "string" && value.toLowerCase().includes(query)
+      );
       const matchesCategory = !filters.jobCategory || candidate.profession?.trim().toLowerCase() === filters.jobCategory.trim().toLowerCase();
       const matchesLocation = !filters.location || candidate.location?.trim().toLowerCase() === filters.location.trim().toLowerCase();
       const matchesPreferredWorkCountry = !filters.preferredWorkCountry || candidate.preferred_work_country?.trim().toLowerCase() === filters.preferredWorkCountry.trim().toLowerCase();
@@ -109,7 +111,7 @@ function CandidateGridPage() {
               type="search"
               value={searchQuery}
               onChange={(event) => setSearchQuery(event.target.value)}
-              placeholder="Search by name"
+              placeholder="Search candidates"
             />
           </label>
         </div>
