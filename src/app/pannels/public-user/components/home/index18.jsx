@@ -1237,21 +1237,27 @@ function Home18Page() {
                 <div className="col-lg-6 col-md-12">
                   <div className="contact-info-wrap">
                     <div className="contact-info">
+                      <h3 className="twm-title">Your advantages with True Touch</h3>
                       <div className="contact-info-section">
                         <div className="c-info-column">
-                          <div className="c-info-icon"><i className="fas fa-map-marker-alt" /></div>
-                          <h3 className="twm-title">Head Office</h3>
-                          <p>Addis Ababa, Ethiopia</p>
+                          <div className="c-info-icon"><i className="fas fa-globe-africa" /></div>
+                          <h3 className="twm-title">Countries</h3>
+                          <p>62 Countries</p>
                         </div>
                         <div className="c-info-column">
-                          <div className="c-info-icon custome-size"><i className="fas fa-mobile-alt" /></div>
-                          <h3 className="twm-title">Call Us</h3>
-                          <p><a href="tel:+251911208322">+251 91 120 8322</a></p>
+                          <div className="c-info-icon"><i className="fas fa-user-tie" /></div>
+                          <h3 className="twm-title">Clients</h3>
+                          <p>1000s of Clients</p>
                         </div>
                         <div className="c-info-column">
-                          <div className="c-info-icon"><i className="fas fa-envelope" /></div>
-                          <h3 className="twm-title">Email</h3>
-                          <p><a href="mailto:info@truetouchrecruitment.com">info@truetouchrecruitment.com</a></p>
+                          <div className="c-info-icon"><i className="fas fa-map-marked-alt" /></div>
+                          <h3 className="twm-title">Locations</h3>
+                          <p>3,800 Locations</p>
+                        </div>
+                        <div className="c-info-column">
+                          <div className="c-info-icon"><i className="fas fa-users" /></div>
+                          <h3 className="twm-title">Workers</h3>
+                          <p>660,000 People on assignment</p>
                         </div>
                       </div>
                     </div>
