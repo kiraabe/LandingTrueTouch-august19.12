@@ -15355,7 +15355,7 @@ strong {
   font-size: 14px;
   color: #000;
   font-weight: 500;
-  background-color: transparent;
+  background-color: #ffffff !important;
   border: none;
   padding: 7px 0px !important;
 }
