@@ -6027,6 +6027,9 @@ button.scroltop span {
     display: none;
   }
 }
+.twm-contact-one .advantages-heading {
+  margin-bottom: 30px;
+}
 .twm-contact-one .contact-info-section .c-info-column {
   padding: 0px 0px 0px 100px;
   color: #17171d;

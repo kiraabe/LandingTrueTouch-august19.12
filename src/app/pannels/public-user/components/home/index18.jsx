@@ -1237,7 +1237,7 @@ function Home18Page() {
                 <div className="col-lg-6 col-md-12">
                   <div className="contact-info-wrap">
                     <div className="contact-info">
-                      <h3 className="twm-title">Your advantages with True Touch</h3>
+                      <h3 className="twm-title advantages-heading">Your advantages with True Touch</h3>
                       <div className="contact-info-section">
                         <div className="c-info-column">
                           <div className="c-info-icon"><i className="fas fa-globe-africa" /></div>
