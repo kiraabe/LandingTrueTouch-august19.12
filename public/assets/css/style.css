@@ -15353,7 +15353,7 @@ strong {
 }
 .wt-search-bar-select .btn-light {
   font-size: 14px;
-  color: #000;
+  color: #000 !important;
   font-weight: 500;
   background-color: #ffffff !important;
   border: none;
