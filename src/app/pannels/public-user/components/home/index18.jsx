@@ -541,6 +541,9 @@ function Home18Page() {
                   <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/ResidentialCleanerHousekeeper.jpg")})` }} />
                   <div className="twm-city-info">
                     <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Domestic Helpers & Housekeeping</NavLink></h4>
+                    <div className="wt-post-readmore">
+                      <a href="blog-single.html" className="site-button-link site-text-primary">Read More</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -549,6 +552,9 @@ function Home18Page() {
                   <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/NannyChildcareSpecialist.jpg")})` }} />
                   <div className="twm-city-info">
                     <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Childcare & Caregiving</NavLink></h4>
+                    <div className="wt-post-readmore">
+                      <a href="blog-single.html" className="site-button-link site-text-primary">Read More</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -557,6 +563,9 @@ function Home18Page() {
                   <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/PrivateChefCook.jpg")})` }} />
                   <div className="twm-city-info">
                     <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Culinary Professionals</NavLink></h4>
+                    <div className="wt-post-readmore">
+                      <a href="blog-single.html" className="site-button-link site-text-primary">Read More</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -565,6 +574,9 @@ function Home18Page() {
                   <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/Logistics&WarehousingSupervisor.jpg")})` }} />
                   <div className="twm-city-info">
                     <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Skilled & Semi-Skilled Workers</NavLink></h4>
+                    <div className="wt-post-readmore">
+                      <a href="blog-single.html" className="site-button-link site-text-primary">Read More</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -573,6 +585,9 @@ function Home18Page() {
                   <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/ElderlyCareCaregiver.jpg")})` }} />
                   <div className="twm-city-info">
                     <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Healthcare & Elderly Care</NavLink></h4>
+                    <div className="wt-post-readmore">
+                      <a href="blog-single.html" className="site-button-link site-text-primary">Read More</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -581,6 +596,9 @@ function Home18Page() {
                   <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/KitchenCleanerCommercialCleaning.jpg")})` }} />
                   <div className="twm-city-info">
                     <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Commercial Services</NavLink></h4>
+                    <div className="wt-post-readmore">
+                      <a href="blog-single.html" className="site-button-link site-text-primary">Read More</a>
+                    </div>
                   </div>
                 </div>
               </div>
