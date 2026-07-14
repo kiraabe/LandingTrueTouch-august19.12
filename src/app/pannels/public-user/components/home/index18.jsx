@@ -370,6 +370,42 @@ function Home18Page() {
                 e.preventDefault();
                 document.getElementById('contact-us')?.scrollIntoView({ behavior: 'smooth' });
               }}>Get in Touch  <i className="feather-arrow-right"></i></a>
+              <div className="twm-bnr-search-bar">
+                <form>
+                  <div className="row">
+                    <div className="form-group col-xl-3 col-lg-6 col-md-6">
+                      <label>What</label>
+                      <select className="wt-search-bar-select selectpicker" data-live-search="true" title="" id="j-Job_Title" data-bv-field="size">
+                        <option disabled value="">Select Category</option>
+                        <option>Job Title</option>
+                        <option>Web Designer</option>
+                        <option>Developer</option>
+                        <option>Acountant</option>
+                      </select>
+                    </div>
+                    <div className="form-group col-xl-3 col-lg-6 col-md-6">
+                      <label>Type</label>
+                      <select className="wt-search-bar-select selectpicker" data-live-search="true" title="" id="j-All_Category" data-bv-field="size">
+                        <option disabled value="">Select Category</option>
+                        <option>All Category</option>
+                        <option>Web Designer</option>
+                        <option>Developer</option>
+                        <option>Acountant</option>
+                      </select>
+                    </div>
+                    <div className="form-group col-xl-3 col-lg-6 col-md-6">
+                      <label>Location</label>
+                      <div className="twm-inputicon-box">
+                        <input name="username" type="text" required className="form-control" placeholder="Search..." />
+                        <i className="twm-input-icon fas fa-map-marker-alt" />
+                      </div>
+                    </div>
+                    <div className="form-group col-xl-3 col-lg-6 col-md-6">
+                      <button type="button" className="site-button">Find Job</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
           <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
