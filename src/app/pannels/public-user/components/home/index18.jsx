@@ -465,14 +465,11 @@ function Home18Page() {
         <div className="container">
           <div className="wt-separator-two-part content-white">
             <div className="row wt-separator-two-part-row">
-              <div className="col-xl-10 col-lg-10 col-md-12 wt-separator-two-part-left">
+              <div className="col-xl-12 col-lg-12 col-md-12 wt-separator-two-part-left">
                 <div className="section-head left wt-small-separator-outer">
                   <h2 className="wt-title">Industries we support</h2>
                   <div className="wt-small-separator site-text-primary"><div>We provide cutting-edge recruitment and workforce management solutions for positions ranging from entry-level to executive across diverse industries. With our extensive knowledge, network, and expertise, we can match you with the ideal role.</div></div>
                 </div>
-              </div>
-              <div className="col-xl-2 col-lg-2 col-md-12 wt-separator-two-part-right text-right">
-                <NavLink to={publicUser.HOME1} className="site-button white">View All Locations</NavLink>
               </div>
             </div>
           </div>
