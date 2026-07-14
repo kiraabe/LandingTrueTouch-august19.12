@@ -524,7 +524,7 @@ function Home18Page() {
             <div className="section-full p-t0 p-b0 site-bg-white twm-counter-page-5-wrap">
                 <div className="container">
                     <div className="twm-company-approch5-outer">
-                        <div className="twm-company-approch5" style={{ backgroundImage: `url(${publicUrlFor("images/home-5/ctr-bg.webp")})` }}>
+                        <div className="twm-company-approch5" style={{ backgroundImage: `url(${publicUrlFor("images/home-5/ctr-bg.jpg")})` }}>
                             <div className="row">
                                 {/*block 1*/}
                                 <div className="col-lg-3 col-md-6 col-sm-6">
@@ -580,7 +580,7 @@ function Home18Page() {
             {/* Counter SECTION END */}
 
       {/* FEATURED JOBS SECTION START */}
-      <div className="section-full p-t120 p-t180 pos-relative site-bg-white twm-featured-city-area featured-jobs-section">
+      <div className="section-full p-t120 p-t180 pos-relative site-bg-white twm-featured-city-area">
         <div className="twm-bg-section-box" />
         <div className="container">
           <div className="wt-separator-two-part content-white">
@@ -995,7 +995,7 @@ function Home18Page() {
 
         <div className="twm-bg-candi-pattern" />
 
-                    {/* TESTIMONIAL SECTION START */}
+        {/* TESTIMONIAL SECTION START */}
             <div className="section-full p-t120 p-b90 site-bg-light twm-testimonial-8-area">
                 <div className="container">
                     {/* title="" START*/}
@@ -1004,7 +1004,7 @@ function Home18Page() {
                             <div className="wt-small-separator site-text-primary">
                                 <div>Client Testimonials</div>
                             </div>
-                            <h2 className="wt-title">What Our Customers
+                            <h2 className="wt-title">What Our Partners
                                 Say About Us</h2>
                         </div>
                     </div>
@@ -1028,12 +1028,12 @@ function Home18Page() {
                                                 <span><i className="fa fa-star" /></span>
                                             </div>
                                         </div>
-                                        <div className="t-discription">I have minim mollit non deserunt ullamco est sit aliqua
-                                            dolor do Eam et sint. Velit officia consequat.
+                                        <div className="t-discription">Our Qatar & Oman offices provided outstanding domestic helpers
+                                             and skilled workers. Efficient, global, and highly professional!
                                         </div>
                                         <div className="twm-testi-detail">
-                                            <div className="twm-testi-name">Guy Hawkins</div>
-                                            <div className="twm-testi-position">UI/UX Designer</div>
+                                            <div className="twm-testi-name">Al-Mansoori Group</div>
+                                            <div className="twm-testi-position">HR Director, Doha</div>
                                         </div>
                                     </div>
                                 </div>
@@ -1055,12 +1055,12 @@ function Home18Page() {
                                                 <span><i className="fa fa-star" /></span>
                                             </div>
                                         </div>
-                                        <div className="t-discription">I have minim mollit non deserunt ullamco est sit aliqua
-                                            dolor do Eam et sint. Velit officia consequat.
+                                        <div className="t-discription">Superb international recruitment! Sourced top-tier skilled
+                                             personnel from Africa and Asia to our UAE and Saudi projects.
                                         </div>
                                         <div className="twm-testi-detail">
-                                            <div className="twm-testi-name">Guy Hawkins</div>
-                                            <div className="twm-testi-position">UI/UX Designer</div>
+                                            <div className="twm-testi-name">Karanja & Associates</div>
+                                            <div className="twm-testi-position">Operations, Kenya</div>
                                         </div>
                                     </div>
                                 </div>
@@ -1082,12 +1082,12 @@ function Home18Page() {
                                                 <span><i className="fa fa-star" /></span>
                                             </div>
                                         </div>
-                                        <div className="t-discription">I have minim mollit non deserunt ullamco est sit aliqua
-                                            dolor do Eam et sint. Velit officia consequat.
+                                        <div className="t-discription">The Philippines and Kenya pipelines delivered semi-skilled
+                                             and premium local manpower swiftly to Kuwait & Bahrain.
                                         </div>
                                         <div className="twm-testi-detail">
-                                            <div className="twm-testi-name">Guy Hawkins</div>
-                                            <div className="twm-testi-position">UI/UX Designer</div>
+                                            <div className="twm-testi-name">Global Tech Services</div>
+                                            <div className="twm-testi-position">VP Supply Chain, Oman</div>
                                         </div>
                                     </div>
                                 </div>
@@ -1109,12 +1109,12 @@ function Home18Page() {
                                                 <span><i className="fa fa-star" /></span>
                                             </div>
                                         </div>
-                                        <div className="t-discription">I have minim mollit non deserunt ullamco est sit aliqua
-                                            dolor do Eam et sint. Velit officia consequat.
+                                        <div className="t-discription">Their local and international hiring channels saved us weeks of
+                                             sourcing for our Lebanon and Jordan deployments.
                                         </div>
                                         <div className="twm-testi-detail">
-                                            <div className="twm-testi-name">Guy Hawkins</div>
-                                            <div className="twm-testi-position">UI/UX Designer</div>
+                                            <div className="twm-testi-name">Pacific Horizons Ltd</div>
+                                            <div className="twm-testi-position">GM, Manila Office</div>
                                         </div>
                                     </div>
                                 </div>
