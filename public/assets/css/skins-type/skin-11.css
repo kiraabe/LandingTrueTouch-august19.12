@@ -1302,19 +1302,19 @@ Home page 11 banner
 }
 
 .wt-search-bar-select .btn-light {
-  background-color: #e0e9e6 !important;
-  color: #2d5a2d;
+  background-color: #ffffff !important;
+  color: #000 !important;
   border-color: #A9C731 !important;
 }
 
 .wt-search-bar-select .btn-light:hover {
-  background-color: #d9f0d9 !important;
+  background-color: #ffffff !important;
   border-color: #A9C731 !important;
 }
 
 .wt-search-bar-select .btn-light:focus,
 .wt-search-bar-select .btn-light:active {
-  background-color: #e0e9e6 !important;
+  background-color: #ffffff !important;
   border-color: #A9C731 !important;
   box-shadow: 0 0 0 0.2rem rgba(127, 216, 127, 0.25) !important;
 }
