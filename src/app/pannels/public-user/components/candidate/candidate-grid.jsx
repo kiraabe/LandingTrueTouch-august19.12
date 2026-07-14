@@ -52,13 +52,15 @@ function CandidateGridPage() {
   const visibleCandidates = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
     return candidates.filter((candidate) => {
-      const matchesSearch = !query || Object.values(candidate).some((value) =>
-        typeof value === "string" && value.toLowerCase().includes(query)
+      const searchableValues = Object.values(candidate).flatMap((value) => Array.isArray(value) ? value : [value]);
+      const matchesSearch = !query || searchableValues.some((value) =>
+        value !== null && value !== undefined && cleanFilterValue(String(value)).toLowerCase().includes(query)
       );
       const matchesCategory = !filters.jobCategory || candidate.profession?.trim().toLowerCase() === filters.jobCategory.trim().toLowerCase();
       const matchesLocation = !filters.location || candidate.location?.trim().toLowerCase() === filters.location.trim().toLowerCase();
       const matchesPreferredWorkCountry = !filters.preferredWorkCountry || candidate.preferred_work_country?.trim().toLowerCase() === filters.preferredWorkCountry.trim().toLowerCase();
-      const candidateSkills = candidate.skill_level?.split(",").map((skill) => cleanFilterValue(skill).toLowerCase());
+      const candidateSkills = (Array.isArray(candidate.skill_level) ? candidate.skill_level : candidate.skill_level?.split(",") || [])
+        .map((skill) => cleanFilterValue(skill).toLowerCase());
       const matchesSkill = !filters.skillLevel || candidateSkills?.includes(filters.skillLevel.trim().toLowerCase());
       const birthday = candidate.date_of_birth && new Date(candidate.date_of_birth);
       const today = new Date();
