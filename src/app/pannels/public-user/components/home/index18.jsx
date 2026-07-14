@@ -14,7 +14,7 @@ import CountUp from "react-countup";
 import AirplaneCircleHighlight from "./AirplaneCircleHighlight";
 
 // Truncate text helper
-const API_BASE_URL = import.meta.env.VITE_FILE_SERVER_URL?.replace(/\/$/, '') || '';
+const API_BASE_URL = '';
 
 const truncateText = (text, maxLength = 78) => {
   if (!text) return '';
