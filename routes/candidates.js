@@ -291,6 +291,7 @@ router.get('/candidates/featured', async (req, res) => {
         name AS full_name,
         job_category AS profession,
         current_location AS location,
+        preferred_work_country,
         profile_picture,
         religion AS hourly_rate,
         date_of_birth,
@@ -335,6 +336,16 @@ router.get('/candidates/filter-options', async (req, res) => {
     `);
     console.log('✓ Locations found:', locations.rows.length, locations.rows.slice(0, 3));
 
+    const preferredWorkCountries = await pool.query(`
+      SELECT DISTINCT TRIM(preferred_work_country) AS preferred_work_country
+      FROM candidates
+      WHERE profile_picture IS NOT NULL
+        AND preferred_work_country IS NOT NULL
+        AND TRIM(preferred_work_country) != ''
+      ORDER BY preferred_work_country
+    `);
+    console.log('✓ Preferred work countries found:', preferredWorkCountries.rows.length, preferredWorkCountries.rows.slice(0, 3));
+
     // Skill levels — unnest PostgreSQL array, clean braces/quotes, deduplicate
     const skillLevels = await pool.query(`
       SELECT DISTINCT TRIM(skill) AS skill
@@ -369,6 +380,7 @@ router.get('/candidates/filter-options', async (req, res) => {
     const response = {
       professions: professions.rows.map(r => r.profession).filter(Boolean),
       locations: locations.rows.map(r => r.location).filter(Boolean),
+      preferredWorkCountries: preferredWorkCountries.rows.map(r => r.preferred_work_country).filter(Boolean),
       skillLevels: skillLevels.rows.map(r => r.skill).filter(Boolean),
       statuses: statuses.rows.map(r => r.status).filter(Boolean)
     };
@@ -397,6 +409,7 @@ router.get('/candidates/filter-options', async (req, res) => {
       details: error.message,
       professions: [],
       locations: [],
+      preferredWorkCountries: [],
       skillLevels: [],
       statuses: []
     });

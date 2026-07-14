@@ -17,8 +17,8 @@ function CandidateGridPage() {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [filters, setFilters] = useState({ jobCategory: "", location: "", skillLevel: "", ageMin: 0, ageMax: 100, status: "" });
-  const [filterOptions, setFilterOptions] = useState({ professions: [], locations: [], skillLevels: [], statuses: [] });
+  const [filters, setFilters] = useState({ jobCategory: "", location: "", preferredWorkCountry: "", skillLevel: "", ageMin: 0, ageMax: 100, status: "" });
+  const [filterOptions, setFilterOptions] = useState({ professions: [], locations: [], preferredWorkCountries: [], skillLevels: [], statuses: [] });
 
   useEffect(() => {
     document.title = "Candidates | TrueTouch";
@@ -42,6 +42,7 @@ function CandidateGridPage() {
       .then((options) => setFilterOptions({
         professions: options.professions?.map(cleanFilterValue).filter(Boolean) || [],
         locations: options.locations?.map(cleanFilterValue).filter(Boolean) || [],
+        preferredWorkCountries: options.preferredWorkCountries?.map(cleanFilterValue).filter(Boolean) || [],
         skillLevels: options.skillLevels?.map(cleanFilterValue).filter(Boolean) || [],
         statuses: options.statuses?.map(cleanFilterValue).filter(Boolean) || []
       }))
@@ -55,6 +56,7 @@ function CandidateGridPage() {
         .some((value) => value?.toLowerCase().includes(query));
       const matchesCategory = !filters.jobCategory || candidate.profession?.trim().toLowerCase() === filters.jobCategory.trim().toLowerCase();
       const matchesLocation = !filters.location || candidate.location?.trim().toLowerCase() === filters.location.trim().toLowerCase();
+      const matchesPreferredWorkCountry = !filters.preferredWorkCountry || candidate.preferred_work_country?.trim().toLowerCase() === filters.preferredWorkCountry.trim().toLowerCase();
       const candidateSkills = candidate.skill_level?.split(",").map((skill) => cleanFilterValue(skill).toLowerCase());
       const matchesSkill = !filters.skillLevel || candidateSkills?.includes(filters.skillLevel.trim().toLowerCase());
       const birthday = candidate.date_of_birth && new Date(candidate.date_of_birth);
@@ -65,7 +67,7 @@ function CandidateGridPage() {
       const matchesAge = (filters.ageMin === 0 && filters.ageMax === 100)
         || (candidateAge !== null && candidateAge >= filters.ageMin && candidateAge <= filters.ageMax);
       const matchesStatus = !filters.status || candidate.status?.trim().toLowerCase() === filters.status.trim().toLowerCase();
-      return matchesSearch && matchesCategory && matchesLocation && matchesSkill && matchesAge && matchesStatus;
+      return matchesSearch && matchesCategory && matchesLocation && matchesPreferredWorkCountry && matchesSkill && matchesAge && matchesStatus;
     });
   }, [candidates, filters, searchQuery]);
 
@@ -89,7 +91,7 @@ function CandidateGridPage() {
   };
 
   const clearFilters = () => {
-    setFilters({ jobCategory: "", location: "", skillLevel: "", ageMin: 0, ageMax: 100, status: "" });
+    setFilters({ jobCategory: "", location: "", preferredWorkCountry: "", skillLevel: "", ageMin: 0, ageMax: 100, status: "" });
     setSearchQuery("");
   };
 
@@ -135,6 +137,13 @@ function CandidateGridPage() {
                   <select value={filters.location} onChange={(event) => updateFilter("location", event.target.value)}>
                     <option value="">All locations</option>
                     {Array.from(new Set(filterOptions.locations)).map((option) => <option key={option} value={option}>{option}</option>)}
+                  </select>
+                </label>
+                <label className="candidate-filter-field">
+                  <span>Preferred work country</span>
+                  <select value={filters.preferredWorkCountry} onChange={(event) => updateFilter("preferredWorkCountry", event.target.value)}>
+                    <option value="">All preferred countries</option>
+                    {Array.from(new Set(filterOptions.preferredWorkCountries)).map((option) => <option key={option} value={option}>{option}</option>)}
                   </select>
                 </label>
                 <label className="candidate-filter-field">
@@ -215,6 +224,11 @@ function CandidateGridPage() {
                             <span><i className="feather-map-pin" />{candidate.location || "Location not specified"}</span>
                             {candidate.hourly_rate && <span>{candidate.hourly_rate}</span>}
                           </div>
+                          {candidate.preferred_work_country && (
+                            <div className="candidate-directory-preferred-country">
+                              <i className="feather-briefcase" />Preferred: {candidate.preferred_work_country}
+                            </div>
+                          )}
                           <NavLink to={`/can-detail/${candidate.id}`} className="candidate-directory-profile-link">View Profile</NavLink>
                         </div>
                       </article>
