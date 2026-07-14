@@ -473,7 +473,7 @@ function Home18Page() {
               </div>
             </div>
           </div>
-          <div className="twm-featured-city2-section">
+          <div className="twm-featured-city2-section industries-cards-section">
             <div className="row">
               <div className="col-xl-4 col-lg-4 col-md-6">
                 <div className="twm-featured-city2">

@@ -17028,6 +17028,10 @@ strong {
 }
 
 /*Featured cities*/
+.industries-cards-section {
+  margin: 40px 0 0;
+}
+
 .twm-featured-city2 {
   margin-bottom: 30px;
   padding: 15px;
