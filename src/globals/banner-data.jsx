@@ -208,6 +208,7 @@ export function setBanner(currentpath) {
         case pubRoute(publicUser.pages.ICONS): {
             return banner.publicUser.pages.icons
         }
+        case "/blogs":
         case pubRoute(publicUser.blog.GRID1): {
             return banner.publicUser.blogs.grid1
         }
