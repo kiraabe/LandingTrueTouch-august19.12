@@ -42,7 +42,7 @@ function BlogGrid1Page() {
     fetchBlogs();
   }, []);
 
-  const pageCount = Math.ceil(blogs.length / BLOGS_PER_PAGE);
+  const pageCount = Math.max(1, Math.ceil(blogs.length / BLOGS_PER_PAGE));
   const visibleBlogs = useMemo(
     () => blogs.slice((currentPage - 1) * BLOGS_PER_PAGE, currentPage * BLOGS_PER_PAGE),
     [blogs, currentPage]
@@ -95,8 +95,7 @@ function BlogGrid1Page() {
               ))}
             </div>
 
-            {pageCount > 1 && (
-              <nav className="pagination-outer text-center" aria-label="Blog pages">
+            <nav className="pagination-outer text-center" aria-label="Blog pages">
                 <div className="pagination-style1">
                   <ul>
                     <li className="prev">
@@ -143,7 +142,6 @@ function BlogGrid1Page() {
                   </ul>
                 </div>
               </nav>
-            )}
           </>
         ) : (
           <div className="text-center p-5">
