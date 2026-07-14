@@ -107,6 +107,7 @@ function Home18Page() {
 
   // Search, filter, tab state
   const [searchQuery, setSearchQuery] = useState('');
+  const [heroLocation, setHeroLocation] = useState('');
   const [activeTab, setActiveTab] = useState('all');
   const [filters, setFilters] = useState({ jobCategory: '', preferredWorkCountry: '', skillLevel: '', status: '' });
   const [filterOptions, setFilterOptions] = useState({ professions: [], preferredWorkCountries: [], skillLevels: [], statuses: [] });
@@ -364,7 +365,7 @@ function Home18Page() {
       jobCategory: formData.get('jobCategory') || '',
       status: formData.get('status') || ''
     }));
-    setSearchQuery(formData.get('location')?.trim() || '');
+    setSearchQuery(heroLocation.trim());
     setTimeout(() => document.getElementById('candidates')?.scrollIntoView({ behavior: 'smooth' }), 0);
   };
 
@@ -386,14 +387,14 @@ function Home18Page() {
                   <div className="row">
                     <div className="form-group col-xl-3 col-lg-6 col-md-6">
                       <label>What</label>
-                      <select name="jobCategory" value={filters.jobCategory} onChange={(event) => handleFilterChange('jobCategory', event.target.value)} className="wt-search-bar-select selectpicker" data-live-search="true" title="" id="j-Job_Title">
+                      <select name="jobCategory" value={filters.jobCategory} onChange={(event) => handleFilterChange('jobCategory', event.target.value)} className="wt-search-bar-select" id="j-Job_Title">
                         <option value="">Select Profession</option>
                         {filterOptions.professions.map(profession => <option key={profession} value={profession}>{profession}</option>)}
                       </select>
                     </div>
                     <div className="form-group col-xl-3 col-lg-6 col-md-6">
                       <label>Type</label>
-                      <select name="status" value={filters.status} onChange={(event) => handleFilterChange('status', event.target.value)} className="wt-search-bar-select selectpicker" data-live-search="true" title="" id="j-All_Category">
+                      <select name="status" value={filters.status} onChange={(event) => handleFilterChange('status', event.target.value)} className="wt-search-bar-select" id="j-All_Category">
                         <option value="">Select Status</option>
                         {filterOptions.statuses.map(status => <option key={status} value={status}>{status}</option>)}
                       </select>
@@ -401,7 +402,7 @@ function Home18Page() {
                     <div className="form-group col-xl-3 col-lg-6 col-md-6">
                       <label>Location</label>
                       <div className="twm-inputicon-box">
-                        <input name="location" type="text" className="form-control hero-location-input" placeholder="Search by location..." />
+                        <input name="location" type="text" value={heroLocation} onChange={(event) => setHeroLocation(event.target.value)} className="form-control hero-location-input" placeholder="Search by location..." />
                         <i className="twm-input-icon fas fa-map-marker-alt" />
                       </div>
                     </div>
