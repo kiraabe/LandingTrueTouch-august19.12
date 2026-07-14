@@ -467,8 +467,8 @@ function Home18Page() {
             <div className="row wt-separator-two-part-row">
               <div className="col-xl-5 col-lg-5 col-md-12 wt-separator-two-part-left">
                 <div className="section-head left wt-small-separator-outer">
-                  <div className="wt-small-separator site-text-primary"><div>Recruitment Services</div></div>
                   <h2 className="wt-title">Professional Staff for Every Industry</h2>
+                  <div className="wt-small-separator site-text-primary"><div>Recruitment Services</div></div>
                 </div>
               </div>
               <div className="col-xl-7 col-lg-7 col-md-12 wt-separator-two-part-right text-right">
