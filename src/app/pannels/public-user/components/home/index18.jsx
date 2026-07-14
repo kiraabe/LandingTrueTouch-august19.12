@@ -394,7 +394,7 @@ function Home18Page() {
                       </select>
                     </div>
                     <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                      <label>Type</label>
+                      <label>Religion</label>
                       <select name="status" value={filters.status} onChange={(event) => handleFilterChange('status', event.target.value)} className="wt-search-bar-select" id="j-All_Category">
                         <option value="">Select Status</option>
                         {filterOptions.statuses.map(status => <option key={status} value={status}>{status}</option>)}
