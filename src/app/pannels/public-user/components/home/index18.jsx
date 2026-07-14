@@ -467,7 +467,7 @@ function Home18Page() {
             <div className="row wt-separator-two-part-row">
               <div className="col-xl-5 col-lg-5 col-md-12 wt-separator-two-part-left">
                 <div className="section-head left wt-small-separator-outer">
-                  <h2 className="wt-title">Professional Staff for Every Industry</h2>
+                  <h2 className="wt-title">Industries we support</h2>
                   <div className="wt-small-separator site-text-primary"><div>We provide cutting-edge recruitment and workforce management solutions for positions ranging from entry-level to executive across diverse industries. With our extensive knowledge, network, and expertise, we can match you with the ideal role.</div></div>
                 </div>
               </div>
