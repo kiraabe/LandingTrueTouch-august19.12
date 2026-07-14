@@ -373,12 +373,18 @@ function Home18Page() {
   const handleHeroSearchSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
+    const locationValue = heroLocation.trim();
+    const preferredWorkCountry = filterOptions.preferredWorkCountries.find(country =>
+      country.trim().toLowerCase() === locationValue.toLowerCase()
+    ) || '';
+
     setFilters(currentFilters => ({
       ...currentFilters,
       jobCategory: formData.get('jobCategory') || '',
-      religion: formData.get('religion') || ''
+      religion: formData.get('religion') || '',
+      preferredWorkCountry
     }));
-    setSearchQuery(heroLocation.trim());
+    setSearchQuery(preferredWorkCountry ? '' : locationValue);
     setTimeout(() => document.getElementById('candidates')?.scrollIntoView({ behavior: 'smooth' }), 0);
   };
 
