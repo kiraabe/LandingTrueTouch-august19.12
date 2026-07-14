@@ -14,6 +14,8 @@ import CountUp from "react-countup";
 import AirplaneCircleHighlight from "./AirplaneCircleHighlight";
 
 // Truncate text helper
+const API_BASE_URL = import.meta.env.VITE_FILE_SERVER_URL?.replace(/\/$/, '') || '';
+
 const truncateText = (text, maxLength = 78) => {
   if (!text) return '';
   if (text.length <= maxLength) return text;
@@ -134,7 +136,7 @@ function Home18Page() {
     const fetchCandidates = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/api/candidates/featured', {
+        const response = await fetch(`${API_BASE_URL}/api/candidates/featured`, {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
         });
@@ -153,20 +155,21 @@ function Home18Page() {
 
     const fetchFilterOptions = async () => {
       try {
-        const response = await fetch('/api/candidates/filter-options', {
+        const response = await fetch(`${API_BASE_URL}/api/candidates/filter-options`, {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
         });
         if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         const data = await response.json();
-        // Clean backslashes from skill levels
-        if (data.skillLevels && Array.isArray(data.skillLevels)) {
-          data.skillLevels = data.skillLevels.map(s =>
-            typeof s === 'string' ? s.replace(/\\+/g, '').trim() : s
-          ).filter(s => s.length > 0);
-        }
-        console.log('✅ Filter options loaded:', data);
-        setFilterOptions(data);
+        const cleanOptions = (options = []) => options
+          .map(option => typeof option === 'string' ? option.replace(/\\+/g, '').replace(/[{}"]+/g, '').trim() : option)
+          .filter(Boolean);
+        setFilterOptions({
+          professions: cleanOptions(data.professions),
+          preferredWorkCountries: cleanOptions(data.preferredWorkCountries),
+          statuses: cleanOptions(data.statuses),
+          skillLevels: cleanOptions(data.skillLevels)
+        });
       } catch (err) {
         console.error('❌ Error fetching filter options:', err);
       }
@@ -353,6 +356,18 @@ function Home18Page() {
     setActiveTab('all');
   };
 
+  const handleHeroSearchSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    setFilters(currentFilters => ({
+      ...currentFilters,
+      jobCategory: formData.get('jobCategory') || '',
+      status: formData.get('status') || ''
+    }));
+    setSearchQuery(formData.get('location')?.trim() || '');
+    setTimeout(() => document.getElementById('candidates')?.scrollIntoView({ behavior: 'smooth' }), 0);
+  };
+
   return (
     <>
       <Toaster position="top-right" richColors />
@@ -367,37 +382,31 @@ function Home18Page() {
               <div className="twm-bnr-title-large">Hire <AirplaneCircleHighlight className="site-text-primary">Skilled </AirplaneCircleHighlight>  Workers with True Touch</div>
               <p className="twm-bnr-tagline">True Touch connects employers with vetted, skilled professionals from Asia and Africa. We provide reliable domestic helpers, healthcare workers, chefs, and skilled labor across the Gulf, Middle East, and beyond.</p>
               <div className="twm-bnr-search-bar">
-                <form>
+                <form onSubmit={handleHeroSearchSubmit}>
                   <div className="row">
                     <div className="form-group col-xl-3 col-lg-6 col-md-6">
                       <label>What</label>
-                      <select className="wt-search-bar-select selectpicker" data-live-search="true" title="" id="j-Job_Title" data-bv-field="size">
-                        <option disabled value="">Select Category</option>
-                        <option>Job Title</option>
-                        <option>Web Designer</option>
-                        <option>Developer</option>
-                        <option>Acountant</option>
+                      <select name="jobCategory" value={filters.jobCategory} onChange={(event) => handleFilterChange('jobCategory', event.target.value)} className="wt-search-bar-select selectpicker" data-live-search="true" title="" id="j-Job_Title">
+                        <option value="">Select Profession</option>
+                        {filterOptions.professions.map(profession => <option key={profession} value={profession}>{profession}</option>)}
                       </select>
                     </div>
                     <div className="form-group col-xl-3 col-lg-6 col-md-6">
                       <label>Type</label>
-                      <select className="wt-search-bar-select selectpicker" data-live-search="true" title="" id="j-All_Category" data-bv-field="size">
-                        <option disabled value="">Select Category</option>
-                        <option>All Category</option>
-                        <option>Web Designer</option>
-                        <option>Developer</option>
-                        <option>Acountant</option>
+                      <select name="status" value={filters.status} onChange={(event) => handleFilterChange('status', event.target.value)} className="wt-search-bar-select selectpicker" data-live-search="true" title="" id="j-All_Category">
+                        <option value="">Select Status</option>
+                        {filterOptions.statuses.map(status => <option key={status} value={status}>{status}</option>)}
                       </select>
                     </div>
                     <div className="form-group col-xl-3 col-lg-6 col-md-6">
                       <label>Location</label>
                       <div className="twm-inputicon-box">
-                        <input name="username" type="text" required className="form-control hero-location-input" placeholder="Search..." />
+                        <input name="location" type="text" className="form-control hero-location-input" placeholder="Search by location..." />
                         <i className="twm-input-icon fas fa-map-marker-alt" />
                       </div>
                     </div>
                     <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                      <button type="button" className="site-button">Find Job</button>
+                      <button type="submit" className="site-button">Find Job</button>
                     </div>
                   </div>
                 </form>
