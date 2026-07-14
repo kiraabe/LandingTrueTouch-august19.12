@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-labelledby="title">
+  <title id="title">Testimonial placeholder</title>
+  <rect width="320" height="320" fill="#eef2f6"/>
+  <circle cx="160" cy="120" r="58" fill="#c7d0da"/>
+  <path d="M58 286c12-63 51-96 102-96s90 33 102 96" fill="#c7d0da"/>
+</svg>

@@ -1015,7 +1015,7 @@ function Home18Page() {
                             <div className="item ">
                                 <div className="testimonials-v site-bg-white">
                                     <div className="twm-testi-media">
-                                        <JobZImage src="images/home-6/testimonial/pic1.jpg" alt="#" />
+                                        <JobZImage src="images/testimonial-placeholder.svg" alt="Client testimonial placeholder" />
                                     </div>
                                     <div className="testimonial-v-content">
                                         <div className="t-testimonial-top">
@@ -1042,7 +1042,7 @@ function Home18Page() {
                             <div className="item ">
                                 <div className="testimonials-v site-bg-white">
                                     <div className="twm-testi-media">
-                                        <JobZImage src="images/home-6/testimonial/pic2.jpg" alt="#" />
+                                        <JobZImage src="images/testimonial-placeholder.svg" alt="Client testimonial placeholder" />
                                     </div>
                                     <div className="testimonial-v-content">
                                         <div className="t-testimonial-top">
@@ -1069,7 +1069,7 @@ function Home18Page() {
                             <div className="item ">
                                 <div className="testimonials-v site-bg-white">
                                     <div className="twm-testi-media">
-                                        <JobZImage src="images/home-6/testimonial/pic3.jpg" alt="#" />
+                                        <JobZImage src="images/testimonial-placeholder.svg" alt="Client testimonial placeholder" />
                                     </div>
                                     <div className="testimonial-v-content">
                                         <div className="t-testimonial-top">
@@ -1096,7 +1096,7 @@ function Home18Page() {
                             <div className="item ">
                                 <div className="testimonials-v site-bg-white">
                                     <div className="twm-testi-media">
-                                        <JobZImage src="images/home-6/testimonial/pic1.jpg" alt="#" />
+                                        <JobZImage src="images/testimonial-placeholder.svg" alt="Client testimonial placeholder" />
                                     </div>
                                     <div className="testimonial-v-content">
                                         <div className="t-testimonial-top">
