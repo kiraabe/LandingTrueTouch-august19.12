@@ -4,6 +4,7 @@ import Home18Page from "../app/pannels/public-user/components/home/index18";
 import CandidateDetail from "../app/pannels/public-user/components/candidate/candidate-detail";
 import CandidateGridPage from "../app/pannels/public-user/components/candidate/candidate-grid";
 import BlogDetail from "../app/pannels/public-user/components/blog/blog-detail";
+import BlogGrid1Page from "../app/pannels/public-user/components/blog/blog-grid1";
 
 function PublicUserRoutes() {
     return (
@@ -15,6 +16,8 @@ function PublicUserRoutes() {
             <Route path={publicUser.candidate.DETAIL1} element={<CandidateDetail />} />
             <Route path={publicUser.candidate.DETAIL2} element={<CandidateDetail />} />
             <Route path="/can-detail/:id" element={<CandidateDetail />} />
+            <Route path="/blogs" element={<BlogGrid1Page />} />
+            <Route path={publicUser.blog.GRID1} element={<BlogGrid1Page />} />
             <Route path={publicUser.blog.DETAIL} element={<BlogDetail />} />
             <Route path="/blog-detail/:id" element={<BlogDetail />} />
             <Route path="*" element={<Home18Page />} />
