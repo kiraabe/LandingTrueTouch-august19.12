@@ -906,7 +906,7 @@ function Home18Page() {
                   ))}
                 </div>
                 <div className="text-center" style={{ marginTop: '40px' }}>
-                  <NavLink to={publicUser.blog.LIST} className="site-button">All Blogs</NavLink>
+                  <NavLink to="/blogs" className="site-button">All Blogs</NavLink>
                 </div>
               </>
             ) : (
