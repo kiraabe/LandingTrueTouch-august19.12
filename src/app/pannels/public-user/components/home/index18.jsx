@@ -392,7 +392,7 @@ function Home18Page() {
                     <div className="form-group col-xl-3 col-lg-6 col-md-6">
                       <label>Location</label>
                       <div className="twm-inputicon-box">
-                        <input name="username" type="text" required className="form-control" placeholder="Search..." />
+                        <input name="username" type="text" required className="form-control hero-location-input" placeholder="Search..." />
                         <i className="twm-input-icon fas fa-map-marker-alt" />
                       </div>
                     </div>

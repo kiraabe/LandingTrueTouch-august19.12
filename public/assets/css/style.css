@@ -9373,6 +9373,10 @@ ol.comment-list li.comment .comment-respond .comment-form p {
   padding-right: 40px;
   background: transparent;
 }
+
+.twm-bnr-search-bar .hero-location-input {
+  background-color: #fff;
+}
 .twm-inputicon-box .twm-input-icon {
   position: absolute;
   right: 0;
