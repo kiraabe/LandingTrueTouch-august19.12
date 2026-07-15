@@ -138,7 +138,12 @@ function BlogDetail() {
                       ) : (
                         <p>{blog.description || 'No content available'}</p>
                       )}
-                      {blog.pull_quote_en && <blockquote className="blog-pull-quote">{blog.pull_quote_en}</blockquote>}
+                      {blog.pull_quote_en && (
+                        <blockquote className="blog-pull-quote">
+                          <p>{blog.pull_quote_en}</p>
+                          {blog.pull_quote_author && <cite className="blog-pull-quote-author">— {blog.pull_quote_author}</cite>}
+                        </blockquote>
+                      )}
                     </div>
 
                     <div className="twm-posts-author">
@@ -296,6 +301,19 @@ function BlogDetail() {
           font-size: 20px;
           font-style: italic;
           line-height: 1.6;
+        }
+
+        .blog-pull-quote p {
+          margin: 0;
+        }
+
+        .blog-pull-quote-author {
+          display: block;
+          margin-top: 12px;
+          color: #666;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 600;
         }
 
         .blog-content-text p {
