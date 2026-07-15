@@ -11,6 +11,7 @@ function Header1({ _config }) {
     const [currentLanguage, setCurrentLanguage] = useState("en");
     const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
     const [expandedSubmenu, setExpandedSubmenu] = useState(null);
+    const [mobileSearchQuery, setMobileSearchQuery] = useState("");
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -81,6 +82,16 @@ function Header1({ _config }) {
 
     const handleToggleSubmenu = (submenuId) => {
         setExpandedSubmenu(expandedSubmenu === submenuId ? null : submenuId);
+    };
+
+    const handleMobileSearchSubmit = (e) => {
+        e.preventDefault();
+        const query = mobileSearchQuery.trim();
+        if (query) {
+            navigate(`${publicUser.HOME1}?search=${encodeURIComponent(query)}`);
+            setMobileSearchQuery("");
+            setMenuActive(false);
+        }
     };
 
     const languageLabels = {
@@ -210,10 +221,16 @@ function Header1({ _config }) {
                         </button>
                     </div>
 
-                    <div className="mobile-drawer-search">
-                        <input type="text" placeholder="Search for..." className="mobile-drawer-search-input" />
-                        <button className="mobile-drawer-search-btn"><i className="feather-search" /></button>
-                    </div>
+                    <form className="mobile-drawer-search" onSubmit={handleMobileSearchSubmit}>
+                        <input
+                            type="text"
+                            placeholder="Search for..."
+                            className="mobile-drawer-search-input"
+                            value={mobileSearchQuery}
+                            onChange={(e) => setMobileSearchQuery(e.target.value)}
+                        />
+                        <button type="submit" className="mobile-drawer-search-btn"><i className="feather-search" /></button>
+                    </form>
 
                     <nav className="mobile-drawer-nav">
                         <ul className="mobile-nav-list">
