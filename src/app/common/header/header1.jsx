@@ -121,6 +121,28 @@ function Header1({ _config }) {
                             </button>
                             {/* MAIN Vav */}
                             <div className="nav-animation header-nav navbar-collapse collapse d-flex justify-content-center">
+                                <div className="mobile-drawer-logo">
+                                    <a href="/" onClick={(e) => {
+                                        e.preventDefault();
+                                        setMenuActive(false);
+                                        if (location.pathname !== "/" && location.pathname !== publicUser.HOME1) {
+                                            navigate(publicUser.INITIAL, { replace: false });
+                                            setTimeout(() => {
+                                                const element = document.getElementById('home-hero');
+                                                if (element) {
+                                                    element.scrollIntoView({ behavior: 'smooth' });
+                                                }
+                                            }, 100);
+                                        } else {
+                                            const element = document.getElementById('home-hero');
+                                            if (element) {
+                                                element.scrollIntoView({ behavior: 'smooth' });
+                                            }
+                                        }
+                                    }}>
+                                        <JobZImage src="images/logo-dark.png" alt="TrueTouch Logo" />
+                                    </a>
+                                </div>
                                 <ul className=" nav navbar-nav">
                                     <li className={isNavLinkActive("home") ? "nav-link-active" : ""}>
                                         <a href="/" onClick={(e) => {
