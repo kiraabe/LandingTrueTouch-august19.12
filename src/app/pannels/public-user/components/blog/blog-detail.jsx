@@ -132,7 +132,6 @@ function BlogDetail() {
                     </header>
 
                     <div className="wt-post-discription blog-body">
-                      {blog.description && <p className="blog-excerpt">{blog.description}</p>}
                       {blog.content ? (
                         <div className="blog-content-text" dangerouslySetInnerHTML={{ __html: blog.content }} />
                       ) : (
@@ -144,6 +143,7 @@ function BlogDetail() {
                           {(blog.pull_quote_author || blog.author) && <cite className="blog-pull-quote-author">— {blog.pull_quote_author || blog.author}</cite>}
                         </blockquote>
                       )}
+                      {blog.description && <p className="blog-excerpt">{blog.description}</p>}
                     </div>
 
                     <div className="twm-posts-author">
