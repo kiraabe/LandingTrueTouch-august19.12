@@ -80,9 +80,7 @@ function BlogDetail() {
     return (
       <>
         <Toaster position="top-right" richColors />
-        <div className="blog-detail-loading">
-          <Spinner />
-        </div>
+        <Spinner fullPage />
       </>
     );
   }
