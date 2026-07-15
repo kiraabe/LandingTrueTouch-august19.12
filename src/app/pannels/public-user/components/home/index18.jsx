@@ -754,7 +754,6 @@ function Home18Page() {
       </div>
       {/* Portfolio SECTION END */}
 
-
       {/* CANDIDATES START */}
 <div id="candidates" className="section-full p-t120 p-b90 site-bg-white twm-candidate-h-page7-wrap pos-relative">
   <div className="container">
