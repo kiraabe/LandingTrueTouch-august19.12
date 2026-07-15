@@ -75,7 +75,6 @@
 
 /* Mobile Drawer Styles */
 .mobile-drawer-overlay {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -87,7 +86,6 @@
 }
 
 .mobile-side-drawer {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -96,6 +94,7 @@
   height: 100vh;
   background: white;
   z-index: 999;
+  display: flex;
   flex-direction: column;
   overflow-y: auto;
   transform: translateX(-100%);
@@ -271,7 +270,10 @@
 
 /* Desktop Navigation (unchanged) */
 @media (min-width: 768px) {
-  .mobile-drawer-overlay,
+  .mobile-drawer-overlay {
+    display: none !important;
+  }
+
   .mobile-side-drawer {
     display: none !important;
   }
