@@ -532,9 +532,10 @@ function Home18Page() {
                                         <div className="icon-content">
                                             <div className="tw-count-number site-text-white">
                                                 <span className="counter">
-<CountUp end={25} duration={10} />
-</span>k+</div>
-                                            <p className="icon-content-info">Completed Cases</p>
+<CountUp end={28} duration={10} />
+</span>+</div>
+                                            <p className="icon-content-info">Happy Client 
+</p>
                                         </div>
                                     </div>
                                 </div>
@@ -544,9 +545,10 @@ function Home18Page() {
                                         <div className="icon-content">
                                             <div className="tw-count-number site-text-white">
                                                 <span className="counter">
-<CountUp end={17} duration={10} />
-</span>+</div>
-                                            <p className="icon-content-info">Our Office</p>
+<CountUp end={25} duration={10} />
+</span>k+</div>
+                                            <p className="icon-content-info">Completed Cases 
+</p>
                                         </div>
                                     </div>
                                 </div>
@@ -555,8 +557,9 @@ function Home18Page() {
                                     <div className="counter-outer-two">
                                         <div className="icon-content">
                                             <div className="tw-count-number site-text-white">
-                                                <span className="counter">86</span>+</div>
-                                            <p className="icon-content-info">Skilled People</p>
+                                                <span className="counter">80</span>%</div>
+                                            <p className="icon-content-info">Success Score 
+</p>
                                         </div>
                                     </div>
                                 </div>
@@ -566,9 +569,9 @@ function Home18Page() {
                                         <div className="icon-content">
                                             <div className="tw-count-number site-text-white">
                                                 <span className="counter">
-<CountUp end={28} duration={10} />
+<CountUp end={10} duration={10} />
 </span>+</div>
-                                            <p className="icon-content-info">Happy Client<br />with<br />100<br />Employees</p>
+                                            <p className="icon-content-info">Countries</p>
                                         </div>
                                     </div>
                                 </div>
