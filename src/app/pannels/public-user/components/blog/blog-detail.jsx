@@ -11,6 +11,7 @@ function BlogDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [blog, setBlog] = useState(null);
+  const [relatedBlogs, setRelatedBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -59,6 +60,21 @@ function BlogDetail() {
       document.title = `Blog Detail - ${blog.title} | TrueTouch`;
     }
   }, [blog]);
+
+  useEffect(() => {
+    const fetchRelatedBlogs = async () => {
+      try {
+        const response = await fetch('/api/blogs');
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        setRelatedBlogs(data.filter((item) => item.id !== id).slice(0, 5));
+      } catch (err) {
+        console.error('❌ Error fetching related blogs:', err);
+      }
+    };
+
+    fetchRelatedBlogs();
+  }, [id]);
 
   if (loading) {
     return (
@@ -136,15 +152,7 @@ function BlogDetail() {
                       </div>
                     </div>
 
-                    <div className="post-area-tags-wrap blog-footer">
-                      <div className="blog-tags">
-                        {blog.tags && blog.tags.length > 0 && (
-                          <>
-                            <strong>Tags:</strong>
-                            {blog.tags.map((tag, index) => <span key={index} className="blog-tag">{tag}</span>)}
-                          </>
-                        )}
-                      </div>
+                    <div className="post-area-tags-wrap blog-footer blog-share-footer">
                       <div className="post-social-icons-wrap">
                         <strong>Share</strong>
                         <div className="share-buttons">
@@ -164,19 +172,25 @@ function BlogDetail() {
 
               <div className="col-lg-4 col-md-12 rightSidebar">
                 <aside className="blog-sidebar">
-                  <div className="sidebar-widget">
-                    <h3 className="widget-title">About the Author</h3>
-                    <div className="author-box">
-                      <p className="author-name">{blog.author || 'Admin'}</p>
-                      <p className="author-bio">{blog.author_bio || 'Welcome to our blog. Stay tuned for more updates.'}</p>
+                  <div className="sidebar-widget recent-posts-widget">
+                    <h3 className="widget-title">Recent Articles</h3>
+                    <div className="recent-post-list">
+                      {relatedBlogs.map((item) => (
+                        <NavLink key={item.id} to={`/blog-detail/${item.id}`} className="recent-post-item">
+                          {item.image_url ? <JobZImage src={getJobImageUrl(item.image_url)} alt={item.title} /> : <span className="recent-post-placeholder" />}
+                          <span className="recent-post-content">
+                            <small>{new Date(item.created_at).toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' })}</small>
+                            <strong>{item.title}</strong>
+                          </span>
+                        </NavLink>
+                      ))}
+                      {relatedBlogs.length === 0 && <p className="sidebar-empty-state">No other articles yet.</p>}
                     </div>
                   </div>
-                  <div className="sidebar-widget">
-                    <h3 className="widget-title">Share This Post</h3>
-                    <div className="share-buttons">
-                      <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook" className="share-btn share-facebook"><i className="fab fa-facebook-f" /></a>
-                      <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(blog.title)}`} target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter" className="share-btn share-twitter"><i className="fab fa-twitter" /></a>
-                      <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn" className="share-btn share-linkedin"><i className="fab fa-linkedin-in" /></a>
+                  <div className="sidebar-widget tags-widget">
+                    <h3 className="widget-title">Tags</h3>
+                    <div className="blog-tags">
+                      {(blog.tags || []).map((tag, index) => <span key={index} className="blog-tag">{tag}</span>)}
                     </div>
                   </div>
                 </aside>
@@ -273,7 +287,7 @@ function BlogDetail() {
         .blog-footer {
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          justify-content: center;
           gap: 25px;
           padding-top: 30px;
           border-top: 1px solid #eee;
@@ -388,6 +402,62 @@ function BlogDetail() {
           border-radius: 8px;
         }
 
+        .recent-post-list {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+
+        .recent-post-item {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          color: inherit;
+          text-decoration: none;
+        }
+
+        .recent-post-item img,
+        .recent-post-placeholder {
+          flex: 0 0 58px;
+          width: 58px;
+          height: 58px;
+          border-radius: 4px;
+          object-fit: cover;
+          background: #e7e7e7;
+        }
+
+        .recent-post-content {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          min-width: 0;
+        }
+
+        .recent-post-content small {
+          color: #888;
+          font-size: 11px;
+        }
+
+        .recent-post-content strong {
+          display: -webkit-box;
+          overflow: hidden;
+          color: #222;
+          font-size: 13px;
+          line-height: 1.35;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+        }
+
+        .recent-post-item:hover .recent-post-content strong {
+          color: #007bff;
+        }
+
+        .sidebar-empty-state {
+          margin: 0;
+          color: #777;
+          font-size: 14px;
+        }
+
         .widget-title {
           font-size: 18px;
           font-weight: 700;
@@ -484,7 +554,7 @@ function BlogDetail() {
           }
 
           .blog-footer {
-            align-items: flex-start;
+            align-items: center;
             flex-direction: column;
           }
 
