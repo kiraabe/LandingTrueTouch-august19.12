@@ -132,11 +132,13 @@ function BlogDetail() {
                     </header>
 
                     <div className="wt-post-discription blog-body">
+                      {blog.description && <p className="blog-excerpt">{blog.description}</p>}
                       {blog.content ? (
                         <div className="blog-content-text" dangerouslySetInnerHTML={{ __html: blog.content }} />
                       ) : (
                         <p>{blog.description || 'No content available'}</p>
                       )}
+                      {blog.pull_quote_en && <blockquote className="blog-pull-quote">{blog.pull_quote_en}</blockquote>}
                     </div>
 
                     <div className="twm-posts-author">
@@ -148,7 +150,7 @@ function BlogDetail() {
                       <div className="twm-post-author-content">
                         <span>{blog.author_role_en || 'TrueTouch Contributor'}</span>
                         <strong>{blog.author || 'Admin'}</strong>
-                        <p>{blog.author_bio || 'Welcome to our blog. Stay tuned for more updates.'}</p>
+                        <p>{blog.author_bio_en || blog.author_bio || 'Welcome to our blog. Stay tuned for more updates.'}</p>
                       </div>
                     </div>
 
@@ -163,9 +165,15 @@ function BlogDetail() {
                       </div>
                     </div>
 
-                    <div className="post-navigation">
-                      <NavLink to="/blogs" className="post-nav-back"><i className="fa fa-angle-left" /> Back to all blogs</NavLink>
-                    </div>
+                    <nav className="post-navigation" aria-label="Post navigation">
+                      {blog.previous_post_slug && (
+                        <NavLink to={`/blog-detail/${blog.previous_post_slug}`} className="post-nav-previous"><i className="fa fa-angle-left" /> Previous post</NavLink>
+                      )}
+                      <NavLink to="/blogs" className="post-nav-back">Back to all blogs</NavLink>
+                      {blog.next_post_slug && (
+                        <NavLink to={`/blog-detail/${blog.next_post_slug}`} className="post-nav-next">Next post <i className="fa fa-angle-right" /></NavLink>
+                      )}
+                    </nav>
                   </div>
                 </article>
               </div>
@@ -267,9 +275,27 @@ function BlogDetail() {
           color: #333;
         }
 
+        .blog-excerpt {
+          margin-bottom: 24px;
+          color: #666;
+          font-size: 18px;
+          font-style: italic;
+          line-height: 1.7;
+        }
+
         .blog-content-text {
           font-size: 16px;
           margin-bottom: 40px;
+        }
+
+        .blog-pull-quote {
+          margin: 40px 0;
+          padding: 20px 25px;
+          border-left: 4px solid #007bff;
+          color: #222;
+          font-size: 20px;
+          font-style: italic;
+          line-height: 1.6;
         }
 
         .blog-content-text p {
@@ -353,10 +379,16 @@ function BlogDetail() {
         }
 
         .post-navigation {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
           margin-top: 30px;
         }
 
-        .post-nav-back {
+        .post-nav-back,
+        .post-nav-next,
+        .post-nav-previous {
           display: inline-flex;
           align-items: center;
           gap: 8px;
@@ -365,8 +397,22 @@ function BlogDetail() {
           text-decoration: none;
         }
 
-        .post-nav-back:hover {
+        .post-nav-back:hover,
+        .post-nav-next:hover,
+        .post-nav-previous:hover {
           color: #0056b3;
+        }
+
+        .post-nav-back {
+          margin: auto;
+        }
+
+        .post-nav-previous + .post-nav-back {
+          margin-left: 0;
+        }
+
+        .post-nav-back:has(+ .post-nav-next) {
+          margin-right: 0;
         }
 
         .blog-tags {
@@ -561,6 +607,15 @@ function BlogDetail() {
           .post-social-icons-wrap {
             width: 100%;
             justify-content: space-between;
+          }
+
+          .post-navigation {
+            align-items: flex-start;
+            flex-direction: column;
+          }
+
+          .post-nav-back {
+            margin: 0;
           }
 
           .twm-posts-author {
