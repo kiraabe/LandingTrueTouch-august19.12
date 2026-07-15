@@ -285,6 +285,21 @@
   .site-header .desktop-header-nav .nav {
     justify-content: center !important;
   }
+
+  .site-header .extra-nav {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    transform: translateY(-50%);
+  }
+
+  .site-header .extra-nav .extra-cell {
+    display: flex;
+    align-items: center;
+  }
 }
 
 /* Desktop Navigation (unchanged) */
