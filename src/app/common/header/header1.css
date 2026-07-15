@@ -76,7 +76,7 @@
 .mobile-drawer-logo {
   display: none;
   text-align: center;
-  padding: 16px 0;
+  padding: 24px 0;
   border-bottom: 1px solid #f0f0f0;
   width: 100%;
 }
@@ -86,13 +86,28 @@
 }
 
 .mobile-drawer-logo img {
-  max-width: 120px;
+  max-width: 150px;
   height: auto;
 }
 
 .mobile-sider-drawer-menu .nav-animation {
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.mobile-sider-drawer-menu .nav-animation ul {
+  width: 100%;
+}
+
+.mobile-sider-drawer-menu .nav-animation li {
+  width: 100%;
+}
+
+.mobile-sider-drawer-menu .nav-animation li a {
+  display: block;
+  padding: 16px 12px;
+  font-size: 16px;
 }
 
 @media (max-width: 767px) {
