@@ -268,6 +268,25 @@
   }
 }
 
+@media (min-width: 992px) {
+  .site-header .container-fluid {
+    position: relative;
+  }
+
+  .site-header .desktop-header-nav {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    transform: translate(-50%, -50%);
+    justify-content: center !important;
+  }
+
+  .site-header .desktop-header-nav .nav {
+    justify-content: center !important;
+  }
+}
+
 /* Desktop Navigation (unchanged) */
 @media (min-width: 768px) {
   .mobile-drawer-overlay {
