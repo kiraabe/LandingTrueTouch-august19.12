@@ -1002,7 +1002,6 @@ function Home18Page() {
   </div>
 
   <div className="twm-bg-candi-pattern" />
-</div>
 {/* CANDIDATES END */}
 
         {/* TESTIMONIAL SECTION START */}
