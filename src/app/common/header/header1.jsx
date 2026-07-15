@@ -129,6 +129,40 @@ function Header1({ _config }) {
                                 </a>
                             </div>
                         </div>
+                        <div className="header-nav desktop-header-nav navbar-collapse collapse d-lg-flex justify-content-end">
+                            <ul className="nav navbar-nav">
+                                <li className={isNavLinkActive("home") ? "active" : ""}>
+                                    <a
+                                        href="/"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            if (location.pathname !== "/" && location.pathname !== publicUser.HOME1) {
+                                                navigate(publicUser.INITIAL, { replace: false });
+                                                setTimeout(() => {
+                                                    document.getElementById("home-hero")?.scrollIntoView({ behavior: "smooth" });
+                                                }, 100);
+                                            } else {
+                                                document.getElementById("home-hero")?.scrollIntoView({ behavior: "smooth" });
+                                            }
+                                        }}
+                                    >
+                                        Home
+                                    </a>
+                                </li>
+                                <li className={isNavLinkActive("get-jobs") ? "active" : ""}>
+                                    <a href="#get-jobs" onClick={(e) => handleSectionClick("get-jobs", e)}>About Us</a>
+                                </li>
+                                <li className={location.pathname === publicUser.candidate.GRID ? "active" : ""}>
+                                    <NavLink to={publicUser.candidate.GRID}>Candidates</NavLink>
+                                </li>
+                                <li className={isNavLinkActive("our-blogs") ? "active" : ""}>
+                                    <a href="#our-blogs" onClick={(e) => handleSectionClick("our-blogs", e)}>Vacancies</a>
+                                </li>
+                                <li className={isNavLinkActive("contact-us") ? "active" : ""}>
+                                    <a href="#contact-us" onClick={(e) => handleSectionClick("contact-us", e)}>Contact Us</a>
+                                </li>
+                            </ul>
+                        </div>
                         {/* NAV Toggle Button */}
                         <button id="mobile-side-drawer"
                             type="button"
