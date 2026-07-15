@@ -8,7 +8,7 @@ router.get('/blogs/latest', async (req, res) => {
   try {
     const limit = req.query.limit || 3;
     const result = await pool.query(
-      'SELECT id, title, author, created_at, image_url, description FROM jobs ORDER BY created_at DESC LIMIT $1',
+      'SELECT id, title_en AS title, author_name AS author, publish_date AS created_at, featured_image AS image_url, excerpt_en AS description FROM blogs ORDER BY publish_date DESC LIMIT $1',
       [limit]
     );
     console.log('✓ Fetched latest blogs, count:', result.rows.length);
@@ -23,7 +23,7 @@ router.get('/blogs/latest', async (req, res) => {
 router.get('/blogs', async (req, res) => {
   try {
     const result = await pool.query(
-      'SELECT id, title, author, created_at, image_url, description FROM jobs ORDER BY created_at DESC'
+      'SELECT id, title_en AS title, author_name AS author, publish_date AS created_at, featured_image AS image_url, excerpt_en AS description FROM blogs ORDER BY publish_date DESC'
     );
     console.log('✓ Fetched all blogs, count:', result.rows.length);
     res.json(result.rows);
@@ -40,7 +40,7 @@ router.get('/blogs/:id', async (req, res) => {
     console.log('📡 Fetching blog with id:', id);
 
     const result = await pool.query(
-      'SELECT * FROM jobs WHERE id = $1',
+      'SELECT *, title_en AS title, author_name AS author, publish_date AS created_at, featured_image AS image_url, excerpt_en AS description, body_en AS content, author_bio_en AS author_bio FROM blogs WHERE id = $1',
       [id]
     );
 

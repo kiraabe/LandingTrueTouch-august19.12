@@ -250,7 +250,7 @@ function Home18Page() {
     const fetchBlogs = async () => {
       try {
         setBlogsLoading(true);
-        const response = await fetch('/api/jobs/latest?limit=3', {
+        const response = await fetch('/api/blogs/latest?limit=6', {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
         });
