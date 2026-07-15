@@ -340,8 +340,12 @@
   }
 
   .site-header.header-style-3 .language-switcher-btn {
-    gap: 4px;
-    padding: 8px;
+    gap: 5px;
+    padding: 10px;
+  }
+
+  .site-header.header-style-3 .language-switcher-btn i {
+    font-size: 18px;
   }
 
   .site-header.header-style-3 .language-label {
