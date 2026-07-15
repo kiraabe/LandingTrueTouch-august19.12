@@ -77,4 +77,29 @@
   .site-header.header-style-3 .logo-header {
     width: 200px;
   }
+
+  .site-header.header-style-3 .extra-nav {
+    position: absolute;
+    top: 0;
+    right: 58px;
+    display: flex;
+    align-items: center;
+    height: 70px;
+    float: none;
+  }
+
+  .site-header.header-style-3 .extra-nav .extra-cell {
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+  }
+
+  .site-header.header-style-3 .language-switcher-btn {
+    gap: 4px;
+    padding: 8px;
+  }
+
+  .site-header.header-style-3 .language-label {
+    display: none;
+  }
 }
