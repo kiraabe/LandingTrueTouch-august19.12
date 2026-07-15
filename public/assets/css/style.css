@@ -9342,10 +9342,13 @@ ol.comment-list li.comment .comment-respond .comment-form p {
   height: 34px;
   padding: 0px;
   font-weight: 500;
-  border: none;
+  border: none !important;
+  background-color: transparent !important;
 }
 .twm-bnr-search-bar .form-control:focus {
-  box-shadow: none;
+  box-shadow: none !important;
+  border: none !important;
+  outline: none;
 }
 .twm-bnr-search-bar .form-control::-webkit-input-placeholder {
   color: #000;
@@ -15355,27 +15358,30 @@ strong {
 
 .wt-search-bar-select {
   height: 34px;
-  border: none;
+  border: none !important;
   line-height: 20px;
   border-radius: 0px;
   width: 100% !important;
   display: block !important;
+  background-color: transparent !important;
 }
 .wt-search-bar-select .btn-light {
   font-size: 14px;
   color: #000 !important;
   font-weight: 500;
-  background-color: #ffffff !important;
-  border: none;
+  background-color: transparent !important;
+  border: none !important;
   padding: 7px 0px !important;
 }
 .wt-search-bar-select .btn-light:focus {
-  box-shadow: none;
+  box-shadow: none !important;
   outline: 0px !important;
+  border: none !important;
 }
 .wt-search-bar-select .form-control {
   padding-left: 10px;
   padding-right: 10px;
+  border: none !important;
 }
 
 .wt-select-bar-2 {
