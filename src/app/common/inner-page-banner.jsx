@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 function InnerPageBanner({_data}) {
     return (
         <>
-            <div className="wt-bnr-inr overlay-wraper bg-center" style={{ backgroundImage: `url(${publicUrlFor("images/banner/truetouch-banner.webp")})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            <div className="wt-bnr-inr overlay-wraper bg-center">
                 <div className="overlay-main" style={{ opacity: 0 }} />
                 <div className="container">
                     <div className="wt-bnr-inr-entry">
