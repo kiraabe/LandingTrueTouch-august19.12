@@ -572,36 +572,6 @@ function Home18Page() {
                                         </div>
                                     </div>
                                 </div>
-                                {/*block 5*/}
-                                <div className="col-lg-3 col-md-6 col-sm-6">
-                                    <div className="counter-outer-two">
-                                        <div className="icon-content">
-                                            <div className="tw-count-number site-text-white">
-                                                <span className="counter">6,000</span>+</div>
-                                            <p className="icon-content-info">Associate assignments</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                {/*block 6*/}
-                                <div className="col-lg-3 col-md-6 col-sm-6">
-                                    <div className="counter-outer-two">
-                                        <div className="icon-content">
-                                            <div className="tw-count-number site-text-white">
-                                                <span className="counter">80</span>%</div>
-                                            <p className="icon-content-info">Success Score</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                {/*block 7*/}
-                                <div className="col-lg-3 col-md-6 col-sm-6">
-                                    <div className="counter-outer-two">
-                                        <div className="icon-content">
-                                            <div className="tw-count-number site-text-white">
-                                                <span className="counter">62</span></div>
-                                            <p className="icon-content-info">Countries</p>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
