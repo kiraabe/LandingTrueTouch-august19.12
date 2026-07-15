@@ -141,7 +141,7 @@ function BlogDetail() {
                       {blog.pull_quote_en && (
                         <blockquote className="blog-pull-quote">
                           <p>{blog.pull_quote_en}</p>
-                          {blog.pull_quote_author && <cite className="blog-pull-quote-author">— {blog.pull_quote_author}</cite>}
+                          {(blog.pull_quote_author || blog.author) && <cite className="blog-pull-quote-author">— {blog.pull_quote_author || blog.author}</cite>}
                         </blockquote>
                       )}
                     </div>
