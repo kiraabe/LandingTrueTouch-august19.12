@@ -11769,6 +11769,14 @@ h3.twm-title{
 
 
 /* Counter h5 */
+.twm-counter-page-5-wrap {
+	margin: 0 0 80px;
+
+	@include breakpoint-991 {
+		margin-bottom: 40px;
+	}
+}
+
 .twm-company-approch5-outer{
 	position: relative;
 	.twm-company-approch5{

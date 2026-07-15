@@ -17246,6 +17246,14 @@ strong {
 }
 
 /* Counter h5 */
+.twm-counter-page-5-wrap {
+  margin: 0 0 80px;
+}
+@media (max-width: 991px) {
+  .twm-counter-page-5-wrap {
+    margin-bottom: 40px;
+  }
+}
 .twm-company-approch5-outer {
   position: relative;
 }
