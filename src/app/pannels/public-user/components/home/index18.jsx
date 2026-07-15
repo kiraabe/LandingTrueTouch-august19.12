@@ -459,7 +459,7 @@ function Home18Page() {
       {/*Banner End*/}
 
       {/* ABOUT SECTION START */}
-      <div className="section-full p-t120 p-b0 site-bg-white twm-millions-1-area pos-relative">
+      <div id="get-jobs" className="section-full p-t120 p-b0 site-bg-white twm-millions-1-area pos-relative">
         <div className="container">
           <div className="twm-millions-section-wrap">
             <div className="row">
