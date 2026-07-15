@@ -120,7 +120,7 @@ function Header1({ _config }) {
                                 <span className="icon-bar icon-bar-three" />
                             </button>
                             {/* MAIN Vav */}
-                            <div className="nav-animation header-nav navbar-collapse collapse d-flex justify-content-center">
+                            <div className="nav-animation header-nav navbar-collapse collapse d-flex">
                                 <div className="mobile-drawer-logo">
                                     <a href="/" onClick={(e) => {
                                         e.preventDefault();
