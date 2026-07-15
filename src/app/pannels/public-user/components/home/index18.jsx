@@ -524,7 +524,7 @@ function Home18Page() {
             <div className="section-full p-t0 p-b0 site-bg-white twm-counter-page-5-wrap">
                 <div className="container">
                     <div className="twm-company-approch5-outer">
-                        <div className="twm-company-approch5" style={{ backgroundImage: `url(${publicUrlFor("images/home-5/ctr-bg.jpg")})` }}>
+                        <div className="twm-company-approch5">
                             <div className="row">
                                 {/*block 1*/}
                                 <div className="col-lg-3 col-md-6 col-sm-6">

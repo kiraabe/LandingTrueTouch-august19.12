@@ -17252,6 +17252,9 @@ strong {
 .twm-company-approch5-outer .twm-company-approch5 {
   border-radius: 40px;
   padding: 70px 20px 40px;
+  background-image: url("/assets/images/home-5/ctr-bg.webp");
+  background-size: cover;
+  background-position: center;
 }
 .twm-company-approch5-outer .twm-company-approch5 .counter-outer-two {
   text-align: center;
