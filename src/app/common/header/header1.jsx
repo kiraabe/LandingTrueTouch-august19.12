@@ -121,6 +121,10 @@ function Header1({ _config }) {
                             </button>
                             {/* MAIN Vav */}
                             <div className="nav-animation header-nav navbar-collapse collapse d-flex">
+                                <div className="mobile-drawer-search">
+                                    <input type="text" placeholder="Search for..." className="mobile-drawer-search-input" />
+                                    <button className="mobile-drawer-search-btn"><i className="feather-search" /></button>
+                                </div>
                                 <div className="mobile-drawer-logo">
                                     <a href="/" onClick={(e) => {
                                         e.preventDefault();
