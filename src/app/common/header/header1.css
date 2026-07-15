@@ -73,8 +73,8 @@
   border-radius: 0 0 4px 4px;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 767px) {
   .site-header.header-style-3 .logo-header {
-    width: 150px;
+    width: 200px;
   }
 }
