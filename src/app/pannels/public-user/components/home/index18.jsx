@@ -754,246 +754,257 @@ function Home18Page() {
       </div>
       {/* Portfolio SECTION END */}
 
+
       {/* CANDIDATES START */}
-      <div id="candidates" className="section-full p-t120 p-b90 site-bg-white twm-candidate-h-page7-wrap pos-relative">
-        <div className="container">
-          <div className="section-head center wt-small-separator-outer">
-            <div className="wt-small-separator site-text-primary"><div>Our Candidates</div></div>
-            <h2 className="wt-title">Pre-Screened Professionals Available for Hiring</h2>
-          </div>
-        </div>
+<div id="candidates" className="section-full p-t120 p-b90 site-bg-white twm-candidate-h-page7-wrap pos-relative">
+  <div className="container">
+    <div className="section-head center wt-small-separator-outer">
+      <div className="wt-small-separator site-text-primary"><div>Our Candidates</div></div>
+      <h2 className="wt-title">Pre-Screened Professionals Available for Hiring</h2>
+    </div>
+  </div>
 
-        <div className="container-fluid">
-          <div className="section-content">
-            <div className="twm-candidate-h-page7">
-              {loading && <Spinner />}
-              {!loading && (
-                <>
-                  {/* ── SEARCH, TABS & FILTER UI ── */}
-                  <div className="twm-candidate-filter-section" style={{ marginBottom: '40px' }}>
+  <div className="container-fluid">
+    <div className="section-content">
+      <div className="twm-candidate-h-page7">
+        {loading && <Spinner />}
+        {!loading && (
+          <>
+            {/* ── SEARCH, TABS & FILTER UI ── */}
+            <div className="twm-candidate-filter-section" style={{ marginBottom: '40px' }}>
 
-                    {/* Tabs */}
-                    <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginBottom: '24px', flexWrap: 'wrap' }}>
-                      {[
-                        { key: 'all',          label: 'All Candidates' },
-                        { key: 'category',     label: 'By Job Category' },
-                        { key: 'country',      label: 'By Country' },
-                        { key: 'availability', label: 'By Availability' },
-                      ].map(tab => (
-                        <button
-                          key={tab.key}
-                          onClick={() => handleTabClick(tab.key)}
-                          style={{
-                            padding: '10px 22px',
-                            borderRadius: '22px',
-                            border: '2px solid',
-                            borderColor: activeTab === tab.key ? 'var(--site-primary, #A9C731)' : '#e0e0e0',
-                            cursor: 'pointer',
-                            fontWeight: '500',
-                            fontSize: '14px',
-                            backgroundColor: activeTab === tab.key ? 'var(--site-primary, #A9C731)' : 'white',
-                            color: activeTab === tab.key ? 'white' : '#555',
-                            transition: 'all 0.25s ease'
-                          }}
-                        >
-                          {tab.label}
-                        </button>
-                      ))}
-                    </div>
+              {/* Tabs */}
+              <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginBottom: '24px', flexWrap: 'wrap' }}>
+                {[
+                  { key: 'all',          label: 'All Candidates' },
+                  { key: 'category',     label: 'By Job Category' },
+                  { key: 'country',      label: 'By Country' },
+                  { key: 'availability', label: 'By Availability' },
+                ].map(tab => (
+                  <button
+                    key={tab.key}
+                    onClick={() => handleTabClick(tab.key)}
+                    style={{
+                      padding: '10px 22px',
+                      borderRadius: '22px',
+                      border: '2px solid',
+                      borderColor: activeTab === tab.key ? 'var(--site-primary, #A9C731)' : '#e0e0e0',
+                      cursor: 'pointer',
+                      fontWeight: '500',
+                      fontSize: '14px',
+                      backgroundColor: activeTab === tab.key ? 'var(--site-primary, #A9C731)' : 'white',
+                      color: activeTab === tab.key ? 'white' : '#555',
+                      transition: 'all 0.25s ease'
+                    }}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
 
-                    {/* Search Input */}
-                    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-                      <div style={{ position: 'relative', width: '100%', maxWidth: '500px' }}>
-                        <i className="feather-search" style={{
-                          position: 'absolute', left: '16px', top: '50%',
-                          transform: 'translateY(-50%)', color: '#aaa', fontSize: '15px'
-                        }} />
-                        <input
-                          type="text"
-                          placeholder="Search by name, profession, or location..."
-                          value={searchQuery}
-                          onChange={e => setSearchQuery(e.target.value)}
-                          style={{
-                            width: '100%',
-                            padding: '12px 20px 12px 42px',
-                            borderRadius: '26px',
-                            border: '1px solid #ddd',
-                            fontSize: '14px',
-                            outline: 'none',
-                            boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
-                            transition: 'border-color 0.2s'
-                          }}
-                          onFocus={e => e.target.style.borderColor = 'var(--site-primary, #A9C731)'}
-                          onBlur={e => e.target.style.borderColor = '#ddd'}
-                        />
-                      </div>
-                    </div>
+              {/* Search Input */}
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+                <div style={{ position: 'relative', width: '100%', maxWidth: '500px' }}>
+                  <i className="feather-search" style={{
+                    position: 'absolute', left: '16px', top: '50%',
+                    transform: 'translateY(-50%)', color: '#aaa', fontSize: '15px'
+                  }} />
+                  <input
+                    type="text"
+                    placeholder="Search by name, profession, or location..."
+                    value={searchQuery}
+                    onChange={e => setSearchQuery(e.target.value)}
+                    style={{
+                      width: '100%',
+                      padding: '12px 20px 12px 42px',
+                      borderRadius: '26px',
+                      border: '1px solid #ddd',
+                      fontSize: '14px',
+                      outline: 'none',
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+                      transition: 'border-color 0.2s'
+                    }}
+                    onFocus={e => e.target.style.borderColor = 'var(--site-primary, #A9C731)'}
+                    onBlur={e => e.target.style.borderColor = '#ddd'}
+                  />
+                </div>
+              </div>
 
-                    {/* Filter Dropdowns */}
-                    <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '16px' }}>
+              {/* Filter Dropdowns */}
+              <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '16px' }}>
 
-                      {/* Job Category — shown on tabs: all, category */}
-                      {(activeTab === 'all' || activeTab === 'category') && (
-                        <select
-                          value={filters.jobCategory}
-                          onChange={e => handleFilterChange('jobCategory', e.target.value)}
-                          style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', width: '160px', cursor: 'pointer' }}
-                        >
-                          <option value="">All Job Categories</option>
-                          {Array.from(new Set(filterOptions.professions)).map(p => (
-                            <option key={p} value={p}>{p}</option>
-                          ))}
-                        </select>
-                      )}
+                {(activeTab === 'all' || activeTab === 'category') && (
+                  <select
+                    value={filters.jobCategory}
+                    onChange={e => handleFilterChange('jobCategory', e.target.value)}
+                    style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', width: '160px', cursor: 'pointer' }}
+                  >
+                    <option value="">All Job Categories</option>
+                    {Array.from(new Set(filterOptions.professions)).map(p => (
+                      <option key={p} value={p}>{p}</option>
+                    ))}
+                  </select>
+                )}
 
-                      {/* Preferred work country — shown on tabs: all, country */}
-                      {(activeTab === 'all' || activeTab === 'country') && (
-                        <select
-                          value={filters.preferredWorkCountry}
-                          onChange={e => handleFilterChange('preferredWorkCountry', e.target.value)}
-                          style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', width: '160px', cursor: 'pointer' }}
-                        >
-                          <option value="">All Preferred Countries</option>
-                          {Array.from(new Set(filterOptions.preferredWorkCountries)).map(country => (
-                            <option key={country} value={country}>{country}</option>
-                          ))}
-                        </select>
-                      )}
+                {(activeTab === 'all' || activeTab === 'country') && (
+                  <select
+                    value={filters.preferredWorkCountry}
+                    onChange={e => handleFilterChange('preferredWorkCountry', e.target.value)}
+                    style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', width: '160px', cursor: 'pointer' }}
+                  >
+                    <option value="">All Preferred Countries</option>
+                    {Array.from(new Set(filterOptions.preferredWorkCountries)).map(country => (
+                      <option key={country} value={country}>{country}</option>
+                    ))}
+                  </select>
+                )}
 
-                      {/* Skill Level — shown on tab: all only */}
-                      {activeTab === 'all' && (
-                        <select
-                          value={filters.skillLevel}
-                          onChange={e => handleFilterChange('skillLevel', e.target.value)}
-                          style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', width: '160px', cursor: 'pointer' }}
-                        >
-                          <option value="">All Skill Levels</option>
-                          {Array.from(new Set(filterOptions.skillLevels)).map(s => (
-                            <option key={s} value={s}>{s}</option>
-                          ))}
-                        </select>
-                      )}
+                {activeTab === 'all' && (
+                  <select
+                    value={filters.skillLevel}
+                    onChange={e => handleFilterChange('skillLevel', e.target.value)}
+                    style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', width: '160px', cursor: 'pointer' }}
+                  >
+                    <option value="">All Skill Levels</option>
+                    {Array.from(new Set(filterOptions.skillLevels)).map(s => (
+                      <option key={s} value={s}>{s}</option>
+                    ))}
+                  </select>
+                )}
 
-                      {/* Status — shown on tabs: all, availability — values from DB (normalized lowercase) */}
-                      {(activeTab === 'all' || activeTab === 'availability') && (
-                        <select
-                          value={filters.status}
-                          onChange={e => handleFilterChange('status', e.target.value)}
-                          style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', width: '160px', cursor: 'pointer' }}
-                        >
-                          <option value="">All Statuses</option>
-                          {filterOptions.statuses.length > 0
-                            ? Array.from(new Set(filterOptions.statuses)).map(s => (
-                                <option key={s} value={s}>
-                                  {s.charAt(0).toUpperCase() + s.slice(1)}
-                                </option>
-                              ))
-                            : (
-                              <>
-                                <option value="available">Available</option>
-                                <option value="hired">Hired</option>
-                                <option value="pending">Pending</option>
-                              </>
-                            )
-                          }
-                        </select>
-                      )}
+                {(activeTab === 'all' || activeTab === 'availability') && (
+                  <select
+                    value={filters.status}
+                    onChange={e => handleFilterChange('status', e.target.value)}
+                    style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', width: '160px', cursor: 'pointer' }}
+                  >
+                    <option value="">All Statuses</option>
+                    {filterOptions.statuses.length > 0
+                      ? Array.from(new Set(filterOptions.statuses)).map(s => (
+                          <option key={s} value={s}>
+                            {s.charAt(0).toUpperCase() + s.slice(1)}
+                          </option>
+                        ))
+                      : (
+                        <>
+                          <option value="available">Available</option>
+                          <option value="hired">Hired</option>
+                          <option value="pending">Pending</option>
+                        </>
+                      )
+                    }
+                  </select>
+                )}
 
-                      {/* Clear Filters */}
-                      {hasActiveFilters && (
-                        <button
-                          onClick={clearFilters}
-                          style={{
-                            padding: '10px 16px', borderRadius: '8px', border: 'none',
-                            fontSize: '14px', backgroundColor: '#ff4444', color: 'white',
-                            cursor: 'pointer', fontWeight: '500', display: 'flex',
-                            alignItems: 'center', gap: '6px'
-                          }}
-                        >
-                          ✕ Clear Filters
-                        </button>
-                      )}
-                    </div>
+                {hasActiveFilters && (
+                  <button
+                    onClick={clearFilters}
+                    style={{
+                      padding: '10px 16px', borderRadius: '8px', border: 'none',
+                      fontSize: '14px', backgroundColor: '#ff4444', color: 'white',
+                      cursor: 'pointer', fontWeight: '500', display: 'flex',
+                      alignItems: 'center', gap: '6px'
+                    }}
+                  >
+                    ✕ Clear Filters
+                  </button>
+                )}
+              </div>
 
-                    {/* Results Count */}
-                    <div style={{ textAlign: 'center', color: '#999', fontSize: '13px', marginBottom: '24px' }}>
-                      Showing <strong>{filteredCandidates.length}</strong> of <strong>{allCandidates.length}</strong> candidates
-                    </div>
-                  </div>
-                  {/* ── END FILTER UI ── */}
+              {/* Results Count */}
+              <div style={{ textAlign: 'center', color: '#999', fontSize: '13px', marginBottom: '24px' }}>
+                Showing <strong>{filteredCandidates.length}</strong> of <strong>{allCandidates.length}</strong> candidates
+              </div>
+            </div>
+            {/* ── END FILTER UI ── */}
 
-                  <div className="row d-flex justify-content-center m-b30">
-                    {filteredCandidates.length > 0 ? (
-                      filteredCandidates.slice(0, 8).map(candidate => (
-                        <div key={candidate.id} className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                          <div className="twm-candidates-grid-h-page7 m-b30">
-                            <div className="twm-top-section-content">
-                              <div className="twm-media">
-                                <div className="twm-media-pic">
-                                  <JobZImage
-                                    src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : publicUrlFor("images/candidates/pic1.jpg")}
-                                    alt={candidate.full_name}
-                                  />
-                                </div>
-                              </div>
-                              <div className="twm-mid-content">
-                                <div className="twm-candidates-tag">
-                                  <span className={candidate.status?.toLowerCase()}>{candidate.status}</span>
-                                </div>
-                                <button onClick={() => openCandidateModal(candidate)} className="twm-job-title" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-                                  <h4>{candidate.full_name}</h4>
-                                </button>
-                                <p>{candidate.profession}</p>
-                              </div>
-                            </div>
-                            <div className="twm-fot-content">
-                              <div className="twm-left-info">
-                                <p className="twm-candidate-address">
-                                  <i className="feather-map-pin" />{candidate.location || "N/A"}
-                                </p>
-                                <div className="twm-jobs-vacancies">{candidate.hourly_rate}</div>
-                              </div>
-                              <div className="twm-action-buttons" style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
-                                <button onClick={() => openCandidateModal(candidate)} className="btn-view-profile" style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px', cursor: 'pointer' }}>
-                                  View Profile
-                                </button>
-                                <a
-                                  href={`https://wa.me/?text=Hi, I'm interested in contacting ${candidate.full_name}`}
-                                  target="_blank" rel="noopener noreferrer"
-                                  className="btn-whatsapp-action"
-                                  style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px' }}
-                                >
-                                  WhatsApp
-                                </a>
-                              </div>
-                            </div>
-                          </div>
+            {/* ── CANDIDATE GRID (jobs-grid-style1 design) ── */}
+            <div className="twm-jobs-grid-wrap">
+              <div className="row d-flex justify-content-center m-b30">
+                {filteredCandidates.length > 0 ? (
+                  filteredCandidates.slice(0, 8).map(candidate => (
+                    <div key={candidate.id} className="col-lg-4 col-md-6">
+                      <div className="twm-jobs-grid-style1 m-b30">
+                        <div className="twm-media">
+                          <JobZImage
+                            src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : publicUrlFor("images/candidates/pic1.jpg")}
+                            alt={candidate.full_name}
+                          />
                         </div>
-                      ))
-                    ) : (
-                      <div className="col-12 text-center" style={{ padding: '40px 0' }}>
-                        <p style={{ color: '#999', fontSize: '15px' }}>
-                          {hasActiveFilters ? 'No candidates match your search or filters.' : 'No candidates available.'}
-                        </p>
-                        {hasActiveFilters && (
-                          <button onClick={clearFilters} className="site-button" style={{ marginTop: '12px' }}>
-                            Clear Filters
-                          </button>
+
+                        {candidate.skill_level && (
+                          <span className="twm-job-post-duration">{candidate.skill_level}</span>
                         )}
+
+                        <div className="twm-jobs-category green">
+                          <span
+                            className={
+                              candidate.status?.toLowerCase() === "available"
+                                ? "twm-bg-green"
+                                : candidate.status?.toLowerCase() === "hired"
+                                ? "twm-bg-purple"
+                                : "twm-bg-golden"
+                            }
+                          >
+                            {candidate.status}
+                          </span>
+                        </div>
+
+                        <div className="twm-mid-content">
+                          <button
+                            onClick={() => openCandidateModal(candidate)}
+                            className="twm-job-title"
+                            style={{ background: "none", border: "none", cursor: "pointer", padding: 0, textAlign: "left" }}
+                          >
+                            <h4>{candidate.full_name}</h4>
+                          </button>
+                          <p className="twm-job-address">
+                            <i className="feather-map-pin" /> {candidate.location || "N/A"}
+                          </p>
+                          <span className="twm-job-websites site-text-primary">{candidate.profession}</span>
+                        </div>
+
+                        <div className="twm-right-content">
+                          <div className="twm-jobs-amount">{candidate.hourly_rate}</div>
+                          <button
+                            onClick={() => openCandidateModal(candidate)}
+                            className="twm-jobs-browse site-text-primary"
+                            style={{ background: "none", border: "none", cursor: "pointer" }}
+                          >
+                            View Profile
+                          </button>
+                        </div>
                       </div>
+                    </div>
+                  ))
+                ) : (
+                  <div className="col-12 text-center" style={{ padding: '40px 0' }}>
+                    <p style={{ color: '#999', fontSize: '15px' }}>
+                      {hasActiveFilters ? 'No candidates match your search or filters.' : 'No candidates available.'}
+                    </p>
+                    {hasActiveFilters && (
+                      <button onClick={clearFilters} className="site-button" style={{ marginTop: '12px' }}>
+                        Clear Filters
+                      </button>
                     )}
                   </div>
-
-                  <div className="text-center m-b30">
-                    <NavLink to={publicUser.candidate.GRID} className="site-button">All Candidates</NavLink>
-                  </div>
-                </>
-              )}
+                )}
+              </div>
             </div>
-          </div>
-        </div>
+            {/* ── END CANDIDATE GRID ── */}
 
-        <div className="twm-bg-candi-pattern" />
+            <div className="text-center m-b30">
+              <NavLink to={publicUser.candidate.GRID} className="site-button">All Candidates</NavLink>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  </div>
+
+  <div className="twm-bg-candi-pattern" />
+</div>
+{/* CANDIDATES END */}
 
         {/* TESTIMONIAL SECTION START */}
             <div className="section-full p-t120 p-b90 site-bg-light twm-testimonial-8-area">
