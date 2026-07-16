@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.site-header .logo-header {
+  width: 190px;
+}
+
 .language-switcher-btn {
   display: flex;
   align-items: center;
