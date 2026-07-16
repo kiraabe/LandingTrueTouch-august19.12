@@ -27,6 +27,42 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', message: 'Backend is running' });
 });
 
+// File proxy endpoint for external resume URLs
+app.get('/api/proxy-file', async (req, res) => {
+  try {
+    const externalUrl = req.query.url;
+    if (!externalUrl) {
+      return res.status(400).json({ error: 'Missing url parameter' });
+    }
+
+    const parsedUrl = new URL(externalUrl);
+    const configuredFileServer = process.env.VITE_FILE_SERVER_URL;
+    if (!['http:', 'https:'].includes(parsedUrl.protocol) || !configuredFileServer) {
+      return res.status(400).json({ error: 'Invalid file URL' });
+    }
+
+    const fileServerUrl = new URL(configuredFileServer);
+    if (parsedUrl.origin !== fileServerUrl.origin) {
+      return res.status(403).json({ error: 'File URL is not allowed' });
+    }
+
+    const response = await fetch(parsedUrl);
+    if (!response.ok) {
+      return res.status(response.status).json({ error: 'Failed to fetch file' });
+    }
+
+    res.setHeader('Content-Type', response.headers.get('content-type') || 'application/octet-stream');
+    const contentDisposition = response.headers.get('content-disposition');
+    if (contentDisposition) res.setHeader('Content-Disposition', contentDisposition);
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    const buffer = Buffer.from(await response.arrayBuffer());
+    return res.send(buffer);
+  } catch (error) {
+    console.error('File proxy error:', error);
+    return res.status(502).json({ error: 'Failed to fetch file' });
+  }
+});
+
 // Image proxy endpoint for external URLs
 app.get('/api/proxy-image', async (req, res) => {
   try {
