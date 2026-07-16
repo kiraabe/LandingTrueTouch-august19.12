@@ -56,15 +56,21 @@
   position: relative;
 }
 
-/* Zoomed state: switch off center-alignment so overflow is reachable.
-   Flex align-items/justify-content:center blocks scrolling to clipped
-   content even with overflow:auto — this is the fix for that. */
+/* Zoomed: real layout growth (width/height), not transform.
+   transform:scale() does not reliably produce scrollable overflow
+   across browsers (Safari in particular won't scroll to reach it).
+   Growing actual size guarantees a real overflow the browser can scroll. */
 .lightbox-image-wrapper.zoomed {
   overflow: auto;
   align-items: flex-start;
   justify-content: flex-start;
+  cursor: grab;
   scrollbar-width: thin; /* Firefox */
   scrollbar-color: rgba(255, 255, 255, 0.4) transparent; /* Firefox */
+}
+
+.lightbox-image-wrapper.zoomed:active {
+  cursor: grabbing;
 }
 
 .lightbox-image-wrapper.zoomed::-webkit-scrollbar {
@@ -92,15 +98,17 @@
   max-height: 100%;
   object-fit: contain;
   animation: zoomIn 0.4s ease-in-out;
-  transition: transform 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
 }
 
-/* display:block + margin:auto keeps the image centered when it fits
-   and scrollable once transform:scale makes it overflow the wrapper */
+/* Grow real width/height instead of using transform:scale */
 .lightbox-image-wrapper.zoomed .lightbox-image {
   display: block;
   margin: auto;
-  transform: scale(1.5);
+  width: 150%;
+  height: auto;
+  max-width: none;
+  max-height: none;
 }
 
 @keyframes zoomIn {
@@ -204,7 +212,7 @@
   }
 
   .lightbox-image-wrapper.zoomed .lightbox-image {
-    transform: scale(1.2);
+    width: 130%;
   }
 }
 
@@ -232,5 +240,9 @@
   .lightbox-zoom-btn svg {
     width: 16px;
     height: 16px;
+  }
+
+  .lightbox-image-wrapper.zoomed .lightbox-image {
+    width: 115%;
   }
 }
