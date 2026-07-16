@@ -993,7 +993,7 @@ function Home18Page() {
                                 <button onClick={() => openCandidateModal(candidate)} className="btn-view-profile" style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px', cursor: 'pointer' }}>
                                   View Profile
                                 </button>
-                                <a
+                                
                                   href={`https://wa.me/?text=Hi, I'm interested in contacting ${candidate.full_name}`}
                                   target="_blank" rel="noopener noreferrer"
                                   className="btn-whatsapp-action"
@@ -1493,31 +1493,23 @@ function Home18Page() {
                   </div>
                 )}
 
-                {candidateDetails.cv && (
-                  <div className="cv-section">
-                    <h3 className="cv-section-title">Curriculum Vitae</h3>
-                    <a
-                      href={getCandidateCvUrl(candidateDetails.cv) || "#"}
-                      onClick={(event) => downloadResume(event, candidateDetails.cv, "CV")}
-                      className="cv-resume-link"
-                    >
-                      <i className="fas fa-file-pdf" /> Download CV
-                    </a>
-                  </div>
-                )}
-
-                {candidateDetails.resume_url && (
-                  <div className="cv-section">
-                    <h3 className="cv-section-title">Resume</h3>
-                    <a
-                      href={getCandidateCvUrl(candidateDetails.resume_url) || "#"}
-                      onClick={(event) => downloadResume(event, candidateDetails.resume_url, "resume")}
-                      className="cv-resume-link"
-                    >
-                      <i className="fas fa-file-pdf" /> Download Full Resume
-                    </a>
-                  </div>
-                )}
+                {/* Resume/CV — always rendered so missing-file / missing-URL toasts can fire */}
+                {(() => {
+                  const resumeFile = candidateDetails.cv || candidateDetails.resume_url;
+                  const resumeLabel = candidateDetails.cv ? "CV" : "resume";
+                  return (
+                    <div className="cv-section">
+                      <h3 className="cv-section-title">{candidateDetails.cv ? "Curriculum Vitae" : "Resume"}</h3>
+                      
+                        href={resumeFile ? (getCandidateCvUrl(resumeFile) || "#") : "#"}
+                        onClick={(event) => downloadResume(event, resumeFile, resumeLabel)}
+                        className="cv-resume-link"
+                      >
+                        <i className="fas fa-file-pdf" /> Download {candidateDetails.cv ? "CV" : "Full Resume"}
+                      </a>
+                    </div>
+                  );
+                })()}
 
                 {candidateDetails.passport_number && (
                   <div className="cv-section">
@@ -1531,7 +1523,7 @@ function Home18Page() {
 
                 <div className="cv-modal-actions">
                   <button onClick={closeCandidateModal} className="cv-action-btn cv-close-action">Close</button>
-                  <a
+                  
                     href={`https://wa.me/251911208322?text=Hi ${candidateDetails.name}, I'm interested in your profile`}
                     target="_blank" rel="noopener noreferrer"
                     className="cv-action-btn cv-whatsapp-action"
