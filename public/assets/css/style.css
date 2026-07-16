@@ -5070,6 +5070,12 @@ ol li {
     letter-spacing: 0px;
   }
 }
+@media (max-width: 576px) {
+  .wt-small-separator {
+    font-size: 21px;
+    line-height: 33px;
+  }
+}
 @media (max-width: 767px) {
   .wt-small-separator h2 {
     margin-bottom: 20px;
