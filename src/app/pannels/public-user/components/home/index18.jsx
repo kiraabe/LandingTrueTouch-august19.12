@@ -723,52 +723,67 @@ function Home18Page() {
       {/* OUR SERVICES SECTION END */}
 
       {/* Portfolio SECTION START */}
-      <div id="portfolio" className="section-full p-t120 p-b90 site-bg-white twm-featured-city-carousal-area">
-        <div className="container">
-          <div className="wt-separator-two-part">
-            <div className="row wt-separator-two-part-row">
-              <div className="col-xl-5 col-lg-5 col-md-12 wt-separator-two-part-left">
-                <div className="section-head left wt-small-separator-outer">
-                  <div className="wt-small-separator site-text-primary"><div>Our Network</div></div>
-                  <h2 className="wt-title">Local Offices, Global Reach</h2>
-                </div>
-              </div>
-              <div className="col-xl-7 col-lg-7 col-md-12 wt-separator-two-part-right text-right">
-                <NavLink to={publicUser.HOME1} className="site-button">View All Portfolios</NavLink>
-              </div>
-            </div>
+<div id="portfolio" className="section-full p-t120 p-b90 site-bg-white twm-featured-city-carousal-area">
+  <div className="container">
+    <div className="wt-separator-two-part">
+      <div className="row wt-separator-two-part-row">
+        <div className="col-xl-5 col-lg-5 col-md-12 wt-separator-two-part-left">
+          <div className="section-head left wt-small-separator-outer">
+            <div className="wt-small-separator site-text-primary"><div>Our Network</div></div>
+            <h2 className="wt-title">Local Offices, Global Reach</h2>
           </div>
         </div>
-        <GalleryLightbox images={[
-          publicUrlFor("images/gallery/1.jpg"),
-          publicUrlFor("images/gallery/2.jpg"),
-          publicUrlFor("images/gallery/3.jpg"),
-          publicUrlFor("images/gallery/4.jpg"),
-          publicUrlFor("images/gallery/5.jpg")
-        ]}>
-          {(openLightbox) => (
-            <div className="twm-featured-city-carousal-wrap">
-              <div className="owl-carousel twm-featured-city-carousal">
-                {[1, 2, 3, 4, 5].map((n, i) => (
-                  <div key={n} className="item" onClick={() => openLightbox(i)}>
-                    <div className="twm-featured-city2 portfolio-card-wrapper">
-                      <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor(`images/gallery/${n}.jpg`)})` }} />
-                      <div className="portfolio-card-overlay">
-                        <div className="portfolio-icon">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                          </svg>
-                        </div>
-                      </div>
+        <div className="col-xl-7 col-lg-7 col-md-12 wt-separator-two-part-right text-right">
+          <NavLink to={publicUser.HOME1} className="site-button">View All Portfolios</NavLink>
+        </div>
+      </div>
+    </div>
+  </div>
+  <GalleryLightbox images={[
+    publicUrlFor("images/gallery/1.jpg"),
+    publicUrlFor("images/gallery/2.jpg"),
+    publicUrlFor("images/gallery/3.jpg"),
+    publicUrlFor("images/gallery/4.jpg"),
+    publicUrlFor("images/gallery/5.jpg")
+  ]}>
+    {(openLightbox) => {
+      // Delegated click handler — survives owl-carousel's cloneNode() duplicates,
+      // which copy data-* attributes but NOT React's synthetic onClick.
+      useEffect(() => {
+        const handleClick = (event) => {
+          const item = event.target.closest('.twm-featured-city-carousal .item');
+          if (item && item.dataset.galleryIndex !== undefined) {
+            openLightbox(Number(item.dataset.galleryIndex));
+          }
+        };
+        document.addEventListener('click', handleClick);
+        return () => document.removeEventListener('click', handleClick);
+      }, [openLightbox]);
+
+      return (
+        <div className="twm-featured-city-carousal-wrap">
+          <div className="owl-carousel twm-featured-city-carousal">
+            {[1, 2, 3, 4, 5].map((n, i) => (
+              <div key={n} className="item" data-gallery-index={i}>
+                <div className="twm-featured-city2 portfolio-card-wrapper">
+                  <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor(`images/gallery/${n}.jpg`)})` }} />
+                  <div className="portfolio-card-overlay">
+                    <div className="portfolio-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                      </svg>
                     </div>
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
-          )}
-        </GalleryLightbox>
-      </div>
-      {/* Portfolio SECTION END */}
+            ))}
+          </div>
+        </div>
+      );
+    }}
+  </GalleryLightbox>
+</div>
+{/* Portfolio SECTION END */}
 
       {/* CANDIDATES START */}
       <div id="candidates" className="section-full p-t120 p-b90 site-bg-white twm-candidate-h-page7-wrap pos-relative">
