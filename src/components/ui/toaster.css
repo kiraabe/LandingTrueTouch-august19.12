@@ -1,7 +1,59 @@
+:root {
+  --normal-bg: #ffffff !important;
+  --normal-text: #000000 !important;
+  --normal-border: #e5e7eb !important;
+  --success-bg: #ffffff !important;
+  --success-text: #000000 !important;
+  --success-border: #e5e7eb !important;
+  --error-bg: #ffffff !important;
+  --error-text: #000000 !important;
+  --error-border: #e5e7eb !important;
+  --warning-bg: #ffffff !important;
+  --warning-text: #000000 !important;
+  --warning-border: #e5e7eb !important;
+  --info-bg: #ffffff !important;
+  --info-text: #000000 !important;
+  --info-border: #e5e7eb !important;
+}
+
 .toaster {
   --toast-padding: 20px 24px;
+  --normal-bg: #ffffff !important;
+  --normal-text: #000000 !important;
+  --normal-border: #e5e7eb !important;
+  --success-bg: #ffffff !important;
+  --success-text: #000000 !important;
+  --success-border: #e5e7eb !important;
+  --error-bg: #ffffff !important;
+  --error-text: #000000 !important;
+  --error-border: #e5e7eb !important;
+  --warning-bg: #ffffff !important;
+  --warning-text: #000000 !important;
+  --warning-border: #e5e7eb !important;
+  --info-bg: #ffffff !important;
+  --info-text: #000000 !important;
+  --info-border: #e5e7eb !important;
 }
 
 .cn-toast {
   padding: 20px 24px;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+.sonner-toast {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+.sonner-toast.sonner-success,
+.sonner-toast.sonner-error,
+.sonner-toast.sonner-warning,
+.sonner-toast.sonner-info,
+.sonner-toast.sonner-loading {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #e5e7eb !important;
 }

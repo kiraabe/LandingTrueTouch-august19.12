@@ -16,7 +16,7 @@ const Toaster = ({ ...props }) => {
 
   return (
     <Sonner
-      theme={theme}
+      theme="light"
       className="toaster group"
       icons={{
         success: <CircleCheckIcon className="size-4" />,
@@ -24,11 +24,6 @@ const Toaster = ({ ...props }) => {
         warning: <TriangleAlertIcon className="size-4" />,
         error: <OctagonXIcon className="size-4" />,
         loading: <Loader2Icon className="size-4 animate-spin" />,
-      }}
-      style={{
-        "--normal-bg": "#ffffff",
-        "--normal-text": "#000000",
-        "--normal-border": "#e5e7eb",
       }}
       toastOptions={{
         classNames: {
