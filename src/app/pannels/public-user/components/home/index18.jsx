@@ -944,6 +944,10 @@ function Home18Page() {
                                 <div className="twm-media-pic">
                                   <JobZImage
                                     src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : publicUrlFor("images/candidates/pic1.jpg")}
+                                    onError={(event) => {
+                                      event.currentTarget.onerror = null;
+                                      event.currentTarget.src = publicUrlFor("images/candidates/pic1.jpg");
+                                    }}
                                     alt={candidate.full_name}
                                   />
                                 </div>
@@ -1156,7 +1160,14 @@ function Home18Page() {
                       <div className="blog-post twm-blog-post-1-outer">
                         <div className="wt-post-media">
                           <NavLink to={`/blog-detail/${blog.id}`}>
-                            <JobZImage src={getJobImageUrl(blog.image_url)} alt={blog.title} />
+                            <JobZImage
+                              src={blog.image_url ? getJobImageUrl(blog.image_url) : publicUrlFor("images/testimonial-placeholder.svg")}
+                              onError={(event) => {
+                                event.currentTarget.onerror = null;
+                                event.currentTarget.src = publicUrlFor("images/testimonial-placeholder.svg");
+                              }}
+                              alt={blog.title}
+                            />
                           </NavLink>
                         </div>
                         <div className="wt-post-info">
