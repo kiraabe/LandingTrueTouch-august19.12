@@ -56,8 +56,35 @@
   position: relative;
 }
 
+/* Zoomed state: switch off center-alignment so overflow is reachable.
+   Flex align-items/justify-content:center blocks scrolling to clipped
+   content even with overflow:auto — this is the fix for that. */
 .lightbox-image-wrapper.zoomed {
   overflow: auto;
+  align-items: flex-start;
+  justify-content: flex-start;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(255, 255, 255, 0.4) transparent; /* Firefox */
+}
+
+.lightbox-image-wrapper.zoomed::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.lightbox-image-wrapper.zoomed::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lightbox-image-wrapper.zoomed::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.lightbox-image-wrapper.zoomed::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .lightbox-image {
@@ -68,7 +95,11 @@
   transition: transform 0.3s ease-in-out;
 }
 
+/* display:block + margin:auto keeps the image centered when it fits
+   and scrollable once transform:scale makes it overflow the wrapper */
 .lightbox-image-wrapper.zoomed .lightbox-image {
+  display: block;
+  margin: auto;
   transform: scale(1.5);
 }
 
