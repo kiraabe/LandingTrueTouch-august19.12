@@ -2,6 +2,20 @@ import { useParams } from "react-router-dom";
 import { getCandidateCvUrl } from "../../../../../globals/file-url";
 import { downloadFileWithToast } from "../../../../../globals/error-handler";
 
+const COMPANY_WHATSAPP_NUMBER = "251935106635";
+
+const buildWhatsAppLink = (candidate) => {
+  const message =
+    `Hello, I'm interested in this candidate:\n` +
+    `Name: ${candidate.full_name || candidate.name || "N/A"}\n` +
+    `Role: ${candidate.profession || candidate.job_category || candidate.job_title || "N/A"}\n` +
+    `Location: ${candidate.location || candidate.current_location || candidate.city || "N/A"}\n` +
+    `Status: ${candidate.status || "N/A"}\n\n` +
+    `Could you share more details or help me proceed?`;
+
+  return `https://wa.me/${COMPANY_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+};
+
 const SectionEmployersCandidateSidebar = ({ candidate, type = "1" }) => {
   if (!candidate) return null;
 
@@ -36,16 +50,14 @@ const SectionEmployersCandidateSidebar = ({ candidate, type = "1" }) => {
         <button className="can-contact-btn can-hire-btn">
           <i className="feather-mail" /> Send Message
         </button>
-        {candidate.phone && (
-          <a
-            href={`https://wa.me/${candidate.phone.replace(/[^0-9]/g, '')}?text=Hi ${candidate.full_name}, I'm interested in your services`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="can-contact-btn can-whatsapp-btn"
-          >
-            <i className="feather-message-circle" /> WhatsApp
-          </a>
-        )}
+        <a
+          href={buildWhatsAppLink(candidate)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="can-contact-btn can-whatsapp-btn"
+        >
+          <i className="feather-message-circle" /> WhatsApp
+        </a>
       </div>
 
       {/* Resume/CV Download */}

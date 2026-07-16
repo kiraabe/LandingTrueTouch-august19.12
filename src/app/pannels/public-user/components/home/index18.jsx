@@ -15,6 +15,19 @@ import AirplaneCircleHighlight from "./AirplaneCircleHighlight";
 
 // Truncate text helper
 const API_BASE_URL = '';
+const COMPANY_WHATSAPP_NUMBER = "251935106635";
+
+const buildWhatsAppLink = (candidate) => {
+  const message =
+    `Hello, I'm interested in this candidate:\n` +
+    `Name: ${candidate.full_name || candidate.name || "N/A"}\n` +
+    `Role: ${candidate.profession || candidate.job_category || candidate.job_title || "N/A"}\n` +
+    `Location: ${candidate.location || candidate.current_location || candidate.city || "N/A"}\n` +
+    `Status: ${candidate.status || "N/A"}\n\n` +
+    `Could you share more details or help me proceed?`;
+
+  return `https://wa.me/${COMPANY_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+};
 
 const truncateText = (text, maxLength = 78) => {
   if (!text) return '';
@@ -994,8 +1007,9 @@ function Home18Page() {
                                   View Profile
                                 </button>
                                 <a
-                                  href={`https://wa.me/?text=Hi, I'm interested in contacting ${candidate.full_name}`}
-                                  target="_blank" rel="noopener noreferrer"
+                                  href={buildWhatsAppLink(candidate)}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
                                   className="btn-whatsapp-action"
                                   style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px' }}
                                 >
@@ -1532,8 +1546,9 @@ function Home18Page() {
                 <div className="cv-modal-actions">
                   <button onClick={closeCandidateModal} className="cv-action-btn cv-close-action">Close</button>
                   <a
-                    href={`https://wa.me/251911208322?text=Hi ${candidateDetails.name}, I'm interested in your profile`}
-                    target="_blank" rel="noopener noreferrer"
+                    href={buildWhatsAppLink(candidateDetails)}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="cv-action-btn cv-whatsapp-action"
                   >
                     <i className="fab fa-whatsapp" /> WhatsApp

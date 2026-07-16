@@ -10,6 +10,19 @@ const cleanFilterValue = (value) => typeof value === "string"
   : value;
 
 const CANDIDATES_PER_PAGE = 6;
+const COMPANY_WHATSAPP_NUMBER = "251935106635";
+
+const buildWhatsAppLink = (candidate) => {
+  const message =
+    `Hello, I'm interested in this candidate:\n` +
+    `Name: ${candidate.full_name || candidate.name || "N/A"}\n` +
+    `Role: ${candidate.profession || candidate.job_category || candidate.job_title || "N/A"}\n` +
+    `Location: ${candidate.location || candidate.current_location || candidate.city || "N/A"}\n` +
+    `Status: ${candidate.status || "N/A"}\n\n` +
+    `Could you share more details or help me proceed?`;
+
+  return `https://wa.me/${COMPANY_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+};
 
 function CandidateGridPage() {
   const [candidates, setCandidates] = useState([]);
@@ -235,7 +248,17 @@ function CandidateGridPage() {
                               <i className="feather-briefcase" />Preferred: {candidate.preferred_work_country}
                             </div>
                           )}
-                          <NavLink to={`/can-detail/${candidate.id}`} className="candidate-directory-profile-link">View Profile</NavLink>
+                          <div className="candidate-directory-actions">
+                            <NavLink to={`/can-detail/${candidate.id}`} className="candidate-directory-profile-link">View Profile</NavLink>
+                            <a
+                              href={buildWhatsAppLink(candidate)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="candidate-directory-whatsapp-link"
+                            >
+                              <i className="fab fa-whatsapp" /> WhatsApp
+                            </a>
+                          </div>
                         </div>
                       </article>
                     </div>

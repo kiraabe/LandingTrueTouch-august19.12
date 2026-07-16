@@ -298,11 +298,30 @@
   font-size: 16px;
 }
 
-.candidate-directory-profile-link {
+.candidate-directory-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.candidate-directory-profile-link,
+.candidate-directory-whatsapp-link {
   display: inline-flex;
+  align-items: center;
+  gap: 5px;
   color: #1967d2;
   font-size: 14px;
   font-weight: 600;
+}
+
+.candidate-directory-whatsapp-link {
+  color: #168c4b;
+}
+
+.candidate-directory-profile-link:hover,
+.candidate-directory-whatsapp-link:hover {
+  text-decoration: underline;
 }
 
 .candidate-directory-pagination {
