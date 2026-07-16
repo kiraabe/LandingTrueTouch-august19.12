@@ -25,6 +25,11 @@ const Toaster = ({ ...props }) => {
         error: <OctagonXIcon className="size-4" />,
         loading: <Loader2Icon className="size-4 animate-spin" />,
       }}
+      style={{
+        "--normal-bg": "#ffffff",
+        "--normal-text": "#000000",
+        "--normal-border": "#e5e7eb",
+      }}
       toastOptions={{
         classNames: {
           toast: "cn-toast",
