@@ -447,14 +447,18 @@ function Home18Page() {
               <div className="twm-bnr-right-carousel">
                 <div className="owl-carousel twm-h1-bnr-carousal">
                   <div className="item">
-                    <div className="slide-img">
-                      <JobZImage src="images/main-slider/slider1/r-img1.png" alt="#" />
-                    </div>
+                    <ImageLightbox src={publicUrlFor("images/main-slider/slider1/r-img1.png")} alt="True Touch recruitment services">
+                      <div className="slide-img">
+                        <JobZImage src="images/main-slider/slider1/r-img1.png" alt="True Touch recruitment services" />
+                      </div>
+                    </ImageLightbox>
                   </div>
                   <div className="item">
-                    <div className="slide-img">
-                      <JobZImage src="images/main-slider/slider1/r-img2.png" alt="#" />
-                    </div>
+                    <ImageLightbox src={publicUrlFor("images/main-slider/slider1/r-img2.png")} alt="True Touch recruitment services">
+                      <div className="slide-img">
+                        <JobZImage src="images/main-slider/slider1/r-img2.png" alt="True Touch recruitment services" />
+                      </div>
+                    </ImageLightbox>
                   </div>
                 </div>
               </div>
