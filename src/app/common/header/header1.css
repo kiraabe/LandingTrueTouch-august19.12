@@ -323,15 +323,15 @@
   }
 
   .mobile-sider-drawer-menu .mobile-side-drawer {
-    display: flex;
+    display: flex !important;
   }
 
   .mobile-sider-drawer-menu .navbar-toggler {
-    display: block;
+    display: block !important;
   }
 
   .mobile-sider-drawer-menu .mobile-drawer-overlay {
-    display: block;
+    display: block !important;
   }
 }
 
