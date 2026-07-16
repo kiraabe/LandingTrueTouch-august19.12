@@ -15,6 +15,7 @@ export const getCandidateProfilePictureUrl = (filename) => {
 
 export const getCandidateCvUrl = (filename) => {
   if (!filename) return null;
+  if (filename.startsWith('http://') || filename.startsWith('https://')) return filename;
   return constructFullFileUrl(`candidates/cvs/${filename}`);
 };
 
