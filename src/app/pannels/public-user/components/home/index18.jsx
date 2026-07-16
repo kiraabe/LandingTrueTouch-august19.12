@@ -110,7 +110,8 @@ function Home18Page() {
     downloadFileWithToast(
       getCandidateCvUrl(filename),
       filename,
-      `The ${label} file is unavailable. Please try again later.`
+      `The ${label} is not available for this candidate.`,
+      `Failed to download ${label}. Please try again later.`
     );
   };
 

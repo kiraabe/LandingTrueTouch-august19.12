@@ -9,7 +9,12 @@ const SectionCandidatePersonalInfo = ({ candidate }) => {
   const resumeUrl = getCandidateCvUrl(resumeFile);
   const downloadResume = (event) => {
     event.preventDefault();
-    downloadFileWithToast(resumeUrl, resumeFile, "The resume file is unavailable. Please try again later.");
+    downloadFileWithToast(
+      resumeUrl,
+      resumeFile,
+      "Resume not available for this candidate.",
+      "Failed to download resume. Please try again later."
+    );
   };
 
   const infoFields = [

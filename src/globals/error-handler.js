@@ -50,9 +50,18 @@ export const showWarningToast = (message) => {
   toast.warning(message);
 };
 
-export const downloadFileWithToast = async (url, filename, message = 'The file could not be downloaded.') => {
+export const downloadFileWithToast = async (
+  url,
+  filename,
+  unavailableMessage = 'Resume not available for this candidate.',
+  failedMessage = 'Failed to download resume. Please try again later.'
+) => {
+  if (!url || !filename) {
+    showErrorToast(new Error('File URL is missing.'), unavailableMessage);
+    return;
+  }
+
   try {
-    if (!url) throw new Error('File URL is missing.');
     const response = await fetch(url);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const blob = await response.blob();
@@ -65,7 +74,7 @@ export const downloadFileWithToast = async (url, filename, message = 'The file c
     link.remove();
     URL.revokeObjectURL(downloadUrl);
   } catch (error) {
-    showErrorToast(error, message);
+    showErrorToast(error, failedMessage);
   }
 };
 
