@@ -1,0 +1,7 @@
+.toaster {
+  --toast-padding: 20px 24px;
+}
+
+.cn-toast {
+  padding: 20px 24px;
+}

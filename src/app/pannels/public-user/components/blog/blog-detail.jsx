@@ -5,7 +5,7 @@ import Spinner from '../../../../common/spinner';
 import { publicUrlFor } from '../../../../../globals/constants';
 import { getJobImageUrl } from '../../../../../globals/file-url';
 import { showErrorToast } from '../../../../../globals/error-handler';
-import { Toaster } from 'sonner';
+import { Toaster } from '../../../../../components/ui/toaster';
 
 function BlogDetail() {
   const { id } = useParams();

@@ -4,6 +4,7 @@ import ScrollToTop from "./globals/scroll-to-top";
 import ErrorBoundary from "./app/common/error-boundary";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
+import { ThemeProvider } from "next-themes";
 
 function App() {
 
@@ -34,11 +35,13 @@ function App() {
   }, 500);
 
   return (
-    <ErrorBoundary>
-      {isLoading && <Loader />}
-      <ScrollToTop />
-      <RootLayout />
-    </ErrorBoundary>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <ErrorBoundary>
+        {isLoading && <Loader />}
+        <ScrollToTop />
+        <RootLayout />
+      </ErrorBoundary>
+    </ThemeProvider>
   )
 }
 

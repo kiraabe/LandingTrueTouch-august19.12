@@ -8,7 +8,7 @@ import { downloadFileWithToast, showErrorToast, showSuccessToast } from "../../.
 import { getCandidateProfilePictureUrl, getCandidateCvUrl, getJobImageUrl } from "../../../../../globals/file-url";
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Toaster } from "sonner";
+import { Toaster } from "../../../../../components/ui/toaster";
 import "./cv-modal.css";
 import CountUp from "react-countup";
 import AirplaneCircleHighlight from "./AirplaneCircleHighlight";

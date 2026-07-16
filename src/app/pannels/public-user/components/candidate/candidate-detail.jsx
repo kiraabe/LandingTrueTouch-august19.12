@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Toaster } from "sonner";
+import { Toaster } from "../../../../../components/ui/toaster";
 import Spinner from "../../../../common/spinner";
 import { showErrorToast } from "../../../../../globals/error-handler";
 import { loadScript } from "../../../../../globals/constants";
