@@ -1,9 +1,23 @@
 import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './image-lightbox.css';
 
 function ImageLightbox({ src, alt, children }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
+
+  useEffect(() => {
+    const handleDelegatedClick = (event) => {
+      const trigger = event.target.closest('.image-lightbox-trigger');
+      if (trigger?.dataset.lightboxSrc === src) {
+        setIsOpen(true);
+        document.body.style.overflow = 'hidden';
+      }
+    };
+
+    document.addEventListener('click', handleDelegatedClick);
+    return () => document.removeEventListener('click', handleDelegatedClick);
+  }, [src]);
 
   const openLightbox = (e) => {
     e.preventDefault();
