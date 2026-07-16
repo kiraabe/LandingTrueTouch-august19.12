@@ -317,6 +317,24 @@
   }
 }
 
+@media (min-width: 768px) and (max-width: 993px) {
+  .site-header .desktop-header-nav {
+    display: none !important;
+  }
+
+  .mobile-sider-drawer-menu .mobile-side-drawer {
+    display: flex;
+  }
+
+  .mobile-sider-drawer-menu .navbar-toggler {
+    display: block;
+  }
+
+  .mobile-sider-drawer-menu .mobile-drawer-overlay {
+    display: block;
+  }
+}
+
 /* Mobile Navigation Display */
 @media (max-width: 767px) {
   .site-header.header-style-3 .logo-header {
