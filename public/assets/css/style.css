@@ -25062,3 +25062,12 @@ HOME PAGE 15 START
 .twm-blog-responsive-item .wt-post-readmore {
   margin-top: auto;
 }
+
+/* Sonner Toast Notifications */
+.sonner-toaster {
+  --toast-padding: 20px 24px;
+}
+
+.sonner-toast {
+  padding: 20px 24px;
+}
