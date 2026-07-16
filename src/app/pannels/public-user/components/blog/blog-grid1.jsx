@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
 import JobZImage from "../../../../common/jobz-img";
 import Spinner from "../../../../common/spinner";
-import { publicUrlFor } from "../../../../../globals/constants";
 import { showErrorToast } from "../../../../../globals/error-handler";
 import { getJobImageUrl } from "../../../../../globals/file-url";
 
@@ -67,10 +66,10 @@ function BlogGrid1Page() {
                   <div className="wt-post-media">
                     <NavLink to={`/blog-detail/${blog.id}`}>
                       <JobZImage
-                        src={blog.image_url ? getJobImageUrl(blog.image_url) : publicUrlFor("images/testimonial-placeholder.svg")}
+                        src={blog.image_url ? getJobImageUrl(blog.image_url) : "https://cdn.builder.io/api/v1/image/assets%2F5e5700cc98ef413c911c8b7a4a98ea76%2F3483d0d2e206411c8f937b411ad53cfd?format=webp&width=800&height=1200"}
                         onError={(event) => {
                           event.currentTarget.onerror = null;
-                          event.currentTarget.src = publicUrlFor("images/testimonial-placeholder.svg");
+                          event.currentTarget.src = "https://cdn.builder.io/api/v1/image/assets%2F5e5700cc98ef413c911c8b7a4a98ea76%2F3483d0d2e206411c8f937b411ad53cfd?format=webp&width=800&height=1200";
                         }}
                         alt={blog.title}
                       />
