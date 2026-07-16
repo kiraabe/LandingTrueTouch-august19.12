@@ -1,8 +1,8 @@
 const FILE_SERVER_URL = import.meta.env.VITE_FILE_SERVER_URL;
 
 const constructFullFileUrl = (relativePath) => {
-  if (!relativePath || !FILE_SERVER_URL) return null;
-  return `${FILE_SERVER_URL}/uploads/${relativePath}`;
+  if (!relativePath) return null;
+  return `${FILE_SERVER_URL || ''}/uploads/${relativePath}`;
 };
 
 export const getCandidateProfilePictureUrl = (filename) => {
