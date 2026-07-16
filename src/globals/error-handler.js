@@ -50,6 +50,25 @@ export const showWarningToast = (message) => {
   toast.warning(message);
 };
 
+export const downloadFileWithToast = async (url, filename, message = 'The file could not be downloaded.') => {
+  try {
+    if (!url) throw new Error('File URL is missing.');
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const blob = await response.blob();
+    const downloadUrl = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = downloadUrl;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(downloadUrl);
+  } catch (error) {
+    showErrorToast(error, message);
+  }
+};
+
 export const handleError = (error, callback = null) => {
   showErrorToast(error);
   if (callback) callback(error);
@@ -60,6 +79,7 @@ export default {
   showSuccessToast,
   showInfoToast,
   showWarningToast,
+  downloadFileWithToast,
   handleError,
   getErrorMessage
 };

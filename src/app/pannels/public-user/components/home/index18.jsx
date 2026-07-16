@@ -4,7 +4,7 @@ import GalleryLightbox from "../../../../common/gallery-lightbox";
 import Spinner from "../../../../common/spinner";
 import { loadScript, publicUrlFor, updateSkinStyle } from "../../../../../globals/constants";
 import { publicUser } from "../../../../../globals/route-names";
-import { showErrorToast, showSuccessToast } from "../../../../../globals/error-handler";
+import { downloadFileWithToast, showErrorToast, showSuccessToast } from "../../../../../globals/error-handler";
 import { getCandidateProfilePictureUrl, getCandidateCvUrl, getJobImageUrl } from "../../../../../globals/file-url";
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -104,6 +104,15 @@ function Home18Page() {
   const [blogs, setBlogs] = useState([]);
   const [blogsLoading, setBlogsLoading] = useState(true);
   const [pageReady, setPageReady] = useState(false);
+
+  const downloadResume = (event, filename, label) => {
+    event.preventDefault();
+    downloadFileWithToast(
+      getCandidateCvUrl(filename),
+      filename,
+      `The ${label} file is unavailable. Please try again later.`
+    );
+  };
 
   // Search, filter, tab state
   const [searchQuery, setSearchQuery] = useState('');
@@ -1452,7 +1461,11 @@ function Home18Page() {
                 {candidateDetails.cv && (
                   <div className="cv-section">
                     <h3 className="cv-section-title">Curriculum Vitae</h3>
-                    <a href={getCandidateCvUrl(candidateDetails.cv)} target="_blank" rel="noopener noreferrer" className="cv-resume-link" download>
+                    <a
+                      href={getCandidateCvUrl(candidateDetails.cv) || "#"}
+                      onClick={(event) => downloadResume(event, candidateDetails.cv, "CV")}
+                      className="cv-resume-link"
+                    >
                       <i className="fas fa-file-pdf" /> Download CV
                     </a>
                   </div>
@@ -1461,7 +1474,11 @@ function Home18Page() {
                 {candidateDetails.resume_url && (
                   <div className="cv-section">
                     <h3 className="cv-section-title">Resume</h3>
-                    <a href={getCandidateCvUrl(candidateDetails.resume_url)} target="_blank" rel="noopener noreferrer" className="cv-resume-link" download>
+                    <a
+                      href={getCandidateCvUrl(candidateDetails.resume_url) || "#"}
+                      onClick={(event) => downloadResume(event, candidateDetails.resume_url, "resume")}
+                      className="cv-resume-link"
+                    >
                       <i className="fas fa-file-pdf" /> Download Full Resume
                     </a>
                   </div>

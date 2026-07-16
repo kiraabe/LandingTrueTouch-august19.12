@@ -105,11 +105,16 @@ function BlogDetail() {
               <div className="col-lg-8 col-md-12">
                 <article className="blog-post-single-outer">
                   <div className="blog-post-single bg-white">
-                    {blog.image_url && (
-                      <div className="wt-post-media blog-featured-image">
-                        <JobZImage src={getJobImageUrl(blog.image_url)} alt={blog.title} />
-                      </div>
-                    )}
+                    <div className="wt-post-media blog-featured-image">
+                      <JobZImage
+                        src={blog.image_url ? getJobImageUrl(blog.image_url) : publicUrlFor("images/testimonial-placeholder.svg")}
+                        onError={(event) => {
+                          event.currentTarget.onerror = null;
+                          event.currentTarget.src = publicUrlFor("images/testimonial-placeholder.svg");
+                        }}
+                        alt={blog.title}
+                      />
+                    </div>
                     <header className="blog-detail-title-section">
                       <div className="wt-post-meta-list blog-detail-meta">
                         <span className="wt-list-content post-date">
@@ -145,11 +150,16 @@ function BlogDetail() {
                     </div>
 
                     <div className="twm-posts-author">
-                      {blog.author_avatar && (
-                        <div className="twm-post-author-pic">
-                          <JobZImage src={getJobImageUrl(blog.author_avatar)} alt={blog.author || 'Author'} />
-                        </div>
-                      )}
+                      <div className="twm-post-author-pic">
+                        <JobZImage
+                          src={blog.author_avatar ? getJobImageUrl(blog.author_avatar) : publicUrlFor("images/blog/post-author.jpg")}
+                          onError={(event) => {
+                            event.currentTarget.onerror = null;
+                            event.currentTarget.src = publicUrlFor("images/blog/post-author.jpg");
+                          }}
+                          alt={blog.author || 'Author'}
+                        />
+                      </div>
                       <div className="twm-post-author-content">
                         <span>{blog.author_role_en || 'TrueTouch Contributor'}</span>
                         <strong>{blog.author || 'Admin'}</strong>
@@ -188,7 +198,14 @@ function BlogDetail() {
                     <div className="recent-post-list">
                       {relatedBlogs.map((item) => (
                         <NavLink key={item.id} to={`/blog-detail/${item.id}`} className="recent-post-item">
-                          {item.image_url ? <JobZImage src={getJobImageUrl(item.image_url)} alt={item.title} /> : <span className="recent-post-placeholder" />}
+                          <JobZImage
+                            src={item.image_url ? getJobImageUrl(item.image_url) : publicUrlFor("images/testimonial-placeholder.svg")}
+                            onError={(event) => {
+                              event.currentTarget.onerror = null;
+                              event.currentTarget.src = publicUrlFor("images/testimonial-placeholder.svg");
+                            }}
+                            alt={item.title}
+                          />
                           <span className="recent-post-content">
                             <small>{new Date(item.created_at).toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' })}</small>
                             <strong>{item.title}</strong>

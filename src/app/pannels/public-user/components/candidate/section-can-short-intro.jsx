@@ -8,12 +8,16 @@ const SectionCandidateShortIntro = ({ candidate }) => {
 
   return (
     <div className="can-intro-section">
-      <div className="can-intro-header" style={{ backgroundImage: "url('images/candidates/cover-bg.jpg')" }}>
+      <div className="can-intro-header" style={{ backgroundImage: `url('${publicUrlFor("images/candidates/candidate-bg.jpg")}')` }}>
         <div className="can-intro-overlay" />
         <div className="can-intro-content">
           <div className="can-intro-avatar">
             <JobZImage
-              src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : publicUrlFor("images/candidates/default.jpg")}
+              src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : publicUrlFor("images/candidates/pic1.jpg")}
+              onError={(event) => {
+                event.currentTarget.onerror = null;
+                event.currentTarget.src = publicUrlFor("images/candidates/pic1.jpg");
+              }}
               alt={candidate.full_name}
             />
           </div>

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
 import JobZImage from "../../../../common/jobz-img";
 import Spinner from "../../../../common/spinner";
+import { publicUrlFor } from "../../../../../globals/constants";
 import { showErrorToast } from "../../../../../globals/error-handler";
 import { getJobImageUrl } from "../../../../../globals/file-url";
 
@@ -63,13 +64,18 @@ function BlogGrid1Page() {
             <div className="twm-blog-responsive-grid">
               {visibleBlogs.map((blog) => (
                 <article key={blog.id} className="twm-blog-responsive-item blog-post twm-blog-post-1-outer">
-                  {blog.image_url && (
-                    <div className="wt-post-media">
-                      <NavLink to={`/blog-detail/${blog.id}`}>
-                        <JobZImage src={getJobImageUrl(blog.image_url)} alt={blog.title} />
-                      </NavLink>
-                    </div>
-                  )}
+                  <div className="wt-post-media">
+                    <NavLink to={`/blog-detail/${blog.id}`}>
+                      <JobZImage
+                        src={blog.image_url ? getJobImageUrl(blog.image_url) : publicUrlFor("images/testimonial-placeholder.svg")}
+                        onError={(event) => {
+                          event.currentTarget.onerror = null;
+                          event.currentTarget.src = publicUrlFor("images/testimonial-placeholder.svg");
+                        }}
+                        alt={blog.title}
+                      />
+                    </NavLink>
+                  </div>
                   <div className="wt-post-info">
                     <div className="wt-post-meta">
                       <ul>

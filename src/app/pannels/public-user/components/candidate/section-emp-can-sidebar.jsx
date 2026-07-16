@@ -1,8 +1,16 @@
 import { useParams } from "react-router-dom";
 import { getCandidateCvUrl } from "../../../../../globals/file-url";
+import { downloadFileWithToast } from "../../../../../globals/error-handler";
 
 const SectionEmployersCandidateSidebar = ({ candidate, type = "1" }) => {
   if (!candidate) return null;
+
+  const resumeFile = candidate.cv || candidate.resume_url || candidate.resume;
+  const resumeUrl = getCandidateCvUrl(resumeFile);
+  const downloadResume = (event) => {
+    event.preventDefault();
+    downloadFileWithToast(resumeUrl, resumeFile, "The resume file is unavailable. Please try again later.");
+  };
 
   return (
     <div className="can-sidebar">
@@ -36,28 +44,16 @@ const SectionEmployersCandidateSidebar = ({ candidate, type = "1" }) => {
       </div>
 
       {/* Resume/CV Download */}
-      {(candidate.cv || candidate.resume) && (
+      {resumeFile && (
         <div className="can-sidebar-card can-cv-card">
           <h3 className="can-card-title">Resume</h3>
-          {candidate.cv && (
+          {resumeFile && (
             <a
-              href={getCandidateCvUrl(candidate.cv)}
-              target="_blank"
-              rel="noopener noreferrer"
-              download
+              href={resumeUrl || "#"}
+              onClick={downloadResume}
               className="can-cv-link"
             >
-              <i className="feather-download" /> Download CV
-            </a>
-          )}
-          {candidate.resume && !candidate.cv && (
-            <a
-              href={candidate.resume}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="can-cv-link"
-            >
-              <i className="feather-download" /> View Resume
+              <i className="feather-download" /> {candidate.cv ? "Download CV" : "Download Resume"}
             </a>
           )}
         </div>

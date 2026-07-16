@@ -1,6 +1,16 @@
 import { useParams } from "react-router-dom";
+import { getCandidateCvUrl } from "../../../../../globals/file-url";
+import { downloadFileWithToast } from "../../../../../globals/error-handler";
+
 const SectionCandidatePersonalInfo = ({ candidate }) => {
   if (!candidate) return null;
+
+  const resumeFile = candidate.resume_url || candidate.resume;
+  const resumeUrl = getCandidateCvUrl(resumeFile);
+  const downloadResume = (event) => {
+    event.preventDefault();
+    downloadFileWithToast(resumeUrl, resumeFile, "The resume file is unavailable. Please try again later.");
+  };
 
   const infoFields = [
     { label: 'Full Name', value: candidate.full_name },
@@ -37,12 +47,12 @@ const SectionCandidatePersonalInfo = ({ candidate }) => {
             </span>
           </div>
         ))}
-        {candidate.resume && (
+        {resumeFile && (
           <div className="can-info-block">
             <span className="can-info-label">Resume</span>
             <span className="can-info-value">
-              <a href={candidate.resume} target="_blank" rel="noopener noreferrer">
-                <i className="feather-download" /> View Resume
+              <a href={resumeUrl || "#"} onClick={downloadResume}>
+                <i className="feather-download" /> Download Resume
               </a>
             </span>
           </div>

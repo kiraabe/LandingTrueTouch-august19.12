@@ -216,6 +216,10 @@ function CandidateGridPage() {
                           <img
                             className="candidate-directory-photo"
                             src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : publicUrlFor("images/candidates/pic1.jpg")}
+                            onError={(event) => {
+                              event.currentTarget.onerror = null;
+                              event.currentTarget.src = publicUrlFor("images/candidates/pic1.jpg");
+                            }}
                             alt={candidate.full_name}
                           />
                           <span className="candidate-directory-status">{candidate.status || "Available"}</span>
