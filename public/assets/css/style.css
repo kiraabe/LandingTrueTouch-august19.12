@@ -5076,6 +5076,11 @@ ol li {
     line-height: 33px;
   }
 }
+@media (max-width: 576px) {
+  .wt-title {
+    font-size: 30px;
+  }
+}
 @media (max-width: 767px) {
   .wt-small-separator h2 {
     margin-bottom: 20px;
