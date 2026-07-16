@@ -1,3 +1,4 @@
+import { createPortal } from 'react-dom';
 import { useEffect, useState } from 'react';
 import './image-lightbox.css';
 
@@ -48,11 +49,11 @@ function ImageLightbox({ src, alt, children }) {
 
   return (
     <>
-      <div className="image-lightbox-trigger" onClick={openLightbox}>
+      <div className="image-lightbox-trigger" data-lightbox-src={src} onClick={openLightbox}>
         {children}
       </div>
 
-      {isOpen && (
+      {isOpen && createPortal(
         <div className="image-lightbox-overlay" onClick={closeLightbox} onKeyDown={handleKeyDown} tabIndex={0} role="dialog" aria-modal="true">
           <div className="lightbox-container">
             <button 
@@ -97,7 +98,8 @@ function ImageLightbox({ src, alt, children }) {
               </svg>
             </button>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
