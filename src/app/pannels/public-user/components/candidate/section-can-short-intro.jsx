@@ -8,7 +8,7 @@ const SectionCandidateShortIntro = ({ candidate }) => {
 
   return (
     <div className="can-intro-section">
-      <div className="can-intro-header" style={{ backgroundImage: `url('${publicUrlFor("images/candidates/candidate-bg.jpg")}')` }}>
+      <div className="can-intro-header" style={{ backgroundImage: `url('${publicUrlFor("images/candidates/candidate-bg.webp")}')` }}>
         <div className="can-intro-overlay" />
         <div className="can-intro-content">
           <div className="can-intro-avatar">
