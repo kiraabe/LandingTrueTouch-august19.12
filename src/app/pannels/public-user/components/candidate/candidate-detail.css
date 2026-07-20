@@ -98,7 +98,7 @@
 }
 
 .can-intro-status {
-  background: #1967d2;
+  background: #305AA7;
   color: white;
   padding: 4px 12px;
   border-radius: 12px;
@@ -161,7 +161,7 @@
 .can-skill-tag,
 .can-language-tag {
   display: inline-block;
-  background: #1967d2;
+  background: #305AA7;
   color: white;
   padding: 8px 16px;
   border-radius: 20px;
@@ -175,7 +175,7 @@
 .can-experience-item {
   padding: 20px;
   background: #f8f9fa;
-  border-left: 4px solid #1967d2;
+  border-left: 4px solid #305AA7;
   border-radius: 4px;
 }
 
@@ -196,7 +196,7 @@
 .can-education-item {
   padding: 20px;
   background: #f8f9fa;
-  border-left: 4px solid #1967d2;
+  border-left: 4px solid #305AA7;
   border-radius: 4px;
 }
 
@@ -239,13 +239,13 @@
 }
 
 .can-info-block .can-info-value a {
-  color: #1967d2;
+  color: #305AA7;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .can-info-block .can-info-value a:hover {
-  color: #0d47a1;
+  color: #24457F;
   text-decoration: underline;
 }
 
@@ -299,7 +299,7 @@
 .can-rate-amount {
   font-size: 42px;
   font-weight: 700;
-  color: #1967d2;
+  color: #305AA7;
 }
 
 .can-rate-period {
@@ -331,13 +331,13 @@
 }
 
 .can-hire-btn {
-  background-color: #1967d2;
+  background-color: #305AA7;
 }
 
 .can-hire-btn:hover {
-  background-color: #0d47a1;
+  background-color: #24457F;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(25, 103, 210, 0.3);
+  box-shadow: 0 4px 12px rgba(48, 90, 167, 0.3);
 }
 
 .can-whatsapp-btn {
@@ -358,7 +358,7 @@
   gap: 8px;
   width: 100%;
   padding: 12px 16px;
-  background-color: #1967d2;
+  background-color: #305AA7;
   color: white;
   border-radius: 6px;
   font-size: 14px;
@@ -368,9 +368,9 @@
 }
 
 .can-cv-link:hover {
-  background-color: #0d47a1;
+  background-color: #24457F;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(25, 103, 210, 0.3);
+  box-shadow: 0 4px 12px rgba(48, 90, 167, 0.3);
 }
 
 /* Info Card */
@@ -398,7 +398,7 @@
 }
 
 .can-info-label i {
-  color: #1967d2;
+  color: #305AA7;
   font-size: 14px;
 }
 
@@ -410,7 +410,7 @@
 
 .can-status-badge {
   display: inline-block;
-  background: #1967d2;
+  background: #305AA7;
   color: white;
   padding: 4px 12px;
   border-radius: 12px;
