@@ -38,3 +38,11 @@ export const getJobImageUrl = (imagePath) => {
   // Otherwise treat as a relative path
   return constructFullFileUrl(imagePath);
 };
+
+export const getTestimonialAvatarUrl = (filename) => {
+  if (!filename) return null;
+  const imageUrl = filename.startsWith('http://') || filename.startsWith('https://')
+    ? filename
+    : constructFullFileUrl(`testimonials/avatars/${filename}`);
+  return imageUrl ? `/api/proxy-image?url=${encodeURIComponent(imageUrl)}` : null;
+};

@@ -5,7 +5,7 @@ import Spinner from "../../../../common/spinner";
 import { loadScript, publicUrlFor, updateSkinStyle } from "../../../../../globals/constants";
 import { publicUser } from "../../../../../globals/route-names";
 import { downloadFileWithToast, showErrorToast, showSuccessToast } from "../../../../../globals/error-handler";
-import { getCandidateProfilePictureUrl, getCandidateCvUrl, getJobImageUrl } from "../../../../../globals/file-url";
+import { getCandidateProfilePictureUrl, getCandidateCvUrl, getJobImageUrl, getTestimonialAvatarUrl } from "../../../../../globals/file-url";
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Toaster } from "../../../../../components/ui/toaster";
@@ -1104,7 +1104,7 @@ function Home18Page() {
                                     <div className="testimonials-v site-bg-white">
                                         <div className="twm-testi-media">
                                             <img
-                                                src={testimonial.avatar_image ? getJobImageUrl(testimonial.avatar_image) : publicUrlFor("images/testimonial-placeholder.svg")}
+                                                src={testimonial.avatar_image ? getTestimonialAvatarUrl(testimonial.avatar_image) : publicUrlFor("images/testimonial-placeholder.svg")}
                                                 alt={`${testimonial.company_name} testimonial`}
                                                 onError={(event) => {
                                                   event.currentTarget.onerror = null;
