@@ -1103,11 +1103,14 @@ function Home18Page() {
                                 <div className="item" key={testimonial.id}>
                                     <div className="testimonials-v site-bg-white">
                                         <div className="twm-testi-media">
-                                            {testimonial.avatar_image ? (
-                                                <img src={getJobImageUrl(testimonial.avatar_image)} alt={`${testimonial.company_name} testimonial`} />
-                                            ) : (
-                                                <img src={publicUrlFor("images/testimonial-placeholder.svg")} alt={`${testimonial.company_name} testimonial placeholder`} />
-                                            )}
+                                            <img
+                                                src={testimonial.avatar_image ? getJobImageUrl(testimonial.avatar_image) : publicUrlFor("images/testimonial-placeholder.svg")}
+                                                alt={`${testimonial.company_name} testimonial`}
+                                                onError={(event) => {
+                                                  event.currentTarget.onerror = null;
+                                                  event.currentTarget.src = publicUrlFor("images/testimonial-placeholder.svg");
+                                                }}
+                                            />
                                         </div>
                                         <div className="testimonial-v-content">
                                             <div className="t-testimonial-top">
