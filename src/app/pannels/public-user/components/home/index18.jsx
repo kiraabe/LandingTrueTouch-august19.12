@@ -300,7 +300,9 @@ function Home18Page() {
           headers: { 'Content-Type': 'application/json' }
         });
         if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-        setTestimonials(await response.json());
+        const data = await response.json();
+        const uniqueTestimonials = [...new Map(data.map(testimonial => [testimonial.id, testimonial])).values()];
+        setTestimonials(uniqueTestimonials);
       } catch (err) {
         console.error('Failed to load testimonials:', err);
       }
@@ -314,7 +316,8 @@ function Home18Page() {
         const carousel = window.jQuery('.twm-testimonial-8-carousel');
         carousel.trigger('destroy.owl.carousel');
         carousel.owlCarousel({
-          loop: true,
+          loop: false,
+          rewind: true,
           nav: true,
           dots: false,
           margin: 30,
