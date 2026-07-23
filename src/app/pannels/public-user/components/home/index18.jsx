@@ -1100,7 +1100,11 @@ function Home18Page() {
                                 <div className="item" key={testimonial.id}>
                                     <div className="testimonials-v site-bg-white">
                                         <div className="twm-testi-media">
-                                            <JobZImage src={testimonial.avatar_image ? getJobImageUrl(testimonial.avatar_image) : "images/testimonial-placeholder.svg"} alt={`${testimonial.company_name} testimonial`} />
+                                            {testimonial.avatar_image ? (
+                                                <img src={getJobImageUrl(testimonial.avatar_image)} alt={`${testimonial.company_name} testimonial`} />
+                                            ) : (
+                                                <JobZImage src="images/testimonial-placeholder.svg" alt={`${testimonial.company_name} testimonial placeholder`} />
+                                            )}
                                         </div>
                                         <div className="testimonial-v-content">
                                             <div className="t-testimonial-top">
