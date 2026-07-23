@@ -19612,6 +19612,10 @@ strong {
   color: #ffac16;
   font-size: 14px;
 }
+.testimonials-v .t-rating span.star-empty i {
+  color: #e0e0e0;
+  opacity: 0.5;
+}
 
 /*Get Jobs*/
 .h-page6-getjobs-wrap {

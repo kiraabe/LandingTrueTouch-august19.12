@@ -1116,8 +1116,8 @@ function Home18Page() {
                                             <div className="t-testimonial-top">
                                                 <div className="t-quote"><i className="fa fa-quote-left" /></div>
                                                 <div className="t-rating">
-                                                    {Array.from({ length: Math.max(0, Math.min(5, Number(testimonial.rating) || 0)) }, (_, index) => (
-                                                        <span key={index}><i className="fa fa-star" /></span>
+                                                    {Array.from({ length: 5 }, (_, index) => (
+                                                        <span key={index} className={index < Number(testimonial.rating) ? "star-filled" : "star-empty"}><i className="fa fa-star" /></span>
                                                     ))}
                                                 </div>
                                             </div>
