@@ -1106,7 +1106,7 @@ function Home18Page() {
                                             {testimonial.avatar_image ? (
                                                 <img src={getJobImageUrl(testimonial.avatar_image)} alt={`${testimonial.company_name} testimonial`} />
                                             ) : (
-                                                <JobZImage src="images/testimonial-placeholder.svg" alt={`${testimonial.company_name} testimonial placeholder`} />
+                                                <img src={publicUrlFor("images/testimonial-placeholder.svg")} alt={`${testimonial.company_name} testimonial placeholder`} />
                                             )}
                                         </div>
                                         <div className="testimonial-v-content">
