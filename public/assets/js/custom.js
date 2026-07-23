@@ -445,7 +445,8 @@ All JavaScript fuctions Start
 	//  Testimonial Carousel function by = owl.carousel.js ========================== //
 	function twm_testimonial_8_carousel() {
 		jQuery('.twm-testimonial-8-carousel').owlCarousel({
-			loop: true,
+			loop: false,
+			rewind: true,
 			nav: true,
 			dots: false,
 			margin: 30,

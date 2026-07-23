@@ -316,7 +316,8 @@ function Home18Page() {
         const carousel = window.jQuery('.twm-testimonial-8-carousel');
         carousel.trigger('destroy.owl.carousel');
         carousel.owlCarousel({
-          loop: true,
+          loop: false,
+          rewind: true,
           nav: true,
           dots: false,
           margin: 30,
