@@ -39,10 +39,19 @@ export const getJobImageUrl = (imagePath) => {
   return constructFullFileUrl(imagePath);
 };
 
-export const getTestimonialAvatarUrl = (filename) => {
-  if (!filename) return null;
-  const imageUrl = filename.startsWith('http://') || filename.startsWith('https://')
-    ? filename
-    : constructFullFileUrl(`testimonials/avatars/${filename}`);
+export const getTestimonialAvatarUrl = (filepath) => {
+  if (!filepath) return null;
+
+  // If it's an external URL, proxy it through the api
+  if (filepath.startsWith('http://') || filepath.startsWith('https://')) {
+    return `/api/proxy-image?url=${encodeURIComponent(filepath)}`;
+  }
+
+  // If it already contains "testimonials/", use it as-is, otherwise prepend the path
+  const fullPath = filepath.includes('testimonials/')
+    ? filepath
+    : `testimonials/${filepath}`;
+
+  const imageUrl = constructFullFileUrl(fullPath);
   return imageUrl ? `/api/proxy-image?url=${encodeURIComponent(imageUrl)}` : null;
 };
