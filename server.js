@@ -162,6 +162,13 @@ try {
 }
 
 try {
+  const testimonialsRouter = require('./routes/testimonials');
+  app.use('/api', testimonialsRouter);
+} catch (error) {
+  console.error('Error loading testimonials router:', error);
+}
+
+try {
   const contactRouter = require('./routes/contact');
   app.use('/api', contactRouter);
 } catch (error) {

@@ -116,6 +116,7 @@ function Home18Page() {
   const [detailsLoading, setDetailsLoading] = useState(false);
   const [blogs, setBlogs] = useState([]);
   const [blogsLoading, setBlogsLoading] = useState(true);
+  const [testimonials, setTestimonials] = useState([]);
   const [pageReady, setPageReady] = useState(false);
 
   const downloadResume = (event, filename, label) => {
@@ -290,6 +291,40 @@ function Home18Page() {
     };
     fetchBlogs();
   }, []);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const response = await fetch('/api/testimonials', {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' }
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        setTestimonials(await response.json());
+      } catch (err) {
+        console.error('Failed to load testimonials:', err);
+      }
+    };
+    fetchTestimonials();
+  }, []);
+
+  useEffect(() => {
+    if (testimonials.length > 0 && window.jQuery) {
+      setTimeout(() => {
+        const carousel = window.jQuery('.twm-testimonial-8-carousel');
+        carousel.trigger('destroy.owl.carousel');
+        carousel.owlCarousel({
+          loop: true,
+          nav: true,
+          dots: false,
+          margin: 30,
+          autoplay: true,
+          navText: ['<i class="feather-chevron-left"></i>', '<i class="feather-chevron-right"></i>'],
+          responsive: { 0: { items: 1 }, 480: { items: 1 }, 991: { items: 2 } }
+        });
+      }, 100);
+    }
+  }, [testimonials]);
 
   // Mark page as ready
   useEffect(() => {
@@ -1061,114 +1096,30 @@ function Home18Page() {
                     {/* title="" END*/}
                     <div className="section-content">
                         <div className="owl-carousel twm-testimonial-8-carousel m-b30 owl-btn-bottom-center ">
-                            {/* COLUMNS 1 */}
-                            <div className="item ">
-                                <div className="testimonials-v site-bg-white">
-                                    <div className="twm-testi-media">
-                                        <JobZImage src="images/testimonial-placeholder.svg" alt="Client testimonial placeholder" />
-                                    </div>
-                                    <div className="testimonial-v-content">
-                                        <div className="t-testimonial-top">
-                                            <div className="t-quote"><i className="fa fa-quote-left" /></div>
-                                            <div className="t-rating">
-                                                <span><i className="fa fa-star" /></span>
-                                                <span><i className="fa fa-star" /></span>
-                                                <span><i className="fa fa-star" /></span>
-                                                <span><i className="fa fa-star" /></span>
-                                                <span><i className="fa fa-star" /></span>
+                            {testimonials.map((testimonial) => (
+                                <div className="item" key={testimonial.id}>
+                                    <div className="testimonials-v site-bg-white">
+                                        <div className="twm-testi-media">
+                                            <JobZImage src={testimonial.avatar_image ? getJobImageUrl(testimonial.avatar_image) : "images/testimonial-placeholder.svg"} alt={`${testimonial.company_name} testimonial`} />
+                                        </div>
+                                        <div className="testimonial-v-content">
+                                            <div className="t-testimonial-top">
+                                                <div className="t-quote"><i className="fa fa-quote-left" /></div>
+                                                <div className="t-rating">
+                                                    {Array.from({ length: Math.max(0, Math.min(5, Number(testimonial.rating) || 0)) }, (_, index) => (
+                                                        <span key={index}><i className="fa fa-star" /></span>
+                                                    ))}
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="t-discription">Our Qatar & Oman offices provided outstanding domestic helpers
-                                             and skilled workers. Efficient, global, and highly professional!
-                                        </div>
-                                        <div className="twm-testi-detail">
-                                            <div className="twm-testi-name">Al-Mansoori Group</div>
-                                            <div className="twm-testi-position">HR Director, Doha</div>
+                                            <div className="t-discription">{testimonial.testimonial_text}</div>
+                                            <div className="twm-testi-detail">
+                                                <div className="twm-testi-name">{testimonial.company_name}</div>
+                                                <div className="twm-testi-position">{testimonial.designation}</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            {/* COLUMNS 2 */}
-                            <div className="item ">
-                                <div className="testimonials-v site-bg-white">
-                                    <div className="twm-testi-media">
-                                        <JobZImage src="images/testimonial-placeholder.svg" alt="Client testimonial placeholder" />
-                                    </div>
-                                    <div className="testimonial-v-content">
-                                        <div className="t-testimonial-top">
-                                            <div className="t-quote"><i className="fa fa-quote-left" /></div>
-                                            <div className="t-rating">
-                                                <span><i className="fa fa-star" /></span>
-                                                <span><i className="fa fa-star" /></span>
-                                                <span><i className="fa fa-star" /></span>
-                                                <span><i className="fa fa-star" /></span>
-                                                <span><i className="fa fa-star" /></span>
-                                            </div>
-                                        </div>
-                                        <div className="t-discription">Superb international recruitment! Sourced top-tier skilled
-                                             personnel from Africa and Asia to our UAE and Saudi projects.
-                                        </div>
-                                        <div className="twm-testi-detail">
-                                            <div className="twm-testi-name">Karanja & Associates</div>
-                                            <div className="twm-testi-position">Operations, Kenya</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {/* COLUMNS 3 */}
-                            <div className="item ">
-                                <div className="testimonials-v site-bg-white">
-                                    <div className="twm-testi-media">
-                                        <JobZImage src="images/testimonial-placeholder.svg" alt="Client testimonial placeholder" />
-                                    </div>
-                                    <div className="testimonial-v-content">
-                                        <div className="t-testimonial-top">
-                                            <div className="t-quote"><i className="fa fa-quote-left" /></div>
-                                            <div className="t-rating">
-                                                <span><i className="fa fa-star" /></span>
-                                                <span><i className="fa fa-star" /></span>
-                                                <span><i className="fa fa-star" /></span>
-                                                <span><i className="fa fa-star" /></span>
-                                                <span><i className="fa fa-star" /></span>
-                                            </div>
-                                        </div>
-                                        <div className="t-discription">The Philippines and Kenya pipelines delivered semi-skilled
-                                             and premium local manpower swiftly to Kuwait & Bahrain.
-                                        </div>
-                                        <div className="twm-testi-detail">
-                                            <div className="twm-testi-name">Global Tech Services</div>
-                                            <div className="twm-testi-position">VP Supply Chain, Oman</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {/* COLUMNS 4 */}
-                            <div className="item ">
-                                <div className="testimonials-v site-bg-white">
-                                    <div className="twm-testi-media">
-                                        <JobZImage src="images/testimonial-placeholder.svg" alt="Client testimonial placeholder" />
-                                    </div>
-                                    <div className="testimonial-v-content">
-                                        <div className="t-testimonial-top">
-                                            <div className="t-quote"><i className="fa fa-quote-left" /></div>
-                                            <div className="t-rating">
-                                                <span><i className="fa fa-star" /></span>
-                                                <span><i className="fa fa-star" /></span>
-                                                <span><i className="fa fa-star" /></span>
-                                                <span><i className="fa fa-star" /></span>
-                                                <span><i className="fa fa-star" /></span>
-                                            </div>
-                                        </div>
-                                        <div className="t-discription">Their local and international hiring channels saved us weeks of
-                                             sourcing for our Lebanon and Jordan deployments.
-                                        </div>
-                                        <div className="twm-testi-detail">
-                                            <div className="twm-testi-name">Pacific Horizons Ltd</div>
-                                            <div className="twm-testi-position">GM, Manila Office</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </div>
