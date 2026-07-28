@@ -99,7 +99,7 @@ function Header1({ _config }) {
 
     const languageLabels = {
         en: "English",
-        ar: "Arabic",
+        ar: "العربية",
         am: "Amharic"
     };
     const navigationLabels = currentLanguage === "ar" ? {
@@ -204,7 +204,7 @@ function Header1({ _config }) {
                                     <button
                                         className="language-switcher-btn"
                                         onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
-                                        title="Select language"
+                                        title={currentLanguage === "ar" ? "اختر اللغة" : "Select language"}
                                     >
                                         <i className="feather-globe" />
                                         <span className="language-label">{languageLabels[currentLanguage]}</span>
@@ -363,7 +363,7 @@ function Header1({ _config }) {
                             document.querySelector('#search .close')?.click();
                         }
                     }}>
-                        <input className="form-control" name="q" type="search" placeholder="Type to search" />
+                        <input className="form-control" name="q" type="search" placeholder={currentLanguage === "ar" ? "اكتب للبحث" : "Type to search"} />
                         <span className="input-group-append">
                             <button type="submit" className="search-btn">
                                 <i className="fa fa-paper-plane" />

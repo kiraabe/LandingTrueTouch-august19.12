@@ -93,6 +93,11 @@
   text-align: right;
 }
 
+.site-header.is-rtl .language-dropdown {
+  left: 0;
+  right: auto;
+}
+
 .site-header.is-rtl .desktop-header-nav .nav,
 .site-header.is-rtl .mobile-nav-list {
   direction: rtl;
@@ -305,6 +310,16 @@
 }
 
 @media (min-width: 992px) {
+  .site-header.is-rtl .extra-nav {
+    left: 0;
+    right: auto;
+  }
+
+  .site-header.is-rtl .language-dropdown {
+    left: 0;
+    right: auto;
+  }
+
   .site-header .container-fluid {
     position: relative;
   }
@@ -391,6 +406,11 @@
     display: flex;
     align-items: center;
     padding-left: 8px;
+  }
+
+  .site-header.is-rtl.header-style-3 .extra-nav {
+    left: 58px;
+    right: auto;
   }
 
   .site-header.header-style-3 .language-switcher-btn {
