@@ -201,6 +201,10 @@
   }
 }
 
+.contact-one-inner-rtl {
+  direction: ltr;
+}
+
 .contact-one-inner-rtl .contact-form-outer,
 .contact-one-inner-rtl .contact-info {
   text-align: right;
