@@ -950,7 +950,7 @@ function Home18Page() {
       }, [openLightbox]);
 
       return (
-        <div className="twm-featured-city-carousal-wrap">
+        <div dir="ltr" className="twm-featured-city-carousal-wrap">
           <div className="owl-carousel twm-featured-city-carousal">
             {[1, 2, 3, 4, 5].map((n, i) => (
               <div key={n} className="item" data-gallery-index={i}>
