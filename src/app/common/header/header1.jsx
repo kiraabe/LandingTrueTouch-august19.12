@@ -309,7 +309,7 @@ function Header1({ _config }) {
                                         }
                                     }}
                                 >
-                                    Home
+                                    {navigationLabels.home}
                                 </a>
                             </li>
                             <li className="mobile-nav-item">

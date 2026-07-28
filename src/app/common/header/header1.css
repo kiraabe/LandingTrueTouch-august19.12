@@ -93,6 +93,22 @@
   text-align: right;
 }
 
+.site-header.is-rtl .desktop-header-nav .nav,
+.site-header.is-rtl .mobile-nav-list {
+  direction: rtl;
+}
+
+.site-header.is-rtl .desktop-header-nav .nav {
+  display: flex;
+  flex-direction: row;
+}
+
+.site-header.is-rtl .mobile-nav-link,
+.site-header.is-rtl .mobile-drawer-search-input {
+  direction: rtl;
+  text-align: right;
+}
+
 /* Mobile Drawer Styles */
 .mobile-drawer-overlay {
   position: fixed;
