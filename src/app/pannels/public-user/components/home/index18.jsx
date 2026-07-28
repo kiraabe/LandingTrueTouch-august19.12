@@ -458,6 +458,17 @@ function Home18Page() {
   };
 
   const isArabic = currentLanguage === "ar";
+  const counterLabels = isArabic ? {
+    happyClient: "عميل سعيد",
+    completedCases: "قضية مكتملة",
+    successScore: "نسبة النجاح",
+    countries: "دول"
+  } : {
+    happyClient: "Happy Client",
+    completedCases: "Completed Cases",
+    successScore: "Success Score",
+    countries: "Countries"
+  };
   const aboutCopy = isArabic ? {
     separator: "لماذا تختار الشراكة معنا",
     title: "مزود مزود توظيف عمالة موثوق به",
@@ -639,7 +650,7 @@ function Home18Page() {
                 <div className="container">
                     <div className="twm-company-approch5-outer">
                         <div className="twm-company-approch5">
-                            <div className="row stats-counter-rtl">
+                            <div className={`row ${isArabic ? "stats-counter-rtl" : ""}`}>
                                 {/*block 1*/}
                                 <div className="col-lg-3 col-md-6 col-sm-6">
                                     <div className="counter-outer-two">
@@ -648,7 +659,7 @@ function Home18Page() {
                                                 <span className="counter">
 <CountUp end={28} duration={10} />
 </span>+</div>
-                                            <p className="icon-content-info">عميل سعيد
+                                            <p className="icon-content-info">{counterLabels.happyClient}
 </p>
                                         </div>
                                     </div>
@@ -661,7 +672,7 @@ function Home18Page() {
                                                 <span className="counter">
 <CountUp end={25} duration={10} />
 </span>k+</div>
-                                            <p className="icon-content-info">قضية مكتملة
+                                            <p className="icon-content-info">{counterLabels.completedCases}
 </p>
                                         </div>
                                     </div>
@@ -672,7 +683,7 @@ function Home18Page() {
                                         <div className="icon-content">
                                             <div className="tw-count-number site-text-white">
                                                 <span className="counter">80</span>%</div>
-                                            <p className="icon-content-info">نسبة النجاح
+                                            <p className="icon-content-info">{counterLabels.successScore}
 </p>
                                         </div>
                                     </div>
@@ -685,7 +696,7 @@ function Home18Page() {
                                                 <span className="counter">
 <CountUp end={10} duration={10} />
 </span>+</div>
-                                            <p className="icon-content-info">دول</p>
+                                            <p className="icon-content-info">{counterLabels.countries}</p>
                                         </div>
                                     </div>
                                 </div>
