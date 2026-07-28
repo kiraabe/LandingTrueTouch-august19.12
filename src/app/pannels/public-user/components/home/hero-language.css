@@ -120,3 +120,83 @@
 .network-section-rtl .wt-separator-two-part-right {
   text-align: left !important;
 }
+
+.regional-offices-background {
+  background-image: url('/assets/images/home-7/ofr-bg.jpg');
+}
+
+.regional-offices-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.regional-office-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.regional-office-icon {
+  flex: 0 0 auto;
+  margin-top: 3px;
+  font-size: 18px;
+}
+
+.regional-office-label {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.regional-office-value {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.regional-offices-map-column {
+  margin-top: 20px;
+}
+
+.regional-offices-map {
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.regional-offices-map iframe {
+  display: block;
+  border: 0;
+}
+
+.regional-offices-section-rtl .regional-offices-row {
+  direction: rtl;
+}
+
+.regional-offices-section-rtl .regional-offices-details {
+  order: 2;
+  text-align: right;
+}
+
+.regional-offices-section-rtl .regional-offices-map-column {
+  order: 1;
+}
+
+.regional-offices-section-rtl .regional-office-item {
+  justify-content: flex-start;
+}
+
+.regional-office-ltr-value {
+  direction: ltr;
+  text-align: right;
+  unicode-bidi: isolate;
+}
+
+@media (max-width: 991px) {
+  .regional-offices-section-rtl .regional-offices-details,
+  .regional-offices-section-rtl .regional-offices-map-column {
+    order: initial;
+  }
+}

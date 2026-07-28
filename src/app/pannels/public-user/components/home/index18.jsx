@@ -1365,63 +1365,64 @@ function Home18Page() {
         {/* OUR BLOG END */}
 
       
-        <div className="container">
+        <div className={`container regional-offices-section${isArabic ? ' regional-offices-section-rtl' : ''}`} dir={isArabic ? 'rtl' : 'ltr'}>
           <div className="twm-j-ofr-wrap">
-            <div className="twm-j-ofr-content" style={{ backgroundImage: `url(${publicUrlFor("images/home-7/ofr-bg.jpg")})` }}>
-      <div className="row align-items-center">
-        <div className="col-lg-5 col-md-12">
-          <div className="twm-j-ofr-map-content">
-            <div className="section-head left wt-small-separator-outer">
-              <h2 className="wt-title">Our <span className="site-text-primary">Regional Offices</span></h2>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                <i className="fas fa-map-marker-alt site-text-primary" style={{ fontSize: '18px', marginTop: '3px' }} />
-                <div>
-                  <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Primary Location</h4>
-                  <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>Addis Ababa, Ethiopia</p>
+            <div className="twm-j-ofr-content regional-offices-background">
+              <div className="row align-items-center regional-offices-row">
+                <div className="col-lg-5 col-md-12 regional-offices-details">
+                  <div className="twm-j-ofr-map-content">
+                    <div className="section-head left wt-small-separator-outer regional-offices-heading">
+                      <h2 className="wt-title">
+                        {isArabic ? <><span className="site-text-primary">مكاتبنا الإقليمية</span></> : <>Our <span className="site-text-primary">Regional Offices</span></>}
+                      </h2>
+                    </div>
+                    <div className="regional-offices-list">
+                      <div className="regional-office-item">
+                        <i className="fas fa-map-marker-alt site-text-primary regional-office-icon" />
+                        <div>
+                          <h4 className="regional-office-label">{isArabic ? 'الموقع الرئيسي' : 'Primary Location'}</h4>
+                          <p className="regional-office-value">{isArabic ? 'أديس أبابا، إثيوبيا' : 'Addis Ababa, Ethiopia'}</p>
+                        </div>
+                      </div>
+                      <div className="regional-office-item">
+                        <i className="fas fa-globe site-text-primary regional-office-icon" />
+                        <div>
+                          <h4 className="regional-office-label">{isArabic ? 'المكاتب الإقليمية' : 'Regional Offices'}</h4>
+                          <p className="regional-office-value">{isArabic ? 'قطر، عُمان، كينيا، الفلبين' : 'Qatar, Oman, Kenya, Philippines'}</p>
+                        </div>
+                      </div>
+                      <div className="regional-office-item">
+                        <i className="fas fa-phone site-text-primary regional-office-icon" />
+                        <div>
+                          <h4 className="regional-office-label">{isArabic ? 'التواصل' : 'Contact'}</h4>
+                          <p className="regional-office-value regional-office-ltr-value">+251 91 120 8322</p>
+                        </div>
+                      </div>
+                      <div className="regional-office-item">
+                        <i className="fas fa-envelope site-text-primary regional-office-icon" />
+                        <div>
+                          <h4 className="regional-office-label">{isArabic ? 'البريد الإلكتروني' : 'Email'}</h4>
+                          <p className="regional-office-value regional-office-ltr-value">info@truetouchrecruitment.com</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                <i className="fas fa-globe site-text-primary" style={{ fontSize: '18px', marginTop: '3px' }} />
-                <div>
-                  <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Regional Offices</h4>
-                  <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>Qatar, Oman, Kenya, Philippines</p>
-                </div>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                <i className="fas fa-phone site-text-primary" style={{ fontSize: '18px', marginTop: '3px' }} />
-                <div>
-                  <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Contact</h4>
-                  <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>+251 91 120 8322</p>
-                </div>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                <i className="fas fa-envelope site-text-primary" style={{ fontSize: '18px', marginTop: '3px' }} />
-                <div>
-                  <h4 style={{ margin: 0, fontSize: '15px', fontWeight: '600' }}>Email</h4>
-                  <p style={{ margin: 0, color: '#666', fontSize: '14px' }}>info@truetouchrecruitment.com</p>
+                <div className="col-lg-7 col-md-12 regional-offices-map-column">
+                  <div className="regional-offices-map">
+                    <iframe
+                      title={isArabic ? 'مكتب ترو تاتش' : 'TrueTouch Office'}
+                      width="100%"
+                      height="380"
+                      loading="lazy"
+                      src="https://maps.google.com/maps?q=9.011711495201522,38.75411823390739&z=16&output=embed"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="col-lg-7 col-md-12" style={{ marginTop: '20px' }}>
-          <div style={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.12)' }}>
-            <iframe
-              title="TrueTouch Office"
-              width="100%"
-              height="380"
-              style={{ border: 0, display: 'block' }}
-              loading="lazy"
-              src="https://maps.google.com/maps?q=9.011711495201522,38.75411823390739&z=16&output=embed"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
       </div>
       {/* CANDIDATES END */}
 
