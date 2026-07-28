@@ -1,3 +1,10 @@
+.hero-content-rtl > .row .twm-bnr-left-section {
+  margin-left: 0;
+  margin-right: auto;
+  padding-left: 0;
+  padding-right: 20px;
+}
+
 .hero-content-rtl .twm-bnr-left-section,
 .hero-content-rtl .twm-bnr-title-small,
 .hero-content-rtl .twm-bnr-title-large,
@@ -19,4 +26,17 @@
 .hero-content-rtl .hero-location-input {
   padding-left: 35px;
   padding-right: 15px;
+}
+
+@media (max-width: 1270px) and (min-width: 992px) {
+  .hero-content-rtl > .row .twm-bnr-left-section {
+    padding-right: 30px;
+  }
+}
+
+@media (max-width: 991px) {
+  .hero-content-rtl > .row .twm-bnr-left-section {
+    margin: 0 auto;
+    padding: 0 30px 50px;
+  }
 }
