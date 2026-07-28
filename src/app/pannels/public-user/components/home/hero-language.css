@@ -78,3 +78,11 @@
   direction: ltr;
   unicode-bidi: isolate;
 }
+
+.industries-section-rtl .section-head {
+  text-align: right;
+}
+
+.industries-section-rtl .industries-cards-section .row {
+  direction: rtl;
+}

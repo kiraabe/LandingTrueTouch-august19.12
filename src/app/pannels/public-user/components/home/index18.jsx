@@ -469,6 +469,31 @@ function Home18Page() {
     successScore: "Success Score",
     countries: "Countries"
   };
+  const industriesCopy = isArabic ? {
+    title: "القطاعات التي ندعمها",
+    description: "نحن نقدم أحدث حلول التوظيف وإدارة القوى العاملة للوظائف التي تتراوح من المبتدئين إلى التنفيذيين عبر مختلف القطاعات. بفضل معرفتنا الواسعة وشبكتنا وخبرتنا، يمكننا ربطك بالدور الوظيفي المثالي.",
+    readMore: "اقرأ المزيد",
+    cards: [
+      "المساعدات المنزليات وتدبير المنزلا",
+      "رعاية الأطفال والتقديم الرعائيا",
+      "محترفو الطهي والطهوة",
+      "العمالة الماهرة وشبه الماهرة",
+      "الرعاية الصحية ورعاية كبار السن",
+      "الخدمات التجارية"
+    ]
+  } : {
+    title: "Industries we support",
+    description: "We provide cutting-edge recruitment and workforce management solutions for positions ranging from entry-level to executive across diverse industries. With our extensive knowledge, network, and expertise, we can match you with the ideal role.",
+    readMore: "Read More",
+    cards: [
+      "Domestic Helpers & Housekeeping",
+      "Childcare & Caregiving",
+      "Culinary Professionals",
+      "Skilled & Semi-Skilled Workers",
+      "Healthcare & Elderly Care",
+      "Commercial Services"
+    ]
+  };
   const aboutCopy = isArabic ? {
     separator: "لماذا تختار الشراكة معنا",
     title: "مزود مزود توظيف عمالة موثوق به",
@@ -708,15 +733,15 @@ function Home18Page() {
             {/* Counter SECTION END */}
 
       {/* FEATURED JOBS SECTION START */}
-      <div className="section-full p-t120 p-t180 pos-relative site-bg-white twm-featured-city-area">
+      <div dir={isArabic ? "rtl" : "ltr"} className={`section-full p-t120 p-t180 pos-relative site-bg-white twm-featured-city-area ${isArabic ? "industries-section-rtl" : ""}`}>
         <div className="twm-bg-section-box" />
         <div className="container">
           <div className="wt-separator-two-part content-white">
             <div className="row wt-separator-two-part-row">
               <div className="col-xl-12 col-lg-12 col-md-12 wt-separator-two-part-left">
                 <div className="section-head left wt-small-separator-outer">
-                  <h2 className="wt-title">Industries we support</h2>
-                  <div className="wt-small-separator site-text-primary"><div>We provide cutting-edge recruitment and workforce management solutions for positions ranging from entry-level to executive across diverse industries. With our extensive knowledge, network, and expertise, we can match you with the ideal role.</div></div>
+                  <h2 className="wt-title">{industriesCopy.title}</h2>
+                  <div className="wt-small-separator site-text-primary"><div>{industriesCopy.description}</div></div>
                 </div>
               </div>
             </div>
@@ -727,9 +752,9 @@ function Home18Page() {
                 <div className="twm-featured-city2">
                   <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/ResidentialCleanerHousekeeper.jpg")})` }} />
                   <div className="twm-city-info">
-                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Domestic Helpers & Housekeeping</NavLink></h4>
+                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>{industriesCopy.cards[0]}</NavLink></h4>
                     <div className="wt-post-readmore">
-                      <a href="blog-single.html" className="site-button-link site-text-primary">Read More</a>
+                      <a href="blog-single.html" className="site-button-link site-text-primary">{industriesCopy.readMore}</a>
                     </div>
                   </div>
                 </div>
@@ -738,9 +763,9 @@ function Home18Page() {
                 <div className="twm-featured-city2">
                   <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/NannyChildcareSpecialist.jpg")})` }} />
                   <div className="twm-city-info">
-                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Childcare & Caregiving</NavLink></h4>
+                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>{industriesCopy.cards[1]}</NavLink></h4>
                     <div className="wt-post-readmore">
-                      <a href="blog-single.html" className="site-button-link site-text-primary">Read More</a>
+                      <a href="blog-single.html" className="site-button-link site-text-primary">{industriesCopy.readMore}</a>
                     </div>
                   </div>
                 </div>
@@ -749,9 +774,9 @@ function Home18Page() {
                 <div className="twm-featured-city2">
                   <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/PrivateChefCook.jpg")})` }} />
                   <div className="twm-city-info">
-                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Culinary Professionals</NavLink></h4>
+                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>{industriesCopy.cards[2]}</NavLink></h4>
                     <div className="wt-post-readmore">
-                      <a href="blog-single.html" className="site-button-link site-text-primary">Read More</a>
+                      <a href="blog-single.html" className="site-button-link site-text-primary">{industriesCopy.readMore}</a>
                     </div>
                   </div>
                 </div>
@@ -760,9 +785,9 @@ function Home18Page() {
                 <div className="twm-featured-city2">
                   <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/Logistics&WarehousingSupervisor.jpg")})` }} />
                   <div className="twm-city-info">
-                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Skilled & Semi-Skilled Workers</NavLink></h4>
+                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>{industriesCopy.cards[3]}</NavLink></h4>
                     <div className="wt-post-readmore">
-                      <a href="blog-single.html" className="site-button-link site-text-primary">Read More</a>
+                      <a href="blog-single.html" className="site-button-link site-text-primary">{industriesCopy.readMore}</a>
                     </div>
                   </div>
                 </div>
@@ -771,9 +796,9 @@ function Home18Page() {
                 <div className="twm-featured-city2">
                   <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/ElderlyCareCaregiver.jpg")})` }} />
                   <div className="twm-city-info">
-                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Healthcare & Elderly Care</NavLink></h4>
+                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>{industriesCopy.cards[4]}</NavLink></h4>
                     <div className="wt-post-readmore">
-                      <a href="blog-single.html" className="site-button-link site-text-primary">Read More</a>
+                      <a href="blog-single.html" className="site-button-link site-text-primary">{industriesCopy.readMore}</a>
                     </div>
                   </div>
                 </div>
@@ -782,9 +807,9 @@ function Home18Page() {
                 <div className="twm-featured-city2">
                   <div className="twm-media" style={{ backgroundImage: `url(${publicUrlFor("images/jobs-categories/KitchenCleanerCommercialCleaning.jpg")})` }} />
                   <div className="twm-city-info">
-                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>Commercial Services</NavLink></h4>
+                    <h4 className="twm-title"><NavLink to={publicUser.HOME1}>{industriesCopy.cards[5]}</NavLink></h4>
                     <div className="wt-post-readmore">
-                      <a href="blog-single.html" className="site-button-link site-text-primary">Read More</a>
+                      <a href="blog-single.html" className="site-button-link site-text-primary">{industriesCopy.readMore}</a>
                     </div>
                   </div>
                 </div>
