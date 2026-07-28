@@ -1,0 +1,21 @@
+.footer3-rtl .footer-top > .row,
+.footer3-rtl .footer-top > .row > .col-lg-9 > .row {
+  direction: rtl;
+}
+
+.footer3-rtl .footer-top .widget,
+.footer3-rtl .footer-bottom {
+  text-align: right;
+}
+
+.footer3-rtl .footer-bottom-info {
+  direction: rtl;
+}
+
+.footer3-rtl .footer-copy-right {
+  text-align: right;
+}
+
+.footer3-rtl .social-icons {
+  direction: ltr;
+}
