@@ -602,7 +602,6 @@ function Home18Page() {
                     <h2 className="wt-title">Trusted Manpower Recruitment Provider</h2>
                     <p>With offices in Qatar, Oman, Kenya, and the Philippines, True Touch is your trusted partner for hiring skilled and semi-skilled workers. We handle full recruitment, vetting, documentation, and placement support—so you get the perfect candidate quickly.</p>
                   </div>
-                  <div className="twm-avail-jobs"><span>1000+</span> Placements Completed</div>
                   <div className="twm-read-more cplumn-2">
                     <a href="#contact-us" className="site-button" onClick={(e) => {
                       e.preventDefault();
