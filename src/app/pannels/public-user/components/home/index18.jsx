@@ -149,6 +149,31 @@ function Home18Page() {
     return () => document.removeEventListener("languagechange", handleLanguageChange);
   }, []);
 
+  useEffect(() => {
+    if (!window.jQuery?.fn?.owlCarousel) return;
+
+    const timeoutId = setTimeout(() => {
+      const carousel = window.jQuery('.twm-h1-bnr-carousal');
+      if (!carousel.length) return;
+      if (carousel.hasClass('owl-loaded')) carousel.trigger('destroy.owl.carousel');
+      carousel.owlCarousel({
+        animateIn: 'fadeIn',
+        animateOut: 'fadeOut',
+        items: 1,
+        loop: true,
+        nav: false,
+        dots: false,
+        autoplay: true,
+        autoplayHoverPause: false,
+        touchDrag: false,
+        mouseDrag: false,
+        rtl: currentLanguage === 'ar'
+      });
+    }, 100);
+
+    return () => clearTimeout(timeoutId);
+  }, [currentLanguage]);
+
   // Read search query from URL parameters
   useEffect(() => {
     const params = new URLSearchParams(location.search);

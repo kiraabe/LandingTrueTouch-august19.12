@@ -26,6 +26,7 @@ All JavaScript fuctions Start
 			autoplayHoverPause: false,
 			touchDrag: false,
 			mouseDrag: false,
+			rtl: document.documentElement.dir === 'rtl',
 		});
 	}
 
