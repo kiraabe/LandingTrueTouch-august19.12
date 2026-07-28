@@ -494,6 +494,21 @@ function Home18Page() {
       "Commercial Services"
     ]
   };
+  const commitmentCopy = isArabic ? {
+    separator: "التزامنا",
+    title: "حلول توظيف عالية الجودة يمكنك الوثوق بها",
+    description: "نحن متخصصون في تزويد أصحاب العمل بعمالة عالية الجودة في قطر، وعُمان، والسعودية، والكويت، والأردن، والإمارات، والبحرين، ولبنان. نحن نعمل على استقطاب وتدقيق وتسكين المهنيين الماهرين من جميع أنحاء آسيا وإفريقيا—مما يضمن توفير كوادر موثوقة ومؤهلة تلبي متطلباتك بدقة.",
+    getStarted: "ابدأ الآن",
+    jobAvailable: "وظائف جديدة متاحة",
+    newOpportunities: "تمت إضافة فرص جديدة اليوم"
+  } : {
+    separator: "Our Commitment",
+    title: "Quality Staffing Solutions You Can Trust",
+    description: "We specialize in supplying quality manpower to employers across Qatar, Oman, Saudi Arabia, Kuwait, Jordan, UAE, Bahrain, and Lebanon. We source, vet, and place skilled professionals from across Asia and Africa—ensuring reliable, competent staff that meets your exact requirements.",
+    getStarted: "Get Started",
+    jobAvailable: "New Job Available",
+    newOpportunities: "New opportunities added today"
+  };
   const aboutCopy = isArabic ? {
     separator: "لماذا تختار الشراكة معنا",
     title: "مزود مزود توظيف عمالة موثوق به",
@@ -821,26 +836,26 @@ function Home18Page() {
       {/* FEATURED SECTION END */}
 
       {/* OUR SERVICES SECTION START */}
-      <div className="section-full p-t120 p-b90 site-bg-light twm-how-t-get-wrap7">
+      <div dir={isArabic ? "rtl" : "ltr"} className={`section-full p-t120 p-b90 site-bg-light twm-how-t-get-wrap7 ${isArabic ? "commitment-section-rtl" : ""}`}>
         <div className="container">
           <div className="twm-how-t-get-section">
             <div className="row g-5 gy-5 align-items-center">
               <div className="col-xl-5 col-lg-5 col-md-12">
                 <div className="twm-how-t-get-section-left">
                   <div className="section-head left wt-small-separator-outer">
-                    <div className="wt-small-separator site-text-primary"><div>Our Commitment</div></div>
-                    <h2 className="wt-title">Quality Staffing Solutions You Can Trust</h2>
-                    <p>We specialize in supplying quality manpower to employers across Qatar, Oman, Saudi Arabia, Kuwait, Jordan, UAE, Bahrain, and Lebanon. We source, vet, and place skilled professionals from across Asia and Africa—ensuring reliable, competent staff that meets your exact requirements.</p>
+                    <div className="wt-small-separator site-text-primary"><div>{commitmentCopy.separator}</div></div>
+                    <h2 className="wt-title">{commitmentCopy.title}</h2>
+                    <p>{commitmentCopy.description}</p>
                   </div>
                   <div className="twm-how-t-get-bottom">
-                    <NavLink to={publicUser.HOME1} className="site-button">Get Started</NavLink>
+                    <NavLink to={publicUser.HOME1} className="site-button">{commitmentCopy.getStarted}</NavLink>
                     <div className="twm-left-icon-bx">
                       <div className="twm-left-icon-media site-bg-primary">
                         <i className="flaticon-bell site-text-white" />
                       </div>
                       <div className="twm-left-icon-content">
-                        <h4 className="icon-title">New Job Available</h4>
-                        <p>New opportunities added today</p>
+                        <h4 className="icon-title">{commitmentCopy.jobAvailable}</h4>
+                          <p>{commitmentCopy.newOpportunities}</p>
                       </div>
                     </div>
                   </div>

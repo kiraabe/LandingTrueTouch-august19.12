@@ -86,3 +86,16 @@
 .industries-section-rtl .industries-cards-section .row {
   direction: rtl;
 }
+
+.commitment-section-rtl .section-head,
+.commitment-section-rtl .twm-how-t-get-bottom {
+  text-align: right;
+}
+
+.commitment-section-rtl .twm-how-t-get-section > .row {
+  direction: rtl;
+}
+
+.commitment-section-rtl .twm-how-t-get-bottom {
+  justify-content: flex-start;
+}
