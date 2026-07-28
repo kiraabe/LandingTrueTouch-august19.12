@@ -77,6 +77,22 @@
   border-radius: 0 0 4px 4px;
 }
 
+.site-header.is-rtl .language-label,
+.site-header.is-rtl .language-option {
+  text-align: right;
+}
+
+.site-header.is-rtl .mobile-side-drawer {
+  left: auto;
+  right: 0;
+  transform: translateX(100%);
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+}
+
+.site-header.is-rtl .mobile-drawer-logo {
+  text-align: right;
+}
+
 /* Mobile Drawer Styles */
 .mobile-drawer-overlay {
   position: fixed;

@@ -1,0 +1,22 @@
+.hero-content-rtl .twm-bnr-left-section,
+.hero-content-rtl .twm-bnr-title-small,
+.hero-content-rtl .twm-bnr-title-large,
+.hero-content-rtl .twm-bnr-tagline,
+.hero-content-rtl .twm-bnr-search-bar {
+  text-align: right;
+}
+
+.hero-content-rtl .twm-bnr-search-bar label,
+.hero-content-rtl .hero-location-input {
+  text-align: right;
+}
+
+.hero-content-rtl .twm-inputicon-box .twm-input-icon {
+  left: 15px;
+  right: auto;
+}
+
+.hero-content-rtl .hero-location-input {
+  padding-left: 35px;
+  padding-right: 15px;
+}

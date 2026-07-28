@@ -10,6 +10,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Toaster } from "../../../../../components/ui/toaster";
 import "./cv-modal.css";
+import "./hero-language.css";
 import CountUp from "react-countup";
 import AirplaneCircleHighlight from "./AirplaneCircleHighlight";
 
@@ -118,6 +119,7 @@ function Home18Page() {
   const [blogsLoading, setBlogsLoading] = useState(true);
   const [testimonials, setTestimonials] = useState([]);
   const [pageReady, setPageReady] = useState(false);
+  const [currentLanguage, setCurrentLanguage] = useState(() => document.documentElement.lang || "en");
 
   const downloadResume = (event, filename, label) => {
     event.preventDefault();
@@ -139,6 +141,12 @@ function Home18Page() {
   useEffect(() => {
     document.title = 'Home | TrueTouch - Foreign Employment Recruitment Agency';
     loadScript("js/custom.js");
+  }, []);
+
+  useEffect(() => {
+    const handleLanguageChange = (event) => setCurrentLanguage(event.detail.language);
+    document.addEventListener("languagechange", handleLanguageChange);
+    return () => document.removeEventListener("languagechange", handleLanguageChange);
   }, []);
 
   // Read search query from URL parameters
@@ -449,45 +457,74 @@ function Home18Page() {
     setTimeout(() => document.getElementById('candidates')?.scrollIntoView({ behavior: 'smooth' }), 0);
   };
 
+  const isArabic = currentLanguage === "ar";
+  const heroCopy = isArabic ? {
+    partner: "شريكك في التوظيف العالمي",
+    hirePrefix: "توظيف عمال ",
+    skilled: "ماهرين",
+    hireSuffix: " مع ترو تاتش",
+    description: "تربط \"ترو تاتش\" أصحاب العمل بمهنيين مؤهلين وماهرين من آسيا وإفريقيا. نحن نوفر العمالة المنزلية الموثوقة، ورعاة الصحة، والطهاة، والعمالة الماهرة في جميع أنحاء الخليج والشرق الأوسط وما بعده.",
+    professionLabel: "المهنة",
+    professionPlaceholder: "اختر المهنة",
+    religionLabel: "الديانة",
+    religionPlaceholder: "اختر الديانة",
+    locationLabel: "الموقع",
+    locationPlaceholder: "البحث حسب الموقع...",
+    search: "بحث"
+  } : {
+    partner: "Your Partner in Global Recruitment",
+    hirePrefix: "Hire ",
+    skilled: "Skilled ",
+    hireSuffix: " Workers with True Touch",
+    description: "True Touch connects employers with vetted, skilled professionals from Asia and Africa. We provide reliable domestic helpers, healthcare workers, chefs, and skilled labor across the Gulf, Middle East, and beyond.",
+    professionLabel: "What",
+    professionPlaceholder: "Select Profession",
+    religionLabel: "Religion",
+    religionPlaceholder: "Select Religion",
+    locationLabel: "Location",
+    locationPlaceholder: "Search by location...",
+    search: "Search"
+  };
+
   return (
     <>
       <Toaster position="top-right" richColors />
       {!pageReady && <Spinner fullPage={true} />}
 
       {/*Banner Start*/}
-      <div id="home-hero" className="twm-home1-banner-section site-bg-gray bg-cover" style={{ backgroundImage: `url(${publicUrlFor("images/home-7/ofr-bg.jpg")})` }}>
+      <div id="home-hero" dir={isArabic ? "rtl" : "ltr"} className={`twm-home1-banner-section site-bg-gray bg-cover ${isArabic ? "hero-content-rtl" : ""}`} style={{ backgroundImage: `url(${publicUrlFor("images/home-7/ofr-bg.jpg")})` }}>
         <div className="row">
           <div className="col-xl-6 col-lg-6 col-md-12">
             <div className="twm-bnr-left-section">
-              <div className="twm-bnr-title-small">Your Partner in <span className="site-text-primary">Global</span> Recruitment</div>
-              <div className="twm-bnr-title-large">Hire <AirplaneCircleHighlight className="site-text-primary">Skilled </AirplaneCircleHighlight>  Workers with True Touch</div>
-              <p className="twm-bnr-tagline">True Touch connects employers with vetted, skilled professionals from Asia and Africa. We provide reliable domestic helpers, healthcare workers, chefs, and skilled labor across the Gulf, Middle East, and beyond.</p>
+              <div className="twm-bnr-title-small">{isArabic ? heroCopy.partner : <>Your Partner in <span className="site-text-primary">Global</span> Recruitment</>}</div>
+              <div className="twm-bnr-title-large">{heroCopy.hirePrefix}<AirplaneCircleHighlight className="site-text-primary">{heroCopy.skilled}</AirplaneCircleHighlight>{heroCopy.hireSuffix}</div>
+              <p className="twm-bnr-tagline">{heroCopy.description}</p>
               <div className="twm-bnr-search-bar">
                 <form onSubmit={handleHeroSearchSubmit}>
                   <div className="row">
                     <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                      <label>What</label>
+                      <label>{heroCopy.professionLabel}</label>
                       <select name="jobCategory" value={filters.jobCategory} onChange={(event) => handleFilterChange('jobCategory', event.target.value)} className="wt-search-bar-select" id="j-Job_Title">
-                        <option value="">Select Profession</option>
+                        <option value="">{heroCopy.professionPlaceholder}</option>
                         {filterOptions.professions.map(profession => <option key={profession} value={profession}>{profession}</option>)}
                       </select>
                     </div>
                     <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                      <label>Religion</label>
+                      <label>{heroCopy.religionLabel}</label>
                       <select name="religion" value={filters.religion} onChange={(event) => handleFilterChange('religion', event.target.value)} className="wt-search-bar-select" id="j-All_Category">
-                        <option value="">Select Religion</option>
+                        <option value="">{heroCopy.religionPlaceholder}</option>
                         {filterOptions.religions.map(religion => <option key={religion} value={religion}>{religion}</option>)}
                       </select>
                     </div>
                     <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                      <label>Location</label>
+                      <label>{heroCopy.locationLabel}</label>
                       <div className="twm-inputicon-box">
-                        <input name="location" type="text" value={heroLocation} onChange={(event) => setHeroLocation(event.target.value)} className="form-control hero-location-input" placeholder="Search by location..." />
+                        <input name="location" type="text" value={heroLocation} onChange={(event) => setHeroLocation(event.target.value)} className="form-control hero-location-input" placeholder={heroCopy.locationPlaceholder} />
                         <i className="twm-input-icon fas fa-map-marker-alt" />
                       </div>
                     </div>
                     <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                      <button type="submit" className="site-button">Search</button>
+                      <button type="submit" className="site-button">{heroCopy.search}</button>
                     </div>
                   </div>
                 </form>

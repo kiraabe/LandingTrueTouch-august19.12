@@ -77,6 +77,9 @@ function Header1({ _config }) {
 
     const handleLanguageChange = (lang) => {
         setCurrentLanguage(lang);
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+        document.dispatchEvent(new CustomEvent("languagechange", { detail: { language: lang } }));
         setShowLanguageDropdown(false);
     };
 
@@ -99,10 +102,25 @@ function Header1({ _config }) {
         ar: "Arabic",
         am: "Amharic"
     };
+    const navigationLabels = currentLanguage === "ar" ? {
+        home: "الرئيسية",
+        about: "من نحن",
+        candidates: "المرشحون",
+        vacancies: "الوظائف الشاغرة",
+        contact: "اتصل بنا",
+        search: "البحث عن..."
+    } : {
+        home: "Home",
+        about: "About Us",
+        candidates: "Candidates",
+        vacancies: "Vacancies",
+        contact: "Contact Us",
+        search: "Search for..."
+    };
 
     return (
         <>
-        <header className={"site-header " + _config.style + " mobile-sider-drawer-menu " + (menuActive ? "drawer-open" : "")}>
+        <header dir={currentLanguage === "ar" ? "rtl" : "ltr"} className={"site-header " + _config.style + " mobile-sider-drawer-menu " + (menuActive ? "drawer-open" : "") + (currentLanguage === "ar" ? " is-rtl" : "")}>
             <div className="sticky-header main-bar-wraper navbar-expand-lg">
                 <div className="main-bar">
                     <div className="container-fluid clearfix">
@@ -146,20 +164,20 @@ function Header1({ _config }) {
                                             }
                                         }}
                                     >
-                                        Home
+                                        {navigationLabels.home}
                                     </a>
                                 </li>
                                 <li className={isNavLinkActive("get-jobs") ? "active" : ""}>
-                                    <a href="#get-jobs" onClick={(e) => handleSectionClick("get-jobs", e)}>About Us</a>
+                                    <a href="#get-jobs" onClick={(e) => handleSectionClick("get-jobs", e)}>{navigationLabels.about}</a>
                                 </li>
                                 <li className={location.pathname === publicUser.candidate.GRID ? "active" : ""}>
-                                    <NavLink to={publicUser.candidate.GRID}>Candidates</NavLink>
+                                    <NavLink to={publicUser.candidate.GRID}>{navigationLabels.candidates}</NavLink>
                                 </li>
                                 <li className={isNavLinkActive("our-blogs") ? "active" : ""}>
-                                    <a href="#our-blogs" onClick={(e) => handleSectionClick("our-blogs", e)}>Vacancies</a>
+                                    <a href="#our-blogs" onClick={(e) => handleSectionClick("our-blogs", e)}>{navigationLabels.vacancies}</a>
                                 </li>
                                 <li className={isNavLinkActive("contact-us") ? "active" : ""}>
-                                    <a href="#contact-us" onClick={(e) => handleSectionClick("contact-us", e)}>Contact Us</a>
+                                    <a href="#contact-us" onClick={(e) => handleSectionClick("contact-us", e)}>{navigationLabels.contact}</a>
                                 </li>
                             </ul>
                         </div>
@@ -258,7 +276,7 @@ function Header1({ _config }) {
                     <form className="mobile-drawer-search" onSubmit={handleMobileSearchSubmit}>
                         <input
                             type="text"
-                            placeholder="Search for..."
+                            placeholder={navigationLabels.search}
                             className="mobile-drawer-search-input"
                             value={mobileSearchQuery}
                             onChange={(e) => setMobileSearchQuery(e.target.value)}
@@ -300,7 +318,7 @@ function Header1({ _config }) {
                                     className={`mobile-nav-link ${isNavLinkActive("get-jobs") ? "active" : ""}`}
                                     onClick={(e) => handleSectionClick("get-jobs", e)}
                                 >
-                                    About Us
+                                    {navigationLabels.about}
                                 </a>
                             </li>
                             <li className="mobile-nav-item">
@@ -309,7 +327,7 @@ function Header1({ _config }) {
                                     className={`mobile-nav-link ${location.pathname === publicUser.candidate.GRID ? "active" : ""}`}
                                     onClick={() => setMenuActive(false)}
                                 >
-                                    Candidates
+                                    {navigationLabels.candidates}
                                 </NavLink>
                             </li>
                             <li className="mobile-nav-item">
@@ -318,7 +336,7 @@ function Header1({ _config }) {
                                     className={`mobile-nav-link ${isNavLinkActive("our-blogs") ? "active" : ""}`}
                                     onClick={(e) => handleSectionClick("our-blogs", e)}
                                 >
-                                    Vacancies
+                                    {navigationLabels.vacancies}
                                 </a>
                             </li>
                             <li className="mobile-nav-item">
@@ -327,7 +345,7 @@ function Header1({ _config }) {
                                     className={`mobile-nav-link ${isNavLinkActive("contact-us") ? "active" : ""}`}
                                     onClick={(e) => handleSectionClick("contact-us", e)}
                                 >
-                                    Contact Us
+                                    {navigationLabels.contact}
                                 </a>
                             </li>
                         </ul>
