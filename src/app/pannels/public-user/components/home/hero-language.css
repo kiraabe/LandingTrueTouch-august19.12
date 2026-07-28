@@ -69,3 +69,12 @@
 .about-content-rtl .twm-read-more.cplumn-2 a:last-child {
   margin-left: 0;
 }
+
+.stats-counter-rtl {
+  direction: rtl;
+}
+
+.stats-counter-rtl .tw-count-number {
+  direction: ltr;
+  unicode-bidi: isolate;
+}

@@ -639,7 +639,7 @@ function Home18Page() {
                 <div className="container">
                     <div className="twm-company-approch5-outer">
                         <div className="twm-company-approch5">
-                            <div className="row">
+                            <div className="row stats-counter-rtl">
                                 {/*block 1*/}
                                 <div className="col-lg-3 col-md-6 col-sm-6">
                                     <div className="counter-outer-two">
@@ -648,7 +648,7 @@ function Home18Page() {
                                                 <span className="counter">
 <CountUp end={28} duration={10} />
 </span>+</div>
-                                            <p className="icon-content-info">Happy Client 
+                                            <p className="icon-content-info">عميل سعيد
 </p>
                                         </div>
                                     </div>
@@ -661,7 +661,7 @@ function Home18Page() {
                                                 <span className="counter">
 <CountUp end={25} duration={10} />
 </span>k+</div>
-                                            <p className="icon-content-info">Completed Cases 
+                                            <p className="icon-content-info">قضية مكتملة
 </p>
                                         </div>
                                     </div>
@@ -672,7 +672,7 @@ function Home18Page() {
                                         <div className="icon-content">
                                             <div className="tw-count-number site-text-white">
                                                 <span className="counter">80</span>%</div>
-                                            <p className="icon-content-info">Success Score 
+                                            <p className="icon-content-info">نسبة النجاح
 </p>
                                         </div>
                                     </div>
@@ -685,7 +685,7 @@ function Home18Page() {
                                                 <span className="counter">
 <CountUp end={10} duration={10} />
 </span>+</div>
-                                            <p className="icon-content-info">Countries</p>
+                                            <p className="icon-content-info">دول</p>
                                         </div>
                                     </div>
                                 </div>
