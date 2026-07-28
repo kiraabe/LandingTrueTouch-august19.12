@@ -494,6 +494,15 @@ function Home18Page() {
       "Commercial Services"
     ]
   };
+  const networkCopy = isArabic ? {
+    separator: "شبكتنا",
+    title: "مكاتب محلية، وانتشار عالمي",
+    viewAll: "عرض جميع الأعمال"
+  } : {
+    separator: "Our Network",
+    title: "Local Offices, Global Reach",
+    viewAll: "View All Portfolios"
+  };
   const commitmentCopy = isArabic ? {
     separator: "التزامنا",
     title: "حلول توظيف عالية الجودة يمكنك الوثوق بها",
@@ -875,18 +884,18 @@ function Home18Page() {
       {/* OUR SERVICES SECTION END */}
 
       {/* Portfolio SECTION START */}
-<div id="portfolio" className="section-full p-t120 p-b90 site-bg-white twm-featured-city-carousal-area">
+<div id="portfolio" dir={isArabic ? "rtl" : "ltr"} className={`section-full p-t120 p-b90 site-bg-white twm-featured-city-carousal-area ${isArabic ? "network-section-rtl" : ""}`}>
   <div className="container">
     <div className="wt-separator-two-part">
       <div className="row wt-separator-two-part-row">
         <div className="col-xl-5 col-lg-5 col-md-12 wt-separator-two-part-left">
           <div className="section-head left wt-small-separator-outer">
-            <div className="wt-small-separator site-text-primary"><div>Our Network</div></div>
-            <h2 className="wt-title">Local Offices, Global Reach</h2>
+            <div className="wt-small-separator site-text-primary"><div>{networkCopy.separator}</div></div>
+            <h2 className="wt-title">{networkCopy.title}</h2>
           </div>
         </div>
         <div className="col-xl-7 col-lg-7 col-md-12 wt-separator-two-part-right text-right">
-          <NavLink to={publicUser.HOME1} className="site-button">View All Portfolios</NavLink>
+          <NavLink to={publicUser.HOME1} className="site-button">{networkCopy.viewAll}</NavLink>
         </div>
       </div>
     </div>

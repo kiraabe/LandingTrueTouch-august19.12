@@ -103,3 +103,15 @@
 .commitment-section-rtl .twm-left-icon-bx .twm-left-icon-media {
   margin: 0 0 0 15px;
 }
+
+.network-section-rtl .wt-separator-two-part-row {
+  direction: rtl;
+}
+
+.network-section-rtl .section-head {
+  text-align: right;
+}
+
+.network-section-rtl .wt-separator-two-part-right {
+  text-align: left !important;
+}
