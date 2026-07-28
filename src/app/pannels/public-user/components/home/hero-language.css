@@ -40,3 +40,13 @@
     padding: 0 30px 50px;
   }
 }
+
+.about-content-rtl .twm-millions-1-section-right,
+.about-content-rtl .section-head,
+.about-content-rtl .twm-read-more {
+  text-align: right;
+}
+
+.about-content-rtl .twm-read-more {
+  direction: rtl;
+}

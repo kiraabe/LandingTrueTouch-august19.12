@@ -458,6 +458,19 @@ function Home18Page() {
   };
 
   const isArabic = currentLanguage === "ar";
+  const aboutCopy = isArabic ? {
+    separator: "لماذا تختار الشراكة معنا",
+    title: "مزود مزود توظيف عمالة موثوق به",
+    description: "بفضل فروعنا في قطر، وعُمان، وكينيا، والفلبين، تُعد \"ترو تاتش\" شريكك الموثوق لاستقدام العمالة الماهرة وشبه الماهرة. نحن نتولى كافة عمليات التوظيف والتقييم والتوثيق ودعم التسكين—لتتوصل إلى المرشح المثالي بسرعة.",
+    hire: "وظّف الآن",
+    solutions: "عرض حلولنا"
+  } : {
+    separator: "Why Partner With Us",
+    title: "Trusted Manpower Recruitment Provider",
+    description: "With offices in Qatar, Oman, Kenya, and the Philippines, True Touch is your trusted partner for hiring skilled and semi-skilled workers. We handle full recruitment, vetting, documentation, and placement support—so you get the perfect candidate quickly.",
+    hire: "Hire Now",
+    solutions: "View Our Solutions"
+  };
   const heroCopy = isArabic ? {
     partner: "شريكك في التوظيف العالمي",
     hirePrefix: "توظيف عمال ",
@@ -561,7 +574,7 @@ function Home18Page() {
       {/*Banner End*/}
 
       {/* ABOUT SECTION START */}
-      <div id="get-jobs" className="section-full p-t120 p-b0 site-bg-white twm-millions-1-area pos-relative">
+      <div id="get-jobs" dir={isArabic ? "rtl" : "ltr"} className={`section-full p-t120 p-b0 site-bg-white twm-millions-1-area pos-relative ${isArabic ? "about-content-rtl" : ""}`}>
         <div className="container">
           <div className="twm-millions-section-wrap">
             <div className="row">
@@ -598,19 +611,19 @@ function Home18Page() {
               <div className="col-lg-5 col-md-12">
                 <div className="twm-millions-1-section-right">
                   <div className="section-head left wt-small-separator-outer">
-                    <div className="wt-small-separator site-text-primary"><div>Why Partner With Us</div></div>
-                    <h2 className="wt-title">Trusted Manpower Recruitment Provider</h2>
-                    <p>With offices in Qatar, Oman, Kenya, and the Philippines, True Touch is your trusted partner for hiring skilled and semi-skilled workers. We handle full recruitment, vetting, documentation, and placement support—so you get the perfect candidate quickly.</p>
+                    <div className="wt-small-separator site-text-primary"><div>{aboutCopy.separator}</div></div>
+                    <h2 className="wt-title">{aboutCopy.title}</h2>
+                    <p>{aboutCopy.description}</p>
                   </div>
                   <div className="twm-read-more cplumn-2">
                     <a href="#contact-us" className="site-button" onClick={(e) => {
                       e.preventDefault();
                       document.getElementById('contact-us')?.scrollIntoView({ behavior: 'smooth' });
-                    }}>Hire Now</a>
+                    }}>{aboutCopy.hire}</a>
                     <a href="#contact-us" className="site-button-link underline" onClick={(e) => {
                       e.preventDefault();
                       document.getElementById('contact-us')?.scrollIntoView({ behavior: 'smooth' });
-                    }}>View Our Solutions</a>
+                    }}>{aboutCopy.solutions}</a>
                   </div>
                 </div>
               </div>
