@@ -96,6 +96,10 @@
   direction: rtl;
 }
 
-.commitment-section-rtl .twm-how-t-get-bottom {
-  justify-content: flex-start;
+.commitment-section-rtl .twm-how-t-get-bottom .site-button {
+  margin: 0 0 0 15px;
+}
+
+.commitment-section-rtl .twm-left-icon-bx .twm-left-icon-media {
+  margin: 0 0 0 15px;
 }
