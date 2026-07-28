@@ -370,6 +370,34 @@ function Home18Page() {
     }
   }, [blogs, blogsLoading]);
 
+  useEffect(() => {
+    if (window.jQuery?.fn?.owlCarousel) {
+      setTimeout(() => {
+        const carousel = window.jQuery('.twm-featured-city-carousal');
+        if (!carousel.length) return;
+        if (carousel.hasClass('owl-loaded')) carousel.trigger('destroy.owl.carousel');
+        carousel.owlCarousel({
+          loop: true,
+          nav: false,
+          dots: true,
+          center: false,
+          margin: 30,
+          autoplay: true,
+          navText: ['<i class="feather-chevron-left"></i>', '<i class="feather-chevron-right"></i>'],
+          responsive: {
+            0: { items: 1 },
+            480: { items: 1 },
+            575: { items: 2 },
+            991: { items: 3 },
+            1024: { items: 3 },
+            1366: { items: 5 },
+            1600: { items: 6 }
+          }
+        });
+      }, 100);
+    }
+  }, []);
+
 
   const openCandidateModal = async (candidate) => {
     setSelectedCandidate(candidate);
