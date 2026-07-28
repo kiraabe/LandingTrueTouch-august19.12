@@ -1432,43 +1432,43 @@ function Home18Page() {
       <div id="contact-us" className="section-full twm-contact-one">
         <div className="section-content">
           <div className="container">
-            <div className="contact-one-inner">
+            <div className={`contact-one-inner${isArabic ? ' contact-one-inner-rtl' : ''}`}>
               <div className="row">
                 <div className="col-lg-6 col-md-12">
                   <div className="contact-form-outer">
                     <div className="section-head left wt-small-separator-outer">
-                      <h2 className="wt-title">Request Your Workforce</h2>
-                      <p>Tell us about your staffing needs and we'll match you with the right professionals. We'll get back to you within 24 hours.</p>
+                      <h2 className="wt-title">{isArabic ? 'اطلب القوى العاملة لديك' : 'Request Your Workforce'}</h2>
+                      <p>{isArabic ? 'أخبرنا باحتياجاتك من العمالة وسنقوم بربطك بالمهنيين المناسبين. سنتواصل معك خلال 24 ساعة.' : "Tell us about your staffing needs and we'll match you with the right professionals. We'll get back to you within 24 hours."}</p>
                     </div>
                     <form className="cons-contact-form" onSubmit={handleContactSubmit}>
                       <div className="row">
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group mb-3">
-                            <input name="username" type="text" required className="form-control" placeholder="Name" />
+                            <input name="username" type="text" required className="form-control" placeholder={isArabic ? 'الاسم' : 'Name'} />
                           </div>
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group mb-3">
-                            <input name="email" type="email" required className="form-control" placeholder="Email" />
+                            <input name="email" type="email" required className="form-control" placeholder={isArabic ? 'البريد الإلكتروني' : 'Email'} />
                           </div>
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group mb-3">
-                            <input name="phone" type="text" required className="form-control" placeholder="Phone" />
+                            <input name="phone" type="text" required className="form-control" placeholder={isArabic ? 'رقم الهاتف' : 'Phone'} />
                           </div>
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group mb-3">
-                            <input name="subject" type="text" required className="form-control" placeholder="Subject" />
+                            <input name="subject" type="text" required className="form-control" placeholder={isArabic ? 'الموضوع' : 'Subject'} />
                           </div>
                         </div>
                         <div className="col-lg-12">
                           <div className="form-group mb-3">
-                            <textarea name="message" className="form-control" rows={3} placeholder="Message" defaultValue={""} />
+                            <textarea name="message" className="form-control" rows={3} placeholder={isArabic ? 'الرسالة' : 'Message'} defaultValue={""} />
                           </div>
                         </div>
                         <div className="col-md-12">
-                          <button type="submit" className="site-button">Submit Now</button>
+                          <button type="submit" className="site-button">{isArabic ? 'إرسال الآن' : 'Submit Now'}</button>
                         </div>
                       </div>
                     </form>
@@ -1477,27 +1477,27 @@ function Home18Page() {
                 <div className="col-lg-6 col-md-12">
                   <div className="contact-info-wrap">
                     <div className="contact-info">
-                      <h3 className="twm-title advantages-heading">Your advantages with True Touch</h3>
+                      <h3 className="twm-title advantages-heading">{isArabic ? 'مزاياك مع ترو تاتش' : 'Your advantages with True Touch'}</h3>
                       <div className="contact-info-section">
                         <div className="c-info-column">
                           <div className="c-info-icon"><i className="fas fa-globe-africa" /></div>
-                          <h3 className="twm-title">Countries</h3>
-                          <p>62 Countries</p>
+                          <h3 className="twm-title">{isArabic ? 'الدول' : 'Countries'}</h3>
+                          <p>{isArabic ? '62 دولة' : '62 Countries'}</p>
                         </div>
                         <div className="c-info-column">
                           <div className="c-info-icon"><i className="fas fa-user-tie" /></div>
-                          <h3 className="twm-title">Clients</h3>
-                          <p>1000s of Clients</p>
+                          <h3 className="twm-title">{isArabic ? 'العملاء' : 'Clients'}</h3>
+                          <p>{isArabic ? 'الآلاف من العملاء' : '1000s of Clients'}</p>
                         </div>
                         <div className="c-info-column">
                           <div className="c-info-icon"><i className="fas fa-map-marked-alt" /></div>
-                          <h3 className="twm-title">Locations</h3>
-                          <p>3,800 Locations</p>
+                          <h3 className="twm-title">{isArabic ? 'المواقع' : 'Locations'}</h3>
+                          <p>{isArabic ? '3,800 موقع' : '3,800 Locations'}</p>
                         </div>
                         <div className="c-info-column">
                           <div className="c-info-icon"><i className="fas fa-users" /></div>
-                          <h3 className="twm-title">Workers</h3>
-                          <p>660,000 People on assignment</p>
+                          <h3 className="twm-title">{isArabic ? 'العمالة' : 'Workers'}</h3>
+                          <p>{isArabic ? '660,000 شخص في مهام عمل' : '660,000 People on assignment'}</p>
                         </div>
                       </div>
                     </div>

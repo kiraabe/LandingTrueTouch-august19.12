@@ -200,3 +200,22 @@
     order: initial;
   }
 }
+
+.contact-one-inner-rtl .contact-form-outer,
+.contact-one-inner-rtl .contact-info {
+  text-align: right;
+}
+
+.contact-one-inner-rtl .contact-form-outer .section-head,
+.contact-one-inner-rtl .form-control {
+  direction: rtl;
+  text-align: right;
+}
+
+.contact-one-inner-rtl .contact-info-section {
+  text-align: right;
+}
+
+.contact-one-inner-rtl .site-button {
+  direction: rtl;
+}
