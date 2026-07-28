@@ -18,6 +18,10 @@
   text-align: right;
 }
 
+.hero-content-rtl .twm-bnr-search-bar {
+  padding: 5px 15px 5px 5px;
+}
+
 .hero-content-rtl .twm-inputicon-box .twm-input-icon {
   left: 15px;
   right: auto;
@@ -26,6 +30,12 @@
 .hero-content-rtl .hero-location-input {
   padding-left: 35px;
   padding-right: 15px;
+}
+
+@media (max-width: 1199px) {
+  .hero-content-rtl .twm-bnr-search-bar {
+    padding: 10px;
+  }
 }
 
 @media (max-width: 1270px) and (min-width: 992px) {
@@ -49,4 +59,13 @@
 
 .about-content-rtl .twm-read-more {
   direction: rtl;
+}
+
+.about-content-rtl .twm-read-more.cplumn-2 a {
+  margin-left: 20px;
+  margin-right: 0;
+}
+
+.about-content-rtl .twm-read-more.cplumn-2 a:last-child {
+  margin-left: 0;
 }
