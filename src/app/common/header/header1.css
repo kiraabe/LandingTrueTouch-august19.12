@@ -2,6 +2,15 @@
   position: relative;
 }
 
+.language-switcher-wrapper::after {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 100%;
+  height: 4px;
+  content: "";
+}
+
 .site-header .logo-header {
   width: 190px;
 }
@@ -18,11 +27,20 @@
   cursor: pointer;
   padding: 8px 12px;
   border-radius: 4px;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-.language-switcher-btn:hover {
+.language-switcher-btn:hover,
+.language-switcher-btn.active {
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+.language-switcher-btn .feather-chevron-down {
+  transition: transform 0.2s ease;
+}
+
+.language-switcher-btn.active .feather-chevron-down {
+  transform: rotate(180deg);
 }
 
 .language-switcher-btn i {
@@ -45,6 +63,16 @@
   min-width: 150px;
   z-index: 1000;
   margin-top: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.language-dropdown.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .language-option {

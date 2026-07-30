@@ -207,18 +207,26 @@ function Header1({ _config }) {
                                 </div>
                             </div>
                             <div className="extra-cell">
-                                <div className="language-switcher-wrapper">
+                                <div
+                                    className="language-switcher-wrapper"
+                                    onMouseEnter={() => setShowLanguageDropdown(true)}
+                                    onMouseLeave={() => setShowLanguageDropdown(false)}
+                                >
                                     <button
-                                        className="language-switcher-btn"
+                                        className={`language-switcher-btn ${showLanguageDropdown ? "active" : ""}`}
                                         onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
                                         title={currentLanguage === "am" ? "ቋንቋ ይምረጡ" : currentLanguage === "ar" ? "اختر اللغة" : "Select language"}
+                                        aria-expanded={showLanguageDropdown}
+                                        aria-haspopup="menu"
                                     >
                                         <i className="feather-globe" />
                                         <span className="language-label">{languageLabels[currentLanguage]}</span>
                                         <i className="feather-chevron-down" />
                                     </button>
-                                    {showLanguageDropdown && (
-                                        <div className="language-dropdown">
+                                    <div
+                                        className={`language-dropdown ${showLanguageDropdown ? "active" : ""}`}
+                                        aria-hidden={!showLanguageDropdown}
+                                    >
                                             <button
                                                 className={`language-option ${currentLanguage === 'en' ? 'active' : ''}`}
                                                 onClick={() => handleLanguageChange('en')}
@@ -237,8 +245,7 @@ function Header1({ _config }) {
                                             >
                                                 አማርኛ
                                             </button>
-                                        </div>
-                                    )}
+                                    </div>
                                 </div>
                             </div>
                         </div>
