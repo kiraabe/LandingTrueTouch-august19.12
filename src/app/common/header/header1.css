@@ -32,7 +32,8 @@
 
 .language-switcher-btn:hover,
 .language-switcher-btn.active {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #A9C731;
+  color: #fff;
 }
 
 .language-switcher-btn .feather-chevron-down {
@@ -88,13 +89,14 @@
 }
 
 .language-option:hover {
-  background-color: #f5f5f5;
+  background-color: #A9C731;
+  color: #fff;
 }
 
 .language-option.active {
   background-color: #f0f0f0;
   font-weight: 600;
-  color: #1a73e8;
+  color: #A9C731;
 }
 
 .language-option:first-child {
