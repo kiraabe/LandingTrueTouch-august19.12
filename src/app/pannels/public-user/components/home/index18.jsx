@@ -119,7 +119,7 @@ function Home18Page() {
   const [blogsLoading, setBlogsLoading] = useState(true);
   const [testimonials, setTestimonials] = useState([]);
   const [pageReady, setPageReady] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState(() => document.documentElement.lang || "en");
+  const [currentLanguage, setCurrentLanguage] = useState(() => document.documentElement.lang || "am");
 
   const downloadResume = (event, filename, label) => {
     event.preventDefault();
@@ -511,7 +511,13 @@ function Home18Page() {
   };
 
   const isArabic = currentLanguage === "ar";
-  const counterLabels = isArabic ? {
+  const isAmharic = currentLanguage === "am";
+  const counterLabels = isAmharic ? {
+    happyClient: "ደስተኛ ደንበኞች",
+    completedCases: "የተጠናቀቁ የቅጥር ሂደቶች",
+    successScore: "የስኬት መጠን",
+    countries: "አገራት"
+  } : isArabic ? {
     happyClient: "عميل سعيد",
     completedCases: "قضية مكتملة",
     successScore: "نسبة النجاح",
@@ -522,7 +528,19 @@ function Home18Page() {
     successScore: "Success Score",
     countries: "Countries"
   };
-  const industriesCopy = isArabic ? {
+  const industriesCopy = isAmharic ? {
+    title: "የምናገለግላቸው የሥራ ዘርፎች",
+    description: "ከተራ የሥራ መደቦች እስከ ከፍተኛ አመራር ድረስ በተለያዩ የሥራ ዘርፎች ዘመናዊ የሰው ኃይል አቅርቦት እና አስተዳደር መፍትሔዎችን እንሰጣለን። በሰፊው እውቀታችን፣ መረባችን እና ልምዳችን ከተስማሚው የሥራ መደብ ጋር እንያይዝዎታለን።",
+    readMore: "በዝርዝር ያንብቡ",
+    cards: [
+      "የቤት ውስጥ ረዳቶች እና የቤት አስተዳደር",
+      "የሕፃናት እና የቤተሰብ እንክብካቤ",
+      "የሙያ አበሰሎች (ሼፎች)",
+      "ባለሙያ እና መካከለኛ ባለሙያ ሠራተኞች",
+      "የጤና እንክብካቤ እና የአረጋውያን እንክብካቤ",
+      "የንግድ አገልግሎቶች"
+    ]
+  } : isArabic ? {
     title: "القطاعات التي ندعمها",
     description: "نحن نقدم أحدث حلول التوظيف وإدارة القوى العاملة للوظائف التي تتراوح من المبتدئين إلى التنفيذيين عبر مختلف القطاعات. بفضل معرفتنا الواسعة وشبكتنا وخبرتنا، يمكننا ربطك بالدور الوظيفي المثالي.",
     readMore: "اقرأ المزيد",
@@ -547,7 +565,11 @@ function Home18Page() {
       "Commercial Services"
     ]
   };
-  const networkCopy = isArabic ? {
+  const networkCopy = isAmharic ? {
+    separator: "የእኛ መረብ",
+    title: "የሀገር ውስጥ ቢሮዎች፣ ዓለም አቀፍ ተደራሽነት",
+    viewAll: "ሁሉንም የሥራ እንስቃሴዎች ይመልከቱ"
+  } : isArabic ? {
     separator: "شبكتنا",
     title: "مكاتب محلية، وانتشار عالمي",
     viewAll: "عرض جميع الأعمال"
@@ -556,7 +578,14 @@ function Home18Page() {
     title: "Local Offices, Global Reach",
     viewAll: "View All Portfolios"
   };
-  const commitmentCopy = isArabic ? {
+  const commitmentCopy = isAmharic ? {
+    separator: "የእኛ ቃል ኪዳን",
+    title: "ሊተመኑበት የሚችሉት ጥራት ያለው የሰው ኃይል መፍትሔ",
+    description: "በኳታር፣ ዖማን፣ ሳዑዲ ዓረቢያ፣ ኩዌት፣ ዮርዳኖስ፣ የተባበሩት ዓረብ ኤምሬትስ፣ ባሕሬን እና ሊባኖስ ለሚገኙ አሠሪዎች ጥራት ያለው የሰው ኃይል በማቅረብ እንለያለን። አስተማማኝ እና ብቃት ያላቸው ሠራተኞች የእርስዎን ፍላጎት በትክክል እንዲያሟሉ በማድረግ ከአሲያ እና ከአፍሪካ ብቃት ያላቸውን ባለሙያዎች እንመርጣለን፣ እንመዝናለን፣ እንዲሁም እንመድባለን።",
+    getStarted: "ይጀምሩ",
+    jobAvailable: "አዳዲስ የሥራ እድሎች",
+    newOpportunities: "ዛሬ የተጨመሩ አዳዲስ እድሎች"
+  } : isArabic ? {
     separator: "التزامنا",
     title: "حلول توظيف عالية الجودة يمكنك الوثوق بها",
     description: "نحن متخصصون في تزويد أصحاب العمل بعمالة عالية الجودة في قطر، وعُمان، والسعودية، والكويت، والأردن، والإمارات، والبحرين، ولبنان. نحن نعمل على استقطاب وتدقيق وتسكين المهنيين الماهرين من جميع أنحاء آسيا وإفريقيا—مما يضمن توفير كوادر موثوقة ومؤهلة تلبي متطلباتك بدقة.",
@@ -571,7 +600,13 @@ function Home18Page() {
     jobAvailable: "New Job Available",
     newOpportunities: "New opportunities added today"
   };
-  const aboutCopy = isArabic ? {
+  const aboutCopy = isAmharic ? {
+    separator: "ለምን ከእኛ ጋር ይሠራሉ",
+    title: "ታማኝ የሰው ኃይል አቅራቢ",
+    description: "በኳታር፣ ዖማን፣ ኬንያ እና ፊሊፒንስ በሚገኙ ቢሮዎቻችን True Touch ብቃት ያላቸውን እና መካከለኛ ባለሙያ ሠራተኞችን ለመቅጠር ታማኝ አጋርዎ ነው። ሙሉ የቅጥር፣ የምርጫ፣ የሰነድ እና የመደገፍ ሥራዎችን እንሰራለን—በዚህም ትክክለኛውን እጩ በፍጥነት ያገኛሉ።",
+    hire: "አሁኑኑ ይቅጠሩ",
+    solutions: "መፍትሔዎቻችንን ይመልከቱ"
+  } : isArabic ? {
     separator: "لماذا تختار الشراكة معنا",
     title: "مزود مزود توظيف عمالة موثوق به",
     description: "بفضل فروعنا في قطر، وعُمان، وكينيا، والفلبين، تُعد \"ترو تاتش\" شريكك الموثوق لاستقدام العمالة الماهرة وشبه الماهرة. نحن نتولى كافة عمليات التوظيف والتقييم والتوثيق ودعم التسكين—لتتوصل إلى المرشح المثالي بسرعة.",
@@ -584,7 +619,20 @@ function Home18Page() {
     hire: "Hire Now",
     solutions: "View Our Solutions"
   };
-  const heroCopy = isArabic ? {
+  const heroCopy = isAmharic ? {
+    partner: "በዓለም አቀፍ የሠራተኛ አቅርቦት ታማኝ አጋርዎ",
+    hirePrefix: "በ True Touch ",
+    skilled: "ብቃት ያላቸውን",
+    hireSuffix: " ሠራተኞች ይቅጠሩ",
+    description: "True Touch አሠሪዎችን ከአሲያ እና ከአፍሪካ ከተመረጡና ብቃት ካላቸው ባለሙያዎች ጋር ያገናኛል። በባህረ ሰላጤው አገራት፣ በመካከለኛው ምስራቅ እና ከዚያም ባሻገር ታማኝ የቤት ውስጥ ረዳቶችን፣ የጤና እንክብካቤ ሠራተኞችን፣ ሼፎችን እና ባለሙያ ሠራተኞችን እናቀርባለን።",
+    professionLabel: "ሙያ",
+    professionPlaceholder: "ሙያ ይምረጡ",
+    religionLabel: "ሃይማኖት",
+    religionPlaceholder: "ሃይማኖት ይምረጡ",
+    locationLabel: "ቦታ",
+    locationPlaceholder: "በቦታ ይፈልጉ...",
+    search: "ፈልግ"
+  } : isArabic ? {
     partner: "شريكك في التوظيف العالمي",
     hirePrefix: "توظيف عمال ",
     skilled: "ماهرين",
@@ -622,7 +670,7 @@ function Home18Page() {
         <div className="row">
           <div className="col-xl-6 col-lg-6 col-md-12">
             <div className="twm-bnr-left-section">
-              <div className="twm-bnr-title-small">{isArabic ? heroCopy.partner : <>Your Partner in <span className="site-text-primary">Global</span> Recruitment</>}</div>
+              <div className="twm-bnr-title-small">{isAmharic || isArabic ? heroCopy.partner : <>Your Partner in <span className="site-text-primary">Global</span> Recruitment</>}</div>
               <div className="twm-bnr-title-large">{heroCopy.hirePrefix}<AirplaneCircleHighlight className="site-text-primary">{heroCopy.skilled}</AirplaneCircleHighlight>{heroCopy.hireSuffix}</div>
               <p className="twm-bnr-tagline">{heroCopy.description}</p>
               <div className="twm-bnr-search-bar">
@@ -1373,35 +1421,35 @@ function Home18Page() {
                   <div className="twm-j-ofr-map-content">
                     <div className="section-head left wt-small-separator-outer regional-offices-heading">
                       <h2 className="wt-title">
-                        {isArabic ? <><span className="site-text-primary">مكاتبنا الإقليمية</span></> : <>Our <span className="site-text-primary">Regional Offices</span></>}
+                        {isAmharic ? <><span className="site-text-primary">ክልላዊ ቢሮዎቻችን</span></> : isArabic ? <><span className="site-text-primary">مكاتبنا الإقليمية</span></> : <>Our <span className="site-text-primary">Regional Offices</span></>}
                       </h2>
                     </div>
                     <div className="regional-offices-list">
                       <div className="regional-office-item">
                         <i className="fas fa-map-marker-alt site-text-primary regional-office-icon" />
                         <div>
-                          <h4 className="regional-office-label">{isArabic ? 'الموقع الرئيسي' : 'Primary Location'}</h4>
-                          <p className="regional-office-value">{isArabic ? 'أديس أبابا، إثيوبيا' : 'Addis Ababa, Ethiopia'}</p>
+                          <h4 className="regional-office-label">{isAmharic ? 'ዋናው ቦታ' : isArabic ? 'الموقع الرئيسي' : 'Primary Location'}</h4>
+                          <p className="regional-office-value">{isAmharic ? 'አዲስ አበባ፣ ኢትዮጵያ' : isArabic ? 'أديس أبابا، إثيوبيا' : 'Addis Ababa, Ethiopia'}</p>
                         </div>
                       </div>
                       <div className="regional-office-item">
                         <i className="fas fa-globe site-text-primary regional-office-icon" />
                         <div>
-                          <h4 className="regional-office-label">{isArabic ? 'المكاتب الإقليمية' : 'Regional Offices'}</h4>
-                          <p className="regional-office-value">{isArabic ? 'قطر، عُمان، كينيا، الفلبين' : 'Qatar, Oman, Kenya, Philippines'}</p>
+                          <h4 className="regional-office-label">{isAmharic ? 'ክልላዊ ቢሮዎች' : isArabic ? 'المكاتب الإقليمية' : 'Regional Offices'}</h4>
+                          <p className="regional-office-value">{isAmharic ? 'ኳታር፣ ዖማን፣ ኬንያ፣ ፊሊፒንስ' : isArabic ? 'قطر، عُمان، كينيا، الفلبين' : 'Qatar, Oman, Kenya, Philippines'}</p>
                         </div>
                       </div>
                       <div className="regional-office-item">
                         <i className="fas fa-phone site-text-primary regional-office-icon" />
                         <div>
-                          <h4 className="regional-office-label">{isArabic ? 'التواصل' : 'Contact'}</h4>
+                          <h4 className="regional-office-label">{isAmharic ? 'ስልክ' : isArabic ? 'التواصل' : 'Contact'}</h4>
                           <p className="regional-office-value regional-office-ltr-value">+251 91 120 8322</p>
                         </div>
                       </div>
                       <div className="regional-office-item">
                         <i className="fas fa-envelope site-text-primary regional-office-icon" />
                         <div>
-                          <h4 className="regional-office-label">{isArabic ? 'البريد الإلكتروني' : 'Email'}</h4>
+                          <h4 className="regional-office-label">{isAmharic ? 'ኢሜይል' : isArabic ? 'البريد الإلكتروني' : 'Email'}</h4>
                           <p className="regional-office-value regional-office-ltr-value">info@truetouchrecruitment.com</p>
                         </div>
                       </div>
@@ -1411,7 +1459,7 @@ function Home18Page() {
                 <div className="col-lg-7 col-md-12 regional-offices-map-column">
                   <div className="regional-offices-map">
                     <iframe
-                      title={isArabic ? 'مكتب ترو تاتش' : 'TrueTouch Office'}
+                      title={isAmharic ? 'የ True Touch ቢሮ' : isArabic ? 'مكتب ترو تاتش' : 'TrueTouch Office'}
                       width="100%"
                       height="380"
                       loading="lazy"
@@ -1437,38 +1485,38 @@ function Home18Page() {
                 <div className="col-lg-6 col-md-12">
                   <div className="contact-form-outer">
                     <div className="section-head left wt-small-separator-outer">
-                      <h2 className="wt-title">{isArabic ? 'اطلب القوى العاملة لديك' : 'Request Your Workforce'}</h2>
-                      <p>{isArabic ? 'أخبرنا باحتياجاتك من العمالة وسنقوم بربطك بالمهنيين المناسبين. سنتواصل معك خلال 24 ساعة.' : "Tell us about your staffing needs and we'll match you with the right professionals. We'll get back to you within 24 hours."}</p>
+                      <h2 className="wt-title">{isAmharic ? 'የሰው ኃይል ይጠይቁ' : isArabic ? 'اطلب القوى العاملة لديك' : 'Request Your Workforce'}</h2>
+                      <p>{isAmharic ? 'የሰው ኃይል ፍላጎትዎን ይንገሩን እና ከተስማሚዎቹ ባለሙያዎች ጋር እንያይዝዎታለን። በ 24 ሰዓታት ውስጥ ምላሽ እንሰጥዎታለን።' : isArabic ? 'أخبرنا باحتياجاتك من العمالة وسنقوم بربطك بالمهنيين المناسبين. سنتواصل معك خلال 24 ساعة.' : "Tell us about your staffing needs and we'll match you with the right professionals. We'll get back to you within 24 hours."}</p>
                     </div>
                     <form className="cons-contact-form" onSubmit={handleContactSubmit}>
                       <div className="row">
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group mb-3">
-                            <input name="username" type="text" required className="form-control" placeholder={isArabic ? 'الاسم' : 'Name'} />
+                            <input name="username" type="text" required className="form-control" placeholder={isAmharic ? 'ስም' : isArabic ? 'الاسم' : 'Name'} />
                           </div>
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group mb-3">
-                            <input name="email" type="email" required className="form-control" placeholder={isArabic ? 'البريد الإلكتروني' : 'Email'} />
+                            <input name="email" type="email" required className="form-control" placeholder={isAmharic ? 'ኢሜይል' : isArabic ? 'البريد الإلكتروني' : 'Email'} />
                           </div>
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group mb-3">
-                            <input name="phone" type="text" required className="form-control" placeholder={isArabic ? 'رقم الهاتف' : 'Phone'} />
+                            <input name="phone" type="text" required className="form-control" placeholder={isAmharic ? 'ስልክ ቁጥር' : isArabic ? 'رقم الهاتف' : 'Phone'} />
                           </div>
                         </div>
                         <div className="col-lg-6 col-md-6">
                           <div className="form-group mb-3">
-                            <input name="subject" type="text" required className="form-control" placeholder={isArabic ? 'الموضوع' : 'Subject'} />
+                            <input name="subject" type="text" required className="form-control" placeholder={isAmharic ? 'ርዕስ' : isArabic ? 'الموضوع' : 'Subject'} />
                           </div>
                         </div>
                         <div className="col-lg-12">
                           <div className="form-group mb-3">
-                            <textarea name="message" className="form-control" rows={3} placeholder={isArabic ? 'الرسالة' : 'Message'} defaultValue={""} />
+                            <textarea name="message" className="form-control" rows={3} placeholder={isAmharic ? 'መልእክት' : isArabic ? 'الرسالة' : 'Message'} defaultValue={""} />
                           </div>
                         </div>
                         <div className="col-md-12">
-                          <button type="submit" className="site-button">{isArabic ? 'إرسال الآن' : 'Submit Now'}</button>
+                          <button type="submit" className="site-button">{isAmharic ? 'አሁኑኑ ይላኩ' : isArabic ? 'إرسال الآن' : 'Submit Now'}</button>
                         </div>
                       </div>
                     </form>
@@ -1477,27 +1525,27 @@ function Home18Page() {
                 <div className="col-lg-6 col-md-12">
                   <div className="contact-info-wrap">
                     <div className="contact-info">
-                      <h3 className="twm-title advantages-heading">{isArabic ? 'مزاياك مع ترو تاتش' : 'Your advantages with True Touch'}</h3>
+                      <h3 className="twm-title advantages-heading">{isAmharic ? 'ከ True Touch ጋር የሚያገኟቸው ጥቅሞች' : isArabic ? 'مزاياك مع ترو تاتش' : 'Your advantages with True Touch'}</h3>
                       <div className="contact-info-section">
                         <div className="c-info-column">
                           <div className="c-info-icon"><i className="fas fa-globe-africa" /></div>
-                          <h3 className="twm-title">{isArabic ? 'الدول' : 'Countries'}</h3>
-                          <p>{isArabic ? '62 دولة' : '62 Countries'}</p>
+                          <h3 className="twm-title">{isAmharic ? 'አገራት' : isArabic ? 'الدول' : 'Countries'}</h3>
+                          <p>{isAmharic ? '62 አገራት' : isArabic ? '62 دولة' : '62 Countries'}</p>
                         </div>
                         <div className="c-info-column">
                           <div className="c-info-icon"><i className="fas fa-user-tie" /></div>
-                          <h3 className="twm-title">{isArabic ? 'العملاء' : 'Clients'}</h3>
-                          <p>{isArabic ? 'الآلاف من العملاء' : '1000s of Clients'}</p>
+                          <h3 className="twm-title">{isAmharic ? 'ደንበኞች' : isArabic ? 'العملاء' : 'Clients'}</h3>
+                          <p>{isAmharic ? 'በሺዎች የሚቆጠሩ ደንበኞች' : isArabic ? 'الآلاف من العملاء' : '1000s of Clients'}</p>
                         </div>
                         <div className="c-info-column">
                           <div className="c-info-icon"><i className="fas fa-map-marked-alt" /></div>
-                          <h3 className="twm-title">{isArabic ? 'المواقع' : 'Locations'}</h3>
-                          <p>{isArabic ? '3,800 موقع' : '3,800 Locations'}</p>
+                          <h3 className="twm-title">{isAmharic ? 'ቦታዎች' : isArabic ? 'المواقع' : 'Locations'}</h3>
+                          <p>{isAmharic ? '3,800 ቦታዎች' : isArabic ? '3,800 موقع' : '3,800 Locations'}</p>
                         </div>
                         <div className="c-info-column">
                           <div className="c-info-icon"><i className="fas fa-users" /></div>
-                          <h3 className="twm-title">{isArabic ? 'العمالة' : 'Workers'}</h3>
-                          <p>{isArabic ? '660,000 شخص في مهام عمل' : '660,000 People on assignment'}</p>
+                          <h3 className="twm-title">{isAmharic ? 'ሠራተኞች' : isArabic ? 'العمالة' : 'Workers'}</h3>
+                          <p>{isAmharic ? '660,000 በሥራ ላይ ያሉ ሰዎች' : isArabic ? '660,000 شخص في مهام عمل' : '660,000 People on assignment'}</p>
                         </div>
                       </div>
                     </div>

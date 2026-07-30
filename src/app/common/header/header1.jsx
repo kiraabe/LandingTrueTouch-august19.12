@@ -8,7 +8,7 @@ function Header1({ _config }) {
 
     const [menuActive, setMenuActive] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
-    const [currentLanguage, setCurrentLanguage] = useState("en");
+    const [currentLanguage, setCurrentLanguage] = useState("am");
     const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
     const [expandedSubmenu, setExpandedSubmenu] = useState(null);
     const [mobileSearchQuery, setMobileSearchQuery] = useState("");
@@ -102,7 +102,14 @@ function Header1({ _config }) {
         ar: "العربية",
         am: "Amharic"
     };
-    const navigationLabels = currentLanguage === "ar" ? {
+    const navigationLabels = currentLanguage === "am" ? {
+        home: "መነሻ",
+        about: "ስለ እኛ",
+        candidates: "እጩዎች",
+        vacancies: "ክፍት የሥራ ቦታዎች",
+        contact: "ያግኙን",
+        search: "ፈልግ..."
+    } : currentLanguage === "ar" ? {
         home: "الرئيسية",
         about: "من نحن",
         candidates: "المرشحون",
@@ -204,7 +211,7 @@ function Header1({ _config }) {
                                     <button
                                         className="language-switcher-btn"
                                         onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
-                                        title={currentLanguage === "ar" ? "اختر اللغة" : "Select language"}
+                                        title={currentLanguage === "am" ? "ቋንቋ ይምረጡ" : currentLanguage === "ar" ? "اختر اللغة" : "Select language"}
                                     >
                                         <i className="feather-globe" />
                                         <span className="language-label">{languageLabels[currentLanguage]}</span>
