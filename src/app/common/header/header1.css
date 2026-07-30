@@ -30,11 +30,6 @@
   transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-.language-switcher-btn.active {
-  background-color: #A9C731;
-  color: #fff;
-}
-
 .language-switcher-btn .feather-chevron-down {
   transition: transform 0.2s ease;
 }
