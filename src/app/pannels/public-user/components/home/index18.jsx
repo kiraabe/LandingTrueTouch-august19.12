@@ -118,7 +118,7 @@ function Home18Page() {
   const [blogsLoading, setBlogsLoading] = useState(true);
   const [testimonials, setTestimonials] = useState([]);
   const [pageReady, setPageReady] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState(() => document.documentElement.lang || "am");
+  const [currentLanguage, setCurrentLanguage] = useState(() => document.documentElement.lang || "en");
 
   const downloadResume = (event, filename, label) => {
     event.preventDefault();
