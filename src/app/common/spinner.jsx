@@ -7,6 +7,11 @@ function Spinner({ fullPage = false }) {
           100% { transform: rotate(360deg); }
         }
 
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
         .spinner-container {
           display: flex;
           justify-content: center;
@@ -22,18 +27,21 @@ function Spinner({ fullPage = false }) {
           bottom: 0;
           width: 100%;
           height: 100vh;
-          background: rgba(255, 255, 255, 0.9);
+          background: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(2px);
           z-index: 9998;
           padding: 0;
+          animation: fadeIn 0.2s ease-out;
         }
 
         .spinner {
-          border: 4px solid #f3f3f3;
-          border-top: 4px solid #3498db;
-          border-radius: 50%;
           width: 40px;
           height: 40px;
-          animation: spin 1s linear infinite;
+          border-radius: 50%;
+          border: 3px solid #e8e8e8;
+          border-top-color: #1a73e8;
+          border-right-color: #1a73e8;
+          animation: spin 0.9s cubic-bezier(0.65, 0.05, 0.36, 1) infinite;
         }
       `}</style>
       <div className={`spinner-container ${fullPage ? 'full-page' : ''}`}>
