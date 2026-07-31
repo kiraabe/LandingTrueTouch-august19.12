@@ -437,6 +437,11 @@
     right: auto;
   }
 
+  .site-header.is-rtl.header-style-3 .language-dropdown {
+    left: auto;
+    right: 0;
+  }
+
   .site-header.header-style-3 .language-switcher-btn {
     gap: 5px;
     padding: 10px;
