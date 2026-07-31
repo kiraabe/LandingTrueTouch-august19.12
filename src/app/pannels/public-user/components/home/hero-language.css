@@ -119,6 +119,10 @@
   unicode-bidi: isolate;
 }
 
+.featured-section-spaced {
+  margin-top: 40px;
+}
+
 .industries-section-rtl .section-head {
   text-align: right;
 }
