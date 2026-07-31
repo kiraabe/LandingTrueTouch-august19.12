@@ -850,7 +850,48 @@ function Home18Page() {
                     </div>
                 </div>
             </div>
-            {/* Counter SECTION END */}
+      {/* Counter SECTION END */}
+
+
+                  {/* OUR SERVICES SECTION START */}
+      <div dir={isArabic ? "rtl" : "ltr"} className={`section-full p-t120 p-b90 site-bg-light twm-how-t-get-wrap7 ${isArabic ? "commitment-section-rtl" : ""}`}>
+        <div className="container">
+          <div className="twm-how-t-get-section">
+            <div className="row g-5 gy-5 align-items-center">
+              <div className="col-xl-5 col-lg-5 col-md-12">
+                <div className="twm-how-t-get-section-left">
+                  <div className="section-head left wt-small-separator-outer">
+                    <div className="wt-small-separator site-text-primary"><div>{commitmentCopy.separator}</div></div>
+                    <h2 className="wt-title">{commitmentCopy.title}</h2>
+                    <p>{commitmentCopy.description}</p>
+                  </div>
+                  <div className="twm-how-t-get-bottom">
+                    <NavLink to={publicUser.HOME1} className="site-button">{commitmentCopy.getStarted}</NavLink>
+                    <div className="twm-left-icon-bx">
+                      <div className="twm-left-icon-media site-bg-primary">
+                        <i className="flaticon-bell site-text-white" />
+                      </div>
+                      <div className="twm-left-icon-content">
+                        <h4 className="icon-title">{commitmentCopy.jobAvailable}</h4>
+                          <p>{commitmentCopy.newOpportunities}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-xl-7 col-lg-7 col-md-12">
+                <div className="twm-how-t-get-section-right">
+                  <div className="twm-media">
+                    <JobZImage src="images/gallery/7.jpeg" alt="#" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* OUR SERVICES SECTION END */}
+      
 
       {/* FEATURED JOBS SECTION START */}
       <div dir={isArabic ? "rtl" : "ltr"} className={`section-full p-t120 p-t180 pos-relative site-bg-white twm-featured-city-area ${isArabic ? "industries-section-rtl" : ""}`}>
@@ -940,44 +981,6 @@ function Home18Page() {
       </div>
       {/* FEATURED SECTION END */}
 
-      {/* OUR SERVICES SECTION START */}
-      <div dir={isArabic ? "rtl" : "ltr"} className={`section-full p-t120 p-b90 site-bg-light twm-how-t-get-wrap7 ${isArabic ? "commitment-section-rtl" : ""}`}>
-        <div className="container">
-          <div className="twm-how-t-get-section">
-            <div className="row g-5 gy-5 align-items-center">
-              <div className="col-xl-5 col-lg-5 col-md-12">
-                <div className="twm-how-t-get-section-left">
-                  <div className="section-head left wt-small-separator-outer">
-                    <div className="wt-small-separator site-text-primary"><div>{commitmentCopy.separator}</div></div>
-                    <h2 className="wt-title">{commitmentCopy.title}</h2>
-                    <p>{commitmentCopy.description}</p>
-                  </div>
-                  <div className="twm-how-t-get-bottom">
-                    <NavLink to={publicUser.HOME1} className="site-button">{commitmentCopy.getStarted}</NavLink>
-                    <div className="twm-left-icon-bx">
-                      <div className="twm-left-icon-media site-bg-primary">
-                        <i className="flaticon-bell site-text-white" />
-                      </div>
-                      <div className="twm-left-icon-content">
-                        <h4 className="icon-title">{commitmentCopy.jobAvailable}</h4>
-                          <p>{commitmentCopy.newOpportunities}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-xl-7 col-lg-7 col-md-12">
-                <div className="twm-how-t-get-section-right">
-                  <div className="twm-media">
-                    <JobZImage src="images/gallery/7.jpeg" alt="#" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* OUR SERVICES SECTION END */}
 
       {/* Portfolio SECTION START */}
 <div id="portfolio" dir={isArabic ? "rtl" : "ltr"} className={`section-full p-t120 p-b90 site-bg-white twm-featured-city-carousal-area ${isArabic ? "network-section-rtl" : ""}`}>
