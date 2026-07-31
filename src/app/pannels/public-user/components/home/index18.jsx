@@ -980,7 +980,7 @@ function Home18Page() {
         </div>
       </div>
       {/* FEATURED SECTION END */}
-
+<br/><br/>
 
       {/* Portfolio SECTION START */}
 <div id="portfolio" dir={isArabic ? "rtl" : "ltr"} className={`section-full p-t120 p-b90 site-bg-white twm-featured-city-carousal-area ${isArabic ? "network-section-rtl" : ""}`}>
