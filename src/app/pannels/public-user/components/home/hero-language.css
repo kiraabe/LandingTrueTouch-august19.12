@@ -37,6 +37,24 @@
   padding-right: 15px;
 }
 
+.twm-bnr-search-bar .wt-search-bar-select,
+.twm-bnr-search-bar .form-select,
+.twm-bnr-search-bar .hero-location-input {
+  color: #000 !important;
+  background-color: #fff !important;
+  color-scheme: light;
+}
+
+.twm-bnr-search-bar .wt-search-bar-select option {
+  color: #000;
+  background-color: #fff;
+}
+
+.twm-bnr-search-bar .hero-location-input::placeholder {
+  color: #000;
+  opacity: 1;
+}
+
 @media (max-width: 1199px) {
   .hero-content-rtl .twm-bnr-search-bar {
     padding: 10px;
