@@ -432,6 +432,14 @@
     padding-left: 8px;
   }
 
+  .site-header.is-rtl.header-style-3 .logo-header {
+    float: right;
+  }
+
+  .site-header.is-rtl.header-style-3 .navbar-toggler {
+    float: left;
+  }
+
   .site-header.is-rtl.header-style-3 .extra-nav {
     left: 58px;
     right: auto;
