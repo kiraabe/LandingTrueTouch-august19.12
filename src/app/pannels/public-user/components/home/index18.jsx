@@ -894,7 +894,7 @@ function Home18Page() {
       
 
       {/* FEATURED JOBS SECTION START */}
-      <div dir={isArabic ? "rtl" : "ltr"} className={`section-full p-t120 p-t180 pos-relative site-bg-white twm-featured-city-area featured-section-spaced ${isArabic ? "industries-section-rtl" : ""}`}>
+      <div dir={isArabic ? "rtl" : "ltr"} className={`section-full p-t120 p-t180 pos-relative site-bg-white twm-featured-city-area ${isArabic ? "industries-section-rtl" : ""}`}>
         <div className="twm-bg-section-box" />
         <div className="container">
           <div className="wt-separator-two-part content-white">
@@ -980,7 +980,7 @@ function Home18Page() {
         </div>
       </div>
       {/* FEATURED SECTION END */}
-<br/><br/>
+
 
       {/* Portfolio SECTION START */}
 <div id="portfolio" dir={isArabic ? "rtl" : "ltr"} className={`section-full p-t120 p-b90 site-bg-white twm-featured-city-carousal-area ${isArabic ? "network-section-rtl" : ""}`}>
