@@ -55,6 +55,23 @@
   opacity: 1;
 }
 
+.twm-candidate-filter-section input,
+.twm-candidate-filter-section select {
+  color: #000 !important;
+  background-color: #fff !important;
+  color-scheme: light;
+}
+
+.twm-candidate-filter-section input::placeholder {
+  color: #666;
+  opacity: 1;
+}
+
+.twm-candidate-filter-section option {
+  color: #000;
+  background-color: #fff;
+}
+
 @media (max-width: 1199px) {
   .hero-content-rtl .twm-bnr-search-bar {
     padding: 10px;
