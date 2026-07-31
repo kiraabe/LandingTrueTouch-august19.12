@@ -92,6 +92,12 @@
   direction: rtl;
 }
 
+@media (max-width: 575px) {
+  .twm-featured-city-area .twm-bg-section-box {
+    height: 400px;
+  }
+}
+
 .commitment-section-rtl .section-head,
 .commitment-section-rtl .twm-how-t-get-bottom {
   text-align: right;
