@@ -202,11 +202,6 @@ function Header1({ _config }) {
                         {/* Header Right Section*/}
                         <div className="extra-nav header-2-nav">
                             <div className="extra-cell">
-                                <div className="header-search">
-                                    <a href="#search" className="header-search-icon"><i className="feather-search" /></a>
-                                </div>
-                            </div>
-                            <div className="extra-cell">
                                 <div
                                     className="language-switcher-wrapper"
                                     onMouseEnter={() => setShowLanguageDropdown(true)}
