@@ -23,12 +23,12 @@ const cookieCopy = {
   ar: {
     eyebrow: "تفضيلات الخصوصية",
     title: "نحن نستخدم ملفات تعريف الارتباط",
-    message: "نستخدم ملفات تعريف الارتباط لتحسين تجربة التصفح وتحليل حركة المرور على الموقع وتحسين خدماتنا. بمتابعة استخدام موقعنا، فإنك توافق على استخدام ملفات تعريف الارتباط.",
+    message: "نستخدم ملفات تعريف الارتباط لتحسين تجربة التصفح، وتحليل حركة المرور على الموقع، وتحسين خدماتنا. ومتابعتك لاستخدام موقعنا تعني موافقتك على استخدامنا لملفات تعريف الارتباط.",
     accept: "قبول جميع ملفات تعريف الارتباط",
     reject: "رفض",
     settings: "إعدادات ملفات تعريف الارتباط",
     close: "إغلاق إعدادات ملفات تعريف الارتباط",
-    settingsDescription: "اختر ملفات تعريف الارتباط التي تسمح بها. تساعد ملفات تعريف الارتباط الضرورية الموقع على العمل ولا يمكن تعطيلها.",
+    settingsDescription: "اختر ملفات تعريف الارتباط التي تسمح بها. تساعد ملفات تعريف الارتباط الضرورية على تشغيل الموقع ولا يمكن تعطيلها.",
     necessary: "ملفات تعريف الارتباط الضرورية",
     necessaryDescription: "مطلوبة للميزات الأساسية وأمان الموقع.",
     alwaysOn: "مفعلة دائماً",
@@ -39,15 +39,15 @@ const cookieCopy = {
   am: {
     eyebrow: "የግላዊነት ምርጫዎች",
     title: "ኩኪዎችን እንጠቀማለን",
-    message: "የአሰሳ ተሞክሮዎን ለማሻሻል፣ የድረ-ገጹን ትራፊክ ለመተንተን እና አገልግሎቶቻችንን ለማሻሻል ኩኪዎችን እንጠቀማለን። ድረ-ገጻችንን መጠቀምዎን በመቀጠል ኩኪዎችን መጠቀማችንን ይስማማሉ።",
+    message: "የአሰሳ ተሞክሮዎን ለማሻሻል፣ የድረ-ገጹን ትራፊክ ለመተንተን እና አገልግሎቶቻችንን ለማሻሻል ኩኪዎችን እንጠቀማለን። ድረ-ገጻችንን መጠቀምዎን በመቀጠል በኩኪዎች አጠቃቀማችን ይስማማሉ።",
     accept: "ሁሉንም ኩኪዎች ተቀበል",
-    reject: "አትቀበል",
+    reject: "አልቀበልም",
     settings: "የኩኪ ቅንብሮች",
     close: "የኩኪ ቅንብሮችን ዝጋ",
-    settingsDescription: "የትኞቹን ኩኪዎች እንደሚፈቅዱ ይምረጡ። አስፈላጊ ኩኪዎች ድረ-ገጹ እንዲሰራ ያግዛሉ እና ሊጠፉ አይችሉም።",
+    settingsDescription: "የትኞቹን ኩኪዎች እንደሚፈቅዱ ይምረጡ። አስፈላጊ ኩኪዎች ድረ-ገጹ እንዲሰራ የሚያግዙ በመሆናቸው ሊጠፉ አይችሉም።",
     necessary: "አስፈላጊ ኩኪዎች",
     necessaryDescription: "ለዋና የድረ-ገጽ ባህሪያት እና ደህንነት ያስፈልጋሉ።",
-    alwaysOn: "ሁልጊዜ ንቁ",
+    alwaysOn: "ሁልጊዜ የነቃ",
     analytics: "የትንተና ኩኪዎች",
     analyticsDescription: "ጎብኚዎች ድረ-ገጹን እንዴት እንደሚጠቀሙ እንድንረዳ ያግዙናል።",
     save: "ምርጫዎችን አስቀምጥ"
@@ -78,11 +78,16 @@ function CookieConsent() {
   if (consent) return null;
 
   const copy = cookieCopy[language] || cookieCopy.en;
-  const isArabic = language === "ar";
+  const isRTL = ["ar", "he", "fa", "ur"].some((lang) => language.startsWith(lang));
 
   return (
     <>
-      <section className="cookie-consent-banner" aria-label={copy.title} aria-live="polite" dir={isArabic ? "rtl" : "ltr"}>
+      <section 
+        className="cookie-consent-banner" 
+        aria-label={copy.title} 
+        aria-live="polite" 
+        dir={isRTL ? "rtl" : "ltr"}
+      >
         <div className="cookie-consent-content">
           <div className="cookie-consent-copy">
             <p className="cookie-consent-eyebrow">{copy.eyebrow}</p>
@@ -90,13 +95,25 @@ function CookieConsent() {
             <p className="cookie-consent-message">{copy.message}</p>
           </div>
           <div className="cookie-consent-actions">
-            <button type="button" className="cookie-consent-button cookie-consent-button-primary" onClick={() => saveConsent("accepted")}>
+            <button 
+              type="button" 
+              className="cookie-consent-button cookie-consent-button-primary" 
+              onClick={() => saveConsent("accepted")}
+            >
               {copy.accept}
             </button>
-            <button type="button" className="cookie-consent-button cookie-consent-button-secondary" onClick={() => saveConsent("rejected")}>
+            <button 
+              type="button" 
+              className="cookie-consent-button cookie-consent-button-secondary" 
+              onClick={() => saveConsent("rejected")}
+            >
               {copy.reject}
             </button>
-            <button type="button" className="cookie-consent-settings-link" onClick={() => setShowSettings(true)}>
+            <button 
+              type="button" 
+              className="cookie-consent-settings-link" 
+              onClick={() => setShowSettings(true)}
+            >
               {copy.settings}
             </button>
           </div>
@@ -105,13 +122,24 @@ function CookieConsent() {
 
       {showSettings && (
         <div className="cookie-settings-backdrop" role="presentation">
-          <section className="cookie-settings-dialog" role="dialog" aria-modal="true" aria-labelledby="cookie-settings-title" dir={isArabic ? "rtl" : "ltr"}>
+          <section 
+            className="cookie-settings-dialog" 
+            role="dialog" 
+            aria-modal="true" 
+            aria-labelledby="cookie-settings-title" 
+            dir={isRTL ? "rtl" : "ltr"}
+          >
             <div className="cookie-settings-header">
               <div>
                 <p className="cookie-consent-eyebrow">{copy.eyebrow}</p>
                 <h2 id="cookie-settings-title">{copy.settings}</h2>
               </div>
-              <button type="button" className="cookie-settings-close" aria-label={copy.close} onClick={() => setShowSettings(false)}>
+              <button 
+                type="button" 
+                className="cookie-settings-close" 
+                aria-label={copy.close} 
+                onClick={() => setShowSettings(false)}
+              >
                 ×
               </button>
             </div>
@@ -128,9 +156,17 @@ function CookieConsent() {
                 <h3>{copy.analytics}</h3>
                 <p>{copy.analyticsDescription}</p>
               </div>
-              <input type="checkbox" checked={analyticsEnabled} onChange={(event) => setAnalyticsEnabled(event.target.checked)} />
+              <input 
+                type="checkbox" 
+                checked={analyticsEnabled} 
+                onChange={(event) => setAnalyticsEnabled(event.target.checked)} 
+              />
             </label>
-            <button type="button" className="cookie-consent-button cookie-consent-button-primary cookie-settings-save" onClick={() => saveConsent(analyticsEnabled ? "custom-analytics" : "custom-necessary")}>
+            <button 
+              type="button" 
+              className="cookie-consent-button cookie-consent-button-primary cookie-settings-save" 
+              onClick={() => saveConsent(analyticsEnabled ? "custom-analytics" : "custom-necessary")}
+            >
               {copy.save}
             </button>
           </section>
