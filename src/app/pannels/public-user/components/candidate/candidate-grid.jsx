@@ -134,7 +134,7 @@ function CandidateGridPage() {
         </div>
 
         {loading ? (
-          <div className="candidate-directory-state"><Spinner fullPage /></div>
+          <div className="candidate-directory-state"><Spinner fullPage delay={0} /></div>
         ) : (
           <div className="row candidate-directory-layout">
             <aside className="col-lg-4">
