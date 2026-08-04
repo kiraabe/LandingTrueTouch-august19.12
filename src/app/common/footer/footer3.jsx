@@ -25,7 +25,7 @@ function Footer3() {
                         <div className="row">
                             <div className="col-lg-3 col-md-12">
                                 <div className="widget widget_about">
-                                    <div className="logo-footer clearfix">
+                                    <div className="logo-footer footer3-logo clearfix">
                                         <NavLink to={publicUser.INITIAL}><JobZImage id="skin_footer_light_logo" src="images/logo-dark.png" alt="TrueTouch Logo" /></NavLink>
                                     </div>
                                     <p>{isAmharic ? 'አሠሪዎችን ለአገር ውስጥ እና ለዓለም አቀፍ የቅጥር ፍላጎቶች ከተመረጡ ባለሙያዎች ጋር ማገናኘት።' : isArabic ? 'ربط أصحاب العمل بأفضل الكوادر لمتطلبات التوظيف المحلية والدولية.' : 'Connecting employers with top talent for local and international recruitment needs.'}</p>
