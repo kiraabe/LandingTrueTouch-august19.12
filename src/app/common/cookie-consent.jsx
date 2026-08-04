@@ -2,6 +2,14 @@ import { useEffect, useState } from "react";
 import "./cookie-consent.css";
 
 const COOKIE_CONSENT_KEY = "true-touch-cookie-consent";
+const COOKIE_CONSENT_MAX_AGE = 60 * 60 * 24 * 365;
+
+const readCookieConsent = () => {
+  const cookie = document.cookie
+    .split("; ")
+    .find((entry) => entry.startsWith(`${COOKIE_CONSENT_KEY}=`));
+  return cookie ? decodeURIComponent(cookie.split("=")[1]) : null;
+};
 
 const cookieCopy = {
   en: {
@@ -61,7 +69,7 @@ function CookieConsent() {
   const [language, setLanguage] = useState(() => document.documentElement.lang || "en");
 
   useEffect(() => {
-    const savedConsent = window.localStorage.getItem(COOKIE_CONSENT_KEY);
+    const savedConsent = readCookieConsent() || window.localStorage.getItem(COOKIE_CONSENT_KEY);
     if (savedConsent) setConsent(savedConsent);
 
     const handleLanguageChange = (event) => setLanguage(event.detail.language);
@@ -70,7 +78,9 @@ function CookieConsent() {
   }, []);
 
   const saveConsent = (value) => {
+    document.cookie = `${COOKIE_CONSENT_KEY}=${encodeURIComponent(value)}; max-age=${COOKIE_CONSENT_MAX_AGE}; path=/; SameSite=Lax`;
     window.localStorage.setItem(COOKIE_CONSENT_KEY, value);
+    window.dispatchEvent(new CustomEvent("cookieconsentchange", { detail: { consent: value } }));
     setConsent(value);
     setShowSettings(false);
   };
