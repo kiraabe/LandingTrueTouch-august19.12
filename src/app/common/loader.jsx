@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 
-function Loader() {
-    const [isVisible, setIsVisible] = useState(false);
+function Loader({ delay = 0 }) {
+    const [isVisible, setIsVisible] = useState(delay === 0);
 
     useEffect(() => {
-        const timeoutId = window.setTimeout(() => setIsVisible(true), 600);
+        if (delay === 0) return undefined;
+
+        const timeoutId = window.setTimeout(() => setIsVisible(true), delay);
         return () => window.clearTimeout(timeoutId);
-    }, []);
+    }, [delay]);
 
     if (!isVisible) return null;
 
@@ -32,10 +34,10 @@ function Loader() {
                 }
 
                 .startup-loader-spinner {
-                    width: 50px;
-                    height: 50px;
-                    border: 4px solid #f3f3f3;
-                    border-top: 4px solid #3498db;
+                    width: 70px;
+                    height: 70px;
+                    border: 6px solid #f3f3f3;
+                    border-top: 6px solid #3498db;
                     border-radius: 50%;
                     animation: spin 1s linear infinite;
                 }
