@@ -8,7 +8,7 @@ function Header1({ _config }) {
 
     const [menuActive, setMenuActive] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
-    const [currentLanguage, setCurrentLanguage] = useState("am");
+    const [currentLanguage, setCurrentLanguage] = useState("en");
     const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
     const [expandedSubmenu, setExpandedSubmenu] = useState(null);
     const [mobileSearchQuery, setMobileSearchQuery] = useState("");
