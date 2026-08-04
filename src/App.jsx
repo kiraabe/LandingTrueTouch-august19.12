@@ -1,5 +1,4 @@
 import RootLayout from "./layouts/root-layout";
-import Loader from "./app/common/loader";
 import ScrollToTop from "./globals/scroll-to-top";
 import ErrorBoundary from "./app/common/error-boundary";
 import { useState, useEffect } from "react";
@@ -7,8 +6,6 @@ import { toast } from "sonner";
 import { ThemeProvider } from "next-themes";
 
 function App() {
-
-  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     const handleUnhandledRejection = (event) => {
@@ -30,15 +27,9 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    const timeoutId = window.setTimeout(() => setLoading(false), 500);
-    return () => window.clearTimeout(timeoutId);
-  }, []);
-
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <ErrorBoundary>
-        {isLoading && <Loader />}
         <ScrollToTop />
         <RootLayout />
       </ErrorBoundary>
