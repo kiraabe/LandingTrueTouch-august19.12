@@ -46,6 +46,12 @@ function Spinner({ fullPage = false }) {
           height: 40px;
           animation: spin 1s linear infinite;
         }
+
+        .spinner-container.full-page .spinner {
+          width: 70px;
+          height: 70px;
+          border-width: 6px;
+        }
       `}</style>
       <div className={`spinner-container ${fullPage ? 'full-page' : ''}`}>
         <div className="spinner" />
