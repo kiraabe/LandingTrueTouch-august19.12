@@ -30,9 +30,10 @@ function App() {
     };
   }, []);
 
-  setTimeout(() => {
-    setLoading(false);
-  }, 500);
+  useEffect(() => {
+    const timeoutId = window.setTimeout(() => setLoading(false), 500);
+    return () => window.clearTimeout(timeoutId);
+  }, []);
 
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

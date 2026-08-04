@@ -1,4 +1,15 @@
+import { useEffect, useState } from "react";
+
 function Spinner({ fullPage = false }) {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const timeoutId = window.setTimeout(() => setIsVisible(true), 600);
+    return () => window.clearTimeout(timeoutId);
+  }, []);
+
+  if (!isVisible) return null;
+
   return (
     <>
       <style>{`
