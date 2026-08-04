@@ -150,7 +150,7 @@ function Header1({ _config }) {
                                         }
                                     }
                                 }}>
-                                    <JobZImage src="images/logo-dark.png" alt="TrueTouch Logo" />
+                                    <JobZImage src="images/logo-dark.png" alt="TrueTouch Logo" loading="eager" fetchPriority="high" />
                                 </a>
                             </div>
                         </div>

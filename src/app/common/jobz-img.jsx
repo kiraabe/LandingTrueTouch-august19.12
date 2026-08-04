@@ -2,7 +2,8 @@ import { publicUrlFor } from "../../globals/constants";
 import { getJobImageUrl } from "../../globals/file-url";
 
 function JobZImage(props) {
-    const src = props.src;
+    const { loading = "lazy", decoding = "async", ...imageProps } = props;
+    const src = imageProps.src;
     let processedSrc;
 
     if (!src) {
@@ -20,7 +21,7 @@ function JobZImage(props) {
 
     return(
         <>
-            <img {...props} src={processedSrc} alt={props.alt}/>
+            <img {...imageProps} src={processedSrc} alt={imageProps.alt} loading={loading} decoding={decoding}/>
         </>
     )
 }

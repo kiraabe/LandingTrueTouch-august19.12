@@ -236,6 +236,8 @@ function CandidateGridPage() {
                               event.currentTarget.src = "https://cdn.builder.io/api/v1/image/assets%2F5e5700cc98ef413c911c8b7a4a98ea76%2Fb069e95136284114b1d8cad46258af9e?format=webp&width=800&height=1200";
                             }}
                             alt={candidate.full_name}
+                            loading="lazy"
+                            decoding="async"
                           />
                           <span className="candidate-directory-status">{candidate.status || "Available"}</span>
                         </div>

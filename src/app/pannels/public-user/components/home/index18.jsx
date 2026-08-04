@@ -715,14 +715,14 @@ function Home18Page() {
                   <div className="item">
                     <ImageLightbox src={publicUrlFor("images/main-slider/slider1/r-img1.png")} alt="True Touch recruitment services">
                       <div className="slide-img">
-                        <JobZImage src="images/main-slider/slider1/r-img1.png" alt="True Touch recruitment services" />
+                        <JobZImage src="images/main-slider/slider1/r-img1.png" alt="True Touch recruitment services" loading="eager" fetchPriority="high" />
                       </div>
                     </ImageLightbox>
                   </div>
                   <div className="item">
                     <ImageLightbox src={publicUrlFor("images/main-slider/slider1/r-img2.png")} alt="True Touch recruitment services">
                       <div className="slide-img">
-                        <JobZImage src="images/main-slider/slider1/r-img2.png" alt="True Touch recruitment services" />
+                        <JobZImage src="images/main-slider/slider1/r-img2.png" alt="True Touch recruitment services" loading="eager" />
                       </div>
                     </ImageLightbox>
                   </div>
@@ -1319,6 +1319,8 @@ function Home18Page() {
                                             <img
                                                 src={testimonial.avatar_image ? getTestimonialAvatarUrl(testimonial.avatar_image) : publicUrlFor("images/testimonial-placeholder.svg")}
                                                 alt={`${testimonial.company_name} testimonial`}
+                                                loading="lazy"
+                                                decoding="async"
                                                 onError={(event) => {
                                                   event.currentTarget.onerror = null;
                                                   event.currentTarget.src = publicUrlFor("images/testimonial-placeholder.svg");
