@@ -28,7 +28,7 @@ function Loader() {
                     align-items: center;
                     width: 100%;
                     height: 100vh;
-                    background-color: rgba(255, 255, 255, 0.9);
+                    background-color: #ffffff;
                 }
 
                 .startup-loader-spinner {

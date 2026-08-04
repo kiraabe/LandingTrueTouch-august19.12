@@ -33,7 +33,7 @@ function Spinner({ fullPage = false }) {
           bottom: 0;
           width: 100%;
           height: 100vh;
-          background: rgba(255, 255, 255, 0.9);
+          background: #ffffff;
           z-index: 9998;
           padding: 0;
         }
