@@ -77,7 +77,7 @@ function Footer3() {
                     <div className="footer-bottom">
                         <div className="footer-bottom-info">
                             <div className="footer-copy-right">
-                                <span className="copyrights-text">{isAmharic ? `በ EKD Tech የበለፀገ። መብቱ በሕግ የተጠበቀ ነው © ${new Date().getFullYear()}።` : isArabic ? `حقوق الطبع والنشر © ${new Date().getFullYear()} تم التطوير بواسطة EKD Tech. جميع الحقوق محفوظة.` : `Copyright © ${new Date().getFullYear()} Powered by EKD Tech. All Rights Reserved.`}</span>
+                                <span className="copyrights-text">{isAmharic ? `በ EKD Tech የተሰራ። መብቱ በሕግ የተጠበቀ ነው © 2026።` : isArabic ? `حقوق الطبع والنشر © 2026 تم التطوير بواسطة EKD Tech. جميع الحقوق محفوظة.` : <>Copyright © 2026 Powered by <a href="https://ekdtechsolutions.com.et/" target="_blank" rel="noreferrer">EKD Tech</a>. All Rights Reserved.</>}</span>
                             </div>
                             <ul className="social-icons">
                                 <li><a href="https://www.facebook.com/" className="fab fa-facebook-f" /></li>
