@@ -16,7 +16,7 @@ const WhatsAppWidget = () => {
   const handleWhatsAppClick = () => {
     const phoneNumber = '251911208322'; // WhatsApp number in international format (no +)
     const message = 'Hello! I would like to get more information.';
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 

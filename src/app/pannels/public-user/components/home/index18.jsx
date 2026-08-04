@@ -27,7 +27,7 @@ const buildWhatsAppLink = (candidate) => {
     `Status: ${candidate.status || "N/A"}\n\n` +
     `Could you share more details or help me proceed?`;
 
-  return `https://wa.me/${COMPANY_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  return `whatsapp://send?phone=${COMPANY_WHATSAPP_NUMBER}&text=${encodeURIComponent(message)}`;
 };
 
 const truncateText = (text, maxLength = 78) => {
