@@ -1,6 +1,6 @@
-.footer3-logo {
+.footer-light .footer3-logo {
   width: 240px;
-  max-width: 100%;
+  max-width: 240px;
 }
 
 .footer3-logo img {
@@ -11,8 +11,8 @@
 }
 
 @media (max-width: 767px) {
-  .footer3-logo,
-  .footer3-logo img {
+  .footer-light .footer3-logo,
+  .footer-light .footer3-logo img {
     width: 210px;
   }
 }
