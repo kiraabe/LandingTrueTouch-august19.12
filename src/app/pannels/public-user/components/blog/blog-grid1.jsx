@@ -57,7 +57,7 @@ function BlogGrid1Page() {
     <section id="blog-grid" className="section-full p-t120 p-b90 site-bg-white">
       <div className="container">
         {loading ? (
-          <Spinner fullPage />
+          <Spinner fullPage delay={0} />
         ) : blogs.length > 0 ? (
           <>
             <div className="twm-blog-responsive-grid">
