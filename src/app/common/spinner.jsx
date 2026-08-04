@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 
-function Spinner({ fullPage = false }) {
-  const [isVisible, setIsVisible] = useState(false);
+function Spinner({ fullPage = false, delay = 600 }) {
+  const [isVisible, setIsVisible] = useState(delay === 0);
 
   useEffect(() => {
-    const timeoutId = window.setTimeout(() => setIsVisible(true), 600);
+    if (delay === 0) return undefined;
+
+    const timeoutId = window.setTimeout(() => setIsVisible(true), delay);
     return () => window.clearTimeout(timeoutId);
-  }, []);
+  }, [delay]);
 
   if (!isVisible) return null;
 

@@ -68,7 +68,7 @@ const CandidateDetail = () => {
     return (
       <div className="candidate-detail-container">
         <Toaster position="top-right" richColors />
-        <Spinner fullPage />
+        <Spinner fullPage delay={0} />
       </div>
     );
   }
