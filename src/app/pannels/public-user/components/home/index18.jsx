@@ -200,12 +200,15 @@ function Home18Page() {
         });
         if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         const data = await response.json();
-        console.log('✅ Candidates loaded:', data.length);
-        setAllCandidates(data);
-        setFilteredCandidates(data);
+        const availableCandidates = data.filter(candidate =>
+          candidate.status?.trim().toLowerCase() === 'available'
+        );
+        console.log('✅ Available candidates loaded:', availableCandidates.length);
+        setAllCandidates(availableCandidates);
+        setFilteredCandidates(availableCandidates);
         setFilterOptions(currentOptions => ({
           ...currentOptions,
-          religions: [...new Set(data.map(candidate => candidate.religion).filter(Boolean))]
+          religions: [...new Set(availableCandidates.map(candidate => candidate.religion).filter(Boolean))]
         }));
       } catch (err) {
         console.error('❌ Error fetching candidates:', err);

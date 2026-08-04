@@ -39,7 +39,10 @@ function CandidateGridPage() {
       try {
         const response = await fetch("/api/candidates/featured");
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        setCandidates(await response.json());
+        const data = await response.json();
+        setCandidates(data.filter((candidate) =>
+          candidate.status?.trim().toLowerCase() === "available"
+        ));
       } catch (error) {
         showErrorToast(error, "Failed to load candidates.");
       } finally {
