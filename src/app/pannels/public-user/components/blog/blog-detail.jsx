@@ -80,7 +80,7 @@ function BlogDetail() {
     return (
       <>
         <Toaster position="top-right" richColors />
-        <Spinner fullPage />
+        <Spinner fullPage delay={0} />
       </>
     );
   }
