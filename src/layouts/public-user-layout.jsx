@@ -7,6 +7,7 @@ import { showBanner, setBanner } from "../globals/banner-data";
 import { showHeader, showFooter, setFooterType, setHeaderType, showFloatingMenus } from "../globals/layout-config";
 import FloatingMenus from "../app/common/floating/floatingMenu";
 import WhatsAppWidget from "../app/common/whatsapp-widget";
+import CookieConsent from "../app/common/cookie-consent";
 import { updateSkinStyle } from "../globals/constants";
 import { useEffect } from "react";
 
@@ -50,6 +51,7 @@ function PublicUserLayout() {
 
                 {/* WHATSAPP WIDGET */}
                 <WhatsAppWidget />
+                <CookieConsent />
 
                 <SignUpPopup />
                 <SignInPopup />
