@@ -42,7 +42,7 @@ function Spinner({ fullPage = false, delay = 600 }) {
 
         .spinner {
           border: 4px solid #f3f3f3;
-          border-top: 4px solid #3498db;
+          border-top: 4px solid #A9C731;
           border-radius: 50%;
           width: 40px;
           height: 40px;

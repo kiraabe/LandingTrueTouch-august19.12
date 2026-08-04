@@ -37,7 +37,7 @@ function Loader({ delay = 0 }) {
                     width: 70px;
                     height: 70px;
                     border: 6px solid #f3f3f3;
-                    border-top: 6px solid #3498db;
+                    border-top: 6px solid #A9C731;
                     border-radius: 50%;
                     animation: spin 1s linear infinite;
                 }
