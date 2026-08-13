@@ -1,4 +1,4 @@
-function Spinner({ fullPage = false }) {
+function Spinner({ fullPage = false, className = "" }) {
   return (
     <>
       <style>{`
@@ -36,7 +36,7 @@ function Spinner({ fullPage = false }) {
           animation: spin 1s linear infinite;
         }
       `}</style>
-      <div className={`spinner-container ${fullPage ? 'full-page' : ''}`}>
+      <div className={`spinner-container ${fullPage ? 'full-page' : ''} ${className}`.trim()}>
         <div className="spinner" />
       </div>
     </>
