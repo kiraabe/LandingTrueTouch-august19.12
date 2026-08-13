@@ -87,7 +87,7 @@ function BlogGrid1Page() {
   };
 
   return (
-    <section id="blog-grid" className={`section-full p-t120 p-b90 site-bg-white${isArabic ? " blog-grid-arabic" : ""}`}>
+    <section id="blog-grid" className="section-full p-t120 p-b90 site-bg-white">
       <div className="container">
         {loading ? (
           <Spinner fullPage />
@@ -108,7 +108,7 @@ function BlogGrid1Page() {
                       />
                     </NavLink>
                   </div>
-                  <div className="wt-post-info" dir={isArabic ? "rtl" : "ltr"}>
+                  <div className="wt-post-info">
                     <div className="wt-post-meta">
                       <ul>
                         <li className="post-date">{formatDate(blog.created_at, language)}</li>
