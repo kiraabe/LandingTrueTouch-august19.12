@@ -32,8 +32,16 @@ const parseLanguageSkills = (skills) => {
   return [];
 };
 
+import useLanguage from "../../../../../globals/use-language";
+
 const SectionCandidateSkills = ({ candidate }) => {
+  const language = useLanguage();
   if (!candidate) return null;
+  const copy = language === "ar"
+    ? { title: "المهارات واللغات", levels: "مستويات المهارة", languages: "اللغات" }
+    : language === "am"
+      ? { title: "ክህሎቶች እና ቋንቋዎች", levels: "የክህሎት ደረጃዎች", languages: "ቋንቋዎች" }
+      : { title: "Skills & Languages", levels: "Skill Levels", languages: "Languages" };
 
   const skillLevels = parseSkillsForDisplay(candidate.skill_level);
   const languageSkills = parseLanguageSkills(candidate.language_skills);
@@ -43,10 +51,10 @@ const SectionCandidateSkills = ({ candidate }) => {
 
   return (
     <div className="can-skills-section">
-      <h2 className="can-section-title">Skills & Languages</h2>
+      <h2 className="can-section-title">{copy.title}</h2>
       {skillLevels.length > 0 && (
         <div className="can-skills-subsection">
-          <h3 className="can-skills-subtitle">Skill Levels</h3>
+          <h3 className="can-skills-subtitle">{copy.levels}</h3>
           <div className="can-skills-list">
             {skillLevels.map((skill, index) => (
               <span key={index} className="can-skill-tag">{skill}</span>
@@ -56,7 +64,7 @@ const SectionCandidateSkills = ({ candidate }) => {
       )}
       {languageSkills.length > 0 && (
         <div className="can-skills-subsection">
-          <h3 className="can-skills-subtitle">Languages</h3>
+          <h3 className="can-skills-subtitle">{copy.languages}</h3>
           <div className="can-skills-list">
             {languageSkills.map((skill, index) => (
               <span key={index} className="can-language-tag">{skill}</span>
