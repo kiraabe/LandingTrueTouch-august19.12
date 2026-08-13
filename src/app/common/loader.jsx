@@ -1,37 +1,36 @@
 function Loader() {
-    const spinnerStyles = {
-        container: {
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100vh',
-            width: '100%',
-            backgroundColor: 'rgba(255, 255, 255, 0.9)',
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            zIndex: 9999
-        },
-        spinner: {
-            border: '4px solid #f3f3f3',
-            borderTop: '4px solid #3498db',
-            borderRadius: '50%',
-            width: '50px',
-            height: '50px',
-            animation: 'spin 1s linear infinite'
-        }
-    };
-
     return (
         <>
             <style>{`
-                @keyframes spin {
+                @keyframes app-loader-spin {
                     0% { transform: rotate(0deg); }
                     100% { transform: rotate(360deg); }
                 }
+
+                .app-loader {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    height: 100vh;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    z-index: 9999;
+                    background: #fff;
+                }
+
+                .app-loader-spinner {
+                    width: 72px;
+                    height: 72px;
+                    border: 6px solid #f3f3f3;
+                    border-top-color: #A9C731;
+                    border-radius: 50%;
+                    animation: app-loader-spin 1s linear infinite;
+                }
             `}</style>
-            <div style={spinnerStyles.container}>
-                <div style={spinnerStyles.spinner} />
+            <div className="app-loader">
+                <div className="app-loader-spinner" />
             </div>
         </>
     );
