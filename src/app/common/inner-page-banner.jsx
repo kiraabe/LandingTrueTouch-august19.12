@@ -7,12 +7,17 @@ function InnerPageBanner({_data}) {
     const isArabic = language === "ar";
     const isAmharic = language === "am";
     const isCandidateGrid = _data.title === "Candidate Grid";
+    const isBlog = _data.title === "Blog";
     const title = isCandidateGrid
         ? (isArabic ? "دليل المرشحين" : isAmharic ? "የእጩዎች ዝርዝር" : _data.title)
-        : _data.title;
+        : isBlog
+            ? (isArabic ? "المدونة" : isAmharic ? "ብሎግ" : _data.title)
+            : _data.title;
     const crumb = isCandidateGrid
         ? (isArabic ? "المرشحون" : isAmharic ? "እጩዎች" : _data.crumb)
-        : _data.crumb;
+        : isBlog
+            ? (isArabic ? "المدونة" : isAmharic ? "ብሎግ" : _data.crumb)
+            : _data.crumb;
     const homeLabel = isArabic ? "الرئيسية" : isAmharic ? "መነሻ" : "Home";
 
     useEffect(() => {

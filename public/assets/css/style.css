@@ -25091,3 +25091,17 @@ HOME PAGE 15 START
 .twm-blog-responsive-item .wt-post-readmore {
   margin-top: auto;
 }
+
+.blog-grid-arabic .wt-post-info {
+  direction: rtl;
+  text-align: right;
+}
+
+.blog-grid-arabic .wt-post-info .wt-post-meta,
+.blog-grid-arabic .wt-post-info .wt-post-meta ul,
+.blog-grid-arabic .wt-post-info .wt-post-title,
+.blog-grid-arabic .wt-post-info .wt-post-text,
+.blog-grid-arabic .wt-post-info .wt-post-readmore {
+  direction: rtl;
+  text-align: right;
+}

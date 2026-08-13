@@ -7,11 +7,11 @@ import { getJobImageUrl } from "../../../../../globals/file-url";
 
 const BLOGS_PER_PAGE = 9;
 
-const formatDate = (date) => {
+const formatDate = (date, language = "en") => {
   const value = new Date(date);
   return Number.isNaN(value.getTime())
     ? ""
-    : value.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "2-digit" });
+    : value.toLocaleDateString(language === "ar" ? "ar-EG" : language === "am" ? "am-ET" : "en-US", { year: "numeric", month: "long", day: "2-digit" });
 };
 
 const truncateText = (text, maxLength = 120) => {
@@ -23,6 +23,39 @@ function BlogGrid1Page() {
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [language, setLanguage] = useState(() => document.documentElement.lang || "en");
+  const isArabic = language === "ar";
+  const copy = language === "am" ? {
+    blog: "ብሎግ",
+    by: "በ",
+    readMore: "ተጨማሪ ያንብቡ",
+    previousPage: "ያለፈው ገጽ",
+    nextPage: "ቀጣዩ ገጽ",
+    goToPage: "ወደ ገጽ ሂድ",
+    noBlogs: "አሁን ምንም ብሎጎች የሉም፟"
+  } : isArabic ? {
+    blog: "المدونة",
+    by: "بواسطة",
+    readMore: "اقرأ المزيد",
+    previousPage: "الصفحة السابقة",
+    nextPage: "الصفحة التالية",
+    goToPage: "الانتقال إلى الصفحة",
+    noBlogs: "لا توجد مدونات متاحة حالياً."
+  } : {
+    blog: "Blog",
+    by: "By",
+    readMore: "Read More",
+    previousPage: "Previous page",
+    nextPage: "Next page",
+    goToPage: "Go to page",
+    noBlogs: "No blogs available."
+  };
+
+  useEffect(() => {
+    const handleLanguageChange = (event) => setLanguage(event.detail.language);
+    document.addEventListener("languagechange", handleLanguageChange);
+    return () => document.removeEventListener("languagechange", handleLanguageChange);
+  }, []);
 
   useEffect(() => {
     document.title = "Blog | TrueTouch";
@@ -54,7 +87,7 @@ function BlogGrid1Page() {
   };
 
   return (
-    <section id="blog-grid" className="section-full p-t120 p-b90 site-bg-white">
+    <section id="blog-grid" className={`section-full p-t120 p-b90 site-bg-white${isArabic ? " blog-grid-arabic" : ""}`}>
       <div className="container">
         {loading ? (
           <Spinner fullPage />
@@ -75,11 +108,11 @@ function BlogGrid1Page() {
                       />
                     </NavLink>
                   </div>
-                  <div className="wt-post-info">
+                  <div className="wt-post-info" dir={isArabic ? "rtl" : "ltr"}>
                     <div className="wt-post-meta">
                       <ul>
-                        <li className="post-date">{formatDate(blog.created_at)}</li>
-                        <li className="post-author">By {blog.author || "Admin"}</li>
+                        <li className="post-date">{formatDate(blog.created_at, language)}</li>
+                        <li className="post-author">{copy.by} {blog.author || "Admin"}</li>
                       </ul>
                     </div>
                     <div className="wt-post-title">
@@ -93,14 +126,14 @@ function BlogGrid1Page() {
                       </div>
                     )}
                     <div className="wt-post-readmore">
-                      <NavLink to={`/blog-detail/${blog.id}`} className="site-button-link site-text-primary">Read More</NavLink>
+                      <NavLink to={`/blog-detail/${blog.id}`} className="site-button-link site-text-primary">{copy.readMore}</NavLink>
                     </div>
                   </div>
                 </article>
               ))}
             </div>
 
-            <nav className="pagination-outer text-center" aria-label="Blog pages">
+            <nav className="pagination-outer text-center" aria-label={copy.blog}>
                 <div className="pagination-style1">
                   <ul>
                     <li className="prev">
@@ -110,7 +143,7 @@ function BlogGrid1Page() {
                           event.preventDefault();
                           if (currentPage > 1) changePage(currentPage - 1);
                         }}
-                        aria-label="Previous page"
+                        aria-label={copy.previousPage}
                         aria-disabled={currentPage === 1}
                       >
                         <span className="fa fa-angle-left" />
@@ -125,7 +158,7 @@ function BlogGrid1Page() {
                             changePage(page);
                           }}
                           aria-current={currentPage === page ? "page" : undefined}
-                          aria-label={`Go to page ${page}`}
+                          aria-label={`${copy.goToPage} ${page}`}
                         >
                           {page}
                         </a>
@@ -138,7 +171,7 @@ function BlogGrid1Page() {
                           event.preventDefault();
                           if (currentPage < pageCount) changePage(currentPage + 1);
                         }}
-                        aria-label="Next page"
+                        aria-label={copy.nextPage}
                         aria-disabled={currentPage === pageCount}
                       >
                         <span className="fa fa-angle-right" />
@@ -150,7 +183,7 @@ function BlogGrid1Page() {
           </>
         ) : (
           <div className="text-center p-5">
-            <p>No blogs available.</p>
+            <p>{copy.noBlogs}</p>
           </div>
         )}
       </div>
