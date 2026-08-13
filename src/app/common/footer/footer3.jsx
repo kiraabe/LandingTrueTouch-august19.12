@@ -6,7 +6,7 @@ import { publicUrlFor } from "../../../globals/constants";
 import "./footer3.css";
 
 function Footer3() {
-    const [currentLanguage, setCurrentLanguage] = useState("am");
+    const [currentLanguage, setCurrentLanguage] = useState("en");
     const isArabic = currentLanguage === "ar";
     const isAmharic = currentLanguage === "am";
 
