@@ -8,7 +8,7 @@ function Header1({ _config }) {
 
     const [menuActive, setMenuActive] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
-    const [currentLanguage, setCurrentLanguage] = useState("am");
+    const [currentLanguage, setCurrentLanguage] = useState("en");
     const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
     const [expandedSubmenu, setExpandedSubmenu] = useState(null);
     const [mobileSearchQuery, setMobileSearchQuery] = useState("");
@@ -120,9 +120,9 @@ function Header1({ _config }) {
         home: "Home",
         about: "About Us",
         candidates: "Candidates",
-        vacancies: "Vacancies",
+        vacancies: "Open Positions",
         contact: "Contact Us",
-        search: "Search for..."
+        search: "Search..."
     };
 
     return (
