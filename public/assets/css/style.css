@@ -5947,6 +5947,20 @@ button.scroltop span {
 .wt-breadcrumb li:last-child:after {
   display: none;
 }
+.wt-bnr-inr[dir="rtl"] .wt-breadcrumb {
+  direction: rtl;
+}
+.wt-bnr-inr[dir="rtl"] .wt-breadcrumb li {
+  padding-right: 0;
+  padding-left: 30px;
+}
+.wt-bnr-inr[dir="rtl"] .wt-breadcrumb li:after {
+  right: auto;
+  left: 8px;
+}
+.wt-bnr-inr[dir="rtl"] .wt-breadcrumb li:last-child {
+  padding-left: 0;
+}
 .wt-breadcrumb li:first-child a i {
   font-size: 18px;
   vertical-align: text-top;
