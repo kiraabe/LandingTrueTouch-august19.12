@@ -88,9 +88,9 @@ function Footer2() {
                             </div>
                             <ul className="social-icons">
                                 <li><a href="https://www.facebook.com/" className="fab fa-facebook-f" /></li>
-                                <li><a href="https://www.twitter.com/" className="fab fa-twitter" /></li>
+                                <li><a href="https://x.com/" className="fab fa-x-twitter" /></li>
                                 <li><a href="https://www.instagram.com/" className="fab fa-instagram" /></li>
-                                <li><a href="https://www.youtube.com/" className="fab fa-youtube" /></li>
+                                <li><a href="https://www.linkedin.com/" className="fab fa-linkedin-in" /></li>
                             </ul>
                         </div>
                     </div>
