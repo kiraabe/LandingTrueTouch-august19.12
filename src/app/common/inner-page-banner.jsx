@@ -9,20 +9,25 @@ function InnerPageBanner({_data}) {
     const isCandidateGrid = _data.title === "Candidate Grid";
     const isCandidateDetail = _data.title === "Candidate Detail";
     const isBlog = _data.title === "Blog";
+    const isBlogDetail = _data.title === "Blog detail";
     const title = isCandidateGrid
         ? (isArabic ? "دليل المرشحين" : isAmharic ? "የእጩዎች ዝርዝር" : _data.title)
         : isCandidateDetail
             ? (isArabic ? "تفاصيل المرشح" : isAmharic ? "የእጩ ዝርዝር" : _data.title)
-            : isBlog
-                ? (isArabic ? "المدونة" : isAmharic ? "ብሎግ" : _data.title)
-                : _data.title;
+            : isBlogDetail
+                ? (isArabic ? "تفاصيل المدونة" : isAmharic ? "የብሎግ ዝርዝር" : _data.title)
+                : isBlog
+                    ? (isArabic ? "المدونة" : isAmharic ? "ብሎግ" : _data.title)
+                    : _data.title;
     const crumb = isCandidateGrid
         ? (isArabic ? "المرشحون" : isAmharic ? "እጩዎች" : _data.crumb)
         : isCandidateDetail
             ? (isArabic ? "تفاصيل المرشح" : isAmharic ? "የእጩ ዝርዝር" : _data.crumb)
-            : isBlog
-            ? (isArabic ? "المدونة" : isAmharic ? "ብሎግ" : _data.crumb)
-            : _data.crumb;
+            : isBlogDetail
+                ? (isArabic ? "تفاصيل المدونة" : isAmharic ? "የብሎግ ዝርዝር" : _data.crumb)
+                : isBlog
+                    ? (isArabic ? "المدونة" : isAmharic ? "ብሎግ" : _data.crumb)
+                    : _data.crumb;
     const homeLabel = isArabic ? "الرئيسية" : isAmharic ? "መነሻ" : "Home";
 
     useEffect(() => {

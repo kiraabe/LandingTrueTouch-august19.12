@@ -6,6 +6,7 @@ import { publicUrlFor } from '../../../../../globals/constants';
 import { getJobImageUrl } from '../../../../../globals/file-url';
 import { showErrorToast } from '../../../../../globals/error-handler';
 import { Toaster } from '../../../../../components/ui/toaster';
+import useLanguage from '../../../../../globals/use-language';
 
 function BlogDetail() {
   const { id } = useParams();
@@ -13,6 +14,12 @@ function BlogDetail() {
   const [blog, setBlog] = useState(null);
   const [relatedBlogs, setRelatedBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const language = useLanguage();
+  const copy = language === "ar"
+    ? { notFound: "لم يتم العثور على المدونة", by: "بواسطة", noContent: "لا يوجد محتوى متاح", contributor: "مساهم في TrueTouch", welcome: "مرحباً بكم في مدونتنا. ترقبوا المزيد من التحديثات.", share: "مشاركة", facebook: "مشاركة على Facebook", twitter: "مشاركة على Twitter", linkedin: "مشاركة على LinkedIn", navigation: "التنقل بين المنشورات", previous: "المنشور السابق", back: "العودة إلى جميع المدونات", next: "المنشور التالي", recent: "أحدث المقالات", noOther: "لا توجد مقالات أخرى بعد.", tags: "الوسوم", author: "الكاتب" }
+    : language === "am"
+      ? { notFound: "ብሎጉ አልተገኘም", by: "በ", noContent: "ምንም ይዘት የለም", contributor: "የTrueTouch አስተዋጽኦ አድራጊ", welcome: "ወደ ብሎጋችን እንኳን በደህና መጡ። ተጨማሪ ዝመናዎችን ይጠብቁ።", share: "አጋራ", facebook: "በFacebook አጋራ", twitter: "በTwitter አጋራ", linkedin: "በLinkedIn አጋራ", navigation: "የጽሑፍ አሰሳ", previous: "ቀዳሚ ጽሑፍ", back: "ወደ ሁሉም ብሎጎች ተመለስ", next: "ቀጣይ ጽሑፍ", recent: "የቅርብ ጊዜ ጽሑፎች", noOther: "እስካሁን ሌሎች ጽሑፎች የሉም።", tags: "መለያዎች", author: "ደራሲ" }
+      : { notFound: "Blog not found", by: "By", noContent: "No content available", contributor: "TrueTouch Contributor", welcome: "Welcome to our blog. Stay tuned for more updates.", share: "Share", facebook: "Share on Facebook", twitter: "Share on Twitter", linkedin: "Share on LinkedIn", navigation: "Post navigation", previous: "Previous post", back: "Back to all blogs", next: "Next post", recent: "Recent Articles", noOther: "No other articles yet.", tags: "Tags", author: "Author" };
 
   useEffect(() => {
     const fetchBlogDetail = async () => {
@@ -89,7 +96,7 @@ function BlogDetail() {
     return (
       <div className="blog-detail-not-found">
         <div className="container">
-          <p>Blog not found</p>
+          <p>{copy.notFound}</p>
         </div>
       </div>
     );
@@ -118,12 +125,12 @@ function BlogDetail() {
                     <header className="blog-detail-title-section">
                       <div className="wt-post-meta-list blog-detail-meta">
                         <span className="wt-list-content post-date">
-                          <i className="fas fa-calendar" /> {new Date(blog.created_at).toLocaleDateString('en-US', {
+                          <i className="fas fa-calendar" /> {new Date(blog.created_at).toLocaleDateString(language === "ar" ? "ar-EG" : language === "am" ? "am-ET" : "en-US", {
                             year: 'numeric', month: 'long', day: '2-digit'
                           })}
                         </span>
                         <span className="wt-list-content post-author">
-                          <i className="fas fa-user" /> By {blog.author || 'Admin'}
+                          <i className="fas fa-user" /> {copy.by} {blog.author || 'Admin'}
                         </span>
                         {blog.reading_time && (
                           <span className="wt-list-content post-reading-time">
@@ -138,7 +145,7 @@ function BlogDetail() {
                       {blog.content ? (
                         <div className="blog-content-text" dangerouslySetInnerHTML={{ __html: blog.content }} />
                       ) : (
-                        <p>{blog.description || 'No content available'}</p>
+                        <p>{blog.description || copy.noContent}</p>
                       )}
                       {blog.pull_quote_en && (
                         <blockquote className="blog-pull-quote">
@@ -157,34 +164,34 @@ function BlogDetail() {
                             event.currentTarget.onerror = null;
                             event.currentTarget.src = publicUrlFor("images/blog/post-author.jpg");
                           }}
-                          alt={blog.author || 'Author'}
+                          alt={blog.author || copy.author}
                         />
                       </div>
                       <div className="twm-post-author-content">
-                        <span>{blog.author_role_en || 'TrueTouch Contributor'}</span>
+                        <span>{blog.author_role_en || copy.contributor}</span>
                         <strong>{blog.author || 'Admin'}</strong>
-                        <p>{blog.author_bio_en || blog.author_bio || 'Welcome to our blog. Stay tuned for more updates.'}</p>
+                        <p>{blog.author_bio_en || blog.author_bio || copy.welcome}</p>
                       </div>
                     </div>
 
                     <div className="post-area-tags-wrap blog-footer blog-share-footer">
                       <div className="post-social-icons-wrap">
-                        <strong>Share</strong>
+                        <strong>{copy.share}</strong>
                         <div className="share-buttons">
-                          <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook" className="share-btn share-facebook"><i className="fab fa-facebook-f" /></a>
-                          <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(blog.title)}`} target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter" className="share-btn share-twitter"><i className="fab fa-twitter" /></a>
-                          <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn" className="share-btn share-linkedin"><i className="fab fa-linkedin-in" /></a>
+                          <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" aria-label={copy.facebook} className="share-btn share-facebook"><i className="fab fa-facebook-f" /></a>
+                          <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(blog.title)}`} target="_blank" rel="noopener noreferrer" aria-label={copy.twitter} className="share-btn share-twitter"><i className="fab fa-twitter" /></a>
+                          <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" aria-label={copy.linkedin} className="share-btn share-linkedin"><i className="fab fa-linkedin-in" /></a>
                         </div>
                       </div>
                     </div>
 
-                    <nav className="post-navigation" aria-label="Post navigation">
+                    <nav className="post-navigation" aria-label={copy.navigation}>
                       {blog.previous_post_slug && (
-                        <NavLink to={`/blog-detail/${blog.previous_post_slug}`} className="post-nav-previous"><i className="fa fa-angle-left" /> Previous post</NavLink>
+                        <NavLink to={`/blog-detail/${blog.previous_post_slug}`} className="post-nav-previous"><i className="fa fa-angle-left" /> {copy.previous}</NavLink>
                       )}
-                      <NavLink to="/blogs" className="post-nav-back">Back to all blogs</NavLink>
+                      <NavLink to="/blogs" className="post-nav-back">{copy.back}</NavLink>
                       {blog.next_post_slug && (
-                        <NavLink to={`/blog-detail/${blog.next_post_slug}`} className="post-nav-next">Next post <i className="fa fa-angle-right" /></NavLink>
+                        <NavLink to={`/blog-detail/${blog.next_post_slug}`} className="post-nav-next">{copy.next} <i className="fa fa-angle-right" /></NavLink>
                       )}
                     </nav>
                   </div>
@@ -194,7 +201,7 @@ function BlogDetail() {
               <div className="col-lg-4 col-md-12 rightSidebar">
                 <aside className="blog-sidebar">
                   <div className="sidebar-widget recent-posts-widget">
-                    <h3 className="widget-title">Recent Articles</h3>
+                    <h3 className="widget-title">{copy.recent}</h3>
                     <div className="recent-post-list">
                       {relatedBlogs.map((item) => (
                         <NavLink key={item.id} to={`/blog-detail/${item.id}`} className="recent-post-item">
@@ -212,11 +219,11 @@ function BlogDetail() {
                           </span>
                         </NavLink>
                       ))}
-                      {relatedBlogs.length === 0 && <p className="sidebar-empty-state">No other articles yet.</p>}
+                      {relatedBlogs.length === 0 && <p className="sidebar-empty-state">{copy.noOther}</p>}
                     </div>
                   </div>
                   <div className="sidebar-widget tags-widget">
-                    <h3 className="widget-title">Tags</h3>
+                    <h3 className="widget-title">{copy.tags}</h3>
                     <div className="blog-tags">
                       {(blog.tags || []).map((tag, index) => <span key={index} className="blog-tag">{tag}</span>)}
                     </div>
