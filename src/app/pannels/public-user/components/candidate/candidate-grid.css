@@ -371,17 +371,6 @@
   text-align: center;
 }
 
-.candidate-grid-spinner {
-  background: #fff !important;
-}
-
-.candidate-grid-spinner .spinner {
-  width: 64px;
-  height: 64px;
-  border-width: 6px;
-  border-top-color: #A9C731;
-}
-
 .candidate-directory[dir="rtl"] {
   direction: rtl;
   text-align: right;

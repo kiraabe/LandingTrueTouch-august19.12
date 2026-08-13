@@ -1,4 +1,4 @@
-function Spinner({ fullPage = false, className = "" }) {
+function Spinner({ fullPage = false }) {
   return (
     <>
       <style>{`
@@ -22,21 +22,21 @@ function Spinner({ fullPage = false, className = "" }) {
           bottom: 0;
           width: 100%;
           height: 100vh;
-          background: rgba(255, 255, 255, 0.9);
+          background: #fff;
           z-index: 9998;
           padding: 0;
         }
 
         .spinner {
-          border: 4px solid #f3f3f3;
-          border-top: 4px solid #3498db;
+          border: 6px solid #f3f3f3;
+          border-top-color: #A9C731;
           border-radius: 50%;
-          width: 40px;
-          height: 40px;
+          width: 64px;
+          height: 64px;
           animation: spin 1s linear infinite;
         }
       `}</style>
-      <div className={`spinner-container ${fullPage ? 'full-page' : ''} ${className}`.trim()}>
+      <div className={`spinner-container ${fullPage ? 'full-page' : ''}`}>
         <div className="spinner" />
       </div>
     </>
