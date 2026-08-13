@@ -95,6 +95,12 @@
   text-align: right;
 }
 
+.testimonial-v-content-rtl .t-discription,
+.testimonial-v-content-rtl .twm-testi-detail {
+  direction: rtl;
+  text-align: right;
+}
+
 .stats-counter-rtl .tw-count-number {
   direction: ltr;
   unicode-bidi: isolate;

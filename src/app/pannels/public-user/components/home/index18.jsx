@@ -1308,7 +1308,7 @@ function Home18Page() {
                     </div>
                     {/* title="" END*/}
                     <div className="section-content">
-                        <div className="owl-carousel twm-testimonial-8-carousel m-b30 owl-btn-bottom-center ">
+                        <div className="owl-carousel twm-testimonial-8-carousel m-b30 owl-btn-bottom-center " dir="ltr">
                             {testimonials.map((testimonial) => (
                                 <div className="item" key={testimonial.id}>
                                     <div className="testimonials-v site-bg-white">
@@ -1322,7 +1322,7 @@ function Home18Page() {
                                                 }}
                                             />
                                         </div>
-                                        <div className="testimonial-v-content">
+                                        <div className={`testimonial-v-content${isArabic ? ' testimonial-v-content-rtl' : ''}`}>
                                             <div className="t-testimonial-top">
                                                 <div className="t-quote"><i className="fa fa-quote-left" /></div>
                                                 <div className="t-rating">
