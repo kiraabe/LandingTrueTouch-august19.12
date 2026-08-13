@@ -275,8 +275,8 @@ function Header1({ _config }) {
                                 <JobZImage src="images/logo-dark.png" alt="TrueTouch Logo" />
                             </a>
                         </div>
-                        <button className="mobile-drawer-close" onClick={() => setMenuActive(false)}>
-                            <i className="feather-x" />
+                        <button className="mobile-drawer-close" onClick={() => setMenuActive(false)} aria-label="Close menu">
+                            <span className="mobile-drawer-close-icon" aria-hidden="true">×</span>
                         </button>
                     </div>
 

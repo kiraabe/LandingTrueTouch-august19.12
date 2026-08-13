@@ -182,6 +182,11 @@
   justify-content: center;
 }
 
+.mobile-drawer-close-icon {
+  display: block;
+  line-height: 1;
+}
+
 .mobile-drawer-search {
   display: flex;
   align-items: center;
