@@ -79,6 +79,18 @@
   direction: rtl;
 }
 
+.blog-post-info-rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.blog-post-info-rtl .wt-post-meta,
+.blog-post-info-rtl .wt-post-title,
+.blog-post-info-rtl .wt-post-text,
+.blog-post-info-rtl .wt-post-readmore {
+  text-align: right;
+}
+
 .stats-counter-rtl .tw-count-number {
   direction: ltr;
   unicode-bidi: isolate;

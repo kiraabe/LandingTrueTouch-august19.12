@@ -1375,7 +1375,7 @@ function Home18Page() {
                             />
                           </NavLink>
                         </div>
-                        <div className="wt-post-info">
+                        <div className={`wt-post-info${isArabic ? ' blog-post-info-rtl' : ''}`}>
                           <div className="wt-post-meta">
                             <ul>
                               <li className="post-date">
