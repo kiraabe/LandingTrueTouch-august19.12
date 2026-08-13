@@ -25035,6 +25035,15 @@ HOME PAGE 15 START
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+  direction: ltr;
+}
+
+#blog-grid .twm-blog-responsive-item,
+#blog-grid .twm-blog-responsive-item .blog-post,
+#blog-grid .twm-blog-responsive-item .wt-post-media,
+#blog-grid .twm-blog-responsive-item .wt-post-info {
+  direction: ltr;
+  text-align: left;
 }
 
 @media (max-width: 991px) {
