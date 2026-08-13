@@ -31,6 +31,51 @@ function CandidateGridPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState({ jobCategory: "", location: "", preferredWorkCountry: "", skillLevel: "", ageMin: 0, ageMax: 100, status: "" });
   const [filterOptions, setFilterOptions] = useState({ professions: [], locations: [], preferredWorkCountries: [], skillLevels: [], statuses: [] });
+  const [language, setLanguage] = useState(() => document.documentElement.lang || "en");
+  const isArabic = language === "ar";
+  const copy = language === "am" ? {
+    ourCandidates: "ዕጩዎቻችን",
+    preScreenedTitle: "ለቅጥር ዝግጁ የሆኑ አስቀድመው የተገመገሙ ባለሙያዎች",
+    allCandidates: "ሁሉም ዕጩዎች",
+    byJobCategory: "በሥራ ዘርፍ",
+    byCountry: "በሀገር",
+    byAvailability: "በዝግጁነት",
+    allJobCategories: "ሁሉም የሥራ ዘርፎች",
+    allPreferredCountries: "ሁሉም ተመራጭ ሀገራት",
+    allStatuses: "ሁሉም ሁኔታዎች",
+    viewProfile: "ግለ-ታሪክን ይመልከቱ",
+    whatsApp: "WhatsApp"
+  } : isArabic ? {
+    ourCandidates: "مرشحونا",
+    preScreenedTitle: "خبراء تم تقييمهم مسبقاً ومتاحون للتوظيف",
+    allCandidates: "جميع المرشحين",
+    byJobCategory: "حسب الفئة الوظيفية",
+    byCountry: "حسب الدولة",
+    byAvailability: "حسب التوفر",
+    allJobCategories: "جميع الفئات الوظيفية",
+    allPreferredCountries: "جميع الدول المفضلة",
+    allStatuses: "جميع الحالات",
+    viewProfile: "عرض الملف الشخصي",
+    whatsApp: "واتساب"
+  } : {
+    ourCandidates: "Our Talent",
+    preScreenedTitle: "Browse Candidates",
+    allCandidates: "All Candidates",
+    byJobCategory: "By Job Category",
+    byCountry: "By Country",
+    byAvailability: "By Availability",
+    allJobCategories: "All categories",
+    allPreferredCountries: "All preferred countries",
+    allStatuses: "All statuses",
+    viewProfile: "View Profile",
+    whatsApp: "WhatsApp"
+  };
+
+  useEffect(() => {
+    const handleLanguageChange = (event) => setLanguage(event.detail.language);
+    document.addEventListener("languagechange", handleLanguageChange);
+    return () => document.removeEventListener("languagechange", handleLanguageChange);
+  }, []);
 
   useEffect(() => {
     document.title = "Candidates | TrueTouch";
@@ -111,15 +156,15 @@ function CandidateGridPage() {
   };
 
   return (
-    <section className="candidate-directory section-full p-t120 p-b90 site-bg-white">
+    <section className="candidate-directory section-full p-t120 p-b90 site-bg-white" dir={isArabic ? "rtl" : "ltr"}>
       <div className="container">
         <div className="candidate-directory-heading">
           <div>
-            <div className="wt-small-separator site-text-primary"><div>Our Talent</div></div>
-            <h2 className="wt-title">Browse Candidates</h2>
+            <div className="wt-small-separator site-text-primary"><div>{copy.ourCandidates}</div></div>
+            <h2 className="wt-title">{copy.preScreenedTitle}</h2>
           </div>
           <label className="candidate-directory-search">
-            <span className="sr-only">Search candidates</span>
+            <span className="sr-only">{copy.allCandidates}</span>
             <i className="feather-search" />
             <input
               type="search"
@@ -137,13 +182,13 @@ function CandidateGridPage() {
             <aside className="col-lg-4">
               <div className="candidate-filter-panel">
                 <div className="candidate-filter-heading">
-                  <h3>Filter Candidates</h3>
+                  <h3>{copy.allCandidates}</h3>
                   {hasActiveFilters && <button type="button" onClick={clearFilters}>Clear all</button>}
                 </div>
                 <label className="candidate-filter-field">
                   <span>Job category</span>
                   <select value={filters.jobCategory} onChange={(event) => updateFilter("jobCategory", event.target.value)}>
-                    <option value="">All categories</option>
+                    <option value="">{copy.allJobCategories}</option>
                     {Array.from(new Set(filterOptions.professions)).map((option) => <option key={option} value={option}>{option}</option>)}
                   </select>
                 </label>
@@ -157,7 +202,7 @@ function CandidateGridPage() {
                 <label className="candidate-filter-field">
                   <span>Preferred work country</span>
                   <select value={filters.preferredWorkCountry} onChange={(event) => updateFilter("preferredWorkCountry", event.target.value)}>
-                    <option value="">All preferred countries</option>
+                    <option value="">{copy.allPreferredCountries}</option>
                     {Array.from(new Set(filterOptions.preferredWorkCountries)).map((option) => <option key={option} value={option}>{option}</option>)}
                   </select>
                 </label>
@@ -206,7 +251,7 @@ function CandidateGridPage() {
                 <label className="candidate-filter-field">
                   <span>Status</span>
                   <select value={filters.status} onChange={(event) => updateFilter("status", event.target.value)}>
-                    <option value="">All statuses</option>
+                    <option value="">{copy.allStatuses}</option>
                     {Array.from(new Set(filterOptions.statuses)).map((option) => <option key={option} value={option}>{option}</option>)}
                   </select>
                 </label>
@@ -249,14 +294,14 @@ function CandidateGridPage() {
                             </div>
                           )}
                           <div className="candidate-directory-actions">
-                            <NavLink to={`/can-detail/${candidate.id}`} className="candidate-directory-profile-link">View Profile</NavLink>
+                            <NavLink to={`/can-detail/${candidate.id}`} className="candidate-directory-profile-link">{copy.viewProfile}</NavLink>
                             <a
                               href={buildWhatsAppLink(candidate)}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="candidate-directory-whatsapp-link"
                             >
-                              <i className="fab fa-whatsapp" /> WhatsApp
+                              <i className="fab fa-whatsapp" /> {copy.whatsApp}
                             </a>
                           </div>
                         </div>
