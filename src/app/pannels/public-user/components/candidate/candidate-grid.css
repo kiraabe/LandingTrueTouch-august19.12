@@ -371,6 +371,41 @@
   text-align: center;
 }
 
+.candidate-directory[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+.candidate-directory[dir="rtl"] .candidate-directory-heading,
+.candidate-directory[dir="rtl"] .candidate-directory-layout,
+.candidate-directory[dir="rtl"] .candidate-directory-meta,
+.candidate-directory[dir="rtl"] .candidate-directory-actions,
+.candidate-directory[dir="rtl"] .candidate-directory-pagination {
+  direction: rtl;
+}
+
+.candidate-directory[dir="rtl"] .candidate-directory-search input,
+.candidate-directory[dir="rtl"] .candidate-filter-field select {
+  direction: rtl;
+  text-align: right;
+}
+
+.candidate-directory[dir="rtl"] .candidate-directory-status {
+  right: auto;
+  left: 16px;
+}
+
+.candidate-directory[dir="rtl"] .candidate-directory-meta span:first-child,
+.candidate-directory[dir="rtl"] .candidate-directory-preferred-country,
+.candidate-directory[dir="rtl"] .candidate-directory-profile-link,
+.candidate-directory[dir="rtl"] .candidate-directory-whatsapp-link {
+  direction: rtl;
+}
+
+.candidate-directory[dir="rtl"] .candidate-age-range-sliders {
+  direction: rtl;
+}
+
 @media (max-width: 991px) {
   .candidate-filter-panel {
     position: static;
