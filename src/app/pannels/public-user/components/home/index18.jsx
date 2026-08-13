@@ -707,8 +707,8 @@ function Home18Page() {
           </div>
           <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
             <div className="twm-bnr-right-content">
-              <div className="twm-bnr-right-carousel">
-                <div className="owl-carousel twm-h1-bnr-carousal">
+              <div className="twm-bnr-right-carousel" dir="ltr">
+                <div className="owl-carousel twm-h1-bnr-carousal" dir="ltr">
                   <div className="item">
                     <ImageLightbox src={publicUrlFor("images/main-slider/slider1/r-img1.png")} alt="True Touch recruitment services">
                       <div className="slide-img">
@@ -1359,7 +1359,7 @@ function Home18Page() {
               <Spinner />
             ) : blogs.length > 0 ? (
               <>
-                <div className="twm-blog-responsive-grid">
+                <div className="twm-blog-responsive-grid" dir="ltr">
                   {blogs.slice(0, 6).map(blog => (
                     <div key={blog.id} className="twm-blog-responsive-item">
                       <div className="blog-post twm-blog-post-1-outer">
