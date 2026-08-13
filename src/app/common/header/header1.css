@@ -236,6 +236,35 @@
   border-bottom: 1px solid #f0f0f0;
 }
 
+.mobile-language-switcher {
+  padding: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.mobile-language-switcher-title {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.mobile-language-options {
+  display: flex;
+  gap: 8px;
+}
+
+.mobile-language-options .language-option {
+  width: auto;
+  padding: 8px 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.site-header.is-rtl .mobile-language-switcher {
+  text-align: right;
+}
+
 .mobile-nav-item:last-child {
   border-bottom: none;
 }

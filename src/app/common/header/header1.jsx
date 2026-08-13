@@ -8,7 +8,7 @@ function Header1({ _config }) {
 
     const [menuActive, setMenuActive] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
-    const [currentLanguage, setCurrentLanguage] = useState("en");
+    const [currentLanguage, setCurrentLanguage] = useState(() => document.documentElement.lang || "en");
     const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
     const [expandedSubmenu, setExpandedSubmenu] = useState(null);
     const [mobileSearchQuery, setMobileSearchQuery] = useState("");
@@ -357,6 +357,21 @@ function Header1({ _config }) {
                             </li>
                         </ul>
                     </nav>
+                    <div className="mobile-language-switcher" aria-label="Language selection">
+                        <span className="mobile-language-switcher-title">{languageLabels[currentLanguage]}</span>
+                        <div className="mobile-language-options">
+                            {Object.entries(languageLabels).map(([languageCode, label]) => (
+                                <button
+                                    key={languageCode}
+                                    type="button"
+                                    className={`language-option ${currentLanguage === languageCode ? "active" : ""}`}
+                                    onClick={() => handleLanguageChange(languageCode)}
+                                >
+                                    {label}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
                 </div>
 
                 {/* SITE Search */}

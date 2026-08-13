@@ -44,7 +44,8 @@ function CandidateGridPage() {
     allPreferredCountries: "ሁሉም ተመራጭ ሀገራት",
     allStatuses: "ሁሉም ሁኔታዎች",
     viewProfile: "ግለ-ታሪክን ይመልከቱ",
-    whatsApp: "WhatsApp"
+    whatsApp: "WhatsApp",
+    searchCandidates: "Search candidates", clearAll: "Clear all", jobCategory: "Job category", location: "Location", allLocations: "All locations", preferredWorkCountry: "Preferred work country", skillLevel: "Skill level", allSkillLevels: "All skill levels", ageRange: "Age range", any: "Any", status: "Status", showing: "Showing", candidate: "candidate", candidates: "candidates", noMatch: "No candidates match your filters.", noCandidates: "No candidates are available right now.", clearFilters: "Clear Filters", available: "Available", candidateLabel: "Candidate", locationNotSpecified: "Location not specified", preferred: "Preferred", previous: "Previous", next: "Next", candidatePages: "Candidate pages", goToPage: "Go to page"
   } : isArabic ? {
     ourCandidates: "مرشحونا",
     preScreenedTitle: "خبراء تم تقييمهم مسبقاً ومتاحون للتوظيف",
@@ -56,7 +57,8 @@ function CandidateGridPage() {
     allPreferredCountries: "جميع الدول المفضلة",
     allStatuses: "جميع الحالات",
     viewProfile: "عرض الملف الشخصي",
-    whatsApp: "واتساب"
+    whatsApp: "واتساب",
+    searchCandidates: "ابحث عن المرشحين", clearAll: "مسح الكل", jobCategory: "الفئة الوظيفية", location: "الموقع", allLocations: "جميع المواقع", preferredWorkCountry: "دولة العمل المفضلة", skillLevel: "مستوى المهارة", allSkillLevels: "جميع مستويات المهارة", ageRange: "الفئة العمرية", any: "أي", status: "الحالة", showing: "عرض", candidate: "مرشح", candidates: "مرشحين", noMatch: "لا يوجد مرشحون يطابقون عوامل التصفية.", noCandidates: "لا يوجد مرشحون متاحون حالياً.", clearFilters: "مسح عوامل التصفية", available: "متاح", candidateLabel: "مرشح", locationNotSpecified: "لم يتم تحديد الموقع", preferred: "المفضل", previous: "السابق", next: "التالي", candidatePages: "صفحات المرشحين", goToPage: "الانتقال إلى الصفحة"
   } : {
     ourCandidates: "Our Talent",
     preScreenedTitle: "Browse Candidates",
@@ -68,7 +70,8 @@ function CandidateGridPage() {
     allPreferredCountries: "All preferred countries",
     allStatuses: "All statuses",
     viewProfile: "View Profile",
-    whatsApp: "WhatsApp"
+    whatsApp: "WhatsApp",
+    searchCandidates: "Search candidates", clearAll: "Clear all", jobCategory: "Job category", location: "Location", allLocations: "All locations", preferredWorkCountry: "Preferred work country", skillLevel: "Skill level", allSkillLevels: "All skill levels", ageRange: "Age range", any: "Any", status: "Status", showing: "Showing", candidate: "candidate", candidates: "candidates", noMatch: "No candidates match your filters.", noCandidates: "No candidates are available right now.", clearFilters: "Clear Filters", available: "Available", candidateLabel: "Candidate", locationNotSpecified: "Location not specified", preferred: "Preferred", previous: "Previous", next: "Next", candidatePages: "Candidate pages", goToPage: "Go to page"
   };
 
   useEffect(() => {
@@ -170,7 +173,7 @@ function CandidateGridPage() {
               type="search"
               value={searchQuery}
               onChange={(event) => setSearchQuery(event.target.value)}
-              placeholder="Search candidates"
+              placeholder={copy.searchCandidates}
             />
           </label>
         </div>
@@ -183,41 +186,41 @@ function CandidateGridPage() {
               <div className="candidate-filter-panel">
                 <div className="candidate-filter-heading">
                   <h3>{copy.allCandidates}</h3>
-                  {hasActiveFilters && <button type="button" onClick={clearFilters}>Clear all</button>}
+                  {hasActiveFilters && <button type="button" onClick={clearFilters}>{copy.clearAll}</button>}
                 </div>
                 <label className="candidate-filter-field">
-                  <span>Job category</span>
+                  <span>{copy.jobCategory}</span>
                   <select value={filters.jobCategory} onChange={(event) => updateFilter("jobCategory", event.target.value)}>
                     <option value="">{copy.allJobCategories}</option>
                     {Array.from(new Set(filterOptions.professions)).map((option) => <option key={option} value={option}>{option}</option>)}
                   </select>
                 </label>
                 <label className="candidate-filter-field">
-                  <span>Location</span>
+                  <span>{copy.location}</span>
                   <select value={filters.location} onChange={(event) => updateFilter("location", event.target.value)}>
-                    <option value="">All locations</option>
+                    <option value="">{copy.allLocations}</option>
                     {Array.from(new Set(filterOptions.locations)).map((option) => <option key={option} value={option}>{option}</option>)}
                   </select>
                 </label>
                 <label className="candidate-filter-field">
-                  <span>Preferred work country</span>
+                  <span>{copy.preferredWorkCountry}</span>
                   <select value={filters.preferredWorkCountry} onChange={(event) => updateFilter("preferredWorkCountry", event.target.value)}>
                     <option value="">{copy.allPreferredCountries}</option>
                     {Array.from(new Set(filterOptions.preferredWorkCountries)).map((option) => <option key={option} value={option}>{option}</option>)}
                   </select>
                 </label>
                 <label className="candidate-filter-field">
-                  <span>Skill level</span>
+                  <span>{copy.skillLevel}</span>
                   <select value={filters.skillLevel} onChange={(event) => updateFilter("skillLevel", event.target.value)}>
-                    <option value="">All skill levels</option>
+                    <option value="">{copy.allSkillLevels}</option>
                     {Array.from(new Set(filterOptions.skillLevels)).map((option) => <option key={option} value={option}>{option}</option>)}
                   </select>
                 </label>
                 <div className="candidate-filter-field candidate-age-range-field">
-                  <span>Age range</span>
+                  <span>{copy.ageRange}</span>
                   <div className="candidate-age-range-values" aria-live="polite">
-                    <span>{filters.ageMin === 0 ? "Any" : filters.ageMin}</span>
-                    <span>{filters.ageMax === 100 ? "Any" : filters.ageMax}</span>
+                    <span>{filters.ageMin === 0 ? copy.any : filters.ageMin}</span>
+                    <span>{filters.ageMax === 100 ? copy.any : filters.ageMax}</span>
                   </div>
                   <div className="candidate-age-range-sliders">
                     <svg className="candidate-age-range-track" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true">
@@ -249,7 +252,7 @@ function CandidateGridPage() {
                   </div>
                 </div>
                 <label className="candidate-filter-field">
-                  <span>Status</span>
+                  <span>{copy.status}</span>
                   <select value={filters.status} onChange={(event) => updateFilter("status", event.target.value)}>
                     <option value="">{copy.allStatuses}</option>
                     {Array.from(new Set(filterOptions.statuses)).map((option) => <option key={option} value={option}>{option}</option>)}
@@ -260,8 +263,8 @@ function CandidateGridPage() {
             <div className="col-lg-8">
               <p className="candidate-directory-count">
                 {visibleCandidates.length
-                  ? `Showing ${firstVisibleCandidate}-${lastVisibleCandidate} of ${visibleCandidates.length} candidate${visibleCandidates.length === 1 ? "" : "s"}`
-                  : "Showing 0 candidates"}
+                  ? `${copy.showing} ${firstVisibleCandidate}-${lastVisibleCandidate} of ${visibleCandidates.length} ${visibleCandidates.length === 1 ? copy.candidate : copy.candidates}`
+                  : `${copy.showing} 0 ${copy.candidates}`}
               </p>
               {visibleCandidates.length > 0 ? (
                 <>
@@ -279,18 +282,18 @@ function CandidateGridPage() {
                             }}
                             alt={candidate.full_name}
                           />
-                          <span className="candidate-directory-status">{candidate.status || "Available"}</span>
+                          <span className="candidate-directory-status">{candidate.status || copy.available}</span>
                         </div>
                         <div className="candidate-directory-content">
                           <h3 className="candidate-directory-name"><NavLink to={`/can-detail/${candidate.id}`}>{candidate.full_name}</NavLink></h3>
-                          <p className="candidate-directory-profession">{candidate.profession || "Candidate"}</p>
+                          <p className="candidate-directory-profession">{candidate.profession || copy.candidateLabel}</p>
                           <div className="candidate-directory-meta">
-                            <span><i className="feather-map-pin" />{candidate.location || "Location not specified"}</span>
+                            <span><i className="feather-map-pin" />{candidate.location || copy.locationNotSpecified}</span>
                             {candidate.hourly_rate && <span>{candidate.hourly_rate}</span>}
                           </div>
                           {candidate.preferred_work_country && (
                             <div className="candidate-directory-preferred-country">
-                              <i className="feather-briefcase" />Preferred: {candidate.preferred_work_country}
+                              <i className="feather-briefcase" />{copy.preferred}: {candidate.preferred_work_country}
                             </div>
                           )}
                           <div className="candidate-directory-actions">
@@ -310,14 +313,14 @@ function CandidateGridPage() {
                   ))}
                   </div>
                   {pageCount > 1 && (
-                    <nav className="candidate-directory-pagination" aria-label="Candidate pages">
+                    <nav className="candidate-directory-pagination" aria-label={copy.candidatePages}>
                       <button
                         type="button"
                         className="candidate-directory-page-button"
                         onClick={() => setCurrentPage((page) => page - 1)}
                         disabled={currentPage === 1}
                       >
-                        Previous
+                        {copy.previous}
                       </button>
                       <div className="candidate-directory-page-numbers">
                         {Array.from({ length: pageCount }, (_, index) => index + 1).map((page) => (
@@ -326,7 +329,7 @@ function CandidateGridPage() {
                             type="button"
                             className={`candidate-directory-page-button${currentPage === page ? " is-active" : ""}`}
                             onClick={() => setCurrentPage(page)}
-                            aria-label={`Go to page ${page}`}
+                            aria-label={`${copy.goToPage} ${page}`}
                             aria-current={currentPage === page ? "page" : undefined}
                           >
                             {page}
@@ -339,15 +342,15 @@ function CandidateGridPage() {
                         onClick={() => setCurrentPage((page) => page + 1)}
                         disabled={currentPage === pageCount}
                       >
-                        Next
+                        {copy.next}
                       </button>
                     </nav>
                   )}
                 </>
               ) : (
                 <div className="candidate-directory-state">
-                  <p>{candidates.length ? "No candidates match your filters." : "No candidates are available right now."}</p>
-                  {hasActiveFilters && <button className="site-button" onClick={clearFilters}>Clear Filters</button>}
+                  <p>{candidates.length ? copy.noMatch : copy.noCandidates}</p>
+                  {hasActiveFilters && <button className="site-button" onClick={clearFilters}>{copy.clearFilters}</button>}
                 </div>
               )}
             </div>
