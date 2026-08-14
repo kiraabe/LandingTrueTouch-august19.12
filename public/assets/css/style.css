@@ -5951,6 +5951,10 @@ button.scroltop span {
   font-size: 18px;
   vertical-align: text-top;
 }
+.wt-breadcrumb li a.breadcrumb-current {
+  color: #A9C731;
+  font-weight: 600;
+}
 
 /*Contact Form*/
 .twm-contact-one {

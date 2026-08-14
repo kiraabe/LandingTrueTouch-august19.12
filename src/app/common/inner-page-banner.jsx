@@ -29,7 +29,7 @@ function InnerPageBanner({_data}) {
                         <div>
                             <ul className="wt-breadcrumb breadcrumb-style-2" aria-label={isBlogDetail ? copy.homeBlogDetail : undefined}>
                                 {isBlogDetail ? (
-                                    <li><NavLink to="/index">{copy.homeBlogDetail}</NavLink></li>
+                                    <li><NavLink to="/index" className="breadcrumb-current" aria-current="page">{copy.homeBlogDetail}</NavLink></li>
                                 ) : (
                                     <>
                                         <li><NavLink to="/index">Home</NavLink></li>
