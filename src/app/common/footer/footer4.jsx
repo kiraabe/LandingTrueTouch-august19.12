@@ -37,7 +37,7 @@ function Footer4() {
                                     </div>
                                     <p>Many desktop publishing packages and web page editors now.</p>
                                     <ul className="ftr-list">
-                                        <li><p><span>Email :</span><a href="mailto:truetouchaddis@gmail.com">truetouchaddis@gmail.com</a></p></li>
+                                        <li><p><span>Email :</span><a href="mailto:truetouch@truetouchaddis.com">truetouch@truetouchaddis.com</a></p></li>
                                         <li><p><span>Call :</span><a href="tel:+251911208322">+251 91 120 8322</a></p></li>
                                         <li><p><span>Registration :</span>MT/AA/14/673/2513971/2011</p></li>
                                     </ul>

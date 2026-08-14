@@ -30,7 +30,7 @@ function Footer3() {
                                     </div>
                                     <p>{isAmharic ? 'አሠሪዎችን ለአገር ውስጥ እና ለዓለም አቀፍ የቅጥር ፍላጎቶች ከተመረጡ ባለሙያዎች ጋር ማገናኘት።' : isArabic ? 'ربط أصحاب العمل بأفضل الكوادر لمتطلبات التوظيف المحلية والدولية.' : 'Connecting employers with top talent for local and international recruitment needs.'}</p>
                                     <ul className="ftr-list">
-                                        <li><p><span>{isAmharic ? 'ኢሜይል :' : isArabic ? 'البريد الإلكتروني :' : 'Email :'}</span><a href="mailto:truetouchaddis@gmail.com">truetouchaddis@gmail.com</a></p></li>
+                                        <li><p><span>{isAmharic ? 'ኢሜይል :' : isArabic ? 'البريد الإلكتروني :' : 'Email :'}</span><a href="mailto:truetouch@truetouchaddis.com">truetouch@truetouchaddis.com</a></p></li>
                                         <li><p><span>{isAmharic ? 'ስልክ :' : isArabic ? 'الهاتف :' : 'Call :'}</span><a href="tel:+251911208322">+251 91 120 8322</a></p></li>
                                         <li><p><span>{isAmharic ? 'ምዝገባ :' : isArabic ? 'التسجيل :' : 'Registration :'}</span>MT/AA/14/673/2513971/2011</p></li>
                                     </ul>

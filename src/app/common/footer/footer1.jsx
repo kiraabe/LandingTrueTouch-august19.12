@@ -38,7 +38,7 @@ function Footer1() {
                                     </div>
                                     <p>True Touch is a premium manpower recruitment agency connecting talented workers from Asia and Africa with leading employers across the Gulf and Middle East.</p>
                                     <ul className="ftr-list">
-                                        <li><p><span>Email :</span><a href="mailto:info@truetouchrecruitment.com">info@truetouchrecruitment.com</a></p></li>
+                                        <li><p><span>Email :</span><a href="mailto:truetouch@truetouchaddis.com">truetouch@truetouchaddis.com</a></p></li>
                                         <li><p><span>Call :</span><a href="tel:+251911208322">+251 91 120 8322</a></p></li>
                                         <li><p><span>Offices :</span>Qatar, Oman, Kenya, Philippines</p></li>
                                     </ul>

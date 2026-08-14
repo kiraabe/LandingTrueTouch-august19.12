@@ -1527,7 +1527,7 @@ function Home18Page() {
                         <i className="fas fa-envelope site-text-primary regional-office-icon" />
                         <div>
                           <h4 className="regional-office-label">{isAmharic ? 'ኢሜይል' : isArabic ? 'البريد الإلكتروني' : 'Email'}</h4>
-                          <p className="regional-office-value regional-office-ltr-value">info@truetouchrecruitment.com</p>
+                          <p className="regional-office-value regional-office-ltr-value">truetouch@truetouchaddis.com</p>
                         </div>
                       </div>
                     </div>
