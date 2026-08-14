@@ -39,7 +39,8 @@
     "server": "node server.js",
     "test-api": "node test-api.js",
     "dev": "concurrently --kill-others \"npm run start\" \"npm run server\"",
-    "prod": "npm run build && npm run server"
+    "prod": "npm run build && npm run server",
+    "postinstall": "vite build"
   },
   "eslintConfig": {
     "extends": [
