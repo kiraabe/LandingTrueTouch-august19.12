@@ -21,10 +21,10 @@
   width: 220px;
 }
 .datepicker.datepicker-rtl {
-  direction: rtl;
+  direction: ltr;
 }
 .datepicker.datepicker-rtl table tr td span {
-  float: right;
+  float: left;
 }
 .datepicker-dropdown {
   top: 0;

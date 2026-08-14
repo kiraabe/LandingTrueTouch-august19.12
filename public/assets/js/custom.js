@@ -919,7 +919,8 @@ All JavaScript fuctions Start
 	// datepicker function by = dbootstrap-datepicker.js
 	function datepicker_function() {
 		$('.datepicker').datepicker({
-			format: 'dd/mm/yyyy'
+			format: 'dd/mm/yyyy',
+			rtl: false
 		});
 	}
 
