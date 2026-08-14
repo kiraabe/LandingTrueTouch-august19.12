@@ -662,6 +662,58 @@ function Home18Page() {
     locationPlaceholder: "Search by location...",
     search: "Search"
   };
+  const homepageLabels = isAmharic ? {
+    ourCandidates: "ዕጩዎቻችን",
+    preScreenedTitle: "ለቅጥር ዝግጁ የሆኑ አስቀድመው የተገመገሙ ባለሙያዎች",
+    allCandidates: "ሁሉም ዕጩዎች",
+    byJobCategory: "በሥራ ዘርፍ",
+    byCountry: "በሀገር",
+    byAvailability: "በዝግጁነት",
+    allJobCategories: "ሁሉም የሥራ ዘርፎች",
+    allPreferredCountries: "ሁሉም ተመራጭ ሀገራት",
+    allStatuses: "ሁሉም ሁኔታዎች",
+    viewProfile: "ግለ-ታሪክን ይመልከቱ",
+    whatsApp: "WhatsApp",
+    clientTestimonials: "የደንበኞች ምስክርነት",
+    whatOurPartnersSay: "አጋሮቻችን ስለ እኛ ምን ይላሉ?",
+    industryResources: "የዘርፉ የመረጃ ምንጮች",
+    insightsUpdates: "ለአሰሪዎች የሚሆኑ መረጃዎች እና ወቅታዊ ማሻሻያዎች",
+    allBlogs: "ሁሉም ብሎጎች"
+  } : isArabic ? {
+    ourCandidates: "مرشحونا",
+    preScreenedTitle: "خبراء تم تقييمهم مسبقاً ومتاحون للتوظيف",
+    allCandidates: "جميع المرشحين",
+    byJobCategory: "حسب الفئة الوظيفية",
+    byCountry: "حسب الدولة",
+    byAvailability: "حسب التوفر",
+    allJobCategories: "جميع الفئات الوظيفية",
+    allPreferredCountries: "جميع الدول المفضلة",
+    allStatuses: "جميع الحالات",
+    viewProfile: "عرض الملف الشخصي",
+    whatsApp: "واتساب",
+    clientTestimonials: "آراء العملاء",
+    whatOurPartnersSay: "ماذا يقول شركاؤنا عنا",
+    industryResources: "مصادر القطاع",
+    insightsUpdates: "رؤى والتحديثات لأصحاب العمل",
+    allBlogs: "جميع المقالات"
+  } : {
+    ourCandidates: "Our Candidates",
+    preScreenedTitle: "Pre-Screened Professionals Available for Hiring",
+    allCandidates: "All Candidates",
+    byJobCategory: "By Job Category",
+    byCountry: "By Country",
+    byAvailability: "By Availability",
+    allJobCategories: "All Job Categories",
+    allPreferredCountries: "All Preferred Countries",
+    allStatuses: "All Statuses",
+    viewProfile: "View Profile",
+    whatsApp: "WhatsApp",
+    clientTestimonials: "Client Testimonials",
+    whatOurPartnersSay: "What Our Partners Say About Us",
+    industryResources: "Industry Resources",
+    insightsUpdates: "Insights & Updates for Employers",
+    allBlogs: "All Blogs"
+  };
 
   return (
     <>
@@ -1054,8 +1106,8 @@ function Home18Page() {
       <div id="candidates" className="section-full p-t120 p-b90 site-bg-white twm-candidate-h-page7-wrap pos-relative">
         <div className="container">
           <div className="section-head center wt-small-separator-outer">
-            <div className="wt-small-separator site-text-primary"><div>Our Candidates</div></div>
-            <h2 className="wt-title">Pre-Screened Professionals Available for Hiring</h2>
+            <div className="wt-small-separator site-text-primary"><div>{homepageLabels.ourCandidates}</div></div>
+            <h2 className="wt-title">{homepageLabels.preScreenedTitle}</h2>
           </div>
         </div>
 
@@ -1071,10 +1123,10 @@ function Home18Page() {
                     {/* Tabs */}
                     <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginBottom: '24px', flexWrap: 'wrap' }}>
                       {[
-                        { key: 'all',          label: 'All Candidates' },
-                        { key: 'category',     label: 'By Job Category' },
-                        { key: 'country',      label: 'By Country' },
-                        { key: 'availability', label: 'By Availability' },
+                        { key: 'all',          label: homepageLabels.allCandidates },
+                        { key: 'category',     label: homepageLabels.byJobCategory },
+                        { key: 'country',      label: homepageLabels.byCountry },
+                        { key: 'availability', label: homepageLabels.byAvailability },
                       ].map(tab => (
                         <button
                           key={tab.key}
@@ -1135,7 +1187,7 @@ function Home18Page() {
                           onChange={e => handleFilterChange('jobCategory', e.target.value)}
                           style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', width: '160px', cursor: 'pointer' }}
                         >
-                          <option value="">All Job Categories</option>
+                          <option value="">{homepageLabels.allJobCategories}</option>
                           {Array.from(new Set(filterOptions.professions)).map(p => (
                             <option key={p} value={p}>{p}</option>
                           ))}
@@ -1149,7 +1201,7 @@ function Home18Page() {
                           onChange={e => handleFilterChange('preferredWorkCountry', e.target.value)}
                           style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', width: '160px', cursor: 'pointer' }}
                         >
-                          <option value="">All Preferred Countries</option>
+                          <option value="">{homepageLabels.allPreferredCountries}</option>
                           {Array.from(new Set(filterOptions.preferredWorkCountries)).map(country => (
                             <option key={country} value={country}>{country}</option>
                           ))}
@@ -1177,7 +1229,7 @@ function Home18Page() {
                           onChange={e => handleFilterChange('status', e.target.value)}
                           style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', backgroundColor: 'white', width: '160px', cursor: 'pointer' }}
                         >
-                          <option value="">All Statuses</option>
+                          <option value="">{homepageLabels.allStatuses}</option>
                           {filterOptions.statuses.length > 0
                             ? Array.from(new Set(filterOptions.statuses)).map(s => (
                                 <option key={s} value={s}>
@@ -1255,7 +1307,7 @@ function Home18Page() {
                               </div>
                               <div className="twm-action-buttons" style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
                                 <button onClick={() => openCandidateModal(candidate)} className="btn-view-profile" style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px', cursor: 'pointer' }}>
-                                  View Profile
+                                  {homepageLabels.viewProfile}
                                 </button>
                                 <a
                                   href={buildWhatsAppLink(candidate)}
@@ -1264,7 +1316,7 @@ function Home18Page() {
                                   className="btn-whatsapp-action"
                                   style={{ flex: 1, textAlign: 'center', padding: '8px 12px', fontSize: '14px' }}
                                 >
-                                  WhatsApp
+                                  {homepageLabels.whatsApp}
                                 </a>
                               </div>
                             </div>
@@ -1286,7 +1338,7 @@ function Home18Page() {
                   </div>
 
                   <div className="text-center m-b30">
-                    <NavLink to={publicUser.candidate.GRID} className="site-button">All Candidates</NavLink>
+                    <NavLink to={publicUser.candidate.GRID} className="site-button">{homepageLabels.allCandidates}</NavLink>
                   </div>
                 </>
               )}
@@ -1303,10 +1355,9 @@ function Home18Page() {
                     <div className="section-head left wt-small-separator-outer">
                         <div className="section-head center wt-small-separator-outer">
                             <div className="wt-small-separator site-text-primary">
-                                <div>Client Testimonials</div>
+                                <div>{homepageLabels.clientTestimonials}</div>
                             </div>
-                            <h2 className="wt-title">What Our Partners
-                                Say About Us</h2>
+                            <h2 className="wt-title">{homepageLabels.whatOurPartnersSay}</h2>
                         </div>
                     </div>
                     {/* title="" END*/}
@@ -1356,8 +1407,8 @@ function Home18Page() {
       <div id="our-blogs" className="section-full p-t120 p-b90 site-bg-gray">
         <div className="container">
           <div className="section-head center wt-small-separator-outer">
-            <div className="wt-small-separator site-text-primary"><div>Industry Resources</div></div>
-            <h2 className="wt-title">Insights & Updates for Employers</h2>
+            <div className="wt-small-separator site-text-primary"><div>{homepageLabels.industryResources}</div></div>
+            <h2 className="wt-title">{homepageLabels.insightsUpdates}</h2>
           </div>
           <div className="section-content">
             {blogsLoading ? (
@@ -1406,7 +1457,7 @@ function Home18Page() {
                   ))}
                 </div>
                 <div className="text-center" style={{ marginTop: '40px' }}>
-                  <NavLink to="/blogs" className="site-button">All Blogs</NavLink>
+                  <NavLink to="/blogs" className="site-button">{homepageLabels.allBlogs}</NavLink>
                 </div>
               </>
             ) : (
