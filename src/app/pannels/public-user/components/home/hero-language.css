@@ -234,10 +234,19 @@
   text-align: right;
 }
 
+.blog-section-rtl .blog-card-content .wt-post-meta ul {
+  direction: ltr;
+  text-align: left;
+}
+
 .blog-section-rtl .blog-card-date-ltr {
   direction: ltr;
   unicode-bidi: isolate;
   white-space: nowrap;
+}
+
+.blog-section-rtl .blog-card-content .post-author {
+  direction: rtl;
 }
 
 @media (prefers-color-scheme: dark) {
