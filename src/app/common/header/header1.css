@@ -28,6 +28,15 @@
   transition: background-color 0.2s ease;
 }
 
+.site-header .header-nav .nav > li:not(.active) > a {
+  color: #2f2f2f;
+}
+
+.site-header .header-nav .nav > li.active > a {
+  color: #A9C731;
+  font-weight: 500;
+}
+
 .language-switcher-btn:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
