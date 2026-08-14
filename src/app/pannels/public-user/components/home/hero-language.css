@@ -88,8 +88,28 @@
   text-align: right;
 }
 
+.twm-featured-city-area .section-head {
+  max-width: 100%;
+}
+
+.twm-featured-city-area .wt-small-separator {
+  overflow-wrap: anywhere;
+}
+
 .industries-section-rtl .industries-cards-section .row {
   direction: rtl;
+}
+
+@media (max-width: 575px) {
+  .twm-featured-city-area .twm-bg-section-box {
+    height: 430px;
+  }
+}
+
+@media (max-width: 400px) {
+  .twm-featured-city-area .twm-bg-section-box {
+    height: 480px;
+  }
 }
 
 .commitment-section-rtl .section-head,
