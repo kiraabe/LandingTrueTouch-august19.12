@@ -4,11 +4,11 @@ import JobZImage from '../../../../common/jobz-img';
 import ImageLightbox from '../../../../common/image-lightbox';
 import Spinner from '../../../../common/spinner';
 import { blogCopy, publicUrlFor } from '../../../../../globals/constants';
-import { getJobImageUrl } from '../../../../../globals/file-url';
+import { getHostedAssetUrl, getJobImageUrl } from '../../../../../globals/file-url';
 import { showErrorToast } from '../../../../../globals/error-handler';
 import { Toaster } from '../../../../../components/ui/toaster';
 
-const blogImageFallback = publicUrlFor("images/blog/post-author.jpg");
+const blogImageFallback = getHostedAssetUrl("images/blog/post-author.jpg");
 
 function BlogDetail() {
   const { id } = useParams();

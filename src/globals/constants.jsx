@@ -5,8 +5,6 @@ if (!baseUrl.startsWith('/')) {
 if (baseUrl.endsWith('/')) {
   baseUrl = baseUrl.slice(0, -1)
 }
-const fileServerUrl = (import.meta.env.VITE_FILE_SERVER_URL || '').trim().replace(/\/+$/, '');
-const assetBaseUrl = fileServerUrl && !fileServerUrl.includes('cdn.builder.io') ? fileServerUrl : baseUrl;
 export const default_skin = "6"
 
 export const popupType = {
@@ -95,8 +93,8 @@ export const blogCopy = {
 };
 
 export function publicUrlFor(path) {
-    const url = assetBaseUrl + "/assets/" + path;
-    return url.startsWith('/') || url.startsWith('http://') || url.startsWith('https://') ? url : '/' + url;
+    const url = baseUrl + "/assets/" + path;
+    return url.startsWith('/') ? url : '/' + url;
 }
 
 export function loadScript(src, fromPublic) {
