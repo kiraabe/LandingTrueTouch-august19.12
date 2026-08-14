@@ -79,12 +79,12 @@ function BlogGrid1Page() {
                 <article key={blog.id} className="twm-blog-responsive-item blog-post twm-blog-post-1-outer">
                   <div className="wt-post-media">
                     <ImageLightbox
-                      src={blog.image_url ? getJobImageUrl(blog.image_url) : blogImageFallback}
+                      src={blog.image_url ? (getJobImageUrl(blog.image_url) || blogImageFallback) : blogImageFallback}
                       alt={blog.title}
                     >
                       <NavLink to={`/blog-detail/${blog.id}`}>
                         <JobZImage
-                        src={blog.image_url ? getJobImageUrl(blog.image_url) : blogImageFallback}
+                        src={blog.image_url ? (getJobImageUrl(blog.image_url) || blogImageFallback) : blogImageFallback}
                         onError={(event) => {
                           event.currentTarget.onerror = null;
                           event.currentTarget.src = blogImageFallback;

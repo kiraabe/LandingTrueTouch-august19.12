@@ -13,7 +13,7 @@ const SectionCandidateShortIntro = ({ candidate }) => {
         <div className="can-intro-content">
           <div className="can-intro-avatar">
             <JobZImage
-              src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : candidateProfileFallback}
+              src={candidate.profile_picture ? (getCandidateProfilePictureUrl(candidate.profile_picture) || candidateProfileFallback) : candidateProfileFallback}
               onError={(event) => {
                 event.currentTarget.onerror = null;
                 event.currentTarget.src = candidateProfileFallback;

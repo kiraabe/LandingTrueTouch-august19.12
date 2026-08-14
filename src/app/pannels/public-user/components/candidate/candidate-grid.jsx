@@ -237,7 +237,7 @@ function CandidateGridPage() {
                         <div className="candidate-directory-photo-wrap">
                           <img
                             className="candidate-directory-photo"
-                            src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : candidateProfileFallback}
+                            src={candidate.profile_picture ? (getCandidateProfilePictureUrl(candidate.profile_picture) || candidateProfileFallback) : candidateProfileFallback}
                             onError={(event) => {
                               event.currentTarget.onerror = null;
                               event.currentTarget.src = candidateProfileFallback;

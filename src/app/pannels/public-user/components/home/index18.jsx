@@ -1295,7 +1295,7 @@ function Home18Page() {
                               <div className="twm-media">
                                 <div className="twm-media-pic">
                                   <JobZImage
-                                    src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : candidateProfileFallback}
+                                    src={candidate.profile_picture ? (getCandidateProfilePictureUrl(candidate.profile_picture) || candidateProfileFallback) : candidateProfileFallback}
                                     onError={(event) => {
                                       event.currentTarget.onerror = null;
                                       event.currentTarget.src = candidateProfileFallback;

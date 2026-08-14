@@ -118,11 +118,11 @@ function BlogDetail() {
                   <div className="blog-post-single bg-white">
                     <div className="wt-post-media blog-featured-image">
                       <ImageLightbox
-                        src={blog.image_url ? getJobImageUrl(blog.image_url) : blogImageFallback}
+                        src={blog.image_url ? (getJobImageUrl(blog.image_url) || blogImageFallback) : blogImageFallback}
                         alt={blog.title}
                       >
                         <JobZImage
-                        src={blog.image_url ? getJobImageUrl(blog.image_url) : blogImageFallback}
+                        src={blog.image_url ? (getJobImageUrl(blog.image_url) || blogImageFallback) : blogImageFallback}
                         onError={(event) => {
                           event.currentTarget.onerror = null;
                           event.currentTarget.src = blogImageFallback;
@@ -215,11 +215,11 @@ function BlogDetail() {
                       {relatedBlogs.map((item) => (
                         <NavLink key={item.id} to={`/blog-detail/${item.id}`} className="recent-post-item">
                           <ImageLightbox
-                            src={item.image_url ? getJobImageUrl(item.image_url) : blogImageFallback}
+                            src={item.image_url ? (getJobImageUrl(item.image_url) || blogImageFallback) : blogImageFallback}
                             alt={item.title}
                           >
                             <JobZImage
-                            src={item.image_url ? getJobImageUrl(item.image_url) : blogImageFallback}
+                            src={item.image_url ? (getJobImageUrl(item.image_url) || blogImageFallback) : blogImageFallback}
                             onError={(event) => {
                               event.currentTarget.onerror = null;
                               event.currentTarget.src = blogImageFallback;
