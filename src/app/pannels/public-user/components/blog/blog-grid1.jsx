@@ -5,8 +5,9 @@ import ImageLightbox from "../../../../common/image-lightbox";
 import Spinner from "../../../../common/spinner";
 import { showErrorToast } from "../../../../../globals/error-handler";
 import { getJobImageUrl } from "../../../../../globals/file-url";
+import { publicUrlFor } from "../../../../../globals/constants";
 
-const blogImageFallback = "/assets/images/blog/post-author.jpg";
+const blogImageFallback = publicUrlFor("images/blog/post-author.jpg");
 
 const BLOGS_PER_PAGE = 9;
 

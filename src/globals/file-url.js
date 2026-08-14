@@ -1,5 +1,6 @@
 const FILE_SERVER_URL = (import.meta.env.VITE_FILE_SERVER_URL || '').trim().replace(/\/+$/, '');
-export const candidateProfileFallback = "/assets/images/candidates/pic1.jpg";
+const ASSET_BASE_URL = FILE_SERVER_URL && !FILE_SERVER_URL.includes("cdn.builder.io") ? FILE_SERVER_URL : "";
+export const candidateProfileFallback = `${ASSET_BASE_URL}/assets/images/candidates/pic1.jpg`;
 
 const constructFullFileUrl = (relativePath) => {
   if (!relativePath) return null;
