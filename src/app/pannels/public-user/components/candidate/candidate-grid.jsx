@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Spinner from "../../../../common/spinner";
 import { showErrorToast } from "../../../../../globals/error-handler";
-import { getCandidateProfilePictureUrl } from "../../../../../globals/file-url";
+import { candidateProfileFallback, getCandidateProfilePictureUrl } from "../../../../../globals/file-url";
 import { candidateEmptyStateCopy, candidateGridCopy } from "../../../../../globals/constants";
 import "./candidate-grid.css";
 
@@ -237,10 +237,10 @@ function CandidateGridPage() {
                         <div className="candidate-directory-photo-wrap">
                           <img
                             className="candidate-directory-photo"
-                            src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : "https://cdn.builder.io/api/v1/image/assets%2F5e5700cc98ef413c911c8b7a4a98ea76%2Fb069e95136284114b1d8cad46258af9e?format=webp&width=800&height=1200"}
+                            src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : candidateProfileFallback}
                             onError={(event) => {
                               event.currentTarget.onerror = null;
-                              event.currentTarget.src = "https://cdn.builder.io/api/v1/image/assets%2F5e5700cc98ef413c911c8b7a4a98ea76%2Fb069e95136284114b1d8cad46258af9e?format=webp&width=800&height=1200";
+                              event.currentTarget.src = candidateProfileFallback;
                             }}
                             alt={candidate.full_name}
                             loading="lazy"

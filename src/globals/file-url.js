@@ -1,8 +1,10 @@
-const FILE_SERVER_URL = import.meta.env.VITE_FILE_SERVER_URL;
+const FILE_SERVER_URL = (import.meta.env.VITE_FILE_SERVER_URL || '').trim().replace(/\/+$/, '');
+export const candidateProfileFallback = "/assets/images/candidates/pic1.jpg";
 
 const constructFullFileUrl = (relativePath) => {
   if (!relativePath) return null;
-  return `${FILE_SERVER_URL || ''}/uploads/${relativePath}`;
+  const baseUrl = FILE_SERVER_URL.includes("cdn.builder.io") ? "" : FILE_SERVER_URL;
+  return `${baseUrl}/uploads/${relativePath}`;
 };
 
 export const getCandidateProfilePictureUrl = (filename) => {
@@ -10,7 +12,7 @@ export const getCandidateProfilePictureUrl = (filename) => {
   const imageUrl = filename.startsWith('http://') || filename.startsWith('https://')
     ? filename
     : constructFullFileUrl(`candidates/profile_pictures/${filename}`);
-  return imageUrl ? `/api/proxy-image?url=${encodeURIComponent(imageUrl)}` : null;
+  return imageUrl;
 };
 
 export const getCandidateCvUrl = (filename) => {

@@ -5,7 +5,7 @@ import Spinner from "../../../../common/spinner";
 import { loadScript, publicUrlFor, updateSkinStyle } from "../../../../../globals/constants";
 import { publicUser } from "../../../../../globals/route-names";
 import { downloadFileWithToast, showErrorToast, showSuccessToast } from "../../../../../globals/error-handler";
-import { getCandidateProfilePictureUrl, getCandidateCvUrl, getJobImageUrl, getTestimonialAvatarUrl } from "../../../../../globals/file-url";
+import { candidateProfileFallback, getCandidateProfilePictureUrl, getCandidateCvUrl, getJobImageUrl, getTestimonialAvatarUrl } from "../../../../../globals/file-url";
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Toaster } from "../../../../../components/ui/toaster";
@@ -1300,10 +1300,10 @@ function Home18Page() {
                               <div className="twm-media">
                                 <div className="twm-media-pic">
                                   <JobZImage
-                                    src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : "https://cdn.builder.io/api/v1/image/assets%2F5e5700cc98ef413c911c8b7a4a98ea76%2Fb069e95136284114b1d8cad46258af9e?format=webp&width=800&height=1200"}
+                                    src={candidate.profile_picture ? getCandidateProfilePictureUrl(candidate.profile_picture) : candidateProfileFallback}
                                     onError={(event) => {
                                       event.currentTarget.onerror = null;
-                                      event.currentTarget.src = "https://cdn.builder.io/api/v1/image/assets%2F5e5700cc98ef413c911c8b7a4a98ea76%2Fb069e95136284114b1d8cad46258af9e?format=webp&width=800&height=1200";
+                                      event.currentTarget.src = candidateProfileFallback;
                                     }}
                                     alt={candidate.full_name}
                                   />
@@ -1654,11 +1654,11 @@ function Home18Page() {
                       src={
                         (candidateDetails.profile_picture ? getCandidateProfilePictureUrl(candidateDetails.profile_picture) : null) ||
                         (selectedCandidate.profile_picture ? getCandidateProfilePictureUrl(selectedCandidate.profile_picture) : null) ||
-                        "https://cdn.builder.io/api/v1/image/assets%2F5e5700cc98ef413c911c8b7a4a98ea76%2Fb069e95136284114b1d8cad46258af9e?format=webp&width=800&height=1200"
+                        candidateProfileFallback
                       }
                       onError={(event) => {
                         event.currentTarget.onerror = null;
-                        event.currentTarget.src = "https://cdn.builder.io/api/v1/image/assets%2F5e5700cc98ef413c911c8b7a4a98ea76%2Fb069e95136284114b1d8cad46258af9e?format=webp&width=800&height=1200";
+                        event.currentTarget.src = candidateProfileFallback;
                       }}
                       alt={candidateDetails.name}
                       className="cv-profile-photo"
