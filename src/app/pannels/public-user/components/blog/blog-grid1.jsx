@@ -23,6 +23,13 @@ function BlogGrid1Page() {
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [currentLanguage, setCurrentLanguage] = useState(() => document.documentElement.lang || "en");
+
+  useEffect(() => {
+    const handleLanguageChange = (event) => setCurrentLanguage(event.detail.language);
+    document.addEventListener("languagechange", handleLanguageChange);
+    return () => document.removeEventListener("languagechange", handleLanguageChange);
+  }, []);
 
   useEffect(() => {
     document.title = "Blog | TrueTouch";
@@ -54,7 +61,11 @@ function BlogGrid1Page() {
   };
 
   return (
-    <section id="blog-grid" className="section-full p-t120 p-b90 site-bg-white">
+    <section
+      id="blog-grid"
+      dir={currentLanguage === "ar" ? "rtl" : "ltr"}
+      className={`section-full p-t120 p-b90 site-bg-white${currentLanguage === "ar" ? " blog-section-rtl" : ""}`}
+    >
       <div className="container">
         {loading ? (
           <Spinner fullPage delay={0} />
@@ -75,10 +86,10 @@ function BlogGrid1Page() {
                       />
                     </NavLink>
                   </div>
-                  <div className="wt-post-info">
+                  <div className="wt-post-info blog-card-content">
                     <div className="wt-post-meta">
                       <ul>
-                        <li className="post-date">{formatDate(blog.created_at)}</li>
+                        <li className="post-date blog-card-date-ltr">{formatDate(blog.created_at)}</li>
                         <li className="post-author">By {blog.author || "Admin"}</li>
                       </ul>
                     </div>
