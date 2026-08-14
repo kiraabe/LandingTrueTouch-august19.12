@@ -223,3 +223,27 @@
 .contact-one-inner-rtl .site-button {
   direction: rtl;
 }
+
+@media (prefers-color-scheme: dark) {
+  .twm-home1-banner-section .wt-search-bar-select,
+  .twm-home1-banner-section .hero-location-input,
+  .twm-home1-banner-section .form-control,
+  .twm-candidate-filter-section input,
+  .twm-candidate-filter-section select {
+    background-color: #fff !important;
+    color: #171d2d !important;
+    color-scheme: light;
+  }
+
+  .twm-home1-banner-section .wt-search-bar-select option,
+  .twm-home1-banner-section .hero-location-input option,
+  .twm-candidate-filter-section select option {
+    background-color: #fff !important;
+    color: #171d2d !important;
+  }
+
+  .twm-candidate-filter-section input::placeholder {
+    color: #696969 !important;
+    opacity: 1;
+  }
+}
