@@ -32,7 +32,7 @@ function InnerPageBanner({_data}) {
                         </div>
                         {/* BREADCRUMB ROW */}
                         <div>
-                            <ul className="wt-breadcrumb breadcrumb-style-2" aria-label={isLocalizedBanner ? copy[isBlogDetail ? "homeBlogDetail" : "homeCandidateGrid"] : undefined}>
+                            <ul dir="ltr" className="wt-breadcrumb breadcrumb-style-2" aria-label={isLocalizedBanner ? copy[isBlogDetail ? "homeBlogDetail" : "homeCandidateGrid"] : undefined}>
                                 {isLocalizedBanner ? (
                                     <>
                                         <li><NavLink to={publicUser.INITIAL}>{currentLanguage === "ar" ? "الرئيسية" : currentLanguage === "am" ? "መነሻ" : "Home"}</NavLink></li>
