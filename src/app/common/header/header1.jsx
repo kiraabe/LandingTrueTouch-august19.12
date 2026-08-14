@@ -49,20 +49,17 @@ function Header1({ _config }) {
     }, []);
 
     const isHomeRoute = location.pathname === "/" || location.pathname === publicUser.HOME1;
-    const isBlogRoute = location.pathname === "/blogs" || location.pathname.startsWith("/blog-detail/");
+    const isCandidateRoute = location.pathname === publicUser.candidate.GRID;
+    const isBlogRoute = location.pathname === "/blogs" || location.pathname.startsWith("/blog-detail");
+    const activeNavItem = isBlogRoute
+        ? "our-blogs"
+        : isCandidateRoute
+            ? "candidates"
+            : isHomeRoute
+                ? (activeSection === "home" ? "home" : activeSection)
+                : null;
 
-    const isNavLinkActive = (sectionId) => {
-        if (sectionId === "home") {
-            return isHomeRoute;
-        }
-        if (sectionId === "candidates") {
-            return location.pathname === publicUser.candidate.GRID;
-        }
-        if (sectionId === "our-blogs") {
-            return isHomeRoute ? activeSection === sectionId : isBlogRoute;
-        }
-        return isHomeRoute && activeSection === sectionId;
-    };
+    const isNavLinkActive = (sectionId) => activeNavItem === sectionId;
 
     const handleSectionClick = (sectionId, e) => {
         e.preventDefault();
