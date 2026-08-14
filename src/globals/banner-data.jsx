@@ -89,7 +89,8 @@ export const banner = {
             },
             detail: {
                 title: "Blog detail",
-                crumb: "Blog detail"
+                crumb: "Blog detail",
+                copyKey: "blogDetail"
             }
         }
     },

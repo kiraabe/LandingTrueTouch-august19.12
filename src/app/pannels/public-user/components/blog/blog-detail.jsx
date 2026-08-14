@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { NavLink, useParams, useNavigate } from 'react-router-dom';
 import JobZImage from '../../../../common/jobz-img';
 import Spinner from '../../../../common/spinner';
-import { publicUrlFor } from '../../../../../globals/constants';
+import { blogCopy, publicUrlFor } from '../../../../../globals/constants';
 import { getJobImageUrl } from '../../../../../globals/file-url';
 import { showErrorToast } from '../../../../../globals/error-handler';
 import { Toaster } from '../../../../../components/ui/toaster';
@@ -13,6 +13,14 @@ function BlogDetail() {
   const [blog, setBlog] = useState(null);
   const [relatedBlogs, setRelatedBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentLanguage, setCurrentLanguage] = useState(() => document.documentElement.lang || "en");
+  const copy = blogCopy[currentLanguage] || blogCopy.en;
+
+  useEffect(() => {
+    const handleLanguageChange = (event) => setCurrentLanguage(event.detail.language);
+    document.addEventListener("languagechange", handleLanguageChange);
+    return () => document.removeEventListener("languagechange", handleLanguageChange);
+  }, []);
 
   useEffect(() => {
     const fetchBlogDetail = async () => {
@@ -57,9 +65,9 @@ function BlogDetail() {
 
   useEffect(() => {
     if (blog) {
-      document.title = `Blog Detail - ${blog.title} | TrueTouch`;
+      document.title = `${copy.homeBlogDetail} - ${blog.title} | TrueTouch`;
     }
-  }, [blog]);
+  }, [blog, copy.homeBlogDetail]);
 
   useEffect(() => {
     const fetchRelatedBlogs = async () => {
@@ -98,7 +106,7 @@ function BlogDetail() {
   return (
     <>
       <Toaster position="top-right" richColors />
-      <section className="section-full p-t120 p-b90 bg-white blog-detail-wrapper">
+      <section dir={currentLanguage === "ar" ? "rtl" : "ltr"} className="section-full p-t120 p-b90 bg-white blog-detail-wrapper">
         <div className="container">
           <div className="section-content">
             <div className="row d-flex justify-content-center">
@@ -169,7 +177,7 @@ function BlogDetail() {
 
                     <div className="post-area-tags-wrap blog-footer blog-share-footer">
                       <div className="post-social-icons-wrap">
-                        <strong>Share</strong>
+                        <strong>{copy.share}</strong>
                         <div className="share-buttons">
                           <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook" className="share-btn share-facebook"><i className="fab fa-facebook-f" /></a>
                           <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(blog.title)}`} target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter" className="share-btn share-twitter"><i className="fab fa-twitter" /></a>
@@ -182,7 +190,7 @@ function BlogDetail() {
                       {blog.previous_post_slug && (
                         <NavLink to={`/blog-detail/${blog.previous_post_slug}`} className="post-nav-previous"><i className="fa fa-angle-left" /> Previous post</NavLink>
                       )}
-                      <NavLink to="/blogs" className="post-nav-back">Back to all blogs</NavLink>
+                      <NavLink to="/blogs" className="post-nav-back">{copy.backToAllBlogs}</NavLink>
                       {blog.next_post_slug && (
                         <NavLink to={`/blog-detail/${blog.next_post_slug}`} className="post-nav-next">Next post <i className="fa fa-angle-right" /></NavLink>
                       )}
@@ -194,7 +202,7 @@ function BlogDetail() {
               <div className="col-lg-4 col-md-12 rightSidebar">
                 <aside className="blog-sidebar">
                   <div className="sidebar-widget recent-posts-widget">
-                    <h3 className="widget-title">Recent Articles</h3>
+                    <h3 className="widget-title">{copy.recentArticles}</h3>
                     <div className="recent-post-list">
                       {relatedBlogs.map((item) => (
                         <NavLink key={item.id} to={`/blog-detail/${item.id}`} className="recent-post-item">
@@ -212,11 +220,11 @@ function BlogDetail() {
                           </span>
                         </NavLink>
                       ))}
-                      {relatedBlogs.length === 0 && <p className="sidebar-empty-state">No other articles yet.</p>}
+                      {relatedBlogs.length === 0 && <p className="sidebar-empty-state">{copy.noOtherArticles}</p>}
                     </div>
                   </div>
                   <div className="sidebar-widget tags-widget">
-                    <h3 className="widget-title">Tags</h3>
+                    <h3 className="widget-title">{copy.tags}</h3>
                     <div className="blog-tags">
                       {(blog.tags || []).map((tag, index) => <span key={index} className="blog-tag">{tag}</span>)}
                     </div>

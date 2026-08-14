@@ -17,6 +17,42 @@ export const formType = {
     LOGIN_EMPLOYER: "LOGIN_EMPLOYER"
 }
 
+export const blogCopy = {
+  en: {
+    blog: "Blog",
+    homeBlog: "Home - Blog",
+    blogDetail: "Blog detail",
+    homeBlogDetail: "Home - Blog detail",
+    recentArticles: "Recent Articles",
+    noOtherArticles: "No other articles yet.",
+    tags: "Tags",
+    backToAllBlogs: "Back to all blogs",
+    share: "Share"
+  },
+  ar: {
+    blog: "المدونة",
+    homeBlog: "الرئيسية - المدونة",
+    blogDetail: "تفاصيل المقال",
+    homeBlogDetail: "الرئيسية - تفاصيل المقال",
+    recentArticles: "أحدث المقالات",
+    noOtherArticles: "لا توجد مقالات أخرى حالياً.",
+    tags: "الوسوم",
+    backToAllBlogs: "العودة إلى جميع المقالات",
+    share: "مشاركة"
+  },
+  am: {
+    blog: "ብሎግ",
+    homeBlog: "መነሻ - ብሎግ",
+    blogDetail: "የብሎግ ዝርዝር",
+    homeBlogDetail: "መነሻ - የብሎግ ዝርዝር",
+    recentArticles: "አዳዲስ ጽሁፎች",
+    noOtherArticles: "እስከ አሁን ምንም ሌሎች ጽሁፎች የሉም።",
+    tags: "መለያዎች",
+    backToAllBlogs: "ወደ ሁሉም ብሎጎች ተመለስ",
+    share: "አጋራ"
+  }
+};
+
 export function publicUrlFor(path) {
     const url = baseUrl + "/assets/" + path;
     return url.startsWith('/') ? url : '/' + url;

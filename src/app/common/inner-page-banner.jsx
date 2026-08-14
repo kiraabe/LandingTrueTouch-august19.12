@@ -1,23 +1,35 @@
 import { publicUrlFor } from "../../globals/constants";
 import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { blogCopy } from "../../globals/constants";
 
 function InnerPageBanner({_data}) {
+    const [currentLanguage, setCurrentLanguage] = useState(() => document.documentElement.lang || "en");
+    const copy = blogCopy[currentLanguage] || blogCopy.en;
+    const isBlogDetail = _data.copyKey === "blogDetail";
+
+    useEffect(() => {
+        const handleLanguageChange = (event) => setCurrentLanguage(event.detail.language);
+        document.addEventListener("languagechange", handleLanguageChange);
+        return () => document.removeEventListener("languagechange", handleLanguageChange);
+    }, []);
+
     return (
         <>
-            <div className="wt-bnr-inr overlay-wraper bg-center">
+            <div dir={currentLanguage === "ar" ? "rtl" : "ltr"} className="wt-bnr-inr overlay-wraper bg-center">
                 <div className="overlay-main" style={{ opacity: 0 }} />
                 <div className="container">
                     <div className="wt-bnr-inr-entry">
                         <div className="banner-title-outer">
                             <div className="banner-title-name">
-                                <h2 className="wt-title">{_data.title}</h2>
+                                <h2 className="wt-title">{isBlogDetail ? copy.blogDetail : _data.title}</h2>
                             </div>
                         </div>
                         {/* BREADCRUMB ROW */}
                         <div>
-                            <ul className="wt-breadcrumb breadcrumb-style-2">
-                                <li><NavLink to="/index">Home</NavLink></li>
-                                <li>{_data.crumb}</li>
+                            <ul className="wt-breadcrumb breadcrumb-style-2" aria-label={isBlogDetail ? copy.homeBlogDetail : undefined}>
+                                <li><NavLink to="/index">{isBlogDetail ? copy.homeBlog : "Home"}</NavLink></li>
+                                <li>{isBlogDetail ? copy.blogDetail : _data.crumb}</li>
                             </ul>
                         </div>
                         {/* BREADCRUMB ROW END */}
