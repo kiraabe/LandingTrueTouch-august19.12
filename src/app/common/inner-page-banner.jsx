@@ -28,8 +28,14 @@ function InnerPageBanner({_data}) {
                         {/* BREADCRUMB ROW */}
                         <div>
                             <ul className="wt-breadcrumb breadcrumb-style-2" aria-label={isBlogDetail ? copy.homeBlogDetail : undefined}>
-                                <li><NavLink to="/index">{isBlogDetail ? copy.homeBlog : "Home"}</NavLink></li>
-                                <li>{isBlogDetail ? copy.blogDetail : _data.crumb}</li>
+                                {isBlogDetail ? (
+                                    <li><NavLink to="/index">{copy.homeBlogDetail}</NavLink></li>
+                                ) : (
+                                    <>
+                                        <li><NavLink to="/index">Home</NavLink></li>
+                                        <li>{_data.crumb}</li>
+                                    </>
+                                )}
                             </ul>
                         </div>
                         {/* BREADCRUMB ROW END */}
