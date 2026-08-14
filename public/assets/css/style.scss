@@ -1015,6 +1015,19 @@ button{
 
 }
 
+.wt-breadcrumb {
+	display: inline-flex;
+	align-items: center;
+	gap: 30px;
+	li {
+		padding-right: 0;
+		&:after { display: none; }
+	}
+	.breadcrumb-separator {
+		color: $clr-dark;
+	}
+}
+
 /*Contact Form*/
 .twm-contact-one{position: relative;
 	.contact-one-inner{

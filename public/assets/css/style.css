@@ -5956,6 +5956,21 @@ button.scroltop span {
   font-weight: 600;
 }
 
+.wt-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 30px;
+}
+.wt-breadcrumb li {
+  padding-right: 0;
+}
+.wt-breadcrumb li:after {
+  display: none;
+}
+.wt-breadcrumb .breadcrumb-separator {
+  color: #17171d;
+}
+
 /*Contact Form*/
 .twm-contact-one {
   position: relative;

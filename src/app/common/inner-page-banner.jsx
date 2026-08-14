@@ -36,11 +36,13 @@ function InnerPageBanner({_data}) {
                                 {isLocalizedBanner ? (
                                     <>
                                         <li><NavLink to={publicUser.INITIAL}>{currentLanguage === "ar" ? "الرئيسية" : currentLanguage === "am" ? "መነሻ" : "Home"}</NavLink></li>
+                                        <li className="breadcrumb-separator" aria-hidden="true">–</li>
                                         <li className="breadcrumb-current" aria-current="page">{isBlogDetail ? copy.blogDetail : copy.candidateGrid}</li>
                                     </>
                                 ) : (
                                     <>
                                         <li><NavLink to="/index">Home</NavLink></li>
+                                        <li className="breadcrumb-separator" aria-hidden="true">–</li>
                                         <li>{_data.crumb}</li>
                                     </>
                                 )}
