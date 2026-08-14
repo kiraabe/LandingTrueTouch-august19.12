@@ -1,9 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
 import JobZImage from "../../../../common/jobz-img";
+import ImageLightbox from "../../../../common/image-lightbox";
 import Spinner from "../../../../common/spinner";
 import { showErrorToast } from "../../../../../globals/error-handler";
 import { getJobImageUrl } from "../../../../../globals/file-url";
+
+const blogImageFallback = "/assets/images/blog/post-author.jpg";
 
 const BLOGS_PER_PAGE = 9;
 
@@ -75,16 +78,21 @@ function BlogGrid1Page() {
               {visibleBlogs.map((blog) => (
                 <article key={blog.id} className="twm-blog-responsive-item blog-post twm-blog-post-1-outer">
                   <div className="wt-post-media">
-                    <NavLink to={`/blog-detail/${blog.id}`}>
-                      <JobZImage
-                        src={blog.image_url ? getJobImageUrl(blog.image_url) : "https://cdn.builder.io/api/v1/image/assets%2F5e5700cc98ef413c911c8b7a4a98ea76%2F3483d0d2e206411c8f937b411ad53cfd?format=webp&width=800&height=1200"}
+                    <ImageLightbox
+                      src={blog.image_url ? getJobImageUrl(blog.image_url) : blogImageFallback}
+                      alt={blog.title}
+                    >
+                      <NavLink to={`/blog-detail/${blog.id}`}>
+                        <JobZImage
+                        src={blog.image_url ? getJobImageUrl(blog.image_url) : blogImageFallback}
                         onError={(event) => {
                           event.currentTarget.onerror = null;
-                          event.currentTarget.src = "https://cdn.builder.io/api/v1/image/assets%2F5e5700cc98ef413c911c8b7a4a98ea76%2F3483d0d2e206411c8f937b411ad53cfd?format=webp&width=800&height=1200";
+                          event.currentTarget.src = blogImageFallback;
                         }}
                         alt={blog.title}
-                      />
-                    </NavLink>
+                        />
+                      </NavLink>
+                    </ImageLightbox>
                   </div>
                   <div className="wt-post-info blog-card-content">
                     <div className="wt-post-meta">

@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useParams, useNavigate } from 'react-router-dom';
 import JobZImage from '../../../../common/jobz-img';
+import ImageLightbox from '../../../../common/image-lightbox';
 import Spinner from '../../../../common/spinner';
 import { blogCopy, publicUrlFor } from '../../../../../globals/constants';
 import { getJobImageUrl } from '../../../../../globals/file-url';
 import { showErrorToast } from '../../../../../globals/error-handler';
 import { Toaster } from '../../../../../components/ui/toaster';
+
+const blogImageFallback = publicUrlFor("images/blog/post-author.jpg");
 
 function BlogDetail() {
   const { id } = useParams();
@@ -114,14 +117,19 @@ function BlogDetail() {
                 <article className="blog-post-single-outer">
                   <div className="blog-post-single bg-white">
                     <div className="wt-post-media blog-featured-image">
-                      <JobZImage
-                        src={blog.image_url ? getJobImageUrl(blog.image_url) : "https://cdn.builder.io/api/v1/image/assets%2F5e5700cc98ef413c911c8b7a4a98ea76%2F3483d0d2e206411c8f937b411ad53cfd?format=webp&width=800&height=1200"}
+                      <ImageLightbox
+                        src={blog.image_url ? getJobImageUrl(blog.image_url) : blogImageFallback}
+                        alt={blog.title}
+                      >
+                        <JobZImage
+                        src={blog.image_url ? getJobImageUrl(blog.image_url) : blogImageFallback}
                         onError={(event) => {
                           event.currentTarget.onerror = null;
-                          event.currentTarget.src = "https://cdn.builder.io/api/v1/image/assets%2F5e5700cc98ef413c911c8b7a4a98ea76%2F3483d0d2e206411c8f937b411ad53cfd?format=webp&width=800&height=1200";
+                          event.currentTarget.src = blogImageFallback;
                         }}
                         alt={blog.title}
-                      />
+                        />
+                      </ImageLightbox>
                     </div>
                     <header className="blog-detail-title-section">
                       <div className="wt-post-meta-list blog-detail-meta">
@@ -160,10 +168,10 @@ function BlogDetail() {
                     <div className="twm-posts-author">
                       <div className="twm-post-author-pic">
                         <JobZImage
-                          src={blog.author_avatar ? getJobImageUrl(blog.author_avatar) : publicUrlFor("images/blog/post-author.jpg")}
+                          src={blog.author_avatar ? getJobImageUrl(blog.author_avatar) : blogImageFallback}
                           onError={(event) => {
                             event.currentTarget.onerror = null;
-                            event.currentTarget.src = publicUrlFor("images/blog/post-author.jpg");
+                            event.currentTarget.src = blogImageFallback;
                           }}
                           alt={blog.author || 'Author'}
                         />
@@ -206,14 +214,19 @@ function BlogDetail() {
                     <div className="recent-post-list">
                       {relatedBlogs.map((item) => (
                         <NavLink key={item.id} to={`/blog-detail/${item.id}`} className="recent-post-item">
-                          <JobZImage
-                            src={item.image_url ? getJobImageUrl(item.image_url) : "https://cdn.builder.io/api/v1/image/assets%2F5e5700cc98ef413c911c8b7a4a98ea76%2F3483d0d2e206411c8f937b411ad53cfd?format=webp&width=800&height=1200"}
+                          <ImageLightbox
+                            src={item.image_url ? getJobImageUrl(item.image_url) : blogImageFallback}
+                            alt={item.title}
+                          >
+                            <JobZImage
+                            src={item.image_url ? getJobImageUrl(item.image_url) : blogImageFallback}
                             onError={(event) => {
                               event.currentTarget.onerror = null;
-                              event.currentTarget.src = "https://cdn.builder.io/api/v1/image/assets%2F5e5700cc98ef413c911c8b7a4a98ea76%2F3483d0d2e206411c8f937b411ad53cfd?format=webp&width=800&height=1200";
+                              event.currentTarget.src = blogImageFallback;
                             }}
                             alt={item.title}
-                          />
+                            />
+                          </ImageLightbox>
                           <span className="recent-post-content">
                             <small>{new Date(item.created_at).toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' })}</small>
                             <strong>{item.title}</strong>
