@@ -1404,7 +1404,7 @@ function Home18Page() {
 
 
               {/* OUR BLOG START */}
-      <div id="our-blogs" className="section-full p-t120 p-b90 site-bg-gray">
+      <div id="our-blogs" className={`section-full p-t120 p-b90 site-bg-gray${isArabic ? " blog-section-rtl" : ""}`}>
         <div className="container">
           <div className="section-head center wt-small-separator-outer">
             <div className="wt-small-separator site-text-primary"><div>{homepageLabels.industryResources}</div></div>
@@ -1431,7 +1431,7 @@ function Home18Page() {
                             />
                           </NavLink>
                         </div>
-                        <div className="wt-post-info">
+                        <div className="wt-post-info blog-card-content">
                           <div className="wt-post-meta">
                             <ul>
                               <li className="post-date">

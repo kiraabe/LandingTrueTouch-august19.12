@@ -224,6 +224,16 @@
   direction: rtl;
 }
 
+.blog-section-rtl .twm-blog-responsive-grid,
+.blog-section-rtl .twm-blog-responsive-item {
+  direction: ltr;
+}
+
+.blog-section-rtl .blog-card-content {
+  direction: rtl;
+  text-align: right;
+}
+
 @media (prefers-color-scheme: dark) {
   .twm-home1-banner-section .wt-search-bar-select,
   .twm-home1-banner-section .hero-location-input,
