@@ -2,6 +2,7 @@ import { publicUrlFor } from "../../globals/constants";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { blogCopy } from "../../globals/constants";
+import { publicUser } from "../../globals/route-names";
 
 function InnerPageBanner({_data}) {
     const [currentLanguage, setCurrentLanguage] = useState(() => document.documentElement.lang || "en");
@@ -29,7 +30,10 @@ function InnerPageBanner({_data}) {
                         <div>
                             <ul className="wt-breadcrumb breadcrumb-style-2" aria-label={isBlogDetail ? copy.homeBlogDetail : undefined}>
                                 {isBlogDetail ? (
-                                    <li><NavLink to="/index" className="breadcrumb-current" aria-current="page">{copy.homeBlogDetail}</NavLink></li>
+                                    <>
+                                        <li><NavLink to={publicUser.INITIAL}>{currentLanguage === "ar" ? "الرئيسية" : currentLanguage === "am" ? "መነሻ" : "Home"}</NavLink></li>
+                                        <li className="breadcrumb-current" aria-current="page">{copy.blogDetail}</li>
+                                    </>
                                 ) : (
                                     <>
                                         <li><NavLink to="/index">Home</NavLink></li>
