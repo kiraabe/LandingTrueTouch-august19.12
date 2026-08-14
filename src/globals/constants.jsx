@@ -44,6 +44,18 @@ export const candidateGridCopy = {
   }
 };
 
+export const candidateEmptyStateCopy = {
+  en: {
+    noCandidatesAvailable: "No candidates are available right now."
+  },
+  ar: {
+    noCandidatesAvailable: "لا يوجد مرشحون متاحون في الوقت الحالي."
+  },
+  am: {
+    noCandidatesAvailable: "በአሁኑ ጊዜ ምንም ዓይነት ዕጩዎች አልተገኙም።"
+  }
+};
+
 export const blogCopy = {
   en: {
     blog: "Blog",

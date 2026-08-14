@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import Spinner from "../../../../common/spinner";
 import { showErrorToast } from "../../../../../globals/error-handler";
 import { getCandidateProfilePictureUrl } from "../../../../../globals/file-url";
-import { candidateGridCopy } from "../../../../../globals/constants";
+import { candidateEmptyStateCopy, candidateGridCopy } from "../../../../../globals/constants";
 import "./candidate-grid.css";
 
 const cleanFilterValue = (value) => typeof value === "string"
@@ -313,7 +313,7 @@ function CandidateGridPage() {
                 </>
               ) : (
                 <div className="candidate-directory-state">
-                  <p>{candidates.length ? "No candidates match your filters." : "No candidates are available right now."}</p>
+                  <p>{candidates.length ? "No candidates match your filters." : (candidateEmptyStateCopy[currentLanguage] || candidateEmptyStateCopy.en).noCandidatesAvailable}</p>
                   {hasActiveFilters && <button className="site-button" onClick={clearFilters}>Clear Filters</button>}
                 </div>
               )}
