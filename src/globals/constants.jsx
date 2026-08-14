@@ -17,6 +17,33 @@ export const formType = {
     LOGIN_EMPLOYER: "LOGIN_EMPLOYER"
 }
 
+export const candidateGridCopy = {
+  en: {
+    homeCandidateGrid: "Home - Candidate Grid",
+    candidateGrid: "Candidate Grid",
+    browseCandidates: "Browse Candidates",
+    ourTalent: "Our Talent",
+    searchCandidates: "Search candidates",
+    showingCandidates: (count, first, last) => count ? `Showing ${first}-${last} of ${count} candidate${count === 1 ? "" : "s"}` : "Showing 0 candidates"
+  },
+  ar: {
+    homeCandidateGrid: "الرئيسية - شبكة المرشحين",
+    candidateGrid: "شبكة المرشحين",
+    browseCandidates: "تصفح المرشحين",
+    ourTalent: "كفاءاتنا",
+    searchCandidates: "البحث عن مرشحين...",
+    showingCandidates: (count) => `عرض ${count} من المرشحين`
+  },
+  am: {
+    homeCandidateGrid: "መነሻ - የዕጩዎች ዝርዝር",
+    candidateGrid: "የዕጩዎች ዝርዝር",
+    browseCandidates: "ዕጩዎችን ይፈልጉ",
+    ourTalent: "የእኛ ባለሙያዎች",
+    searchCandidates: "ዕጩዎችን ይፈልጉ...",
+    showingCandidates: (count) => `${count} ዕጩዎች ታይተዋል`
+  }
+};
+
 export const blogCopy = {
   en: {
     blog: "Blog",

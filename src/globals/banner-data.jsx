@@ -37,7 +37,8 @@ export const banner = {
         candidate: {
             grid: {
                 title: "Candidate Grid",
-                crumb: "Candidate Grid"
+                crumb: "Candidate Grid",
+                copyKey: "candidateGrid"
             },
             list: {
                 title: "Candidate List",

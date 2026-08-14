@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import Spinner from "../../../../common/spinner";
 import { showErrorToast } from "../../../../../globals/error-handler";
 import { getCandidateProfilePictureUrl } from "../../../../../globals/file-url";
+import { candidateGridCopy } from "../../../../../globals/constants";
 import "./candidate-grid.css";
 
 const cleanFilterValue = (value) => typeof value === "string"
@@ -28,12 +29,20 @@ function CandidateGridPage() {
   const [candidates, setCandidates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentLanguage, setCurrentLanguage] = useState(() => document.documentElement.lang || "en");
+  const copy = candidateGridCopy[currentLanguage] || candidateGridCopy.en;
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState({ jobCategory: "", location: "", preferredWorkCountry: "", skillLevel: "", ageMin: 0, ageMax: 100, status: "" });
   const [filterOptions, setFilterOptions] = useState({ professions: [], locations: [], preferredWorkCountries: [], skillLevels: [], statuses: [] });
 
   useEffect(() => {
-    document.title = "Candidates | TrueTouch";
+    const handleLanguageChange = (event) => setCurrentLanguage(event.detail.language);
+    document.addEventListener("languagechange", handleLanguageChange);
+    return () => document.removeEventListener("languagechange", handleLanguageChange);
+  }, []);
+
+  useEffect(() => {
+    document.title = `${copy.candidateGrid} | TrueTouch`;
 
     const fetchCandidates = async () => {
       try {
@@ -62,7 +71,7 @@ function CandidateGridPage() {
         statuses: options.statuses?.map(cleanFilterValue).filter(Boolean) || []
       }))
       .catch((error) => showErrorToast(error, "Failed to load candidate filters."));
-  }, []);
+  }, [copy.candidateGrid]);
 
   const visibleCandidates = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
@@ -118,17 +127,17 @@ function CandidateGridPage() {
       <div className="container">
         <div className="candidate-directory-heading">
           <div>
-            <div className="wt-small-separator site-text-primary"><div>Our Talent</div></div>
-            <h2 className="wt-title">Browse Candidates</h2>
+            <div className="wt-small-separator site-text-primary"><div>{copy.ourTalent}</div></div>
+            <h2 className="wt-title">{copy.browseCandidates}</h2>
           </div>
           <label className="candidate-directory-search">
-            <span className="sr-only">Search candidates</span>
+            <span className="sr-only">{copy.searchCandidates}</span>
             <i className="feather-search" />
             <input
               type="search"
               value={searchQuery}
               onChange={(event) => setSearchQuery(event.target.value)}
-              placeholder="Search candidates"
+              placeholder={copy.searchCandidates}
             />
           </label>
         </div>
@@ -217,9 +226,7 @@ function CandidateGridPage() {
             </aside>
             <div className="col-lg-8">
               <p className="candidate-directory-count">
-                {visibleCandidates.length
-                  ? `Showing ${firstVisibleCandidate}-${lastVisibleCandidate} of ${visibleCandidates.length} candidate${visibleCandidates.length === 1 ? "" : "s"}`
-                  : "Showing 0 candidates"}
+                {copy.showingCandidates(visibleCandidates.length, firstVisibleCandidate, lastVisibleCandidate)}
               </p>
               {visibleCandidates.length > 0 ? (
                 <>
