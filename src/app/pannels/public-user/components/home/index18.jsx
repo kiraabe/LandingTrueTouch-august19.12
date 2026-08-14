@@ -1,5 +1,4 @@
 import JobZImage from "../../../../common/jobz-img";
-import ImageLightbox from "../../../../common/image-lightbox";
 import GalleryLightbox from "../../../../common/gallery-lightbox";
 import Spinner from "../../../../common/spinner";
 import { loadScript, publicUrlFor, updateSkinStyle } from "../../../../../globals/constants";
@@ -784,18 +783,14 @@ function Home18Page() {
               <div className="twm-bnr-right-carousel">
                 <div className="owl-carousel twm-h1-bnr-carousal">
                   <div className="item">
-                    <ImageLightbox src={publicUrlFor("images/main-slider/slider1/r-img1.png")} alt="True Touch recruitment services">
-                      <div className="slide-img">
-                        <JobZImage src="images/main-slider/slider1/r-img1.png" alt="True Touch recruitment services" loading="eager" fetchPriority="high" />
-                      </div>
-                    </ImageLightbox>
+                    <div className="slide-img">
+                      <JobZImage src="images/main-slider/slider1/r-img1.png" alt="True Touch recruitment services" loading="eager" fetchPriority="high" />
+                    </div>
                   </div>
                   <div className="item">
-                    <ImageLightbox src={publicUrlFor("images/main-slider/slider1/r-img2.png")} alt="True Touch recruitment services">
-                      <div className="slide-img">
-                        <JobZImage src="images/main-slider/slider1/r-img2.png" alt="True Touch recruitment services" loading="eager" />
-                      </div>
-                    </ImageLightbox>
+                    <div className="slide-img">
+                      <JobZImage src="images/main-slider/slider1/r-img2.png" alt="True Touch recruitment services" loading="eager" />
+                    </div>
                   </div>
                 </div>
               </div>
