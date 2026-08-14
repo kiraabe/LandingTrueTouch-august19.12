@@ -48,11 +48,20 @@ function Header1({ _config }) {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    const isHomeRoute = location.pathname === "/" || location.pathname === publicUser.HOME1;
+    const isBlogRoute = location.pathname === "/blogs" || location.pathname.startsWith("/blog-detail/");
+
     const isNavLinkActive = (sectionId) => {
         if (sectionId === "home") {
-            return location.pathname === "/" || location.pathname === publicUser.HOME1;
+            return isHomeRoute;
         }
-        return activeSection === sectionId;
+        if (sectionId === "candidates") {
+            return location.pathname === publicUser.candidate.GRID;
+        }
+        if (sectionId === "our-blogs") {
+            return isHomeRoute ? activeSection === sectionId : isBlogRoute;
+        }
+        return isHomeRoute && activeSection === sectionId;
     };
 
     const handleSectionClick = (sectionId, e) => {
@@ -177,7 +186,7 @@ function Header1({ _config }) {
                                 <li className={isNavLinkActive("get-jobs") ? "active" : ""}>
                                     <a href="#get-jobs" onClick={(e) => handleSectionClick("get-jobs", e)}>{navigationLabels.about}</a>
                                 </li>
-                                <li className={location.pathname === publicUser.candidate.GRID ? "active" : ""}>
+                                <li className={isNavLinkActive("candidates") ? "active" : ""}>
                                     <NavLink to={publicUser.candidate.GRID}>{navigationLabels.candidates}</NavLink>
                                 </li>
                                 <li className={isNavLinkActive("our-blogs") ? "active" : ""}>
@@ -331,7 +340,7 @@ function Header1({ _config }) {
                             <li className="mobile-nav-item">
                                 <NavLink 
                                     to={publicUser.candidate.GRID} 
-                                    className={`mobile-nav-link ${location.pathname === publicUser.candidate.GRID ? "active" : ""}`}
+                                    className={`mobile-nav-link ${isNavLinkActive("candidates") ? "active" : ""}`}
                                     onClick={() => setMenuActive(false)}
                                 >
                                     {navigationLabels.candidates}
