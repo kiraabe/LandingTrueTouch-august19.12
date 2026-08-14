@@ -1434,7 +1434,7 @@ function Home18Page() {
                         <div className="wt-post-info blog-card-content">
                           <div className="wt-post-meta">
                             <ul>
-                              <li className="post-date">
+                              <li className="post-date blog-card-date-ltr">
                                 {new Date(blog.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: '2-digit' })}
                               </li>
                               <li className="post-author">By {blog.author}</li>

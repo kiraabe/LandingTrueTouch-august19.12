@@ -234,6 +234,12 @@
   text-align: right;
 }
 
+.blog-section-rtl .blog-card-date-ltr {
+  direction: ltr;
+  unicode-bidi: isolate;
+  white-space: nowrap;
+}
+
 @media (prefers-color-scheme: dark) {
   .twm-home1-banner-section .wt-search-bar-select,
   .twm-home1-banner-section .hero-location-input,
