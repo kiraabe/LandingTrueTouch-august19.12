@@ -18,6 +18,24 @@ import AirplaneCircleHighlight from "./AirplaneCircleHighlight";
 const API_BASE_URL = '';
 const COMPANY_WHATSAPP_NUMBER = "251935106635";
 
+const candidateSearchCopy = {
+  en: {
+    showingCount: "Showing 0 of 0 candidates",
+    noCandidatesAvailable: "No candidates available.",
+    searchPlaceholder: "Search by name, profession, or location..."
+  },
+  ar: {
+    showingCount: "عرض 0 من أصل 0 من المرشحين",
+    noCandidatesAvailable: "لا يوجد مرشحون متاحون.",
+    searchPlaceholder: "البحث بالاسم، أو المهنة، أو الموقع..."
+  },
+  am: {
+    showingCount: "ከ 0 ውስጥ 0 ዕጩዎች ታይተዋል",
+    noCandidatesAvailable: "ምንም ዓይነት ዕጩዎች አልተገኙም።",
+    searchPlaceholder: "በስም፣ በሙያ ወይም በቦታ ይፈልጉ..."
+  }
+};
+
 const buildWhatsAppLink = (candidate) => {
   const message =
     `Hello, I'm interested in this candidate:\n` +
@@ -662,6 +680,7 @@ function Home18Page() {
     locationPlaceholder: "Search by location...",
     search: "Search"
   };
+  const candidateSearchLabels = candidateSearchCopy[currentLanguage] || candidateSearchCopy.en;
   const homepageLabels = isAmharic ? {
     ourCandidates: "ዕጩዎቻችን",
     preScreenedTitle: "ለቅጥር ዝግጁ የሆኑ አስቀድመው የተገመገሙ ባለሙያዎች",
@@ -1158,7 +1177,7 @@ function Home18Page() {
                         }} />
                         <input
                           type="text"
-                          placeholder="Search by name, profession, or location..."
+                          placeholder={candidateSearchLabels.searchPlaceholder}
                           value={searchQuery}
                           onChange={e => setSearchQuery(e.target.value)}
                           style={{
@@ -1265,7 +1284,9 @@ function Home18Page() {
 
                     {/* Results Count */}
                     <div style={{ textAlign: 'center', color: '#999', fontSize: '13px', marginBottom: '24px' }}>
-                      Showing <strong>{filteredCandidates.length}</strong> of <strong>{allCandidates.length}</strong> candidates
+                      {candidateSearchLabels.showingCount
+                        .replace('0', filteredCandidates.length)
+                        .replace('0', allCandidates.length)}
                     </div>
                   </div>
                   {/* ── END FILTER UI ── */}
@@ -1326,7 +1347,7 @@ function Home18Page() {
                     ) : (
                       <div className="col-12 text-center" style={{ padding: '40px 0' }}>
                         <p style={{ color: '#999', fontSize: '15px' }}>
-                          {hasActiveFilters ? 'No candidates match your search or filters.' : 'No candidates available.'}
+                          {hasActiveFilters ? 'No candidates match your search or filters.' : candidateSearchLabels.noCandidatesAvailable}
                         </p>
                         {hasActiveFilters && (
                           <button onClick={clearFilters} className="site-button" style={{ marginTop: '12px' }}>
