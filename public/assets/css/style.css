@@ -5947,9 +5947,6 @@ button.scroltop span {
 .wt-breadcrumb li:last-child:after {
   display: none;
 }
-.wt-breadcrumb li + li {
-  margin-inline-start: 30px;
-}
 .wt-breadcrumb li:first-child a i {
   font-size: 18px;
   vertical-align: text-top;
