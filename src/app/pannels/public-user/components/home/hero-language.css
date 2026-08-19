@@ -27,6 +27,11 @@
   right: auto;
 }
 
+.hero-content-rtl .twm-bnr-right-carousel .slide-img img {
+  margin-left: 0;
+  margin-right: 100px;
+}
+
 .hero-map-hero {
   min-height: 700px;
 }

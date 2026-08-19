@@ -6,7 +6,7 @@ import { publicUser } from "../../../../../globals/route-names";
 import { downloadFileWithToast, showErrorToast, showSuccessToast } from "../../../../../globals/error-handler";
 import { candidateProfileFallback, getCandidateProfilePictureUrl, getCandidateCvUrl, getJobImageUrl, getTestimonialAvatarUrl } from "../../../../../globals/file-url";
 import { NavLink, useLocation } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Toaster } from "../../../../../components/ui/toaster";
 import jsVectorMap from "jsvectormap";
 import "jsvectormap/dist/jsvectormap.min.css";
@@ -829,6 +829,21 @@ function Home18Page() {
                     </div>
                   </div>
                 </form>
+              </div>
+            </div>
+          </div>
+          <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
+            <div className="twm-bnr-right-content">
+              <div className="twm-bnr-right-carousel">
+                <div className="owl-carousel twm-h1-bnr-carousal">
+                  <div className="item"><div className="slide-img"><JobZImage src="images/main-slider/slider1/hero-caregiver.webp" alt="Caregiver available through True Touch" loading="eager" fetchpriority="high" /></div></div>
+                  <div className="item"><div className="slide-img"><JobZImage src="images/main-slider/slider1/hero-nurse-hijab.webp" alt="Nurse available through True Touch" /></div></div>
+                  <div className="item"><div className="slide-img"><JobZImage src="images/main-slider/slider1/hero-technician.webp" alt="Technician available through True Touch" /></div></div>
+                  <div className="item"><div className="slide-img"><JobZImage src="images/main-slider/slider1/hero-nanny.webp" alt="Nanny available through True Touch" /></div></div>
+                  <div className="item"><div className="slide-img"><JobZImage src="images/main-slider/slider1/hero-nurse.webp" alt="Nurse available through True Touch" /></div></div>
+                  <div className="item"><div className="slide-img"><JobZImage src="images/main-slider/slider1/hero-security-guard.webp" alt="Security guard available through True Touch" /></div></div>
+                  <div className="item"><div className="slide-img"><JobZImage src="images/main-slider/slider1/hero-rescue-worker.webp" alt="Rescue worker available through True Touch" /></div></div>
+                </div>
               </div>
             </div>
           </div>
