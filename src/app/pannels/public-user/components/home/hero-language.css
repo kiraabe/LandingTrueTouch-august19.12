@@ -123,6 +123,63 @@
   cursor: pointer;
 }
 
+.hero-world-map .jvm-line {
+  animation: hero-data-transfer-flow 2.6s linear infinite;
+  fill: none;
+  stroke-dasharray: 6 5;
+  vector-effect: non-scaling-stroke;
+}
+
+.hero-world-map .jvm-line:nth-of-type(2) {
+  animation-delay: -0.65s;
+}
+
+.hero-world-map .jvm-line:nth-of-type(3) {
+  animation-delay: -1.3s;
+}
+
+.hero-world-map .jvm-line:nth-of-type(4) {
+  animation-delay: -1.95s;
+}
+
+.hero-world-map .jvm-marker {
+  animation: hero-transfer-node-pulse 1.8s ease-in-out infinite;
+  vector-effect: non-scaling-stroke;
+}
+
+.hero-world-map .jvm-marker[data-index="1"] {
+  animation-delay: -0.45s;
+}
+
+.hero-world-map .jvm-marker[data-index="2"] {
+  animation-delay: -0.9s;
+}
+
+.hero-world-map .jvm-marker[data-index="3"] {
+  animation-delay: -1.35s;
+}
+
+.hero-world-map .jvm-marker[data-index="4"] {
+  animation-delay: -1.8s;
+}
+
+@keyframes hero-data-transfer-flow {
+  to {
+    stroke-dashoffset: -22px;
+  }
+}
+
+@keyframes hero-transfer-node-pulse {
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
 @media (max-width: 991px) {
   .hero-map-hero,
   .hero-map-hero .hero-content-layer {

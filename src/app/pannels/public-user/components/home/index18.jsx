@@ -220,9 +220,12 @@ function Home18Page() {
       },
       markerStyle: {
         initial: {
-          r: 0,
-          fillOpacity: 0,
-          strokeOpacity: 0
+          r: 4,
+          fill: "#eca315",
+          fillOpacity: 1,
+          stroke: "#ffffff",
+          strokeWidth: 2,
+          strokeOpacity: 0.9
         }
       },
       onRegionTooltipShow: (event, tooltip) => {
