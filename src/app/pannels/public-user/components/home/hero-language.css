@@ -53,8 +53,8 @@
   background: transparent !important;
 }
 
-.hero-world-map.jvm-container .jvm-tooltip {
-  z-index: 20;
+.hero-world-map-tooltip {
+  z-index: 9999 !important;
   pointer-events: none;
 }
 

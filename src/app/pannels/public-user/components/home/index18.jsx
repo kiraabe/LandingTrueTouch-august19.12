@@ -177,6 +177,9 @@ function Home18Page() {
       zoomButtons: false,
       zoomOnScroll: false,
       selectedRegions: ["ET", "JO", "SA", "QA", "KW"],
+      onRegionTooltipShow: (event, tooltip) => {
+        tooltip.getElement().classList.add("hero-world-map-tooltip");
+      },
       regionStyle: {
         initial: { fill: "#dbe6f4", fillOpacity: 1 },
         hover: { fill: "#b4cded", fillOpacity: 1 },
