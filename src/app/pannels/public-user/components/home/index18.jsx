@@ -843,6 +843,7 @@ function Home18Page() {
                   <div className="item"><div className="slide-img"><JobZImage src="images/main-slider/slider1/hero-nurse.webp" alt="Nurse available through True Touch" /></div></div>
                   <div className="item"><div className="slide-img"><JobZImage src="images/main-slider/slider1/hero-security-guard.webp" alt="Security guard available through True Touch" /></div></div>
                   <div className="item"><div className="slide-img"><JobZImage src="images/main-slider/slider1/hero-rescue-worker.webp" alt="Rescue worker available through True Touch" /></div></div>
+                  <div className="item"><div className="slide-img"><JobZImage src="images/main-slider/slider1/hero-care-team.webp" alt="Care team available through True Touch" /></div></div>
                 </div>
               </div>
             </div>
