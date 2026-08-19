@@ -97,58 +97,26 @@
   pointer-events: none;
 }
 
-.hero-country-rotation-label {
-  position: absolute;
-  z-index: 7;
-  padding: 8px 14px;
-  border: 1px solid #eca315;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 8px 20px rgba(0, 40, 96, 0.16);
-  color: #002860;
+.hero-world-map .jvm-label {
+  opacity: 0;
+  pointer-events: none;
+  fill: #002860;
+  font-family: inherit;
   font-size: 14px;
   font-weight: 600;
-  line-height: 1;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  animation: hero-country-label-enter 0.45s ease both;
+  paint-order: stroke;
+  stroke: rgba(255, 255, 255, 0.96);
+  stroke-linejoin: round;
+  stroke-width: 8px;
+  transition: opacity 0.45s ease;
 }
 
-.hero-country-label-ethiopia {
-  top: 48%;
-  left: 61%;
-}
-
-.hero-country-label-jordan {
-  top: 41.5%;
-  left: 60%;
-}
-
-.hero-country-label-saudi-arabia {
-  top: 43%;
-  left: 62.5%;
-}
-
-.hero-country-label-qatar {
-  top: 42.5%;
-  left: 64.2%;
-}
-
-.hero-country-label-kuwait {
-  top: 41.5%;
-  left: 63.2%;
-}
-
-@keyframes hero-country-label-enter {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -40%);
-  }
-
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
+.hero-world-map.hero-active-country-ethiopia .jvm-label[data-index="0"],
+.hero-world-map.hero-active-country-jordan .jvm-label[data-index="1"],
+.hero-world-map.hero-active-country-saudi-arabia .jvm-label[data-index="2"],
+.hero-world-map.hero-active-country-qatar .jvm-label[data-index="3"],
+.hero-world-map.hero-active-country-kuwait .jvm-label[data-index="4"] {
+  opacity: 1;
 }
 
 .hero-world-map path {

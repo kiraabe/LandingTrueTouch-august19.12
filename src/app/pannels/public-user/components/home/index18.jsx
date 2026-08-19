@@ -78,11 +78,11 @@ function parseSkillsForDisplay(skillLevel) {
 
 // Parse language_skills for display as tags
 const rotatingCountryNames = [
-  { name: "Ethiopia", positionClass: "hero-country-label-ethiopia" },
-  { name: "Jordan", positionClass: "hero-country-label-jordan" },
-  { name: "Saudi Arabia", positionClass: "hero-country-label-saudi-arabia" },
-  { name: "Qatar", positionClass: "hero-country-label-qatar" },
-  { name: "Kuwait", positionClass: "hero-country-label-kuwait" }
+  { name: "Ethiopia", activeClass: "hero-active-country-ethiopia" },
+  { name: "Jordan", activeClass: "hero-active-country-jordan" },
+  { name: "Saudi Arabia", activeClass: "hero-active-country-saudi-arabia" },
+  { name: "Qatar", activeClass: "hero-active-country-qatar" },
+  { name: "Kuwait", activeClass: "hero-active-country-kuwait" }
 ];
 
 const parseLanguageSkillsForDisplay = (skills) => {
@@ -193,6 +193,11 @@ function Home18Page() {
       map: "world",
       zoomButtons: false,
       zoomOnScroll: false,
+      labels: {
+        markers: {
+          render: (marker) => marker.name
+        }
+      },
       markers: [
         { name: "Ethiopia", coords: [9.145, 40.489] },
         { name: "Jordan", coords: [30.5852, 36.2384] },
@@ -782,10 +787,7 @@ function Home18Page() {
       {/*Banner Start*/}
       <div id="home-hero" dir={isArabic ? "rtl" : "ltr"} className={`twm-home1-banner-section hero-map-hero site-bg-gray ${isArabic ? "hero-content-rtl" : ""}`}>
         <div className="hero-world-map-shell">
-          <div ref={heroMapRef} className="hero-world-map" aria-label="Interactive world map highlighting Ethiopia, Jordan, Saudi Arabia, Qatar, and Kuwait" />
-          <div className={`hero-country-rotation-label ${rotatingCountryNames[activeCountryIndex].positionClass}`} aria-live="polite">
-            {rotatingCountryNames[activeCountryIndex].name}
-          </div>
+          <div ref={heroMapRef} className={`hero-world-map ${rotatingCountryNames[activeCountryIndex].activeClass}`} aria-label="Interactive world map highlighting Ethiopia, Jordan, Saudi Arabia, Qatar, and Kuwait" />
           <div className="twm-small-ring-l slide-top-animation" />
           <div className="twm-small-ring-2 slide-top-animation" />
         </div>
