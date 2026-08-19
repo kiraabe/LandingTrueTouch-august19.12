@@ -120,23 +120,23 @@
 }
 
 .hero-country-label-jordan {
-  top: 35%;
-  left: 58%;
+  top: 41.5%;
+  left: 60%;
 }
 
 .hero-country-label-saudi-arabia {
-  top: 40%;
-  left: 62%;
+  top: 43%;
+  left: 62.5%;
 }
 
 .hero-country-label-qatar {
-  top: 39%;
-  left: 64%;
+  top: 42.5%;
+  left: 64.2%;
 }
 
 .hero-country-label-kuwait {
-  top: 36%;
-  left: 63%;
+  top: 41.5%;
+  left: 63.2%;
 }
 
 @keyframes hero-country-label-enter {
