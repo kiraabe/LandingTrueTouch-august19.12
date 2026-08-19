@@ -763,8 +763,13 @@ function Home18Page() {
       {!pageReady && <Spinner fullPage={true} />}
 
       {/*Banner Start*/}
-      <div id="home-hero" dir={isArabic ? "rtl" : "ltr"} className={`twm-home1-banner-section hero-banner-background site-bg-gray bg-cover ${isArabic ? "hero-content-rtl" : ""}`}>
-        <div className="row">
+      <div id="home-hero" dir={isArabic ? "rtl" : "ltr"} className={`twm-home1-banner-section hero-map-hero site-bg-gray ${isArabic ? "hero-content-rtl" : ""}`}>
+        <div className="hero-world-map-shell">
+          <div ref={heroMapRef} className="hero-world-map" aria-label="Interactive world map highlighting Ethiopia, Jordan, Saudi Arabia, Qatar, and Kuwait" />
+          <div className="twm-small-ring-l slide-top-animation" />
+          <div className="twm-small-ring-2 slide-top-animation" />
+        </div>
+        <div className="row hero-content-layer">
           <div className="col-xl-6 col-lg-6 col-md-12">
             <div className="twm-bnr-left-section">
               <div className="twm-bnr-title-small">{isAmharic || isArabic ? heroCopy.partner : <>Your Partner in <span className="site-text-primary">Global</span> Recruitment</>}</div>
@@ -800,15 +805,6 @@ function Home18Page() {
                   </div>
                 </form>
               </div>
-            </div>
-          </div>
-          <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
-            <div className="twm-bnr-right-content">
-              <div className="hero-world-map-shell">
-                <div ref={heroMapRef} className="hero-world-map" aria-label="Interactive world map highlighting Ethiopia, Jordan, Saudi Arabia, Qatar, and Kuwait" />
-              </div>
-              <div className="twm-small-ring-l slide-top-animation" />
-              <div className="twm-small-ring-2 slide-top-animation" />
             </div>
           </div>
         </div>
