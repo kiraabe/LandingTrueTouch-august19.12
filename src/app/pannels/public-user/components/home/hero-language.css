@@ -46,8 +46,16 @@
   box-shadow: 0 18px 40px rgba(0, 40, 96, 0.12);
 }
 
-.hero-world-map .jvm-container {
+.hero-world-map.jvm-container {
+  position: relative;
+  z-index: 6;
+  overflow: visible;
   background: transparent !important;
+}
+
+.hero-world-map.jvm-container .jvm-tooltip {
+  z-index: 20;
+  pointer-events: none;
 }
 
 .hero-world-map path {
