@@ -176,15 +176,39 @@ function Home18Page() {
       map: "world",
       zoomButtons: false,
       zoomOnScroll: false,
-      selectedRegions: ["ET", "JO", "SA", "QA", "KW"],
+      markers: [
+        { name: "Ethiopia", coords: [9.145, 40.489] },
+        { name: "Jordan", coords: [30.5852, 36.2384] },
+        { name: "Saudi Arabia", coords: [23.8859, 45.0792] },
+        { name: "Qatar", coords: [25.3548, 51.1839] },
+        { name: "Kuwait", coords: [29.3117, 47.4818] }
+      ],
+      lines: [
+        { from: "Ethiopia", to: "Jordan" },
+        { from: "Ethiopia", to: "Saudi Arabia" },
+        { from: "Ethiopia", to: "Qatar" },
+        { from: "Ethiopia", to: "Kuwait" }
+      ],
+      lineStyle: {
+        curvature: 0.3,
+        stroke: "#eca315",
+        strokeWidth: 2,
+        strokeLinecap: "round",
+        strokeDasharray: "6 5"
+      },
+      markerStyle: {
+        initial: {
+          r: 0,
+          fillOpacity: 0,
+          strokeOpacity: 0
+        }
+      },
       onRegionTooltipShow: (event, tooltip) => {
         tooltip.getElement().classList.add("hero-world-map-tooltip");
       },
       regionStyle: {
         initial: { fill: "#dbe6f4", fillOpacity: 1 },
-        hover: { fill: "#b4cded", fillOpacity: 1 },
-        selected: { fill: "#eca315", fillOpacity: 1 },
-        selectedHover: { fill: "#eca315", fillOpacity: 0.8 }
+        hover: { fill: "#b4cded", fillOpacity: 1 }
       }
     });
 
