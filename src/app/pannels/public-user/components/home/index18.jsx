@@ -6,8 +6,11 @@ import { publicUser } from "../../../../../globals/route-names";
 import { downloadFileWithToast, showErrorToast, showSuccessToast } from "../../../../../globals/error-handler";
 import { candidateProfileFallback, getCandidateProfilePictureUrl, getCandidateCvUrl, getJobImageUrl, getTestimonialAvatarUrl } from "../../../../../globals/file-url";
 import { NavLink, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Toaster } from "../../../../../components/ui/toaster";
+import jsVectorMap from "jsvectormap";
+import "jsvectormap/dist/jsvectormap.min.css";
+import "jsvectormap/dist/maps/world";
 import "./cv-modal.css";
 import "./hero-language.css";
 import CountUp from "react-countup";
@@ -137,6 +140,7 @@ function Home18Page() {
   const [testimonials, setTestimonials] = useState([]);
   const [pageReady, setPageReady] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState(() => document.documentElement.lang || "am");
+  const heroMapRef = useRef(null);
 
   const downloadResume = (event, filename, label) => {
     event.preventDefault();
@@ -167,29 +171,22 @@ function Home18Page() {
   }, []);
 
   useEffect(() => {
-    if (!window.jQuery?.fn?.owlCarousel) return;
+    const map = new jsVectorMap({
+      selector: heroMapRef.current,
+      map: "world",
+      zoomButtons: false,
+      zoomOnScroll: false,
+      selectedRegions: ["ET", "JO", "SA", "QA", "KW"],
+      regionStyle: {
+        initial: { fill: "#dbe6f4", fillOpacity: 1 },
+        hover: { fill: "#b4cded", fillOpacity: 1 },
+        selected: { fill: "#eca315", fillOpacity: 1 },
+        selectedHover: { fill: "#eca315", fillOpacity: 0.8 }
+      }
+    });
 
-    const timeoutId = setTimeout(() => {
-      const carousel = window.jQuery('.twm-h1-bnr-carousal');
-      if (!carousel.length) return;
-      if (carousel.hasClass('owl-loaded')) carousel.trigger('destroy.owl.carousel');
-      carousel.owlCarousel({
-        animateIn: 'fadeIn',
-        animateOut: 'fadeOut',
-        items: 1,
-        loop: true,
-        nav: false,
-        dots: false,
-        autoplay: true,
-        autoplayHoverPause: false,
-        touchDrag: false,
-        mouseDrag: false,
-        rtl: currentLanguage === 'ar'
-      });
-    }, 100);
-
-    return () => clearTimeout(timeoutId);
-  }, [currentLanguage]);
+    return () => map.destroy();
+  }, []);
 
   // Read search query from URL parameters
   useEffect(() => {
@@ -739,7 +736,7 @@ function Home18Page() {
       {!pageReady && <Spinner fullPage={true} />}
 
       {/*Banner Start*/}
-      <div id="home-hero" dir={isArabic ? "rtl" : "ltr"} className={`twm-home1-banner-section site-bg-gray bg-cover ${isArabic ? "hero-content-rtl" : ""}`} style={{ backgroundImage: `url(${publicUrlFor("images/home-7/ofr-bg.jpg")})` }}>
+      <div id="home-hero" dir={isArabic ? "rtl" : "ltr"} className={`twm-home1-banner-section hero-banner-background site-bg-gray bg-cover ${isArabic ? "hero-content-rtl" : ""}`}>
         <div className="row">
           <div className="col-xl-6 col-lg-6 col-md-12">
             <div className="twm-bnr-left-section">
@@ -780,19 +777,8 @@ function Home18Page() {
           </div>
           <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
             <div className="twm-bnr-right-content">
-              <div className="twm-bnr-right-carousel">
-                <div className="owl-carousel twm-h1-bnr-carousal">
-                  <div className="item">
-                    <div className="slide-img">
-                      <JobZImage src="images/main-slider/slider1/r-img1.png" alt="True Touch recruitment services" loading="eager" fetchPriority="high" />
-                    </div>
-                  </div>
-                  <div className="item">
-                    <div className="slide-img">
-                      <JobZImage src="images/main-slider/slider1/r-img2.png" alt="True Touch recruitment services" loading="eager" />
-                    </div>
-                  </div>
-                </div>
+              <div className="hero-world-map-shell">
+                <div ref={heroMapRef} className="hero-world-map" aria-label="Interactive world map highlighting Ethiopia, Jordan, Saudi Arabia, Qatar, and Kuwait" />
               </div>
               <div className="twm-small-ring-l slide-top-animation" />
               <div className="twm-small-ring-2 slide-top-animation" />
