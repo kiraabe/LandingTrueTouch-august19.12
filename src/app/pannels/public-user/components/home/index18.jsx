@@ -77,6 +77,14 @@ function parseSkillsForDisplay(skillLevel) {
 }
 
 // Parse language_skills for display as tags
+const rotatingCountryNames = [
+  { name: "Ethiopia", positionClass: "hero-country-label-ethiopia" },
+  { name: "Jordan", positionClass: "hero-country-label-jordan" },
+  { name: "Saudi Arabia", positionClass: "hero-country-label-saudi-arabia" },
+  { name: "Qatar", positionClass: "hero-country-label-qatar" },
+  { name: "Kuwait", positionClass: "hero-country-label-kuwait" }
+];
+
 const parseLanguageSkillsForDisplay = (skills) => {
   if (!skills) return [];
 
@@ -140,6 +148,7 @@ function Home18Page() {
   const [testimonials, setTestimonials] = useState([]);
   const [pageReady, setPageReady] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState(() => document.documentElement.lang || "am");
+  const [activeCountryIndex, setActiveCountryIndex] = useState(0);
   const heroMapRef = useRef(null);
 
   const downloadResume = (event, filename, label) => {
@@ -168,6 +177,14 @@ function Home18Page() {
     const handleLanguageChange = (event) => setCurrentLanguage(event.detail.language);
     document.addEventListener("languagechange", handleLanguageChange);
     return () => document.removeEventListener("languagechange", handleLanguageChange);
+  }, []);
+
+  useEffect(() => {
+    const rotationTimer = setInterval(() => {
+      setActiveCountryIndex((currentIndex) => (currentIndex + 1) % rotatingCountryNames.length);
+    }, 3000);
+
+    return () => clearInterval(rotationTimer);
   }, []);
 
   useEffect(() => {
@@ -766,6 +783,9 @@ function Home18Page() {
       <div id="home-hero" dir={isArabic ? "rtl" : "ltr"} className={`twm-home1-banner-section hero-map-hero site-bg-gray ${isArabic ? "hero-content-rtl" : ""}`}>
         <div className="hero-world-map-shell">
           <div ref={heroMapRef} className="hero-world-map" aria-label="Interactive world map highlighting Ethiopia, Jordan, Saudi Arabia, Qatar, and Kuwait" />
+          <div className={`hero-country-rotation-label ${rotatingCountryNames[activeCountryIndex].positionClass}`} aria-live="polite">
+            {rotatingCountryNames[activeCountryIndex].name}
+          </div>
           <div className="twm-small-ring-l slide-top-animation" />
           <div className="twm-small-ring-2 slide-top-animation" />
         </div>

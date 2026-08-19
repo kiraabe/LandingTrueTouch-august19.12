@@ -97,6 +97,60 @@
   pointer-events: none;
 }
 
+.hero-country-rotation-label {
+  position: absolute;
+  z-index: 7;
+  padding: 8px 14px;
+  border: 1px solid #eca315;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 8px 20px rgba(0, 40, 96, 0.16);
+  color: #002860;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: hero-country-label-enter 0.45s ease both;
+}
+
+.hero-country-label-ethiopia {
+  top: 48%;
+  left: 61%;
+}
+
+.hero-country-label-jordan {
+  top: 35%;
+  left: 58%;
+}
+
+.hero-country-label-saudi-arabia {
+  top: 40%;
+  left: 62%;
+}
+
+.hero-country-label-qatar {
+  top: 39%;
+  left: 64%;
+}
+
+.hero-country-label-kuwait {
+  top: 36%;
+  left: 63%;
+}
+
+@keyframes hero-country-label-enter {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
 .hero-world-map path {
   cursor: pointer;
 }
