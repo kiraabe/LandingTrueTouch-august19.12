@@ -5,7 +5,7 @@ import { loadScript, publicUrlFor, updateSkinStyle } from "../../../../../global
 import { publicUser } from "../../../../../globals/route-names";
 import { downloadFileWithToast, showErrorToast, showSuccessToast } from "../../../../../globals/error-handler";
 import { candidateProfileFallback, getCandidateProfilePictureUrl, getCandidateCvUrl, getJobImageUrl, getTestimonialAvatarUrl } from "../../../../../globals/file-url";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { Toaster } from "../../../../../components/ui/toaster";
 import "./cv-modal.css";
@@ -150,7 +150,6 @@ const parseLanguageSkillsForDisplay = (skills) => {
 
 function Home18Page() {
   const location = useLocation();
-  const navigate = useNavigate();
   const [allCandidates, setAllCandidates] = useState([]);
   const [filteredCandidates, setFilteredCandidates] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -657,7 +656,10 @@ function Home18Page() {
     event.preventDefault();
     const query = new FormData(event.currentTarget).get("username")?.toString().trim();
     if (!query) return;
-    navigate(`${publicUser.candidate.GRID}?search=${encodeURIComponent(query)}`);
+    setSearchQuery(query);
+    setActiveTab('all');
+    setFilters({ jobCategory: '', preferredWorkCountry: '', skillLevel: '', religion: '', status: '' });
+    setTimeout(() => document.getElementById('candidates')?.scrollIntoView({ behavior: 'smooth' }), 0);
   };
 
   const handleHeroSearchSubmit = (event) => {
