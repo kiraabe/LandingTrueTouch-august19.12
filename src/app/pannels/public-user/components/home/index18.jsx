@@ -652,16 +652,6 @@ function Home18Page() {
     setActiveTab('all');
   };
 
-  const handleCandidateSearchSubmit = (event) => {
-    event.preventDefault();
-    const query = new FormData(event.currentTarget).get("username")?.toString().trim();
-    if (!query) return;
-    setSearchQuery(query);
-    setActiveTab('all');
-    setFilters({ jobCategory: '', preferredWorkCountry: '', skillLevel: '', religion: '', status: '' });
-    setTimeout(() => document.getElementById('candidates')?.scrollIntoView({ behavior: 'smooth' }), 0);
-  };
-
   const handleHeroSearchSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -906,18 +896,18 @@ function Home18Page() {
                 <div className="twm-bnr-title-large-thin">Hire Skilled </div>
                 <div className="twm-bnr-title-large-bold">Workers with True Touch</div>
                 <div className="twm-bnr-search-bar">
-                  <form onSubmit={handleCandidateSearchSubmit}>
+                  <form>
                     <div className="row">
                       {/*Title*/}
                       <div className="form-group col-xl-8 col-lg-8 col-md-8">
                         <label>What</label>
                         <div className="twm-single-iput">
-                          <input name="username" type="text" required className="form-control  bg-none" placeholder="Job title, Keywords, or company" />
+                          <input name="username" type="text" required className="form-control  bg-none" placeholder="profession, religion, or location" />
                         </div>
                       </div>
                       {/*Find job btn*/}
                       <div className="form-group col-xl-4 col-lg-4 col-md-4">
-                        <button type="submit" className="site-button">Find Job</button>
+                        <button type="button" className="site-button">Find Job</button>
                       </div>
                     </div>
                   </form>
