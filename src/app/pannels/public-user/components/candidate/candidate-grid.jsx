@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import Spinner from "../../../../common/spinner";
 import { showErrorToast } from "../../../../../globals/error-handler";
 import { candidateProfileFallback, getCandidateProfilePictureUrl } from "../../../../../globals/file-url";
@@ -26,6 +26,7 @@ const buildWhatsAppLink = (candidate) => {
 };
 
 function CandidateGridPage() {
+  const location = useLocation();
   const [candidates, setCandidates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -34,6 +35,10 @@ function CandidateGridPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState({ jobCategory: "", location: "", preferredWorkCountry: "", skillLevel: "", ageMin: 0, ageMax: 100, status: "" });
   const [filterOptions, setFilterOptions] = useState({ professions: [], locations: [], preferredWorkCountries: [], skillLevels: [], statuses: [] });
+
+  useEffect(() => {
+    setSearchQuery(new URLSearchParams(location.search).get("search") || "");
+  }, [location.search]);
 
   useEffect(() => {
     const handleLanguageChange = (event) => setCurrentLanguage(event.detail.language);

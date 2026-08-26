@@ -5,7 +5,7 @@ import { loadScript, publicUrlFor, updateSkinStyle } from "../../../../../global
 import { publicUser } from "../../../../../globals/route-names";
 import { downloadFileWithToast, showErrorToast, showSuccessToast } from "../../../../../globals/error-handler";
 import { candidateProfileFallback, getCandidateProfilePictureUrl, getCandidateCvUrl, getJobImageUrl, getTestimonialAvatarUrl } from "../../../../../globals/file-url";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { Toaster } from "../../../../../components/ui/toaster";
 import "./cv-modal.css";
@@ -150,6 +150,7 @@ const parseLanguageSkillsForDisplay = (skills) => {
 
 function Home18Page() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [allCandidates, setAllCandidates] = useState([]);
   const [filteredCandidates, setFilteredCandidates] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -652,6 +653,13 @@ function Home18Page() {
     setActiveTab('all');
   };
 
+  const handleCandidateSearchSubmit = (event) => {
+    event.preventDefault();
+    const query = new FormData(event.currentTarget).get("username")?.toString().trim();
+    if (!query) return;
+    navigate(`${publicUser.candidate.GRID}?search=${encodeURIComponent(query)}`);
+  };
+
   const handleHeroSearchSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -896,7 +904,7 @@ function Home18Page() {
                 <div className="twm-bnr-title-large-thin">Hire Skilled </div>
                 <div className="twm-bnr-title-large-bold">Workers with True Touch</div>
                 <div className="twm-bnr-search-bar">
-                  <form>
+                  <form onSubmit={handleCandidateSearchSubmit}>
                     <div className="row">
                       {/*Title*/}
                       <div className="form-group col-xl-8 col-lg-8 col-md-8">
@@ -907,7 +915,7 @@ function Home18Page() {
                       </div>
                       {/*Find job btn*/}
                       <div className="form-group col-xl-4 col-lg-4 col-md-4">
-                        <button type="button" className="site-button">Find Job</button>
+                        <button type="submit" className="site-button">Find Job</button>
                       </div>
                     </div>
                   </form>
