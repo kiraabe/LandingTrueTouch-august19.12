@@ -5,6 +5,12 @@
   padding-right: 20px;
 }
 
+@media (min-width: 1271px) {
+  .twm-home-10-banner-section .row .twm-bnr-left-section {
+    margin-left: 0;
+  }
+}
+
 .hero-content-rtl .twm-bnr-left-section,
 .hero-content-rtl .twm-bnr-title-small,
 .hero-content-rtl .twm-bnr-title-large,
