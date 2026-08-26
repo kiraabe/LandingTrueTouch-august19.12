@@ -893,8 +893,8 @@ function Home18Page() {
                   <span className="qb-3 zoom-in-out-box2" />
                   <span className="qb-4" />
                 </div>
-                <div className="twm-bnr-title-large-thin">We are</div>
-                <div className="twm-bnr-title-large-bold">Hiring Jobs</div>
+                <div className="twm-bnr-title-large-thin">Hire</div>
+                <div className="twm-bnr-title-large-bold">Skilled Workers with True Touch</div>
                 <div className="twm-bnr-search-bar">
                   <form>
                     <div className="row">
