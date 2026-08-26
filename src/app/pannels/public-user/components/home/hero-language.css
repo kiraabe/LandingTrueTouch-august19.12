@@ -167,6 +167,10 @@
   overflow: visible;
 }
 
+.recruitment-route-map .amcharts-chart-div > a {
+  display: none !important;
+}
+
 .twm-home-10-banner-section .container {
   position: relative;
   z-index: 1;
