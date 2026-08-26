@@ -141,6 +141,28 @@
   text-align: left !important;
 }
 
+.recruitment-route-map {
+  position: absolute;
+  inset: 0;
+  opacity: 0.72;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.recruitment-route-map > div {
+  width: 100%;
+  height: 100%;
+}
+
+.recruitment-route-map svg {
+  overflow: visible;
+}
+
+.twm-home-10-banner-section .container {
+  position: relative;
+  z-index: 1;
+}
+
 .regional-offices-background {
   background-image: url('/assets/images/home-7/ofr-bg.jpg');
 }

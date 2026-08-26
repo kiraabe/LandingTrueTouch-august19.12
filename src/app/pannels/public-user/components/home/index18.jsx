@@ -6,7 +6,7 @@ import { publicUser } from "../../../../../globals/route-names";
 import { downloadFileWithToast, showErrorToast, showSuccessToast } from "../../../../../globals/error-handler";
 import { candidateProfileFallback, getCandidateProfilePictureUrl, getCandidateCvUrl, getJobImageUrl, getTestimonialAvatarUrl } from "../../../../../globals/file-url";
 import { NavLink, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Toaster } from "../../../../../components/ui/toaster";
 import "./cv-modal.css";
 import "./hero-language.css";
@@ -16,6 +16,30 @@ import AirplaneCircleHighlight from "./AirplaneCircleHighlight";
 // Truncate text helper
 const API_BASE_URL = '';
 const COMPANY_WHATSAPP_NUMBER = "251935106635";
+const MAP_SCRIPT_URL = "https://www.amcharts.com/lib/3/ammap.js?3.17.0";
+const WORLD_MAP_SCRIPT_URL = "https://www.amcharts.com/lib/3/maps/js/worldLow.js";
+const TARGET_SVG = "M9,0C4.029,0,0,4.029,0,9s4.029,9,9,9s9-4.029,9-9S13.971,0,9,0z M9,15.93c-3.83,0-6.93-3.1-6.93-6.93S5.17,2.07,9,2.07s6.93,3.1,6.93,6.93S12.83,15.93,9,15.93 M12.5,9c0,1.933-1.567,3.5-3.5,3.5S5.5,10.933,5.5,9S7.067,5.5,9,5.5S12.5,7.067,12.5,9z";
+const PLANE_SVG = "m2,106h28l24,30h72l-44,-133h35l80,132h98c21,0,21,34,0,34l-98,0-80,134h-35l43,-133h-71l-24,30h-28l15,-47";
+
+const loadExternalScript = (src, loaded) => {
+  if (loaded()) return Promise.resolve();
+
+  return new Promise((resolve, reject) => {
+    const existingScript = document.querySelector(`script[src="${src}"]`);
+    const script = existingScript || document.createElement("script");
+
+    const handleLoad = () => resolve();
+    const handleError = () => reject(new Error(`Unable to load ${src}`));
+
+    script.addEventListener("load", handleLoad, { once: true });
+    script.addEventListener("error", handleError, { once: true });
+
+    if (!existingScript) {
+      script.src = src;
+      document.head.appendChild(script);
+    }
+  });
+};
 
 const candidateSearchCopy = {
   en: {
@@ -137,6 +161,7 @@ function Home18Page() {
   const [testimonials, setTestimonials] = useState([]);
   const [pageReady, setPageReady] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState(() => document.documentElement.lang || "am");
+  const recruitmentMapRef = useRef(null);
 
   const downloadResume = (event, filename, label) => {
     event.preventDefault();
@@ -158,6 +183,121 @@ function Home18Page() {
   useEffect(() => {
     document.title = 'Home | TrueTouch - Foreign Employment Recruitment Agency';
     loadScript("js/custom.js");
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    let chart;
+
+    const origin = { latitude: 9.0084, longitude: 38.7575 };
+    const destinations = [
+      { id: "doha", title: "Doha, Qatar", latitude: 25.2854, longitude: 51.5310 },
+      { id: "amman", title: "Amman, Jordan", latitude: 31.9454, longitude: 35.9284 },
+      { id: "riyadh", title: "Riyadh, Saudi Arabia", latitude: 24.7136, longitude: 46.6753 },
+      { id: "kuwait-city", title: "Kuwait City, Kuwait", latitude: 29.3759, longitude: 47.9774 }
+    ];
+
+    const initializeMap = async () => {
+      try {
+        await loadExternalScript(MAP_SCRIPT_URL, () => Boolean(window.AmCharts));
+        await loadExternalScript(WORLD_MAP_SCRIPT_URL, () => Boolean(window.AmCharts?.maps?.worldLow));
+
+        if (cancelled || !recruitmentMapRef.current || !window.AmCharts) return;
+
+        const lines = destinations.flatMap((destination) => [
+          {
+            id: `${destination.id}-route`,
+            arc: -0.3,
+            alpha: 0.3,
+            latitudes: [origin.latitude, destination.latitude],
+            longitudes: [origin.longitude, destination.longitude]
+          },
+          {
+            id: `${destination.id}-animation-route`,
+            alpha: 0,
+            color: "#000000",
+            latitudes: [origin.latitude, destination.latitude],
+            longitudes: [origin.longitude, destination.longitude]
+          }
+        ]);
+        const images = [
+          {
+            svgPath: TARGET_SVG,
+            title: "Addis Ababa, Ethiopia",
+            balloonText: "Addis Ababa, Ethiopia",
+            ...origin
+          },
+          ...destinations.map(({ id, ...destination }) => ({
+            svgPath: TARGET_SVG,
+            balloonText: destination.title,
+            ...destination
+          })),
+          ...destinations.flatMap((destination) => [
+            {
+              svgPath: PLANE_SVG,
+              positionOnLine: 0,
+              color: "#000000",
+              alpha: 0.1,
+              animateAlongLine: true,
+              lineId: `${destination.id}-animation-route`,
+              flipDirection: true,
+              loop: true,
+              scale: 0.03,
+              positionScale: 1.3
+            },
+            {
+              svgPath: PLANE_SVG,
+              positionOnLine: 0,
+              color: "#585869",
+              animateAlongLine: true,
+              lineId: `${destination.id}-route`,
+              flipDirection: true,
+              loop: true,
+              scale: 0.03,
+              positionScale: 1
+            }
+          ])
+        ];
+
+        chart = window.AmCharts.makeChart(recruitmentMapRef.current, {
+          type: "map",
+          fontSize: 20,
+          balloon: { horizontalPadding: 20, verticalPadding: 15 },
+          creditsPosition: "top-right",
+          dragMap: false,
+          mouseWheelZoomEnabled: false,
+          zoomOnDoubleClick: false,
+          zoomControl: { zoomControlEnabled: false, homeButtonEnabled: false },
+          dataProvider: {
+            map: "worldLow",
+            zoomLevel: 3.5,
+            zoomLongitude: 42,
+            zoomLatitude: 18,
+            lines,
+            images
+          },
+          areasSettings: { unlistedAreasColor: "#8dd9ef" },
+          imagesSettings: {
+            color: "#585869",
+            rollOverColor: "#585869",
+            selectedColor: "#585869",
+            pauseDuration: 0.5,
+            animationDuration: 8,
+            adjustAnimationSpeed: false
+          },
+          linesSettings: { color: "#585869", alpha: 0.4 }
+        });
+      } catch (error) {
+        console.error("Recruitment map could not be loaded.", error);
+      }
+    };
+
+    initializeMap();
+
+    return () => {
+      cancelled = true;
+      chart?.clear();
+    };
   }, []);
 
   useEffect(() => {
@@ -740,7 +880,8 @@ function Home18Page() {
 
 
       {/*Banner Start*/}
-      <div className="twm-home-10-banner-section twm-bne-10-skew" style={{ backgroundImage: `url(${publicUrlFor("images/home-10/banner-bg/pic1.jpg")})` }}>
+      <div className="twm-home-10-banner-section twm-bne-10-skew">
+        <div ref={recruitmentMapRef} className="recruitment-route-map" aria-hidden="true" />
         <div className="container">
           <div className="row">
             {/*Left Section*/}
