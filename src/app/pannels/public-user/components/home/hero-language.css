@@ -148,6 +148,10 @@
   text-align: left !important;
 }
 
+.twm-home-10-banner-section.twm-bne-10-skew::before {
+  z-index: 1;
+}
+
 .recruitment-route-map {
   position: absolute;
   top: 80px;
