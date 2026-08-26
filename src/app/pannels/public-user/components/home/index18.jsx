@@ -930,7 +930,7 @@ function Home18Page() {
               <div className="twm-bnr-right-content">
                 <div className="bnr-media-wrap">
                   <div className="bnr-media">
-                    <img src="https://cdn.builder.io/api/v1/image/assets%2Ff59ca097baba49728671c5c6171cfef6%2Fffec8b420c3749168c9d7c56f534320f?format=webp&width=800&height=1200" alt="TrueTouch professionals" loading="lazy" decoding="async" />
+                    <img src="/assets/images/home-10/banner-bg/right-pic1.png" alt="TrueTouch professionals" loading="lazy" decoding="async" />
                   </div>
                   <div className="semi-circle rotate-center-2" />
                 </div>
