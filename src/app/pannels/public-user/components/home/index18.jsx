@@ -930,7 +930,7 @@ function Home18Page() {
               <div className="twm-bnr-right-content">
                 <div className="bnr-media-wrap">
                   <div className="bnr-media">
-                    <JobZImage src="images/home-10/banner-bg/right-pic1.jpg" alt="#" />
+                    <JobZImage src="/assets/images/home-10/banner-bg/right-pic1.png" alt="#" />
                   </div>
                   <div className="semi-circle rotate-center-2" />
                 </div>
