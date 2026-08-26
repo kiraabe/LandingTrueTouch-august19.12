@@ -894,7 +894,7 @@ function Home18Page() {
                   <span className="qb-4" />
                 </div>
                 <div className="twm-bnr-title-large-thin">Hire</div>
-                <div className="twm-bnr-title-large-bold">Skilled Workers with True Touch</div>
+                <div className="twm-bnr-title-large-bold">Workers with True Touch</div>
                 <div className="twm-bnr-search-bar">
                   <form>
                     <div className="row">
