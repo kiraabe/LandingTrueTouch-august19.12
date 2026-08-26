@@ -271,7 +271,7 @@ function Home18Page() {
           dataProvider: {
             map: "worldLow",
             zoomLevel: 1.5,
-            zoomLongitude: 42,
+            zoomLongitude: 30,
             zoomLatitude: 18,
             lines,
             images
