@@ -913,15 +913,8 @@ function Home18Page() {
                   </form>
                 </div>
                 <div className="twm-bnr-popular-search">
-                  <span className="twm-title">Popular Searches</span>
-                  <NavLink to={publicUser.jobs.LIST}>Developer</NavLink> ,
-                  <NavLink to={publicUser.jobs.LIST}>Designer</NavLink> ,
-                  <NavLink to={publicUser.jobs.LIST}>Architect</NavLink> ,
-                  <NavLink to={publicUser.jobs.LIST}>Engineer</NavLink> ,
-                  <NavLink to={publicUser.jobs.LIST}>PHP</NavLink> ,
-                  <NavLink to={publicUser.jobs.LIST}>Banking</NavLink> ,
-                  <NavLink to={publicUser.jobs.LIST}>Ios</NavLink> ,
-                  <NavLink to={publicUser.jobs.LIST}>Accountancy</NavLink>...
+                  <span className="twm-title">Your Partner in Global Recruitment</span>
+                  <NavLink to={publicUser.jobs.LIST}>True Touch connects employers with vetted, skilled professionals from Asia and Africa. We provide reliable domestic helpers, healthcare workers, chefs, and skilled labor across the Gulf, Middle East, and beyond.</NavLink> 
                 </div>
               </div>
             </div>
