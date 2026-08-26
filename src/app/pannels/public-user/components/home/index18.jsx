@@ -738,68 +738,68 @@ function Home18Page() {
       <Toaster position="top-right" richColors />
       {!pageReady && <Spinner fullPage={true} />}
 
+
       {/*Banner Start*/}
-      <div id="home-hero" dir={isArabic ? "rtl" : "ltr"} className={`twm-home1-banner-section site-bg-gray bg-cover ${isArabic ? "hero-content-rtl" : ""}`} style={{ backgroundImage: `url(${publicUrlFor("images/home-7/ofr-bg.jpg")})` }}>
-        <div className="row">
-          <div className="col-xl-6 col-lg-6 col-md-12">
-            <div className="twm-bnr-left-section">
-              <div className="twm-bnr-title-small">{isAmharic || isArabic ? heroCopy.partner : <>Your Partner in <span className="site-text-primary">Global</span> Recruitment</>}</div>
-              <div className="twm-bnr-title-large">{heroCopy.hirePrefix}<AirplaneCircleHighlight className="site-text-primary">{heroCopy.skilled}</AirplaneCircleHighlight>{heroCopy.hireSuffix}</div>
-              <p className="twm-bnr-tagline">{heroCopy.description}</p>
-              <div className="twm-bnr-search-bar">
-                <form onSubmit={handleHeroSearchSubmit}>
-                  <div className="row">
-                    <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                      <label>{heroCopy.professionLabel}</label>
-                      <select name="jobCategory" value={filters.jobCategory} onChange={(event) => handleFilterChange('jobCategory', event.target.value)} className="wt-search-bar-select" id="j-Job_Title">
-                        <option value="">{heroCopy.professionPlaceholder}</option>
-                        {filterOptions.professions.map(profession => <option key={profession} value={profession}>{profession}</option>)}
-                      </select>
-                    </div>
-                    <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                      <label>{heroCopy.religionLabel}</label>
-                      <select name="religion" value={filters.religion} onChange={(event) => handleFilterChange('religion', event.target.value)} className="wt-search-bar-select" id="j-All_Category">
-                        <option value="">{heroCopy.religionPlaceholder}</option>
-                        {filterOptions.religions.map(religion => <option key={religion} value={religion}>{religion}</option>)}
-                      </select>
-                    </div>
-                    <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                      <label>{heroCopy.locationLabel}</label>
-                      <div className="twm-inputicon-box">
-                        <input name="location" type="text" value={heroLocation} onChange={(event) => setHeroLocation(event.target.value)} className="form-control hero-location-input" placeholder={heroCopy.locationPlaceholder} />
-                        <i className="twm-input-icon fas fa-map-marker-alt" />
+      <div className="twm-home-10-banner-section twm-bne-10-skew" style={{ backgroundImage: `url(${publicUrlFor("images/home-10/banner-bg/pic1.jpg")})` }}>
+        <div className="container">
+          <div className="row">
+            {/*Left Section*/}
+            <div className="col-xl-6 col-lg-6 col-md-12">
+              <div className="twm-bnr-left-section">
+                <div className="small-qb-box">
+                  <span className="qb-1" />
+                  <span className="qb-2 zoom-in-out-box" />
+                  <span className="qb-3 zoom-in-out-box2" />
+                  <span className="qb-4" />
+                </div>
+                <div className="twm-bnr-title-large-thin">We are</div>
+                <div className="twm-bnr-title-large-bold">Hiring Jobs</div>
+                <div className="twm-bnr-search-bar">
+                  <form>
+                    <div className="row">
+                      {/*Title*/}
+                      <div className="form-group col-xl-8 col-lg-8 col-md-8">
+                        <label>What</label>
+                        <div className="twm-single-iput">
+                          <input name="username" type="text" required className="form-control  bg-none" placeholder="Job title, Keywords, or company" />
+                        </div>
+                      </div>
+                      {/*Find job btn*/}
+                      <div className="form-group col-xl-4 col-lg-4 col-md-4">
+                        <button type="button" className="site-button">Find Job</button>
                       </div>
                     </div>
-                    <div className="form-group col-xl-3 col-lg-6 col-md-6">
-                      <button type="submit" className="site-button">{heroCopy.search}</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
-            <div className="twm-bnr-right-content">
-              <div className="twm-bnr-right-carousel">
-                <div className="owl-carousel twm-h1-bnr-carousal">
-                  <div className="item">
-                    <div className="slide-img">
-                      <JobZImage src="images/main-slider/slider1/r-img1.png" alt="True Touch recruitment services" loading="eager" fetchPriority="high" />
-                    </div>
-                  </div>
-                  <div className="item">
-                    <div className="slide-img">
-                      <JobZImage src="images/main-slider/slider1/r-img2.png" alt="True Touch recruitment services" loading="eager" />
-                    </div>
-                  </div>
+                  </form>
+                </div>
+                <div className="twm-bnr-popular-search">
+                  <span className="twm-title">Popular Searches</span>
+                  <NavLink to={publicUser.jobs.LIST}>Developer</NavLink> ,
+                  <NavLink to={publicUser.jobs.LIST}>Designer</NavLink> ,
+                  <NavLink to={publicUser.jobs.LIST}>Architect</NavLink> ,
+                  <NavLink to={publicUser.jobs.LIST}>Engineer</NavLink> ,
+                  <NavLink to={publicUser.jobs.LIST}>PHP</NavLink> ,
+                  <NavLink to={publicUser.jobs.LIST}>Banking</NavLink> ,
+                  <NavLink to={publicUser.jobs.LIST}>Ios</NavLink> ,
+                  <NavLink to={publicUser.jobs.LIST}>Accountancy</NavLink>...
                 </div>
               </div>
-              <div className="twm-small-ring-l slide-top-animation" />
-              <div className="twm-small-ring-2 slide-top-animation" />
+            </div>
+            {/*right Section*/}
+            <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
+              <div className="twm-bnr-right-content">
+                <div className="bnr-media-wrap">
+                  <div className="bnr-media">
+                    <JobZImage src="images/home-10/banner-bg/right-pic1.jpg" alt="#" />
+                  </div>
+                  <div className="semi-circle rotate-center-2" />
+                </div>
+              </div>
             </div>
           </div>
+          <div className="twm-bnr-bottom-section">
+            <div className="twm-browse-jobs">Search</div>
+          </div>
         </div>
-        <div className="twm-gradient-text">True Touch</div>
       </div>
       {/*Banner End*/}
 
