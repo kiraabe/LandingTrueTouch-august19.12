@@ -184,7 +184,7 @@ function Header1({ _config }) {
                                     <a href="#get-jobs" onClick={(e) => handleSectionClick("get-jobs", e)}>{navigationLabels.about}</a>
                                 </li>
                                 <li className={isNavLinkActive("candidates") ? "active" : ""}>
-                                    <NavLink to={publicUser.candidate.GRID}>{navigationLabels.candidates}</NavLink>
+                                    <a href="#candidates" onClick={(e) => handleSectionClick("candidates", e)}>{navigationLabels.candidates}</a>
                                 </li>
                                 <li className={isNavLinkActive("our-blogs") ? "active" : ""}>
                                     <a href="#our-blogs" onClick={(e) => handleSectionClick("our-blogs", e)}>{navigationLabels.vacancies}</a>
@@ -335,13 +335,13 @@ function Header1({ _config }) {
                                 </a>
                             </li>
                             <li className="mobile-nav-item">
-                                <NavLink 
-                                    to={publicUser.candidate.GRID} 
+                                <a
+                                    href="#candidates"
                                     className={`mobile-nav-link ${isNavLinkActive("candidates") ? "active" : ""}`}
-                                    onClick={() => setMenuActive(false)}
+                                    onClick={(e) => handleSectionClick("candidates", e)}
                                 >
                                     {navigationLabels.candidates}
-                                </NavLink>
+                                </a>
                             </li>
                             <li className="mobile-nav-item">
                                 <a 
