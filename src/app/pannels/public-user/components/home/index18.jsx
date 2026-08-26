@@ -938,7 +938,7 @@ function Home18Page() {
             </div>
           </div>
           <div className="twm-bnr-bottom-section">
-            <div className="twm-browse-jobs">Search</div>
+            <div className="twm-browse-jobs">TrueTouch</div>
           </div>
         </div>
       </div>
