@@ -270,7 +270,7 @@ function Home18Page() {
           zoomControl: { zoomControlEnabled: false, homeButtonEnabled: false },
           dataProvider: {
             map: "worldLow",
-            zoomLevel: 3.5,
+            zoomLevel: 2.5,
             zoomLongitude: 42,
             zoomLatitude: 18,
             lines,
