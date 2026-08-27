@@ -74,9 +74,14 @@
   }
 }
 
+.about-content-rtl > .container .twm-millions-section-wrap > .row {
+  direction: ltr;
+}
+
 .about-content-rtl .twm-millions-1-section-right,
 .about-content-rtl .section-head,
 .about-content-rtl .twm-read-more {
+  direction: rtl;
   text-align: right;
 }
 
