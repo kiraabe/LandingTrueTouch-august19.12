@@ -880,11 +880,11 @@ function Home18Page() {
 
 
       {/*Banner Start*/}
-      <div className="twm-home-10-banner-section twm-bne-10-skew">
+      <div dir={isArabic ? "rtl" : "ltr"} className={`twm-home-10-banner-section twm-bne-10-skew ${isArabic ? "hero-content-rtl" : ""}`}>
         <div ref={recruitmentMapRef} className="recruitment-route-map" aria-hidden="true" />
         <div className="container">
           <div className="row">
-            {/*Left Section*/}
+            {/*Content Section*/}
             <div className="col-xl-6 col-lg-6 col-md-12">
               <div className="twm-bnr-left-section">
                 <div className="small-qb-box">
@@ -893,32 +893,30 @@ function Home18Page() {
                   <span className="qb-3 zoom-in-out-box2" />
                   <span className="qb-4" />
                 </div>
-                <div className="twm-bnr-title-large-thin">Hire Skilled </div>
-                <div className="twm-bnr-title-large-bold">Workers with True Touch</div>
+                <div className="twm-bnr-title-large-thin">{heroCopy.hirePrefix}</div>
+                <div className="twm-bnr-title-large-bold">{heroCopy.skilled}{heroCopy.hireSuffix}</div>
                 <div className="twm-bnr-search-bar">
                   <form>
                     <div className="row">
-                      {/*Title*/}
                       <div className="form-group col-xl-8 col-lg-8 col-md-8">
-                        <label>What</label>
+                        <label>{heroCopy.professionLabel}</label>
                         <div className="twm-single-iput">
-                          <input name="username" type="text" required className="form-control  bg-none" placeholder="profession, religion, or location" />
+                          <input name="username" type="text" required className="form-control bg-none" placeholder={heroCopy.professionPlaceholder} />
                         </div>
                       </div>
-                      {/*Find job btn*/}
                       <div className="form-group col-xl-4 col-lg-4 col-md-4">
-                        <button type="button" className="site-button">Find Job</button>
+                        <button type="button" className="site-button">{heroCopy.search}</button>
                       </div>
                     </div>
                   </form>
                 </div>
                 <div className="twm-bnr-popular-search">
-                  <span className="twm-title">Your Partner in Global Recruitment</span>
-                  True Touch connects employers with vetted, skilled professionals from Asia and Africa. We provide reliable domestic helpers, healthcare workers, chefs, and skilled labor across the Gulf, Middle East, and beyond. 
+                  <span className="twm-title">{heroCopy.partner}</span>
+                  {heroCopy.description}
                 </div>
               </div>
             </div>
-            {/*right Section*/}
+            {/*Image Section*/}
             <div className="col-xl-6 col-lg-6 col-md-12 twm-bnr-right-section">
               <div className="twm-bnr-right-content">
                 <div className="bnr-media-wrap">

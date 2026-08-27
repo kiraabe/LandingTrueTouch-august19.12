@@ -162,6 +162,10 @@
   direction: rtl;
 }
 
+.site-header.is-rtl .main-bar .container-fluid {
+  direction: rtl;
+}
+
 .site-header.is-rtl .desktop-header-nav .nav {
   display: flex;
   flex-direction: row;
