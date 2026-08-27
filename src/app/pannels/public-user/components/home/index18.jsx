@@ -796,8 +796,8 @@ function Home18Page() {
     partner: "شريكك في التوظيف العالمي",
     hirePrefix: "توظيف عمال ",
     skilled: "ماهرين",
-    hireSuffix: " مع ترو تاتش",
-    description: "تربط \"ترو تاتش\" أصحاب العمل بمهنيين مؤهلين وماهرين من آسيا وإفريقيا. نحن نوفر العمالة المنزلية الموثوقة، ورعاة الصحة، والطهاة، والعمالة الماهرة في جميع أنحاء الخليج والشرق الأوسط وما بعده.",
+    hireSuffix: " مع تروتوش",
+    description: "تربط \"تروتوش\" أصحاب العمل بمهنيين مؤهلين وماهرين من آسيا وإفريقيا. نحن نوفر العمالة المنزلية الموثوقة، ورعاة الصحة، والطهاة، والعمالة الماهرة في جميع أنحاء الخليج والشرق الأوسط وما بعده.",
     professionLabel: "المهنة",
     professionPlaceholder: "اختر المهنة",
     religionLabel: "الديانة",
@@ -929,7 +929,7 @@ function Home18Page() {
             </div>
           </div>
           <div className="twm-bnr-bottom-section">
-            <div className="twm-browse-jobs">TrueTouch</div>
+            <div className="twm-browse-jobs">{isArabic ? "تروتوش" : "TrueTouch"}</div>
           </div>
         </div>
       </div>
